@@ -21,8 +21,8 @@
 <section>
   <svg viewBox="0 0 {numberOfRows} {numberOfColumns}">
     <!-- svg -->
-    {#each $cells || [] as {coords, value}}
-      <Cell {coords} {value} />
+    {#each $cells || [] as {coords, value}, i}
+      <Cell {coords} {value} index={i + 1} />
     {/each}
   </svg>
 </section>

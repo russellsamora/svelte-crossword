@@ -9,13 +9,13 @@
   export let data = [];
   export let cells = [
     {coords: [0, 0], value: "A"},
-    {coords: [0, 1], value: "L"},
-    {coords: [0, 2], value: "E"},
     {coords: [1, 0], value: "P"},
-    {coords: [1, 1], value: "O"},
-    {coords: [1, 2], value: "E"},
     {coords: [2, 0], value: "E"},
+    {coords: [0, 1], value: "L"},
+    {coords: [1, 1], value: "O"},
     {coords: [2, 1], value: "G"},
+    {coords: [0, 2], value: "E"},
+    {coords: [1, 2], value: "E"},
     {coords: [2, 2], value: "G"},
   ];
 

@@ -4,6 +4,7 @@
   "description": "Crossword component for Svelte",
   "main": "src/index.js",
   "module": "src/index.js",
+  "svelte": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

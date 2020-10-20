@@ -7,19 +7,19 @@ import hmr from "rollup-plugin-hot";
 const dev = !!process.env.ROLLUP_WATCH;
 
 export default {
-  input: "test/src/main.js",
+  input: "src/main.js",
   output: {
     sourcemap: true,
     format: "iife",
     name: "app",
-    file: "test/public/build/bundle.js"
+    file: "public/build/bundle.js"
   },
   plugins: [
     svelte({
       dev: dev,
       hydratable: !dev,
       css: css => {
-        css.write("test/public/build/bundle.css");
+        css.write("public/build/bundle.css");
       },
       hot: dev && {
         optimistic: true
@@ -33,7 +33,7 @@ export default {
     dev && serve(),
     dev &&
       hmr({
-        public: "test/public",
+        public: "public",
         inMemory: true,
         compatModuleHot: !dev
       }),

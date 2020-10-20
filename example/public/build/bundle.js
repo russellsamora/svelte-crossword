@@ -32,7 +32,7 @@
     d.head.appendChild(script);
   }
   window['__ROLLUP_PLUGIN_HOT_RUNTIME'].then(function() {
-    System.import("/build/bundle.js@hot/test/src/main.js", wsServerUrl).catch(err => {
+    System.import("/build/bundle.js@hot/src/main.js", wsServerUrl).catch(err => {
     console.error(err && err.stack || err);
   });
   });

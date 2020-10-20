@@ -1,4 +1,9 @@
 <script>
+  import { getContext } from "svelte";
+
+  const { data } = getContext("Crossword");
+
+  $: console.log($data);
 </script>
 
 <section>

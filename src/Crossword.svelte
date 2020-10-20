@@ -4,10 +4,17 @@
   import { setContext } from "svelte";
   import { writable, derived } from "svelte/store";
 
-  export let data = null;
+  // Component parameters
+  export let data = [];
 
+  // Store version of parameters to allow for updating
+  const _data = writable(null);
+
+  $: _data.set(data);
+
+  // context to share around child components
   $: context = {
-    data,
+    data: _data,
   };
 
   $: setContext("Crossword", context);
@@ -17,6 +24,6 @@
 </style>
 
 <article>
-  <Puzzle />
   <Clues />
+  <Puzzle />
 </article>

@@ -1,5 +1,49 @@
 # svelte-crossword
 
+## Installation
+
+`npm install svelte-crossword`
+
+## Usage
+
+```svelte
+<script>
+  import { Crossword } from "svelte-crossword";
+	const data = [
+	{
+		"clue": "Sandwich cookie",
+		"answer": "OREO",
+		"direction": "across",
+		"x": 0,
+		"y": 0
+	},
+	{
+		"clue": "Black-and-white cookie",
+		"answer": "OREO",
+		"direction": "down",
+		"x": 0,
+		"y": 0
+	},
+	{
+		"clue": "Popular cookie",
+		"answer": "OREO",
+		"direction": "down",
+		"x": 3,
+		"y": 0
+	},
+	{
+		"clue": "Creme-filled cookie",
+		"answer": "OREO",
+		"direction": "across",
+		"x": 0,
+		"y": 3
+	}
+]
+</script>
+
+<Crossword {data} />
+```
+
 ## Roadmap
 
 - Generate puzzle and clues from a data source (format tbd)
@@ -14,3 +58,5 @@
 - Fully customizable style options
 - Converter function to parse txt file board/clues to array
 - Validate data format
+
+## Development

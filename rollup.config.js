@@ -7,7 +7,7 @@ import hmr from "rollup-plugin-hot";
 const dev = !!process.env.ROLLUP_WATCH;
 
 export default {
-  input: "src/main.js",
+  input: "src/example/main.js",
   output: {
     sourcemap: true,
     format: "iife",

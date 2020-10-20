@@ -3,6 +3,7 @@
   import Clues from "./Clues.svelte";
   import { setContext } from "svelte";
   import { writable, derived } from "svelte/store";
+  import createBoard from "helpers/create-board.js";
 
   // Component parameters
   export let data = [];
@@ -18,6 +19,8 @@
   };
 
   $: setContext("Crossword", context);
+
+  const puzzle = createBoard(data);
 </script>
 
 <style>

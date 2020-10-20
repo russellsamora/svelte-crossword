@@ -1,7 +1,7 @@
 {
   "name": "svelte-crossword",
   "version": "0.0.1",
-  "description": "Crossword component for Svelte apps",
+  "description": "Crossword component for Svelte",
   "main": "src/index.js",
   "module": "src/index.js",
   "scripts": {

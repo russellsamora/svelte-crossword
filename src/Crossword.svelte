@@ -8,7 +8,7 @@
     data,
   };
 
-  $: setContext("LayerCake", context);
+  $: setContext("Crossword", context);
 </script>
 
 <style>
@@ -18,4 +18,6 @@
   }
 </style>
 
-<svg viewBox="0 0 100 100" />
+<svg viewBox="0 0 100 100">
+  <g />
+</svg>

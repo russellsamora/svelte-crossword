@@ -7,7 +7,7 @@
   // Component parameters
   export let data = [];
 
-  // Store version of parameters to allow for updating
+  // Store version of parameters to allow for updating (if we want it)
   const _data = writable(null);
 
   $: _data.set(data);

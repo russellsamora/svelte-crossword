@@ -3,7 +3,7 @@
   import Clues from "./Clues.svelte";
   import { setContext } from "svelte";
   import { writable, derived } from "svelte/store";
-  import createBoard from "helpers/create-board.js";
+  import createBoard from "./helpers/createBoard.js";
 
   // Component parameters
   export let data = [];

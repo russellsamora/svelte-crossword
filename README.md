@@ -60,3 +60,5 @@
 - Validate data format
 
 ## Development
+
+`npm run dev`

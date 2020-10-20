@@ -1,12 +1,12 @@
 <script>
   import { getContext } from "svelte";
 
-  import Cell from "./Cell.svelte"
+  import Cell from "./Cell.svelte";
 
-  const { data, cells } = getContext("Crossword");
+  const { cells } = getContext("Crossword");
 
-  const numberOfRows = 3
-  const numberOfColumns = 3
+  const w = Math.max(...$cells.map((d) => d.x)) + 1;
+  const h = Math.max(...$cells.map((d) => d.y)) + 1;
 </script>
 
 <style>
@@ -19,10 +19,10 @@
 </style>
 
 <section>
-  <svg viewBox="0 0 {numberOfRows} {numberOfColumns}">
+  <svg viewBox="0 0 {w} {h}">
     <!-- svg -->
-    {#each $cells || [] as {coords, value}, i}
-      <Cell {coords} {value} index={i + 1} />
+    {#each $cells || [] as { x, y, value }, index}
+      <Cell {x} {y} {index} {value} />
     {/each}
   </svg>
 </section>

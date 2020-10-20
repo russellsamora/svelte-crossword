@@ -46,7 +46,7 @@
 
 ## Roadmap
 
-- Generate puzzle and clues from a data source (format tbd)
+- Generate puzzle and clues from a data source (format json)
 - Ability to clear or fill
 - Focus / unfocus for key type bindings
 - Move to next cell on type

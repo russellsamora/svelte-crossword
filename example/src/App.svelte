@@ -3,3 +3,5 @@
 </script>
 
 <h1>Svelte Crossword Example</h1>
+
+<Crossword />

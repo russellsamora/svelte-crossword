@@ -1,4 +1,6 @@
 <script>
+  import Puzzle from "./Puzzle.svelte";
+  import Clues from "./Clues.svelte";
   import { setContext } from "svelte";
   import { writable, derived } from "svelte/store";
 
@@ -12,12 +14,9 @@
 </script>
 
 <style>
-  svg {
-    display: block;
-    width: 100%;
-  }
 </style>
 
-<svg viewBox="0 0 100 100">
-  <g />
-</svg>
+<article>
+  <Puzzle />
+  <Clues />
+</article>

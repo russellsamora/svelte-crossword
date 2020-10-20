@@ -13,3 +13,4 @@
 - Multiple clue layout configurations
 - Fully customizable style options
 - Converter function to parse txt file board/clues to array
+- Validate data format

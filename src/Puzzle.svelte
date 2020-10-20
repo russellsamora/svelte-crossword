@@ -12,7 +12,9 @@
 <style>
   svg {
     display: block;
-    border: 4px solid #000;
+    fill: var(--dark-color, #000);
+    border: 4px solid var(--dark-color, #000);
+    background: var(--dark-color, #000);
     font-size: 1px;
     font-family: sans-serif;
   }
@@ -21,7 +23,7 @@
 <section>
   <svg viewBox="0 0 {w} {h}">
     <!-- svg -->
-    {#each $cells || [] as { x, y, value }, index}
+    {#each $cells || [] as { x, y, value, index }}
       <Cell {x} {y} {index} {value} />
     {/each}
   </svg>

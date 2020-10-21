@@ -11,6 +11,7 @@
   export let onFocusClueDiff = () => {};
   export let onMoveFocus = () => {};
   export let onFlipDirection = () => {};
+  export let onHistoricalChange = () => {};
 
   let element;
 
@@ -22,6 +23,10 @@
   $: isFocused, onFocusSelf();
 
   const onKeydown = (e) => {
+    if (e.ctrlKey && e.key.toLowerCase() == "z") {
+      onHistoricalChange(e.shiftKey ? 1 : -1)
+    }
+
     if (e.ctrlKey) return;
     if (e.altKey) return;
 

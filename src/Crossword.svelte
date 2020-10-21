@@ -17,8 +17,16 @@
   $: focusedCell = cells[focusedCellIndex] || {};
   $: clues, (cells = createCells(clues));
   $: cellIndexMap = fromPairs(cells.map((cell) => [cell["id"], cell["index"]]));
+
+  const onClear = () => {
+    cells = cells.map(cell => ({
+      ...cell,
+      value: "",
+    }))
+  }
 </script>
 
+<button on:click={onClear}>Clear</button>
 <article>
   {#if valid}
     <Clues

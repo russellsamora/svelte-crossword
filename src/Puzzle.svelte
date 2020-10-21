@@ -10,6 +10,12 @@
   export let focusedCellIndex;
   export let focusedCell;
 
+  let cellsHistoryIndex = 0
+  let cellsHistory = []
+  let focusedCellIndexHistoryIndex = 0
+  let focusedCellIndexHistory = []
+  const numberOfStatesInHistory = 10
+
   const w = Math.max(...cells.map((d) => d.x)) + 1;
   const h = Math.max(...cells.map((d) => d.y)) + 1;
 
@@ -24,20 +30,38 @@
   $: cells, focusedCellIndex, focusedDirection, updateSecondarilyFocusedCells();
 
   const onCellUpdate = (index, newValue) => {
-    cells = [
+    const newCells = [
       ...cells.slice(0, index),
       { ...cells[index], value: newValue },
       ...cells.slice(index + 1),
     ];
+    cellsHistory = [
+      newCells,
+      ...cellsHistory.slice(cellsHistoryIndex)
+    ].slice(0, numberOfStatesInHistory)
+    cellsHistoryIndex = 0
+    cells = newCells
 
     onFocusNextCell();
   };
+
+  const onHistoricalChange = diff => {
+    cellsHistoryIndex += -diff
+    cells = cellsHistory[cellsHistoryIndex] || cells
+    focusedCellIndexHistoryIndex += -diff
+    focusedCellIndex = focusedCellIndexHistory[cellsHistoryIndex] || focusedCellIndex
+  }
 
   const onFocusCell = (index) => {
     if (index == focusedCellIndex) {
       onFlipDirection();
     } else {
       focusedCellIndex = index;
+      focusedCellIndexHistory = [
+        index,
+        ...focusedCellIndexHistory.slice(0, numberOfStatesInHistory)
+      ]
+      focusedCellIndexHistoryIndex = 0
     }
   };
 
@@ -128,7 +152,8 @@
         onCellUpdate="{onCellUpdate}"
         onFocusClueDiff="{onFocusClueDiff}"
         onMoveFocus="{onMoveFocus}"
-        onFlipDirection="{onFlipDirection}" />
+        onFlipDirection="{onFlipDirection}"
+        onHistoricalChange="{onHistoricalChange}" />
     {/each}
   </svg>
 </section>

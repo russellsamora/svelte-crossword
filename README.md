@@ -59,6 +59,7 @@
 - Converter function to parse txt file board/clues to array
 - Validate data format
 - Custom class on cells
+- Completion state
 
 ## Development
 

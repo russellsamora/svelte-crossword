@@ -35,6 +35,44 @@
 <style>
   section {
     flex: 0 1 16em;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
     margin-right: 1em;
+  }
+  .list {
+    flex: 1;
+    margin-bottom: 2em;
+    overflow: auto;
+  }
+  ::-moz-scrollbar {
+    width: 9px;
+  }
+  ::-webkit-scrollbar {
+    width: 9px;
+  }
+
+  ::-moz-scrollbar-track {
+    box-shadow: none;
+    border-radius: 10px;
+    background: #f4f4f4;
+  }
+  ::-webkit-scrollbar-track {
+    box-shadow: none;
+    border-radius: 10px;
+    background: #f4f4f4;
+  }
+  ::scrollbar-thumb {
+    border-radius: 10px;
+    background: #ddd;
+    box-shadow: none;
+  }
+  ::-moz-scrollbar-thumb {
+    background: #ddd;
+    border-radius: 6px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #ddd;
+    border-radius: 6px;
   }
 </style>

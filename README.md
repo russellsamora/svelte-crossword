@@ -64,3 +64,7 @@
 ## Development
 
 `npm run dev`
+
+## Notes
+
+Example data is from the October 21, 2020 NYT [mini crossword](https://www.nytimes.com/crosswords/game/mini).

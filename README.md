@@ -8,12 +8,22 @@ By [Amelia Wattenberger](https://twitter.com/wattenberger) and [Russell Goldenbe
 
 ## Usage
 
-```svelte
+```javascript
 <script>
+  import { Crossword } from "svelte-crossword";
+	const data = [
+		{
+			"clue": "Black-and-white cookie",
+			"answer": "OREO",
+			"direction": "down",
+			"x": 0,
+			"y": 0
+		},
+		...
+	]
 </script>
 
-<Crossword data="{data}" />
-
+<Crossword {data} />
 ```
 
 ## Custom Style

@@ -5,8 +5,9 @@ export default function createCells(data) {
       const x = d.x + (d.direction === "across" ? i : 0);
       const y = d.y + (d.direction === "down" ? i : 0);
       const number = i === 0 ? d.number : "";
+      const clueNumbers = { [d.direction]: d.number };
       const id = `${x}-${y}`;
-      return { id, number, x, y, value };
+      return { id, number, clueNumbers, x, y, value };
     });
   });
 
@@ -16,7 +17,15 @@ export default function createCells(data) {
   // sort so that ones with number values come first and dedupe
   flat.sort((a, b) => a.y - b.y || a.x - b.x || b.number - a.number);
   flat.forEach((d) => {
-    if (!dict[d.id]) dict[d.id] = d;
+    if (!dict[d.id]) {
+      dict[d.id] = d;
+    } else {
+      // consolidate clue numbers for across & down
+      dict[d.id]["clueNumbers"] = {
+        ...d["clueNumbers"],
+        ...dict[d.id]["clueNumbers"],
+      };
+    }
   });
 
   const unique = Object.keys(dict).map((d) => dict[d]);

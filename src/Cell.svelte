@@ -11,6 +11,8 @@
 
   const onKeydown = e => {
     if (!isFocused) return false;
+    if (e.ctrlKey) return false;
+    if (e.altKey) return false;
 
     if (e.key === "Tab") {
       onFocusNextCell();

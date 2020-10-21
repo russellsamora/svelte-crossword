@@ -10,7 +10,8 @@
   let cells = [];
   let focusedCellIndex = 0;
   $: focusedCell = cells[focusedCellIndex] || {};
-$:console.log(clues)
+  $: focusedDirection = "across"
+
   $: clues, cells = createCells(clues)
 
 </script>
@@ -22,6 +23,6 @@ $:console.log(clues)
 </style>
 
 <article>
-  <Clues {clues} {cells} bind:focusedCellIndex />
-  <Puzzle {clues} bind:cells bind:focusedCellIndex />
+  <Clues {clues} {cells} bind:focusedCellIndex bind:focusedCell bind:focusedDirection />
+  <Puzzle {clues} bind:cells bind:focusedCellIndex bind:focusedDirection />
 </article>

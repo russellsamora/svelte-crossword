@@ -1,4 +1,6 @@
 <script>
+  import getSecondarilyFocusedCells from "./helpers/getSecondarilyFocusedCells.js";
+
   import Cell from "./Cell.svelte";
 
   export let clues
@@ -12,40 +14,11 @@
 
   let secondarilyFocusedCells = []
   const updateSecondarilyFocusedCells = () => {
-    const dimension = focusedDirection == "across" ? "x" : "y"
-    const otherDimension = focusedDirection == "across" ? "y" : "x"
-    const start = focusedCell[dimension]
-
-    const cellsWithDiff = cells.filter(cell => (
-      // take out cells in other columns/rows
-      cell[otherDimension] == focusedCell[otherDimension]
-    )).map(cell => ({
-      ...cell,
-      // how far is this cell from our focused cell?
-      diff: start - cell[dimension],
-    })).sort((a,b) => a["diff"] - b["diff"])
-
-    // highlight all cells in same row/column, without any breaks
-    let runningDiff = 0
-    let firstConsecutiveDiffIndex = 0
-    let lastConsecutiveDiffIndex = 0
-    let isInStreak = true
-    cellsWithDiff.forEach(({ diff }, i) => {
-      if (diff - runningDiff < 2) {
-        if (!isInStreak && i > 0) {
-          return
-        }
-        lastConsecutiveDiffIndex = i
-        runningDiff = diff
-        if (!isInStreak) firstConsecutiveDiffIndex = i
-        isInStreak = true
-      } else {
-        isInStreak = false
-      }
+    secondarilyFocusedCells = getSecondarilyFocusedCells({
+      cells,
+      focusedDirection,
+      focusedCell,
     })
-    secondarilyFocusedCells = cellsWithDiff
-      .slice(firstConsecutiveDiffIndex, lastConsecutiveDiffIndex + 1)
-      .map(cell => cell.index)
   }
   $: cells, focusedCellIndex, focusedDirection, updateSecondarilyFocusedCells()
 

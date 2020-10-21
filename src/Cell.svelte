@@ -5,6 +5,7 @@
 	export let number;
 	export let index;
 	export let isFocused = false;
+	export let isSecondarilyFocused = false;
 	export let onFocusCell = () => {};
 	export let onCellUpdate = () => {};
 	export let onFocusNextCell = () => {};
@@ -37,6 +38,7 @@
 
 <g
   class:is-focused={isFocused}
+  class:is-secondarily-focused={isSecondarilyFocused}
   transform={`translate(${x}, ${y})`}
   on:click={onClick}
   id="cell-{x}-{y}"
@@ -50,12 +52,19 @@
 <style>
   g {
     cursor: pointer;
+    user-select: none;
   }
   g:focus {
     outline: none;
   }
+  g.is-secondarily-focused rect {
+    fill:#e0d8ff;
+  }
   g.is-focused rect {
-    fill: #ffda00;
+    fill: #978df0;
+  }
+  rect {
+    transition: fill 0.1s ease-out;
   }
   text {
     pointer-events: none;

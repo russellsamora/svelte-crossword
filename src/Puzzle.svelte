@@ -2,11 +2,52 @@
   import Cell from "./Cell.svelte";
 
   export let clues
-  export let focusedCellIndex
   export let cells
+  export let focusedDirection
+  export let focusedCellIndex
+  export let focusedCell
 
   const w = Math.max(...cells.map((d) => d.x)) + 1;
   const h = Math.max(...cells.map((d) => d.y)) + 1;
+
+  let secondarilyFocusedCells = []
+  const updateSecondarilyFocusedCells = () => {
+    const dimension = focusedDirection == "across" ? "x" : "y"
+    const otherDimension = focusedDirection == "across" ? "y" : "x"
+    const start = focusedCell[dimension]
+
+    const cellsWithDiff = cells.filter(cell => (
+      // take out cells in other columns/rows
+      cell[otherDimension] == focusedCell[otherDimension]
+    )).map(cell => ({
+      ...cell,
+      // how far is this cell from our focused cell?
+      diff: start - cell[dimension],
+    })).sort((a,b) => a["diff"] - b["diff"])
+
+    // highlight all cells in same row/column, without any breaks
+    let runningDiff = 0
+    let firstConsecutiveDiffIndex = 0
+    let lastConsecutiveDiffIndex = 0
+    let isInStreak = true
+    cellsWithDiff.forEach(({ diff }, i) => {
+      if (diff - runningDiff < 2) {
+        if (!isInStreak && i > 0) {
+          return
+        }
+        lastConsecutiveDiffIndex = i
+        runningDiff = diff
+        if (!isInStreak) firstConsecutiveDiffIndex = i
+        isInStreak = true
+      } else {
+        isInStreak = false
+      }
+    })
+    secondarilyFocusedCells = cellsWithDiff
+      .slice(firstConsecutiveDiffIndex, lastConsecutiveDiffIndex + 1)
+      .map(cell => cell.index)
+  }
+  $: cells, focusedCellIndex, focusedDirection, updateSecondarilyFocusedCells()
 
   const onCellUpdate = (index, newValue) => {
     cells = [
@@ -24,11 +65,18 @@
   };
 
   const onFocusCell = (index) => {
-    focusedCellIndex = index;
+    if (index == focusedCellIndex) {
+      focusedDirection = {
+        "across": "down",
+        "down": "across",
+      }[focusedDirection]
+    } else {
+      focusedCellIndex = index;
+    }
   };
 
   const onFocusNextCell = () => {
-    focusedCellIndex += 1;
+    onFocusCell(focusedCellIndex + 1);
   };
 
 </script>
@@ -36,7 +84,7 @@
 <style>
   section {
     flex: 3;
-    --dark-color: #222;
+    --dark-color: #3d3d3d;
   }
   svg {
     display: block;
@@ -49,7 +97,7 @@
 </style>
 
 <section class='puzzle'>
-  <svg viewBox="0 0 {w} {h}">
+  <svg viewBox="0 0 {w} {h}" style="max-width: {w * 150}px">
     <!-- svg -->
     {#each cells as { x, y, value, index, number }}
       <Cell
@@ -59,6 +107,7 @@
         {value}
         {number}
         isFocused={focusedCellIndex == index}
+        isSecondarilyFocused={secondarilyFocusedCells.includes(index)}
         {onFocusCell}
         {onCellUpdate}
         {onFocusNextCell}

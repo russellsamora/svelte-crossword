@@ -2,20 +2,17 @@
   import Clue from "./Clue.svelte"
 
   export let clues
+  export let cellIndexMap
+  export let focusedDirection
   export let focusedCellIndex
   export let focusedCell
-  export let focusedDirection
-  export let cells
 
   $: focusedClueNumbers = focusedCell["clueNumbers"] || {}
 
   const onClueFocus = clue => {
-    console.log('onClueFocus', clue, cells)
     focusedDirection = clue.direction
-    focusedCellIndex = cells.findIndex(cell => (
-      clue.x == cell.x
-      && clue.y == cell.y
-    ))
+    const cellId = [clue.x, clue.y].join("-")
+    focusedCellIndex = cellIndexMap[cellId] || 0
   }
 </script>
 

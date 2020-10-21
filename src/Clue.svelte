@@ -17,21 +17,23 @@
 <style>
   .clue {
     display: block;
+    width: 100%;
     background: none;
     text-align: left;
     appearance: none;
     outline: none;
     border: 1px solid transparent;
+    border-left: 6px solid transparent;
     padding: 0.6em 1em;
     cursor: pointer;
   }
   .clue:focus {
-    border-color: skyblue;
+    border-color: #e0d8ff;
   }
   .is-number-focused {
-    border-left: 2px solid skyblue;
+    border-left-color: #e0d8ff;
   }
   .is-number-focused.is-direction-focused {
-    background: skyblue
+    background: #e0d8ff
   }
 </style>

@@ -1,14 +1,18 @@
 <script>
   import Puzzle from "./Puzzle.svelte";
   import Clues from "./Clues.svelte";
-  import { setContext } from "svelte";
-  import { writable, derived } from "svelte/store";
-	import {clues} from './stores.js';
   import addClueNumber from "./helpers/addClueNumber.js";
+  import createCells from "./helpers/createCells.js";
 
   export let data = [];
 
-  $: data, clues.set(addClueNumber(data))
+  let clues = addClueNumber(data);
+  let cells = [];
+  let focusedCellIndex = 0;
+  $: focusedCell = cells[focusedCellIndex] || {};
+$:console.log(clues)
+  $: clues, cells = createCells(clues)
+
 </script>
 
 <style>
@@ -18,6 +22,6 @@
 </style>
 
 <article>
-  <Clues />
-  <Puzzle />
+  <Clues {clues} {cells} bind:focusedCellIndex />
+  <Puzzle {clues} bind:cells bind:focusedCellIndex />
 </article>

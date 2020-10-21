@@ -1,8 +1,10 @@
 <script>
-  import { clues } from "./stores";
+  export let clues
+  export let focusedCellIndex
+  export let cells
 
-  $: across = $clues.filter((d) => d.direction == "across");
-  $: down = $clues.filter((d) => d.direction == "down");
+  $: across = clues.filter((d) => d.direction == "across");
+  $: down = clues.filter((d) => d.direction == "down");
 </script>
 
 <style>

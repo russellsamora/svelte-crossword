@@ -1,13 +1,13 @@
 <script>
-  import { focusedCellIndex, onCellUpdate, onFocusCell, onFocusNextCell } from "./stores"
-
   export let x;
   export let y;
   export let value = "";
 	export let number;
 	export let index;
-
-  $: isFocused = $focusedCellIndex == index;
+	export let isFocused = false;
+	export let onFocusCell = () => {};
+	export let onCellUpdate = () => {};
+	export let onFocusNextCell = () => {};
 
   const onKeydown = e => {
     if (!isFocused) return false;
@@ -53,7 +53,6 @@
     outline: none;
   }
   g.is-focused rect {
-		fill :#a7d8ff;
     fill: #ffda00;
   }
   text {

@@ -1,5 +1,7 @@
 # svelte-crossword
 
+By [Amelia Wattenberger](https://twitter.com/wattenberger) and [Russell Goldenberg](https://twitter.com/codenberg).
+
 ## Installation
 
 `npm install svelte-crossword`

@@ -1,0 +1,30 @@
+[
+  {
+    "clue": "Black-and-white cookie",
+    "answer": "OREO",
+    "direction": "down",
+    "x": 0,
+    "y": 0
+  },
+  {
+    "clue": "Popular cookie",
+    "answer": "OREO",
+    "direction": "down",
+    "x": 3,
+    "y": 0
+  },
+  {
+    "clue": "Creme-filled cookie",
+    "answer": "OREO",
+    "direction": "across",
+    "x": 0,
+    "y": 3
+  },
+  {
+    "clue": "Sandwich cookie",
+    "answer": "OREO",
+    "direction": "across",
+    "x": 0,
+    "y": 0
+  }
+]

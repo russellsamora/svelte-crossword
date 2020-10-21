@@ -10,41 +10,15 @@ By [Amelia Wattenberger](https://twitter.com/wattenberger) and [Russell Goldenbe
 
 ```svelte
 <script>
-  import { Crossword } from "svelte-crossword";
-	const data = [
-	{
-		"clue": "Sandwich cookie",
-		"answer": "OREO",
-		"direction": "across",
-		"x": 0,
-		"y": 0
-	},
-	{
-		"clue": "Black-and-white cookie",
-		"answer": "OREO",
-		"direction": "down",
-		"x": 0,
-		"y": 0
-	},
-	{
-		"clue": "Popular cookie",
-		"answer": "OREO",
-		"direction": "down",
-		"x": 3,
-		"y": 0
-	},
-	{
-		"clue": "Creme-filled cookie",
-		"answer": "OREO",
-		"direction": "across",
-		"x": 0,
-		"y": 3
-	}
-]
 </script>
 
-<Crossword {data} />
+<Crossword data="{data}" />
+
 ```
+
+## Custom Style
+
+TODO
 
 ## Roadmap
 
@@ -70,3 +44,8 @@ By [Amelia Wattenberger](https://twitter.com/wattenberger) and [Russell Goldenbe
 ## Notes
 
 Example data is from the October 21, 2020 NYT [mini crossword](https://www.nytimes.com/crosswords/game/mini).
+
+### Approaches
+
+- [Context + Store](https://svelte.dev/repl/cb193342ca4e4d43af66b5c14167d117?version=3.29.0)
+- [Prop + Binding](https://svelte.dev/repl/aa9159dabc8a40e48c1f6fad3a083e9e?version=3.29.0)

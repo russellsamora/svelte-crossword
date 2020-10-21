@@ -22,18 +22,17 @@ export default ({ cells, focusedDirection, focusedCell }) => {
     diffs.includes(i) ? i : " "
   );
   const chunks = indices.join(",").split(", ,");
-  const currentChunk = chunks
-    .find(
-      (d) => d.startsWith("0,") || d.endsWith(",0") || d.includes(",0,") || ""
-    )
+  const currentChunk = (
+    chunks.find(
+      (d) => d.startsWith("0,") || d.endsWith(",0") || d.includes(",0,")
+    ) || ""
+  )
     .split(",")
     .map((d) => +d);
-  console.log(indices, chunks, currentChunk);
 
   const secondarilyFocusedCellIndices = cellsWithDiff
     .filter((cell) => currentChunk.includes(cell.diff))
     .map((cell) => cell.index);
-  console.log(secondarilyFocusedCellIndices);
   return secondarilyFocusedCellIndices;
 };
 

@@ -8,7 +8,7 @@
   export let isSecondarilyFocused = false;
   export let onFocusCell = () => {};
   export let onCellUpdate = () => {};
-  export let onFocusNextClue = () => {};
+  export let onFocusClueDiff = () => {};
   export let onMoveFocus = () => {};
   export let onFlipDirection = () => {};
 
@@ -26,7 +26,7 @@
     if (e.altKey) return;
 
     if (e.key === "Tab") {
-      onFocusNextClue();
+      onFocusClueDiff(e.shiftKey ? -1 : 1);
       e.preventDefault();
       e.stopPropagation();
       return;

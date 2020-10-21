@@ -24,8 +24,6 @@
   $: cells, focusedCellIndex, focusedDirection, updateSecondarilyFocusedCells();
 
   const onCellUpdate = (index, newValue) => {
-    console.log(index,
-      cells.slice(0, index),)
     cells = [
       ...cells.slice(0, index),
       { ...cells[index], value: newValue },
@@ -65,12 +63,19 @@
     onFocusCell(nextCell.index);
   };
 
-  const onFocusNextClue = () => {
-    const nextCluesInDirection = clues.filter(clue => (
-      clue.number > focusedCell.number
-      && clue.direction == focusedDirection
+  const onFocusClueDiff = (diff=1) => {
+    const currentNumber = focusedCell.clueNumbers[focusedDirection]
+    let nextCluesInDirection = clues.filter(clue => (
+      (
+        diff > 0
+        ? clue.number > currentNumber
+        : clue.number < currentNumber
+      ) && clue.direction == focusedDirection
     ))
-    let nextClue = nextCluesInDirection[0]
+    if (diff < 0) {
+      nextCluesInDirection = nextCluesInDirection.reverse()
+    }
+    let nextClue = nextCluesInDirection[Math.abs(diff) - 1]
     if (!nextClue) {
       onFlipDirection()
       nextClue = clues.filter(clue => (
@@ -121,7 +126,7 @@
         isSecondarilyFocused="{secondarilyFocusedCells.includes(index)}"
         onFocusCell="{onFocusCell}"
         onCellUpdate="{onCellUpdate}"
-        onFocusNextClue="{onFocusNextClue}"
+        onFocusClueDiff="{onFocusClueDiff}"
         onMoveFocus="{onMoveFocus}"
         onFlipDirection="{onFlipDirection}" />
     {/each}

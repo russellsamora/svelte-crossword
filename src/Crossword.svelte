@@ -24,27 +24,25 @@
   $: _focusedCell.set(focusedCell);
 
   const onCellUpdate = (index, newValue) => {
-    const cellIndex = index - 1;
-    if (!Number.isFinite(index)) return
     cells = [
-      ...cells.slice(0, cellIndex),
-      { ...cells[cellIndex], value: newValue },
-      ...cells.slice(cellIndex + 1),
+      ...cells.slice(0, index),
+      { ...cells[index], value: newValue },
+      ...cells.slice(index + 1),
     ];
-		// what dis?
+		// // what dis?
     setTimeout(() => {
       onFocusNextCell();
     });
   };
 
   const onFocusCell = index => {
-    focusedCell = cells[index - 1]
+    focusedCell = cells[index];
   }
 
   const onFocusNextCell = () => {
-    const nextCell = cells[focusedCell["index"]]
+    const nextCell = cells[focusedCell.index + 1]
     if (!nextCell) return
-    onFocusCell(nextCell["index"])
+    onFocusCell(nextCell.index)
   }
 
   // context to share around child components

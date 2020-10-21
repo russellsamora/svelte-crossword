@@ -12,15 +12,20 @@
   $: isFocused = $focusedCell.index == index;
 
   const onKeydown = e => {
-    if (!isFocused) return
+    if (!isFocused) return false;
+
     if (e.key === "Tab") {
       onFocusNextCell();
       e.preventDefault();
       e.stopPropagation();
       return false;
     }
+
     const isKeyInAlphabet = !/^[a-zA-Z()]$/.test(e.key);
-    if (isKeyInAlphabet) return onCellUpdate(index, e.key.toUpperCase());
+    
+		if (isKeyInAlphabet) return false;
+		
+		onCellUpdate(index, e.key.toUpperCase());
   }
   const onClick = () => {
     onFocusCell(index);

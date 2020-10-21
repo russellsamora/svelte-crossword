@@ -17,25 +17,25 @@ export default ({ cells, focusedDirection, focusedCell }) => {
     .sort((a, b) => a["diff"] - b["diff"]);
 
   // highlight all cells in same row/column, without any breaks
-  // there's a better way to do this, isn't there?
-  let runningDiff = 0;
-  let firstConsecutiveDiffIndex = 0;
-  let lastConsecutiveDiffIndex = 0;
-  let isInStreak = true;
-  cellsWithDiff.forEach(({ diff }, i) => {
-    if (diff - runningDiff < 2) {
-      if (!isInStreak && i > 0) {
-        return;
-      }
-      lastConsecutiveDiffIndex = i;
-      runningDiff = diff;
-      if (!isInStreak) firstConsecutiveDiffIndex = i;
-      isInStreak = true;
-    } else {
-      isInStreak = false;
-    }
-  });
-  return cellsWithDiff
-    .slice(firstConsecutiveDiffIndex, lastConsecutiveDiffIndex + 1)
+  const diffs = cellsWithDiff.map((d) => d["diff"]);
+  const indices = range(Math.min(...diffs), Math.max(...diffs)).map((i) =>
+    diffs.includes(i) ? i : " "
+  );
+  const chunks = indices.join(",").split(", ,");
+  const currentChunk = chunks
+    .find(
+      (d) => d.startsWith("0,") || d.endsWith(",0") || d.includes(",0,") || ""
+    )
+    .split(",")
+    .map((d) => +d);
+  console.log(indices, chunks, currentChunk);
+
+  const secondarilyFocusedCellIndices = cellsWithDiff
+    .filter((cell) => currentChunk.includes(cell.diff))
     .map((cell) => cell.index);
+  console.log(secondarilyFocusedCellIndices);
+  return secondarilyFocusedCellIndices;
 };
+
+const range = (min, max) =>
+  Array.from({ length: max - min + 1 }, (v, k) => k + min);

@@ -1,57 +1,40 @@
-import { writable } from "svelte/store";
-import addClueNumber from "./helpers/addClueNumber.js";
+import { derived, writable } from "svelte/store";
 import createCells from "./helpers/createCells.js";
 
-export default function init(data) {
-	let clues = addClueNumber(data);
-	let cells = createCells(clues);
+export const clues = writable([]);
+export const cells = writable([]);
+export const focusedCellIndex = writable(0);
+export const focusedCell = derived(
+  [focusedCellIndex, cells],
+  ([focusedCellIndex, cells]) => {
+    return cells[focusedCellIndex] || {};
+  }
+);
 
-	let focusedCell = {};
-	// Store version of parameters to allow for updating (if we want it)
-	const _data = writable([]);
-	const _clues = writable([]);
-	const _cells = writable([]);
-	const _focusedCell = writable([]);
+clues.subscribe((clues) => {
+  cells.set(createCells(clues));
+});
 
-	$: _data.set(data);
-	$: _cells.set(cells);
-	$: _clues.set(clues);
-	$: _focusedCell.set(focusedCell);
+export const onCellUpdate = (index, newValue) => {
+  console.log("onCellUpdate");
+  cells.update((cells) => [
+    ...cells.slice(0, index),
+    { ...cells[index], value: newValue },
+    ...cells.slice(index + 1),
+  ]);
 
-	// context to share around child components
-	$: context = {
-		data: _data,
-		clues: _clues,
-		cells: _cells,
-		focusedCell: _focusedCell,
-		onCellUpdate,
-		onFocusCell,
-		onFocusNextCell,
-	};
+  // // TODO why? seems hacky
+  // it for some reason iterates through all cells
+  // was a quick fix but needs more digging
+  setTimeout(() => {
+    onFocusNextCell();
+  });
+};
 
-	const onCellUpdate = (index, newValue) => {
-		cells = [
-			...cells.slice(0, index),
-			{ ...cells[index], value: newValue },
-			...cells.slice(index + 1),
-		];
+export const onFocusCell = (index) => {
+  focusedCellIndex.set(index);
+};
 
-		// TODO why? seems hacky
-		setTimeout(() => {
-			onFocusNextCell();
-		});
-	};
-
-	const onFocusCell = (index) => {
-		focusedCell = cells[index];
-	};
-
-	const onFocusNextCell = () => {
-		const nextCell = cells[focusedCell.index + 1];
-		if (!nextCell) return;
-		onFocusCell(nextCell.index);
-	};
-
-	// return an object of all the stores here?
-	return {};
-}
+export const onFocusNextCell = () => {
+  focusedCellIndex.update((value) => value + 1);
+};

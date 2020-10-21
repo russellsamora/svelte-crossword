@@ -1,7 +1,5 @@
 <script>
-  import { getContext } from "svelte";
-
-  const { data, focusedCell, onCellUpdate, onFocusCell, onFocusNextCell } = getContext("Crossword");
+  import { focusedCellIndex, onCellUpdate, onFocusCell, onFocusNextCell } from "./stores"
 
   export let x;
   export let y;
@@ -9,7 +7,7 @@
 	export let number;
 	export let index;
 
-  $: isFocused = $focusedCell.index == index;
+  $: isFocused = $focusedCellIndex == index;
 
   const onKeydown = e => {
     if (!isFocused) return false;
@@ -22,9 +20,9 @@
     }
 
     const isKeyInAlphabet = !/^[a-zA-Z()]$/.test(e.key);
-    
-		if (isKeyInAlphabet) return false;
-		
+
+    if (isKeyInAlphabet) return false;
+
 		onCellUpdate(index, e.key.toUpperCase());
   }
   const onClick = () => {

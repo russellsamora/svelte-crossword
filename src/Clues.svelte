@@ -1,7 +1,5 @@
 <script>
-  import { getContext } from "svelte";
-
-  const { clues } = getContext("Crossword");
+  import { clues } from "./stores";
 
   $: across = $clues.filter((d) => d.direction == "across");
   $: down = $clues.filter((d) => d.direction == "down");

@@ -1,9 +1,7 @@
 <script>
-  import { getContext } from "svelte";
+  import { cells } from "./stores";
 
   import Cell from "./Cell.svelte";
-
-  const { cells } = getContext("Crossword");
 
   const w = Math.max(...$cells.map((d) => d.x)) + 1;
   const h = Math.max(...$cells.map((d) => d.y)) + 1;

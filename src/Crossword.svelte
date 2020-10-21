@@ -3,13 +3,12 @@
   import Clues from "./Clues.svelte";
   import { setContext } from "svelte";
   import { writable, derived } from "svelte/store";
-	import stores from './stores.js';
+	import {clues} from './stores.js';
+  import addClueNumber from "./helpers/addClueNumber.js";
 
   export let data = [];
 
-	const context = stores.init(data);
-
-  $: setContext("Crossword", context);
+  $: data, clues.set(addClueNumber(data))
 </script>
 
 <style>

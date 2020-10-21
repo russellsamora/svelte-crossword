@@ -46,7 +46,7 @@ By [Amelia Wattenberger](https://twitter.com/wattenberger) and [Russell Goldenbe
 <Crossword {data} />
 ```
 
-## Roadmapread
+## Roadmap
 
 - Generate puzzle and clues from a data source (format json)
 - Ability to clear or fill

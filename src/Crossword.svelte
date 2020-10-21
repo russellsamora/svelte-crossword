@@ -11,10 +11,9 @@
   let cells = [];
   let focusedDirection = "across";
   let focusedCellIndex = 0;
+
   $: focusedCell = cells[focusedCellIndex] || {};
-
   $: clues, (cells = createCells(clues));
-
   $: cellIndexMap = fromPairs(cells.map((cell) => [cell["id"], cell["index"]]));
 </script>
 

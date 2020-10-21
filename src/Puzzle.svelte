@@ -24,18 +24,15 @@
   $: cells, focusedCellIndex, focusedDirection, updateSecondarilyFocusedCells();
 
   const onCellUpdate = (index, newValue) => {
+    console.log(index,
+      cells.slice(0, index),)
     cells = [
       ...cells.slice(0, index),
       { ...cells[index], value: newValue },
       ...cells.slice(index + 1),
     ];
 
-    // // TODO why? seems hacky
-    // it for some reason iterates through all cells
-    // was a quick fix but needs more digging
-    setTimeout(() => {
-      onFocusNextCell();
-    });
+    onFocusNextCell();
   };
 
   const onFocusCell = (index) => {
@@ -67,6 +64,24 @@
     if (!nextCell) return;
     onFocusCell(nextCell.index);
   };
+
+  const onFocusNextClue = () => {
+    const nextCluesInDirection = clues.filter(clue => (
+      clue.number > focusedCell.number
+      && clue.direction == focusedDirection
+    ))
+    let nextClue = nextCluesInDirection[0]
+    if (!nextClue) {
+      onFlipDirection()
+      nextClue = clues.filter(clue => (
+        clue.direction == focusedDirection
+      ))[0]
+    }
+    focusedCellIndex = cells.findIndex(cell => (
+      cell.x == nextClue.x
+      && cell.y == nextClue.y
+    ))
+  }
 
   const onMoveFocus = (direction, diff) => {
     if (focusedDirection != direction) {
@@ -106,7 +121,7 @@
         isSecondarilyFocused="{secondarilyFocusedCells.includes(index)}"
         onFocusCell="{onFocusCell}"
         onCellUpdate="{onCellUpdate}"
-        onFocusNextCell="{onFocusNextCell}"
+        onFocusNextClue="{onFocusNextClue}"
         onMoveFocus="{onMoveFocus}"
         onFlipDirection="{onFlipDirection}" />
     {/each}

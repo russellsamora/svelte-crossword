@@ -8,16 +8,15 @@
   export let isSecondarilyFocused = false;
   export let onFocusCell = () => {};
   export let onCellUpdate = () => {};
-  export let onFocusNextCell = () => {};
+  export let onFocusNextClue = () => {};
   export let onMoveFocus = () => {};
   export let onFlipDirection = () => {};
 
   let element;
 
   const onFocusSelf = () => {
-    console.log("focus", index);
     if (!element) return;
-    element.focus();
+    if (isFocused) element.focus();
   };
 
   $: isFocused, onFocusSelf();
@@ -27,7 +26,7 @@
     if (e.altKey) return;
 
     if (e.key === "Tab") {
-      onFocusNextCell();
+      onFocusNextClue();
       e.preventDefault();
       e.stopPropagation();
       return;
@@ -75,10 +74,10 @@
   class:is-focused="{isFocused}"
   class:is-secondarily-focused="{isSecondarilyFocused}"
   transform="{`translate(${x}, ${y})`}"
-  on:click="{onClick}"
   id="cell-{x}-{y}"
   dominant-baseline="central"
   tabIndex="0"
+  on:click="{onClick}"
   on:keydown="{onKeydown}"
   bind:this="{element}">
   <rect width="1" height="1"></rect>

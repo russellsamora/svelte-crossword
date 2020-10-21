@@ -4,10 +4,12 @@
   import { fromPairs } from "./helpers/utils.js";
   import addClueNumber from "./helpers/addClueNumber.js";
   import createCells from "./helpers/createCells.js";
+  import validateClues from "./helpers/validateClues.js";
 
   export let data = [];
 
   let clues = addClueNumber(data);
+  let valid = validateClues(clues);
   let cells = [];
   let focusedDirection = "across";
   let focusedCellIndex = 0;
@@ -18,18 +20,20 @@
 </script>
 
 <article>
-  <Clues
-    clues="{clues}"
-    cellIndexMap="{cellIndexMap}"
-    bind:focusedCellIndex
-    bind:focusedCell
-    bind:focusedDirection />
-  <Puzzle
-    clues="{clues}"
-    bind:cells
-    bind:focusedDirection
-    bind:focusedCellIndex
-    focusedCell="{focusedCell}" />
+  {#if valid}
+    <Clues
+      clues="{clues}"
+      cellIndexMap="{cellIndexMap}"
+      bind:focusedCellIndex
+      bind:focusedCell
+      bind:focusedDirection />
+    <Puzzle
+      clues="{clues}"
+      bind:cells
+      bind:focusedDirection
+      bind:focusedCellIndex
+      focusedCell="{focusedCell}" />
+  {/if}
 </article>
 
 <style>

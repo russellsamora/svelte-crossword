@@ -29,5 +29,7 @@ export default function addClueNumber(data) {
     };
   });
 
+	withNumber.sort((a, b) => a.number - b.number);
+
 	return withNumber;
 }

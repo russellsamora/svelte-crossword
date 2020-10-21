@@ -1,0 +1,202 @@
+[
+  {
+    "answer": "BARRYMORE",
+    "clue": "\"Whip It\" director Drew",
+    "direction": "across",
+    "x": 0,
+    "y": 0,
+    "custom": "woman"
+  },
+  {
+    "answer": "DAHL",
+    "clue": "\"Journey to the Center of the Earth\" star Arlene",
+    "direction": "across",
+    "x": 9,
+    "y": 1,
+    "custom": "woman"
+  },
+  {
+    "answer": "LETITIA",
+    "clue": "\"Black Panther\" actress Wright",
+    "direction": "across",
+    "x": 0,
+    "y": 2,
+    "custom": "woman"
+  },
+  {
+    "answer": "RIHANNA",
+    "clue": "\"Disturbia\" singer",
+    "direction": "across",
+    "x": 6,
+    "y": 3,
+    "custom": "woman"
+  },
+  {
+    "answer": "DIRK",
+    "clue": "Dallas Mavericks great Nowitzki",
+    "direction": "across",
+    "x": 3,
+    "y": 4,
+    "custom": "man"
+  },
+  {
+    "answer": "HANNAH",
+    "clue": "Oscar winner Beachler",
+    "direction": "across",
+    "x": 6,
+    "y": 5,
+    "custom": "woman"
+  },
+  {
+    "answer": "GEORGIA",
+    "clue": "With 33-Across, painter with a museum in Santa Fe",
+    "direction": "across",
+    "x": 0,
+    "y": 6,
+    "custom": "woman"
+  },
+  {
+    "answer": "LIZZO",
+    "clue": "\"Cuz I Love You\" singer",
+    "direction": "across",
+    "x": 8,
+    "y": 7,
+    "custom": "woman"
+  },
+  {
+    "answer": "LEVY",
+    "clue": "TV star Dan",
+    "direction": "across",
+    "x": 3,
+    "y": 8,
+    "custom": "man"
+  },
+  {
+    "answer": "RAE",
+    "clue": "\"The Misadventures of Awkward Black Girl\" author Issa",
+    "direction": "across",
+    "x": 0,
+    "y": 9,
+    "custom": "woman"
+  },
+  {
+    "answer": "ALBERT",
+    "clue": "Slugger Pujols",
+    "direction": "across",
+    "x": 6,
+    "y": 9,
+    "custom": "man"
+  },
+  {
+    "answer": "TRACE",
+    "clue": "\"Hustlers\" actress Lysette",
+    "direction": "across",
+    "x": 0,
+    "y": 11,
+    "custom": "woman"
+  },
+  {
+    "answer": "OHENRY",
+    "clue": "\"The Gift of the Magi\" author",
+    "direction": "across",
+    "x": 5,
+    "y": 12,
+    "custom": "man"
+  },
+  {
+    "answer": "BELLA",
+    "clue": "Actress Thorne",
+    "direction": "down",
+    "x": 0,
+    "y": 0,
+    "custom": "woman"
+  },
+  {
+    "answer": "RITA",
+    "clue": "Acting legend Moreno",
+    "direction": "down",
+    "x": 2,
+    "y": 0,
+    "custom": "woman"
+  },
+  {
+    "answer": "OMARKHAYYAM",
+    "clue": "Persian poet/astronomer/mathematician",
+    "direction": "down",
+    "x": 6,
+    "y": 0,
+    "custom": "man"
+  },
+  {
+    "answer": "ALIA",
+    "clue": "\"Search Party\" star Shawkat",
+    "direction": "down",
+    "x": 12,
+    "y": 0,
+    "custom": "woman"
+  },
+  {
+    "answer": "DUA",
+    "clue": "\"New Rules\" singer Lipa",
+    "direction": "down",
+    "x": 9,
+    "y": 1,
+    "custom": "woman"
+  },
+  {
+    "answer": "NIA",
+    "clue": "\"In Too Deep\" actress Long",
+    "direction": "down",
+    "x": 10,
+    "y": 3,
+    "custom": "woman"
+  },
+  {
+    "answer": "DARYL",
+    "clue": "Actress ___ Hannah",
+    "direction": "down",
+    "x": 3,
+    "y": 4,
+    "custom": "woman"
+  },
+  {
+    "answer": "LEBRON",
+    "clue": "NBA star James",
+    "direction": "down",
+    "x": 8,
+    "y": 7,
+    "custom": "man"
+  },
+  {
+    "answer": "GRETA",
+    "clue": "Director Gerwig",
+    "direction": "down",
+    "x": 0,
+    "y": 8,
+    "custom": "woman"
+  },
+  {
+    "answer": "ELLE",
+    "clue": "\"Ex's & Oh's\" singer King",
+    "direction": "down",
+    "x": 4,
+    "y": 8,
+    "custom": "woman"
+  },
+  {
+    "answer": "EVA",
+    "clue": "Model Marcille",
+    "direction": "down",
+    "x": 2,
+    "y": 9,
+    "custom": "woman"
+  },
+  {
+    "answer": "TAN",
+    "clue": "Fashion expert France",
+    "direction": "down",
+    "x": 11,
+    "y": 9,
+    "custom": "man"
+  }
+]

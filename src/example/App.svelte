@@ -1,19 +1,24 @@
 <script>
   import { Crossword } from "../index.js";
-  import data from "./data.json";
-	import data2 from "./data2.json";
+  import dataNYT from "./data-nyt.json";
+  import dataOreo from "./data-oreo.json";
+  import dataUSA from "./data-usa.json";
 </script>
 
 <h1>Svelte Crossword Example: NYT Mini</h1>
 
-<Crossword {data} />
+<Crossword data="{dataNYT}" />
 
 <h1>Svelte Crossword Example: Oreos</h1>
 
-<Crossword data={data2} />
+<Crossword data="{dataOreo}" />
+
+<h1>Svelte Crossword Example: USA Today people</h1>
+
+<Crossword data="{dataUSA}" />
 
 <style>
-	h1 {
-		margin-top: 3rem;
-	}
+  h1 {
+    margin-top: 3rem;
+  }
 </style>

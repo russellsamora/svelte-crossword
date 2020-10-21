@@ -77,29 +77,6 @@
     ))
     const nextCellIndex = sortedCellsIndicesInDirection[currentCellIndex + diff]
     const nextCell = cells[nextCellIndex]
-    console.log(sortedCellsIndicesInDirection, currentCellIndex, cells, nextCellIndex)
-    // const nextCellIndex =
-    // let nextCell = getCellAfterDiff({
-    //   diff,
-    //   cells,
-    //   direction: focusedDirection,
-    //   focusedCell,
-    // });
-    // if (!nextCell) {
-    //   nextCell = getCellAfterDiff({
-    //     diff: 1,
-    //     cells,
-    //     direction: focusedDirection,
-    //     focusedCell: diff < 0 ? {
-    //       x: focusedDirection == "across" ? w + 1 : focusedCell.x - 1,
-    //       y: focusedDirection == "down" ? w + 1 : focusedCell.y - 1,
-    //     } : {
-    //       x: focusedDirection == "across" ? -1 : focusedCell.x + 1,
-    //       y: focusedDirection == "down" ? -1 : focusedCell.y + 1,
-    //     },
-    //   });
-    // }
-    console.log(nextCell)
     if (!nextCell) return;
     onFocusCell(nextCell.index);
   };

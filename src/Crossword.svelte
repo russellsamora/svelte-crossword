@@ -47,5 +47,6 @@
 <style>
   article {
     display: flex;
+    font-family: sans-serif;
   }
 </style>

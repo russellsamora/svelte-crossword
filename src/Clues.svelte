@@ -34,14 +34,14 @@
 
 <style>
   section {
+    position: sticky;
+    top: 1em;
     flex: 0 1 16em;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
+    height: fit-content;
     margin-right: 1em;
   }
   .list {
-    flex: 1;
+    max-height: 45vh;
     margin-bottom: 2em;
     overflow: auto;
   }

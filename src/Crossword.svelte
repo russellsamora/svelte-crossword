@@ -3,13 +3,16 @@
   import Clues from "./Clues.svelte";
   import { setContext } from "svelte";
   import { writable, derived } from "svelte/store";
+	import addClueIndex from "./helpers/addClueIndex.js";
   import createCells from "./helpers/createCells.js";
 
   // Component parameters
   export let data = [];
-  let cells = createCells(data);
+	let clues = addClueIndex(data);
+  let cells = createCells(clues);
+	console.log(clues);
 
-  let puzzleElement
+  let puzzleElement;
   let focusedCell = {}
   // Store version of parameters to allow for updating (if we want it)
   const _data = writable([]);

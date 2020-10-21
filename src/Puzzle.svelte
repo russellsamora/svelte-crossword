@@ -29,7 +29,7 @@
   };
   $: cells, focusedCellIndex, focusedDirection, updateSecondarilyFocusedCells();
 
-  const onCellUpdate = (index, newValue) => {
+  const onCellUpdate = (index, newValue, diff=1) => {
     const newCells = [
       ...cells.slice(0, index),
       { ...cells[index], value: newValue },
@@ -42,7 +42,7 @@
     cellsHistoryIndex = 0
     cells = newCells
 
-    onFocusNextCell();
+    onFocusCellDiff(diff);
   };
 
   const onHistoricalChange = diff => {
@@ -65,24 +65,41 @@
     }
   };
 
-  const onFocusNextCell = () => {
-    let nextCell = getCellAfterDiff({
-      diff: 1,
-      cells,
-      direction: focusedDirection,
-      focusedCell,
-    });
-    if (!nextCell) {
-      nextCell = getCellAfterDiff({
-        diff: 1,
-        cells,
-        direction: focusedDirection,
-        focusedCell: {
-          x: focusedDirection == "across" ? -1 : focusedCell.x + 1,
-          y: focusedDirection == "down" ? -1 : focusedCell.y + 1,
-        },
-      });
-    }
+  $: sortedCellsIndicesInDirection = [...cells].sort((a,b) => (
+    focusedDirection == "down"
+      ? a.x - b.x || a.y - b.y
+      : a.y - b.y || a.x - b.x
+  )).map(d => d.index)
+
+  const onFocusCellDiff = diff => {
+    const currentCellIndex = sortedCellsIndicesInDirection.findIndex(d => (
+      d == focusedCellIndex
+    ))
+    const nextCellIndex = sortedCellsIndicesInDirection[currentCellIndex + diff]
+    const nextCell = cells[nextCellIndex]
+    console.log(sortedCellsIndicesInDirection, currentCellIndex, cells, nextCellIndex)
+    // const nextCellIndex =
+    // let nextCell = getCellAfterDiff({
+    //   diff,
+    //   cells,
+    //   direction: focusedDirection,
+    //   focusedCell,
+    // });
+    // if (!nextCell) {
+    //   nextCell = getCellAfterDiff({
+    //     diff: 1,
+    //     cells,
+    //     direction: focusedDirection,
+    //     focusedCell: diff < 0 ? {
+    //       x: focusedDirection == "across" ? w + 1 : focusedCell.x - 1,
+    //       y: focusedDirection == "down" ? w + 1 : focusedCell.y - 1,
+    //     } : {
+    //       x: focusedDirection == "across" ? -1 : focusedCell.x + 1,
+    //       y: focusedDirection == "down" ? -1 : focusedCell.y + 1,
+    //     },
+    //   });
+    // }
+    console.log(nextCell)
     if (!nextCell) return;
     onFocusCell(nextCell.index);
   };

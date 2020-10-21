@@ -33,6 +33,8 @@
     "@rollup/plugin-commonjs": "^12.0.0",
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^8.4.0",
+    "prettier": "^2.1.2",
+    "prettier-plugin-svelte": "^1.4.1",
     "rollup": "^2.32.0",
     "rollup-plugin-hot": "^0.1.1",
     "rollup-plugin-svelte": "^5.0.3",

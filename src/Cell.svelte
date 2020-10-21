@@ -6,25 +6,26 @@
   export let x;
   export let y;
   export let value = "";
-  export let index = 0;
+	export let number;
+	export let index;
 
-  $: isFocused = $focusedCell["index"] == index
+  $: isFocused = $focusedCell.index == index;
 
   const onKeydown = e => {
     if (!isFocused) return
-    if (e.key == "Tab") {
-      onFocusNextCell()
-      e.preventDefault()
-      e.stopPropagation()
-      return
+    if (e.key === "Tab") {
+      onFocusNextCell();
+      e.preventDefault();
+      e.stopPropagation();
+      return false;
     }
-    const isKeyInAlphabet = !/^[a-zA-Z()]$/.test(e.key)
-    if (isKeyInAlphabet) return
-    onCellUpdate(index, e.key.toUpperCase())
+    const isKeyInAlphabet = !/^[a-zA-Z()]$/.test(e.key);
+    if (isKeyInAlphabet) return onCellUpdate(index, e.key.toUpperCase());
   }
   const onClick = () => {
-    onFocusCell(index)
-  }
+    onFocusCell(index);
+  };
+
 </script>
 
 <svelte:window on:keydown={onKeydown} />
@@ -33,10 +34,12 @@
   class:is-focused={isFocused}
   transform={`translate(${x}, ${y})`}
   on:click={onClick}
-  id="cell-{x}-{y}">
+  id="cell-{x}-{y}"
+	dominant-baseline="central"
+	>
   <rect width="1" height="1" />
   <text class="value" x="0.5" y="0.5">{value}</text>
-  <text class="index" x="0.1" y="0.1">{index}</text>
+	<text class="number" x="0.1" y="0.1">{number}</text>
 </g>
 
 <style>
@@ -47,17 +50,19 @@
     outline: none;
   }
   g.is-focused rect {
-    fill: #e1d6f1;
+		fill :#a7d8ff;
+    fill: #ffda00;
   }
   text {
     pointer-events: none;
     text-anchor: middle;
-    dominant-baseline: central;
+		line-height: 1;
   }
   .value {
     font-weight: 700;
+		/* user-select: none; */
   }
-  .index {
+  .number {
     font-size: 0.1em;
     font-weight: 300;
     opacity: 0.4;

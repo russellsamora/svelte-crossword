@@ -10,6 +10,10 @@
 </script>
 
 <style>
+  section {
+    flex: 3;
+    --dark-color: #222;
+  }
   svg {
     display: block;
     fill: var(--dark-color, #000);
@@ -20,11 +24,11 @@
   }
 </style>
 
-<section>
+<section class='puzzle'>
   <svg viewBox="0 0 {w} {h}">
     <!-- svg -->
-    {#each $cells || [] as { x, y, value, index }}
-      <Cell {x} {y} {index} {value} />
+    {#each $cells || [] as { x, y, value, index, number }}
+      <Cell {x} {y} {index} {value} {number} />
     {/each}
   </svg>
 </section>

@@ -1,26 +1,26 @@
 <script>
   import { getContext } from "svelte";
 
-  const { data } = getContext("Crossword");
+  const { clues } = getContext("Crossword");
 
-  $: across = $data.filter((d) => d["direction"] == "across");
-  $: down = $data.filter((d) => d["direction"] == "down");
+  $: across = $clues.filter((d) => d.direction == "across");
+  $: down = $clues.filter((d) => d.direction == "down");
 </script>
 
 <style>
   section {
-    padding: 2em;
+    flex: 0 1 16em;
   }
 </style>
 
-<section>
+<section class='clues'>
   <p>Across</p>
-  {#each across as { clue, x }}
-    <div class="clue">{x}. {clue}</div>
+  {#each across as { clue, number }}
+    <div class="clue">{number}. {clue}</div>
   {/each}
 
   <p>Down</p>
-  {#each down as { clue, y }}
-    <div class="clue">{y}. {clue}</div>
+  {#each down as { clue, number }}
+    <div class="clue">{number}. {clue}</div>
   {/each}
 </section>

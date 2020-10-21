@@ -1,4 +1,4 @@
-export default function addClueIndex(data) {
+export default function addClueNumber(data) {
   // add x/y end coords
   const withEnds = data.map((d) => {
     const len = d.answer.length;
@@ -12,22 +12,22 @@ export default function addClueIndex(data) {
   const maxX = Math.max(...withEnds.map((d) => d.endX));
   data.sort((a, b) => a.y * maxX + a.x - (b.y * maxX + b.x));
 
-  // create a lookup to store clue index # (and reuse if same start pos)
+  // create a lookup to store clue number (and reuse if same start pos)
   let lookup = {};
-  let currentIndex = 1;
+  let currentNumber = 1;
 
-  const withIndex = withEnds.map((d) => {
-    let index;
-    if (lookup[d.id]) index = lookup[d.id];
+  const withNumber = withEnds.map((d) => {
+    let number;
+    if (lookup[d.id]) number = lookup[d.id];
     else {
-      lookup[d.id] = index = currentIndex;
-      currentIndex += 1;
+      lookup[d.id] = number = currentNumber;
+      currentNumber += 1;
     }
     return {
       ...d,
-      index,
+      number,
     };
   });
 
-	return withIndex;
+	return withNumber;
 }

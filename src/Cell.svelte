@@ -9,24 +9,60 @@
 	export let onFocusCell = () => {};
 	export let onCellUpdate = () => {};
 	export let onFocusNextCell = () => {};
+  export let onMoveFocus = () => {};
+  export let onFlipDirection = () => {};
+
+  let element
+
+  const onFocusSelf = () => {
+    console.log("focus", index)
+    if (!element) return
+    element.focus()
+  }
+
+  $: isFocused, onFocusSelf()
 
   const onKeydown = e => {
-    if (!isFocused) return false;
-    if (e.ctrlKey) return false;
-    if (e.altKey) return false;
+    if (e.ctrlKey) return;
+    if (e.altKey) return;
 
     if (e.key === "Tab") {
       onFocusNextCell();
       e.preventDefault();
       e.stopPropagation();
-      return false;
+      return;
     }
 
-    const isKeyInAlphabet = !/^[a-zA-Z()]$/.test(e.key);
+    if (e.key == " ") {
+      onFlipDirection()
+      e.preventDefault();
+      e.stopPropagation();
+      return
+    }
 
-    if (isKeyInAlphabet) return false;
+    if (["Delete", "Backspace"].includes(e.key)) {
+      onCellUpdate(index, "");
+      return;
+    }
 
-		onCellUpdate(index, e.key.toUpperCase());
+    const isKeyInAlphabet = /^[a-zA-Z()]$/.test(e.key);
+    if (isKeyInAlphabet) {
+      onCellUpdate(index, e.key.toUpperCase());
+      return
+    }
+
+    const diff = {
+      "ArrowLeft": ["across", -1],
+      "ArrowRight": ["across", 1],
+      "ArrowUp": ["down", -1],
+      "ArrowDown": ["down", 1],
+    }[e.key]
+    if (diff) {
+      onMoveFocus(...diff)
+      e.preventDefault();
+      e.stopPropagation();
+      return;
+    }
   }
   const onClick = () => {
     onFocusCell(index);
@@ -34,7 +70,7 @@
 
 </script>
 
-<svelte:window on:keydown={onKeydown} />
+<!-- <svelte:window on:keydown={onKeydown} /> -->
 
 <g
   class:is-focused={isFocused}
@@ -43,6 +79,9 @@
   on:click={onClick}
   id="cell-{x}-{y}"
 	dominant-baseline="central"
+  tabIndex="0"
+  on:keydown={onKeydown}
+  bind:this={element}
 	>
   <rect width="1" height="1" />
   <text class="value" x="0.5" y="0.5">{value}</text>

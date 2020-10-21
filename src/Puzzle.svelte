@@ -1,5 +1,6 @@
 <script>
   import getSecondarilyFocusedCells from "./helpers/getSecondarilyFocusedCells.js";
+  import getCellAfterDiff from "./helpers/getCellAfterDiff.js";
 
   import Cell from "./Cell.svelte";
 
@@ -39,18 +40,56 @@
 
   const onFocusCell = (index) => {
     if (index == focusedCellIndex) {
-      focusedDirection = {
-        "across": "down",
-        "down": "across",
-      }[focusedDirection]
+      onFlipDirection()
     } else {
       focusedCellIndex = index;
     }
   };
 
   const onFocusNextCell = () => {
-    onFocusCell(focusedCellIndex + 1);
+    let nextCell = getCellAfterDiff({
+      diff: 1,
+      cells,
+      direction: focusedDirection,
+      focusedCell,
+    })
+    if (!nextCell) {
+      nextCell = getCellAfterDiff({
+        diff: 1,
+        cells,
+        direction: focusedDirection,
+        focusedCell: {
+          x: focusedDirection == "across" ? -1 : focusedCell.x + 1,
+          y: focusedDirection == "down" ? -1 : focusedCell.y + 1,
+        },
+      })
+    }
+    if (!nextCell) return
+    onFocusCell(nextCell.index);
   };
+
+  const onMoveFocus = (direction, diff) => {
+    if (focusedDirection != direction) {
+      const dimension = direction == "across" ? "x" : "y";
+      focusedDirection = direction
+    } else {
+      const nextCell = getCellAfterDiff({
+        diff,
+        cells,
+        direction,
+        focusedCell,
+      })
+      if (!nextCell) return
+      onFocusCell(nextCell.index);
+    }
+  };
+
+  const onFlipDirection = () => {
+    focusedDirection = {
+      "across": "down",
+      "down": "across",
+    }[focusedDirection]
+  }
 
 </script>
 
@@ -84,6 +123,8 @@
         {onFocusCell}
         {onCellUpdate}
         {onFocusNextCell}
+        {onMoveFocus}
+        {onFlipDirection}
       />
     {/each}
   </svg>

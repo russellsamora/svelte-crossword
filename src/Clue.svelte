@@ -1,17 +1,18 @@
 <script>
-  export let number
-  export let clue
-  export let isNumberFocused = false
-  export let isDirectionFocused = false
-  export let onFocus = () => {}
+  export let number;
+  export let clue;
+  export let isNumberFocused = false;
+  export let isDirectionFocused = false;
+  export let onFocus = () => {};
 </script>
 
 <button
   class="clue"
-  class:is-number-focused={isNumberFocused}
-  class:is-direction-focused={isDirectionFocused}
-  on:click={onFocus}>
-  {number}. {clue}
+  class:is-number-focused="{isNumberFocused}"
+  class:is-direction-focused="{isDirectionFocused}"
+  on:click="{onFocus}">
+  {number}.
+  {clue}
 </button>
 
 <style>
@@ -34,6 +35,6 @@
     border-left-color: #e0d8ff;
   }
   .is-number-focused.is-direction-focused {
-    background: #e0d8ff
+    background: #e0d8ff;
   }
 </style>

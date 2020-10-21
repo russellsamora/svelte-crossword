@@ -2,27 +2,27 @@
   export let x;
   export let y;
   export let value = "";
-	export let number;
-	export let index;
-	export let isFocused = false;
-	export let isSecondarilyFocused = false;
-	export let onFocusCell = () => {};
-	export let onCellUpdate = () => {};
-	export let onFocusNextCell = () => {};
+  export let number;
+  export let index;
+  export let isFocused = false;
+  export let isSecondarilyFocused = false;
+  export let onFocusCell = () => {};
+  export let onCellUpdate = () => {};
+  export let onFocusNextCell = () => {};
   export let onMoveFocus = () => {};
   export let onFlipDirection = () => {};
 
-  let element
+  let element;
 
   const onFocusSelf = () => {
-    console.log("focus", index)
-    if (!element) return
-    element.focus()
-  }
+    console.log("focus", index);
+    if (!element) return;
+    element.focus();
+  };
 
-  $: isFocused, onFocusSelf()
+  $: isFocused, onFocusSelf();
 
-  const onKeydown = e => {
+  const onKeydown = (e) => {
     if (e.ctrlKey) return;
     if (e.altKey) return;
 
@@ -34,10 +34,10 @@
     }
 
     if (e.key == " ") {
-      onFlipDirection()
+      onFlipDirection();
       e.preventDefault();
       e.stopPropagation();
-      return
+      return;
     }
 
     if (["Delete", "Backspace"].includes(e.key)) {
@@ -48,44 +48,42 @@
     const isKeyInAlphabet = /^[a-zA-Z()]$/.test(e.key);
     if (isKeyInAlphabet) {
       onCellUpdate(index, e.key.toUpperCase());
-      return
+      return;
     }
 
     const diff = {
-      "ArrowLeft": ["across", -1],
-      "ArrowRight": ["across", 1],
-      "ArrowUp": ["down", -1],
-      "ArrowDown": ["down", 1],
-    }[e.key]
+      ArrowLeft: ["across", -1],
+      ArrowRight: ["across", 1],
+      ArrowUp: ["down", -1],
+      ArrowDown: ["down", 1],
+    }[e.key];
     if (diff) {
-      onMoveFocus(...diff)
+      onMoveFocus(...diff);
       e.preventDefault();
       e.stopPropagation();
       return;
     }
-  }
+  };
   const onClick = () => {
     onFocusCell(index);
   };
-
 </script>
 
 <!-- <svelte:window on:keydown={onKeydown} /> -->
 
 <g
-  class:is-focused={isFocused}
-  class:is-secondarily-focused={isSecondarilyFocused}
-  transform={`translate(${x}, ${y})`}
-  on:click={onClick}
+  class:is-focused="{isFocused}"
+  class:is-secondarily-focused="{isSecondarilyFocused}"
+  transform="{`translate(${x}, ${y})`}"
+  on:click="{onClick}"
   id="cell-{x}-{y}"
-	dominant-baseline="central"
+  dominant-baseline="central"
   tabIndex="0"
-  on:keydown={onKeydown}
-  bind:this={element}
-	>
-  <rect width="1" height="1" />
+  on:keydown="{onKeydown}"
+  bind:this="{element}">
+  <rect width="1" height="1"></rect>
   <text class="value" x="0.5" y="0.5">{value}</text>
-	<text class="number" x="0.1" y="0.1">{number}</text>
+  <text class="number" x="0.1" y="0.1">{number}</text>
 </g>
 
 <style>
@@ -97,7 +95,7 @@
     outline: none;
   }
   g.is-secondarily-focused rect {
-    fill:#e0d8ff;
+    fill: #e0d8ff;
   }
   g.is-focused rect {
     fill: #978df0;
@@ -108,11 +106,11 @@
   text {
     pointer-events: none;
     text-anchor: middle;
-		line-height: 1;
+    line-height: 1;
   }
   .value {
     font-weight: 700;
-		/* user-select: none; */
+    /* user-select: none; */
   }
   .number {
     font-size: 0.1em;

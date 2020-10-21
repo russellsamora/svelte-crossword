@@ -4,24 +4,24 @@
 
   import Cell from "./Cell.svelte";
 
-  export let clues
-  export let cells
-  export let focusedDirection
-  export let focusedCellIndex
-  export let focusedCell
+  export let clues;
+  export let cells;
+  export let focusedDirection;
+  export let focusedCellIndex;
+  export let focusedCell;
 
   const w = Math.max(...cells.map((d) => d.x)) + 1;
   const h = Math.max(...cells.map((d) => d.y)) + 1;
 
-  let secondarilyFocusedCells = []
+  let secondarilyFocusedCells = [];
   const updateSecondarilyFocusedCells = () => {
     secondarilyFocusedCells = getSecondarilyFocusedCells({
       cells,
       focusedDirection,
       focusedCell,
-    })
-  }
-  $: cells, focusedCellIndex, focusedDirection, updateSecondarilyFocusedCells()
+    });
+  };
+  $: cells, focusedCellIndex, focusedDirection, updateSecondarilyFocusedCells();
 
   const onCellUpdate = (index, newValue) => {
     cells = [
@@ -40,7 +40,7 @@
 
   const onFocusCell = (index) => {
     if (index == focusedCellIndex) {
-      onFlipDirection()
+      onFlipDirection();
     } else {
       focusedCellIndex = index;
     }
@@ -52,7 +52,7 @@
       cells,
       direction: focusedDirection,
       focusedCell,
-    })
+    });
     if (!nextCell) {
       nextCell = getCellAfterDiff({
         diff: 1,
@@ -62,36 +62,56 @@
           x: focusedDirection == "across" ? -1 : focusedCell.x + 1,
           y: focusedDirection == "down" ? -1 : focusedCell.y + 1,
         },
-      })
+      });
     }
-    if (!nextCell) return
+    if (!nextCell) return;
     onFocusCell(nextCell.index);
   };
 
   const onMoveFocus = (direction, diff) => {
     if (focusedDirection != direction) {
       const dimension = direction == "across" ? "x" : "y";
-      focusedDirection = direction
+      focusedDirection = direction;
     } else {
       const nextCell = getCellAfterDiff({
         diff,
         cells,
         direction,
         focusedCell,
-      })
-      if (!nextCell) return
+      });
+      if (!nextCell) return;
       onFocusCell(nextCell.index);
     }
   };
 
   const onFlipDirection = () => {
     focusedDirection = {
-      "across": "down",
-      "down": "across",
-    }[focusedDirection]
-  }
-
+      across: "down",
+      down: "across",
+    }[focusedDirection];
+  };
 </script>
+
+<section class="puzzle">
+  <svg viewBox="0 0 {w} {h}" style="max-width: {w * 150}px">
+    <!-- svg -->
+    {#each cells as { x, y, value, index, number }}
+      <Cell
+        x="{x}"
+        y="{y}"
+        index="{index}"
+        value="{value}"
+        number="{number}"
+        isFocused="{focusedCellIndex == index}"
+        isSecondarilyFocused="{secondarilyFocusedCells.includes(index)}"
+        onFocusCell="{onFocusCell}"
+        onCellUpdate="{onCellUpdate}"
+        onFocusNextCell="{onFocusNextCell}"
+        onMoveFocus="{onMoveFocus}"
+        onFlipDirection="{onFlipDirection}" />
+    {/each}
+  </svg>
+</section>
 
 <style>
   section {
@@ -107,25 +127,3 @@
     font-family: sans-serif;
   }
 </style>
-
-<section class='puzzle'>
-  <svg viewBox="0 0 {w} {h}" style="max-width: {w * 150}px">
-    <!-- svg -->
-    {#each cells as { x, y, value, index, number }}
-      <Cell
-        {x}
-        {y}
-        {index}
-        {value}
-        {number}
-        isFocused={focusedCellIndex == index}
-        isSecondarilyFocused={secondarilyFocusedCells.includes(index)}
-        {onFocusCell}
-        {onCellUpdate}
-        {onFocusNextCell}
-        {onMoveFocus}
-        {onFlipDirection}
-      />
-    {/each}
-  </svg>
-</section>

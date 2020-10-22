@@ -1,4 +1,5 @@
 <script>
+	import Toolbar from "./Toolbar.svelte";
   import Puzzle from "./Puzzle.svelte";
   import Clues from "./Clues.svelte";
   import CompletedMessage from "./CompletedMessage.svelte";
@@ -40,13 +41,16 @@
     }));
     revealed = true;
   }
+
+	function onToolbarEvent({ detail }) {
+		if (detail === 'reset') onReset();
+		else if (detail === 'reveal') onReveal();
+	}
+
 </script>
 
-<!-- TODO make a component -->
-<div class="toolbar">
-  {#if !hideReset}<button on:click="{onReset}">Reset</button>{/if}
-  {#if !hideReveal}<button on:click="{onReveal}">Reveal</button>{/if}
-</div>
+
+<Toolbar on:event={onToolbarEvent} />
 
 <article class="crossword">
   {#if validated}
@@ -74,8 +78,5 @@
     position: relative;
     display: flex;
     flex-direction: var(--clue-puzzle-order, row);
-  }
-  .toolbar {
-    margin: 1em 0;
   }
 </style>

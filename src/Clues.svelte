@@ -19,7 +19,7 @@
 <section class="clues">
   {#each ['across', 'down'] as direction}
     <div class="list">
-      <p>{direction}</p>
+      <p><strong>{direction}</strong></p>
 			<ul>
       {#each clues.filter((d) => d.direction == direction) as clue}
         <Clue
@@ -50,6 +50,12 @@
     margin-bottom: 2em;
     overflow: auto;
   }
+	
+	p {
+		font-family: var(--clue-font, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif);
+		text-transform: uppercase;
+		padding-left: calc(0.5em + 6px);
+	}
 
 	ul {
 		list-style-type: none;

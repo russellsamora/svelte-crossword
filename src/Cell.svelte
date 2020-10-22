@@ -101,10 +101,10 @@
     outline: none;
   }
   g.is-secondarily-focused rect {
-    fill: #ffec99;
+    fill: var(--highlight-word, #ffec99);
   }
   g.is-focused rect {
-    fill: #ffcc00;
+    fill: var(--highlight-letter, #ffcc00);
   }
   rect {
     transition: fill 0.1s ease-out;
@@ -113,6 +113,7 @@
     pointer-events: none;
     text-anchor: middle;
     line-height: 1;
+		fill: var(--text-color, #1a1a1a);
   }
   .value {
     font-weight: 700;
@@ -120,12 +121,12 @@
   }
   .number {
     font-size: 0.1em;
-    font-weight: 300;
-    opacity: 0.4;
+    font-weight: 400;
+		fill: var(--number-color, #8a8a8a);
   }
   rect {
-    fill: white;
-    stroke: var(--dark-color, #000);
+    fill: var(--cell-color, #fff);
+    stroke: var(--grid-color, #1a1a1a);
     stroke-width: 0.005;
   }
 </style>

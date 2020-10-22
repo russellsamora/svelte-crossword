@@ -34,6 +34,7 @@
     position: sticky;
     top: 1em;
     flex: 0 1 var(--clue-list-width, 16em);
+    background: var(--clue-background-color, white);
     height: fit-content;
     margin: 0 1em;
   }

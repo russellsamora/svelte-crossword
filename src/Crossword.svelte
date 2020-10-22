@@ -203,7 +203,61 @@
   }
 
 	.theme-russell {
-    
+
+  }
+
+  .theme-dark {
+    --theme-puzzle-border-color: #091520;
+    --theme-puzzle-font: -apple-system, Helvetica, sans-serif;
+
+    --theme-clue-font: -apple-system, Helvetica, sans-serif;
+    --theme-clue-text-color: white;
+    --theme-clue-background-color: black;
+    --theme-clue-scrollbar-bg: #091520;
+    --theme-clue-scrollbar-fg: #1f2b39;
+    --theme-clue-puzzle-order: row;
+    --theme-clue-list-width: 16em;
+
+    --theme-cell-highlight-color: #9c533f;
+    --theme-cell-secondary-color: #81362c;
+    --theme-cell-bg-color: #1f2b39;
+    --theme-cell-border-color: #091520;
+    --theme-cell-border-width: 0.027;
+    --theme-cell-text-color: white;
+    --theme-cell-font-size: 0.76em;
+    --theme-cell-font-weight: 700;
+    --theme-cell-void-color: #091520;
+
+    --theme-number-font-size: 0.25em;
+    --theme-number-font-weight: 100;
+    --theme-number-color: #b4b7bd;
+  }
+
+  .theme-mint {
+    --theme-puzzle-border-color: #193939;
+    --theme-puzzle-font: -apple-system, Helvetica, sans-serif;
+
+    --theme-clue-font: -apple-system, Helvetica, sans-serif;
+    --theme-clue-text-color: #193939;
+    --theme-clue-background-color: #fff;
+    --theme-clue-scrollbar-bg: #ebf3f3;
+    --theme-clue-scrollbar-fg: #c9d8d8;
+    --theme-clue-puzzle-order: row;
+    --theme-clue-list-width: 16em;
+
+    --theme-cell-highlight-color: #ffdfd5;
+    --theme-cell-secondary-color: #ff957d;
+    --theme-cell-bg-color: #fff;
+    --theme-cell-border-color: #193939;
+    --theme-cell-border-width: 0.027;
+    --theme-cell-text-color: #193939;
+    --theme-cell-font-size: 0.76em;
+    --theme-cell-font-weight: 700;
+    --theme-cell-void-color: #266b6b;
+
+    --theme-number-font-size: 0.25em;
+    --theme-number-font-weight: 100;
+    --theme-number-color: #266b6b;
   }
 
   article {
@@ -277,7 +331,7 @@
       --theme-cell-void-color,
       var(--theme-cell-void-color)
     );
-		
+
     --number-font-size: var(
       --theme-number-font-size,
       var(--theme-number-font-size)

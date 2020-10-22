@@ -77,7 +77,7 @@
 <!-- <svelte:window on:keydown={onKeydown} /> -->
 
 <g
-	class="cell {custom ? `cell--${custom}` : ""}"
+	class="cell {custom}"
   class:is-focused="{isFocused}"
   class:is-secondarily-focused="{isSecondarilyFocused}"
   transform="{`translate(${x}, ${y})`}"

@@ -8,7 +8,7 @@ export default function createCells(data) {
       const clueNumbers = { [d.direction]: d.number };
       const id = `${x}-${y}`;
 			const value = "";
-			const custom = d.custom;
+			const custom = d.custom || "";
       return { id, number, clueNumbers, x, y, value, answer, custom };
     });
   });
@@ -23,10 +23,12 @@ export default function createCells(data) {
       dict[d.id] = d;
     } else {
       // consolidate clue numbers for across & down
-      dict[d.id]["clueNumbers"] = {
-        ...d["clueNumbers"],
-        ...dict[d.id]["clueNumbers"],
+      dict[d.id].clueNumbers = {
+        ...d.clueNumbers,
+        ...dict[d.id].clueNumbers,
       };
+			// consolidate custom classes
+			if (dict[d.id].custom !== d.custom) dict[d.id].custom = `${dict[d.id].custom} ${d.custom}`;
     }
   });
 

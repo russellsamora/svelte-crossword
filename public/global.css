@@ -1,0 +1,9 @@
+.is-revealed .cell.man rect {
+  fill: yellow;
+}
+.is-revealed .cell.woman rect {
+  fill: cyan;
+}
+.is-revealed .cell.woman.man rect {
+  fill: greenyellow;
+}

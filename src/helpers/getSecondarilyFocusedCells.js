@@ -13,11 +13,12 @@ export default ({ cells, focusedDirection, focusedCell }) => {
       ...cell,
       // how far is this cell from our focused cell?
       diff: start - cell[dimension],
-    }))
-    .sort((a, b) => a["diff"] - b["diff"]);
+    }));
+    
+	cellsWithDiff.sort((a, b) => a.diff - b.diff);
 
   // highlight all cells in same row/column, without any breaks
-  const diffs = cellsWithDiff.map((d) => d["diff"]);
+  const diffs = cellsWithDiff.map((d) => d.diff);
   const indices = range(Math.min(...diffs), Math.max(...diffs)).map((i) =>
     diffs.includes(i) ? i : " "
   );

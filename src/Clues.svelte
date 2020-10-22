@@ -7,7 +7,7 @@
   export let focusedCellIndex;
   export let focusedCell;
 
-  $: focusedClueNumbers = focusedCell["clueNumbers"] || {};
+  $: focusedClueNumbers = focusedCell.clueNumbers || {};
 
   const onClueFocus = (clue) => {
     focusedDirection = clue.direction;

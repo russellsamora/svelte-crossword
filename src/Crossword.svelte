@@ -15,23 +15,26 @@
   let cells = [];
   let focusedDirection = "across";
   let focusedCellIndex = 0;
+	export let revealed = false;
 
   $: focusedCell = cells[focusedCellIndex] || {};
   $: clues, (cells = createCells(clues));
-  $: cellIndexMap = fromPairs(cells.map((cell) => [cell["id"], cell["index"]]));
+  $: cellIndexMap = fromPairs(cells.map((cell) => [cell.id, cell.index]));
   
 	function onReset() {
     cells = cells.map(cell => ({
       ...cell,
       value: "",
-    }))
+    }));
+		revealed = false;
   }
 
 	function onReveal() {
     cells = cells.map(cell => ({
       ...cell,
       value: cell.answer,
-    }))
+    }));
+		revealed = true;
   }
 </script>
 

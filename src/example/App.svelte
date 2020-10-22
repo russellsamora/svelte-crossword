@@ -3,6 +3,9 @@
   import dataNYT from "./data-nyt.json";
   import dataOreo from "./data-oreo.json";
   import dataUSA from "./data-usa.json";
+	
+	let revealedUSA;
+
 </script>
 
 <h1>Svelte Crossword Example: NYT Mini</h1>
@@ -17,7 +20,9 @@
 
 <h1>Svelte Crossword Example: USA Today people</h1>
 
-<Crossword data="{dataUSA}" />
+<div class:is-revealed={revealedUSA}>
+<Crossword data="{dataUSA}" bind:revealed={revealedUSA} />
+</div>
 
 <style>
   h1 {

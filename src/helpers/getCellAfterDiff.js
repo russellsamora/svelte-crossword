@@ -17,8 +17,8 @@ export default ({ diff, cells, direction, focusedCell }) => {
       ...cell,
       // how far is this cell from our focused cell?
       absDiff: Math.abs(start - cell[dimension]),
-    }))
-    .sort((a, b) => a["absDiff"] - b["absDiff"]);
-  console.log(cellsWithDiff, diff, absDiff);
+    }));
+
+  cellsWithDiff.sort((a, b) => a.absDiff - b.absDiff);
   return cellsWithDiff[absDiff - 1];
 };

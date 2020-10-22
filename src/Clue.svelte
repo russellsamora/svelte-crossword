@@ -13,6 +13,7 @@
     if (element)
       element.scrollIntoView({
         behavior: "smooth",
+        block: "nearest",
       });
   };
   $: isFocused, onIsFocusedChange();

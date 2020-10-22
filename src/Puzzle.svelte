@@ -133,13 +133,14 @@
 <section class="puzzle">
   <svg viewBox="0 0 {w} {h}" style="max-width: {w * 150}px">
     <!-- svg -->
-    {#each cells as { x, y, value, index, number }}
+    {#each cells as { x, y, value, index, number, custom }}
       <Cell
-        x="{x}"
-        y="{y}"
-        index="{index}"
-        value="{value}"
-        number="{number}"
+        {x}
+        {y}
+        {index}
+        {value}
+        {number}
+				{custom}
         isFocused="{focusedCellIndex == index}"
         isSecondarilyFocused="{secondarilyFocusedCells.includes(index)}"
         onFocusCell="{onFocusCell}"

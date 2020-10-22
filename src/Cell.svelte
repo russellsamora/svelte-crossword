@@ -1,9 +1,10 @@
 <script>
   export let x;
   export let y;
-  export let value = "";
+  export let value;
   export let number;
   export let index;
+	export let custom;
   export let isFocused = false;
   export let isSecondarilyFocused = false;
   export let onFocusCell = () => {};
@@ -76,6 +77,7 @@
 <!-- <svelte:window on:keydown={onKeydown} /> -->
 
 <g
+	class="cell {custom ? `cell--${custom}` : ""}"
   class:is-focused="{isFocused}"
   class:is-secondarily-focused="{isSecondarilyFocused}"
   transform="{`translate(${x}, ${y})`}"

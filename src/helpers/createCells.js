@@ -8,7 +8,8 @@ export default function createCells(data) {
       const clueNumbers = { [d.direction]: d.number };
       const id = `${x}-${y}`;
 			const value = "";
-      return { id, number, clueNumbers, x, y, value, answer };
+			const custom = d.custom;
+      return { id, number, clueNumbers, x, y, value, answer, custom };
     });
   });
 

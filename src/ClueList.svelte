@@ -24,6 +24,7 @@
 
 <style>
   .list {
+    position: relative;
     max-height: 45vh;
     margin-bottom: 2em;
     overflow: auto;

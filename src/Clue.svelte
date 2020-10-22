@@ -1,4 +1,6 @@
 <script>
+  import scrollTo from "./scroll-to";
+
   export let number;
   export let clue;
   export let isNumberFocused = false;
@@ -8,18 +10,9 @@
   let element;
 
   $: isFocused = isNumberFocused;
-  const onIsFocusedChange = () => {
-    if (!isFocused) return;
-    if (element)
-      element.scrollIntoView({
-        behavior: "smooth",
-        block: "nearest",
-      });
-  };
-  $: isFocused, onIsFocusedChange();
 </script>
 
-<li bind:this="{element}">
+<li bind:this="{element}" use:scrollTo="{isFocused}">
   <button
     class="clue"
     class:is-number-focused="{isNumberFocused}"

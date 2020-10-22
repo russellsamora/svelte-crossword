@@ -26,9 +26,18 @@ By [Amelia Wattenberger](https://twitter.com/wattenberger) and [Russell Goldenbe
 <Crossword {data} />
 ```
 
-## Custom Style
+## Themes and Custom Styles
 
-You can set your own global CSS variables to override the defaults.
+You can choose a preset theme by passing the prop:
+`<Crossword theme="classic" />`
+
+Available themes:
+
+- `classic`
+- `amelia`
+- `russell`
+
+You can set your own global CSS variables to override theme defaults or roll-your-own.
 
 ```
 --puzzle-border-color: #1a1a1a;
@@ -51,7 +60,7 @@ You can set your own global CSS variables to override the defaults.
 --cell-font-weight: 700;
 --cell-void-color: #1a1a1a;
 
---number-font-size: 0.25em;
+--number-font-size: 0.3em;
 --number-font-weight: 400;
 --number-color: #8a8a8a;
 ```

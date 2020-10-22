@@ -3,6 +3,7 @@
   import dataNYT from "./data-nyt.json";
   import dataOreo from "./data-oreo.json";
   import dataAmelia from "./data-amelia.json";
+	import dataRussell from "./data-russell.json";
   import dataUSA from "./data-usa.json";
 
   let revealedUSA;
@@ -18,9 +19,15 @@
     <h1>Svelte Crossword Example: Oreos</h1>
     <Crossword data="{dataOreo}" theme="amelia" />
   </section>
-  <section class="amelia">
+  
+	<section class="amelia">
     <h1>Svelte Crossword Example: mystery</h1>
     <Crossword data="{dataAmelia}" theme="amelia" />
+  </section>
+
+	<section class="amelia">
+    <h1>Svelte Crossword Example: ???</h1>
+    <Crossword data="{dataRussell}" theme="russell" />
   </section>
 
   <section class:is-revealed="{revealedUSA}" class="usa">

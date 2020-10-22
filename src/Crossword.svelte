@@ -152,6 +152,32 @@
     --theme-number-color: #353b48;
   }
 
+	.theme-russell {
+    --theme-puzzle-border-color: red;
+    --theme-puzzle-font: -apple-system, Helvetica, sans-serif;
+
+    --theme-clue-font: -apple-system, Helvetica, sans-serif;
+    --theme-clue-text-color: green;
+    --theme-clue-scrollbar-bg: orange;
+    --theme-clue-scrollbar-fg: pink;
+    --theme-clue-puzzle-order: row;
+    --theme-clue-list-width: 16em;
+
+    --theme-cell-highlight-color: orange;
+    --theme-cell-secondary-color: pink;
+    --theme-cell-bg-color: yellow;
+    --theme-cell-border-color: green;
+    --theme-cell-border-width: 0.027;
+    --theme-cell-text-color: blue;
+    --theme-cell-font-size: 0.76em;
+    --theme-cell-font-weight: 700;
+    --theme-cell-void-color: blue;
+
+    --theme-number-font-size: 0.25em;
+    --theme-number-font-weight: 100;
+    --theme-number-color: blue;
+  }
+
   article {
     --puzzle-border-color: var(
       --theme-puzzle-border-color,

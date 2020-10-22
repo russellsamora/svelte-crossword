@@ -38,6 +38,7 @@
   }
 </script>
 
+<!-- TODO make a component -->
 <div class="toolbar">
 	{#if !hideReset}
 	<button on:click={onReset}>Reset</button>
@@ -68,8 +69,9 @@
 <style>
   article {
     display: flex;
-		display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
+		flex-direction: var(--clue-puzzle-order, row);
   }
+	.toolbar {
+		margin: 1em 0;
+	}
 </style>

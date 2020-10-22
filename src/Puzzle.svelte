@@ -155,8 +155,6 @@
 
 <style>
   section {
-    -webkit-box-flex: 1;
-		-ms-flex: 1;
 		flex: 1;
   }
   svg {

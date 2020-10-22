@@ -49,6 +49,10 @@ You can set your own global CSS variables to override the defaults.
 --puzzle-font: -apple-system, Helvetica, sans-serif;
 
 --clue-font: -apple-system, Helvetica, sans-serif;
+--clue-text-color: #1a1a1a;
+--clue-scrollbar-bg: #efefef;
+--clue-scrollbar-fg: #cdcdcd;
+--clue-puzzle-order: row;
 ```
 
 ## Roadmap

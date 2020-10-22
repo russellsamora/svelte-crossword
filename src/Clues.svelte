@@ -38,11 +38,9 @@
   section {
     position: sticky;
     top: 1em;
-    -webkit-box-flex: 0;
-    -ms-flex: 0 1 16em;
 		flex: 0 1 16em;
     height: fit-content;
-    margin-right: 1em;
+    margin: 0 1em;
   }
   
 	.list {

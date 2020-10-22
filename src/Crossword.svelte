@@ -1,5 +1,5 @@
 <script>
-	import Toolbar from "./Toolbar.svelte";
+  import Toolbar from "./Toolbar.svelte";
   import Puzzle from "./Puzzle.svelte";
   import Clues from "./Clues.svelte";
   import CompletedMessage from "./CompletedMessage.svelte";
@@ -13,7 +13,7 @@
   export let hideReveal = false;
   export let revealed = false;
   export let revealDuration = 1000;
-	export let theme;
+  export let theme;
 
   let clues = addClueNumber(data);
   let validated = validateClues(clues);
@@ -28,7 +28,7 @@
   $: percentCorrect =
     cells.filter((d) => d.answer == d.value).length / cells.length;
   $: isComplete = percentCorrect == 1;
-	$: themeClass = theme ? `theme-${theme}` : "";
+  $: themeClass = theme ? `theme-${theme}` : "";
 
   let timeout;
 
@@ -58,17 +58,18 @@
     timeout = setTimeout(() => {
       isRevealing = false;
     }, revealDuration + 300);
-  };
+  }
 
-	function onToolbarEvent({ detail }) {
-		if (detail === 'reset') onReset();
-		else if (detail === 'reveal') onReveal();
-	}
-
+  function onToolbarEvent({ detail }) {
+    if (detail === "reset") onReset();
+    else if (detail === "reveal") onReveal();
+  }
 </script>
 
-
-<Toolbar {hideReset} {hideReveal} on:event={onToolbarEvent} />
+<Toolbar
+  hideReset="{hideReset}"
+  hideReveal="{hideReveal}"
+  on:event="{onToolbarEvent}" />
 
 <article class="crossword {themeClass}">
   {#if validated}
@@ -99,55 +100,123 @@
     display: flex;
     flex-direction: var(--clue-puzzle-order, row);
   }
-	.theme-classic {
-		--puzzle-border-color: #1a1a1a;
-		--puzzle-font: -apple-system, Helvetica, sans-serif;
+  .theme-classic {
+    --theme-puzzle-border-color: #1a1a1a;
+    --theme-puzzle-font: -apple-system, Helvetica, sans-serif;
 
-		--clue-font: -apple-system, Helvetica, sans-serif;
-		--clue-text-color: #1a1a1a;
-		--clue-scrollbar-bg: #efefef;
-		--clue-scrollbar-fg: #cdcdcd;
-		--clue-puzzle-order: row;
-		--clue-list-width: 16em;
+    --theme-clue-font: -apple-system, Helvetica, sans-serif;
+    --theme-clue-text-color: #1a1a1a;
+    --theme-clue-scrollbar-bg: #efefef;
+    --theme-clue-scrollbar-fg: #cdcdcd;
+    --theme-clue-puzzle-order: row;
+    --theme-clue-list-width: 16em;
 
-		--cell-highlight-color: #ffec99;
-		--cell-secondary-color: #ffcc00;
-		--cell-bg-color: #fff;
-		--cell-border-color: #1a1a1a;
-		--cell-border-width: 0.01;
-		--cell-text-color: #1a1a1a;
-		--cell-font-size: 0.7em;
-		--cell-font-weight: 700;
-		--cell-void-color: #1a1a1a;
+    --theme-cell-highlight-color: #ffec99;
+    --theme-cell-secondary-color: #ffcc00;
+    --theme-cell-bg-color: #fff;
+    --theme-cell-border-color: #1a1a1a;
+    --theme-cell-border-width: 0.01;
+    --theme-cell-text-color: #1a1a1a;
+    --theme-cell-font-size: 0.7em;
+    --theme-cell-font-weight: 700;
+    --theme-cell-void-color: #1a1a1a;
 
-		--number-font-size: 0.3em;
-		--number-font-weight: 400;
-		--number-color: #8a8a8a;
-	}
+    --theme-number-font-size: 0.3em;
+    --theme-number-font-weight: 400;
+    --theme-number-color: #8a8a8a;
+  }
 
-	.theme-amelia {
-		--puzzle-border-color: #114d4d;
-		--puzzle-font: -apple-system, Helvetica, sans-serif;
+  .theme-amelia {
+    --theme-puzzle-border-color: #114d4d;
+    --theme-puzzle-font: -apple-system, Helvetica, sans-serif;
 
-		--clue-font: -apple-system, Helvetica, sans-serif;
-		--clue-text-color: #114d4d;
-		--clue-scrollbar-bg: #d7cefd;
-		--clue-scrollbar-fg: #9980fa;
-		--clue-puzzle-order: row;
-		--clue-list-width: 16em;
+    --theme-clue-font: -apple-system, Helvetica, sans-serif;
+    --theme-clue-text-color: #114d4d;
+    --theme-clue-scrollbar-bg: #d7cefd;
+    --theme-clue-scrollbar-fg: #9980fa;
+    --theme-clue-puzzle-order: row;
+    --theme-clue-list-width: 16em;
 
-		--cell-highlight-color: #d7cefd;
-		--cell-secondary-color: #9980fa;
-		--cell-bg-color: #fff;
-		--cell-border-color: #114d4d;
-		--cell-border-width: 0.01;
-		--cell-text-color: #114d4d;
-		--cell-font-size: 0.7em;
-		--cell-font-weight: 700;
-		--cell-void-color: #114d4d;
+    --theme-cell-highlight-color: #d7cefd;
+    --theme-cell-secondary-color: #9980fa;
+    --theme-cell-bg-color: #fff;
+    --theme-cell-border-color: #114d4d;
+    --theme-cell-border-width: 0.01;
+    --theme-cell-text-color: #114d4d;
+    --theme-cell-font-size: 0.7em;
+    --theme-cell-font-weight: 700;
+    --theme-cell-void-color: #114d4d;
 
-		--number-font-size: 0.3em;
-		--number-font-weight: 400;
-		--number-color: #114d4d;
-	}
+    --theme-number-font-size: 0.3em;
+    --theme-number-font-weight: 400;
+    --theme-number-color: #114d4d;
+  }
+
+  article {
+    --puzzle-border-color: var(
+      --theme-puzzle-border-color,
+      var(--theme-puzzle-border-color)
+    );
+    --puzzle-font: var(--theme-puzzle-font, var(--theme-puzzle-font));
+    --clue-font: var(--theme-clue-font, var(--theme-clue-font));
+    --clue-text-color: var(
+      --theme-clue-text-color,
+      var(--theme-clue-text-color)
+    );
+    --clue-scrollbar-bg: var(
+      --theme-clue-scrollbar-bg,
+      var(--theme-clue-scrollbar-bg)
+    );
+    --clue-scrollbar-fg: var(
+      --theme-clue-scrollbar-fg,
+      var(--theme-clue-scrollbar-fg)
+    );
+    --clue-puzzle-order: var(
+      --theme-clue-puzzle-order,
+      var(--theme-clue-puzzle-order)
+    );
+    --clue-list-width: var(
+      --theme-clue-list-width,
+      var(--theme-clue-list-width)
+    );
+    --cell-highlight-color: var(
+      --theme-cell-highlight-color,
+      var(--theme-cell-highlight-color)
+    );
+    --cell-secondary-color: var(
+      --theme-cell-secondary-color,
+      var(--theme-cell-secondary-color)
+    );
+    --cell-bg-color: var(--theme-cell-bg-color, var(--theme-cell-bg-color));
+    --cell-border-color: var(
+      --theme-cell-border-color,
+      var(--theme-cell-border-color)
+    );
+    --cell-border-width: var(
+      --theme-cell-border-width,
+      var(--theme-cell-border-width)
+    );
+    --cell-text-color: var(
+      --theme-cell-text-color,
+      var(--theme-cell-text-color)
+    );
+    --cell-font-size: var(--theme-cell-font-size, var(--theme-cell-font-size));
+    --cell-font-weight: var(
+      --theme-cell-font-weight,
+      var(--theme-cell-font-weight)
+    );
+    --cell-void-color: var(
+      --theme-cell-void-color,
+      var(--theme-cell-void-color)
+    );
+    --number-font-size: var(
+      --theme-number-font-size,
+      var(--theme-number-font-size)
+    );
+    --number-font-weight: var(
+      --theme-number-font-weight,
+      var(--theme-number-font-weight)
+    );
+    --number-color: var(--theme-number-color, var(--theme-number-color));
+  }
 </style>

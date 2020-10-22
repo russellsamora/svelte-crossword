@@ -122,7 +122,7 @@
   }
 
   .value {
-		font-size: var(--cell-font-size, 0.5em);
+		font-size: var(--cell-font-size, 1em);
     font-weight: var(--cell-font-weight, 700);
   }
 

@@ -82,14 +82,13 @@
   class:is-secondarily-focused="{isSecondarilyFocused}"
   transform="{`translate(${x}, ${y})`}"
   id="cell-{x}-{y}"
-  dominant-baseline="central"
   tabIndex="0"
   on:click="{onClick}"
   on:keydown="{onKeydown}"
   bind:this="{element}">
   <rect width="1" height="1"></rect>
-  <text class="value" x="0.5" y="0.5">{value}</text>
-  <text class="number" x="0.1" y="0.1">{number}</text>
+  <text class="value" x="0.5" y="0.9" alignment-baseline="baseline" text-anchor="middle">{value}</text>
+  <text class="number" x="0.1" y="0.1" alignment-baseline="hanging" text-anchor="start">{number}</text>
 </g>
 
 <style>
@@ -116,19 +115,18 @@
 
   text {
     pointer-events: none;
-    text-anchor: middle;
     line-height: 1;
 		fill: var(--cell-text-color, #1a1a1a);
   }
 
   .value {
-		font-size: var(--cell-font-size, 1em);
+		font-size: var(--cell-font-size, 0.7em);
     font-weight: var(--cell-font-weight, 700);
   }
 
   .number {
-    font-size: var(--number-font-size, 0.1em);
-    font-weight: var(--number-font-weight, 400);
+    font-size: var(--number-font-size, 0.3em);
+    font-weight: var(--number-font-weight, 300);
 		fill: var(--number-color, #8a8a8a);
   }
 

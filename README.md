@@ -37,7 +37,7 @@ You can set your own global CSS variables to override the defaults.
 --cell-border-color: #1a1a1a;
 --cell-border-width: 0.01;
 --cell-text-color: #1a1a1a;
---cell-font-size: 0.5em;
+--cell-font-size: 1em;
 --cell-font-weight: 700;
 --cell-void-color: #1a1a1a;
 

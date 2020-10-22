@@ -52,7 +52,7 @@
   }
 	
 	p {
-		font-family: var(--clue-font, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif);
+		font-family: var(--clue-font, -apple-system, Helvetica, sans-serif);
 		text-transform: uppercase;
 		padding-left: calc(0.5em + 6px);
 		margin: 0;
@@ -76,24 +76,24 @@
   ::-moz-scrollbar-track {
     box-shadow: none;
     border-radius: 10px;
-    background: #f4f4f4;
+    background: var(--clue-scrollbar-bg, #efefef);
   }
   ::-webkit-scrollbar-track {
     box-shadow: none;
     border-radius: 10px;
-    background: #f4f4f4;
+    background: var(--clue-scrollbar-bg, #efefef);
   }
   ::scrollbar-thumb {
     border-radius: 10px;
-    background: #ddd;
+    background: var(--clue-scrollbar-fg, #cdcdcd);
     box-shadow: none;
   }
   ::-moz-scrollbar-thumb {
-    background: #ddd;
+    background: var(--clue-scrollbar-fg, #cdcdcd);
     border-radius: 6px;
   }
   ::-webkit-scrollbar-thumb {
-    background: #ddd;
+    background: var(--clue-scrollbar-fg, #cdcdcd);
     border-radius: 6px;
   }
 </style>

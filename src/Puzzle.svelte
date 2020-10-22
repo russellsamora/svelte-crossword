@@ -131,7 +131,7 @@
 </script>
 
 <section class="puzzle">
-  <svg viewBox="0 0 {w} {h}" style="max-width: {w * 150}px">
+  <svg viewBox="0 0 {w} {h}">
     <!-- svg -->
     {#each cells as { x, y, value, index, number, custom }}
       <Cell

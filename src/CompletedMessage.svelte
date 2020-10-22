@@ -7,9 +7,13 @@
 
 {#if isOpen}
   <div class="c" transition:fly="{{ y: 20 }}">
-    <h3>You did it!</h3>
-    <Confetti />
-    <button on:click="{() => (isOpen = false)}"> View puzzle </button>
+    <div class="content">
+      <h3>You did it!</h3>
+      <button on:click="{() => (isOpen = false)}"> View puzzle </button>
+    </div>
+    <div class="confetti">
+      <Confetti />
+    </div>
   </div>
   <div
     class="background"
@@ -20,14 +24,10 @@
 <style>
   .c {
     position: absolute;
-    top: 50%;
+    top: min(50%, 15em);
     left: 50%;
-    padding: 2em;
     background: white;
     transform: translate(-50%, -50%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     border-radius: 2em;
     z-index: 10;
     box-shadow: 0 13px 27px -5px rgba(50, 50, 93, 0.25),
@@ -68,5 +68,19 @@
   button:focus {
     background: black;
     color: white;
+  }
+  .content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2em;
+    z-index: 10;
+  }
+  .confetti {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 </style>

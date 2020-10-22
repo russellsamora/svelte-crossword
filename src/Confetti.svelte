@@ -63,6 +63,7 @@
     clip-rule: evenodd;
     pointer-events: none;
     overflow: visible;
+    transform: translate(-50%, -50%);
   }
   @keyframes pop {
     0% {

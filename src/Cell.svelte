@@ -97,36 +97,45 @@
     cursor: pointer;
     user-select: none;
   }
+
   g:focus {
     outline: none;
   }
+
   g.is-secondarily-focused rect {
     fill: var(--highlight-word, #ffec99);
   }
+
   g.is-focused rect {
     fill: var(--highlight-letter, #ffcc00);
   }
+
   rect {
     transition: fill 0.1s ease-out;
   }
+
   text {
     pointer-events: none;
     text-anchor: middle;
     line-height: 1;
 		fill: var(--text-color, #1a1a1a);
   }
+
   .value {
-    font-weight: 700;
-    /* user-select: none; */
+		font-size: var(--cell-font-size, 0.5em);
+    font-weight: var(--cell-font-weight, 700);
   }
+
   .number {
-    font-size: 0.1em;
-    font-weight: 400;
+    font-size: var(--number-font-size, 0.1em);
+    font-weight: var(--number-font-weight, 400);
 		fill: var(--number-color, #8a8a8a);
   }
+
   rect {
-    fill: var(--cell-color, #fff);
-    stroke: var(--grid-color, #1a1a1a);
-    stroke-width: 0.005;
+    fill: var(--cell-bg-color, #fff);
+    stroke: var(--cell-border-color, #1a1a1a);
+    stroke-width: var(--cell-border-width, 0.01);
   }
+
 </style>

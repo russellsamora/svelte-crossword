@@ -161,9 +161,9 @@
   }
   svg {
     display: block;
+		font-size: 1px;
 		background: var(--void-color, #1a1a1a);
     border: 4px solid var(--border-color, #1a1a1a);
-    font-size: 1px;
-		font-family: var(--puzzle-font, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif)
+		font-family: var(--puzzle-font-family, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif)
   }
 </style>

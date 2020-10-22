@@ -20,7 +20,7 @@
   $: focusedCell = cells[focusedCellIndex] || {};
   $: clues, (cells = createCells(clues));
   $: cellIndexMap = fromPairs(cells.map((cell) => [cell.id, cell.index]));
-  
+
 	function onReset() {
     cells = cells.map(cell => ({
       ...cell,

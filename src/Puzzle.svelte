@@ -10,11 +10,11 @@
   export let focusedCellIndex;
   export let focusedCell;
 
-  let cellsHistoryIndex = 0
-  let cellsHistory = []
-  let focusedCellIndexHistoryIndex = 0
-  let focusedCellIndexHistory = []
-  const numberOfStatesInHistory = 10
+  let cellsHistoryIndex = 0;
+  let cellsHistory = [];
+  let focusedCellIndexHistoryIndex = 0;
+  let focusedCellIndexHistory = [];
+  const numberOfStatesInHistory = 10;
 
   const w = Math.max(...cells.map((d) => d.x)) + 1;
   const h = Math.max(...cells.map((d) => d.y)) + 1;
@@ -29,29 +29,30 @@
   };
   $: cells, focusedCellIndex, focusedDirection, updateSecondarilyFocusedCells();
 
-  const onCellUpdate = (index, newValue, diff=1) => {
-    const doReplaceFilledCells = !!cells[index].value
+  const onCellUpdate = (index, newValue, diff = 1) => {
+    const doReplaceFilledCells = !!cells[index].value;
     const newCells = [
       ...cells.slice(0, index),
       { ...cells[index], value: newValue },
       ...cells.slice(index + 1),
     ];
-    cellsHistory = [
-      newCells,
-      ...cellsHistory.slice(cellsHistoryIndex)
-    ].slice(0, numberOfStatesInHistory)
-    cellsHistoryIndex = 0
-    cells = newCells
+    cellsHistory = [newCells, ...cellsHistory.slice(cellsHistoryIndex)].slice(
+      0,
+      numberOfStatesInHistory
+    );
+    cellsHistoryIndex = 0;
+    cells = newCells;
 
     onFocusCellDiff(diff, doReplaceFilledCells);
   };
 
-  const onHistoricalChange = diff => {
-    cellsHistoryIndex += -diff
-    cells = cellsHistory[cellsHistoryIndex] || cells
-    focusedCellIndexHistoryIndex += -diff
-    focusedCellIndex = focusedCellIndexHistory[cellsHistoryIndex] || focusedCellIndex
-  }
+  const onHistoricalChange = (diff) => {
+    cellsHistoryIndex += -diff;
+    cells = cellsHistory[cellsHistoryIndex] || cells;
+    focusedCellIndexHistoryIndex += -diff;
+    focusedCellIndex =
+      focusedCellIndexHistory[cellsHistoryIndex] || focusedCellIndex;
+  };
 
   const onFocusCell = (index) => {
     if (index == focusedCellIndex) {
@@ -60,56 +61,51 @@
       focusedCellIndex = index;
       focusedCellIndexHistory = [
         index,
-        ...focusedCellIndexHistory.slice(0, numberOfStatesInHistory)
-      ]
-      focusedCellIndexHistoryIndex = 0
+        ...focusedCellIndexHistory.slice(0, numberOfStatesInHistory),
+      ];
+      focusedCellIndexHistoryIndex = 0;
     }
   };
 
-  $: sortedCellsInDirection = [...cells].sort((a,b) => (
-    focusedDirection == "down"
-      ? a.x - b.x || a.y - b.y
-      : a.y - b.y || a.x - b.x
-  ))
+  $: sortedCellsInDirection = [...cells].sort((a, b) =>
+    focusedDirection == "down" ? a.x - b.x || a.y - b.y : a.y - b.y || a.x - b.x
+  );
 
-  const onFocusCellDiff = (diff, doReplaceFilledCells=true) => {
-    const sortedCellsInDirectionFiltered = sortedCellsInDirection.filter(d => (
+  const onFocusCellDiff = (diff, doReplaceFilledCells = true) => {
+    const sortedCellsInDirectionFiltered = sortedCellsInDirection.filter((d) =>
       doReplaceFilledCells ? true : !d.value
-    ))
-    const currentCellIndex = sortedCellsInDirectionFiltered.findIndex(d => (
-      d.index == focusedCellIndex
-    ))
-    console.log(sortedCellsInDirectionFiltered, currentCellIndex)
-    const nextCellIndex = (sortedCellsInDirectionFiltered[currentCellIndex + diff] || {}).index
-    const nextCell = cells[nextCellIndex]
+    );
+    const currentCellIndex = sortedCellsInDirectionFiltered.findIndex(
+      (d) => d.index == focusedCellIndex
+    );
+    const nextCellIndex = (
+      sortedCellsInDirectionFiltered[currentCellIndex + diff] || {}
+    ).index;
+    const nextCell = cells[nextCellIndex];
     if (!nextCell) return;
     onFocusCell(nextCellIndex);
   };
 
-  const onFocusClueDiff = (diff=1) => {
-    const currentNumber = focusedCell.clueNumbers[focusedDirection]
-    let nextCluesInDirection = clues.filter(clue => (
-      (
-        diff > 0
-        ? clue.number > currentNumber
-        : clue.number < currentNumber
-      ) && clue.direction == focusedDirection
-    ))
+  const onFocusClueDiff = (diff = 1) => {
+    const currentNumber = focusedCell.clueNumbers[focusedDirection];
+    let nextCluesInDirection = clues.filter(
+      (clue) =>
+        (diff > 0
+          ? clue.number > currentNumber
+          : clue.number < currentNumber) && clue.direction == focusedDirection
+    );
     if (diff < 0) {
-      nextCluesInDirection = nextCluesInDirection.reverse()
+      nextCluesInDirection = nextCluesInDirection.reverse();
     }
-    let nextClue = nextCluesInDirection[Math.abs(diff) - 1]
+    let nextClue = nextCluesInDirection[Math.abs(diff) - 1];
     if (!nextClue) {
-      onFlipDirection()
-      nextClue = clues.filter(clue => (
-        clue.direction == focusedDirection
-      ))[0]
+      onFlipDirection();
+      nextClue = clues.filter((clue) => clue.direction == focusedDirection)[0];
     }
-    focusedCellIndex = cells.findIndex(cell => (
-      cell.x == nextClue.x
-      && cell.y == nextClue.y
-    ))
-  }
+    focusedCellIndex = cells.findIndex(
+      (cell) => cell.x == nextClue.x && cell.y == nextClue.y
+    );
+  };
 
   const onMoveFocus = (direction, diff) => {
     if (focusedDirection != direction) {
@@ -140,12 +136,12 @@
     <!-- svg -->
     {#each cells as { x, y, value, index, number, custom }}
       <Cell
-        {x}
-        {y}
-        {index}
-        {value}
-        {number}
-				{custom}
+        x="{x}"
+        y="{y}"
+        index="{index}"
+        value="{value}"
+        number="{number}"
+        custom="{custom}"
         isFocused="{focusedCellIndex == index}"
         isSecondarilyFocused="{secondarilyFocusedCells.includes(index)}"
         onFocusCell="{onFocusCell}"
@@ -160,13 +156,16 @@
 
 <style>
   section {
-		flex: 1;
+    flex: 1;
+    position: sticky;
+    top: 1em;
+    height: fit-content;
   }
   svg {
     display: block;
-		font-size: 1px;
-		background: var(--cell-void-color, #1a1a1a);
+    font-size: 1px;
+    background: var(--cell-void-color, #1a1a1a);
     border: 4px solid var(--puzzle-border-color, #1a1a1a);
-		font-family: var(--puzzle-font, -apple-system, Helvetica, sans-serif);
+    font-family: var(--puzzle-font, -apple-system, Helvetica, sans-serif);
   }
 </style>

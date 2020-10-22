@@ -1,4 +1,6 @@
 <script>
+  import ClueList from "./ClueList.svelte";
+
   import Clue from "./Clue.svelte";
 
   export let clues;
@@ -18,19 +20,12 @@
 
 <section class="clues">
   {#each ['across', 'down'] as direction}
-    <div class="list">
-      <p><strong>{direction}</strong></p>
-			<ul>
-      {#each clues.filter((d) => d.direction == direction) as clue}
-        <Clue
-          clue="{clue.clue}"
-          number="{clue.number}"
-          isNumberFocused="{focusedClueNumbers[direction] == clue.number}"
-          isDirectionFocused="{focusedDirection == direction}"
-          onFocus="{() => onClueFocus(clue)}" />
-      {/each}
-			</ul>
-    </div>
+    <ClueList
+      direction="{direction}"
+      focusedClueNumbers="{focusedClueNumbers}"
+      clues="{clues.filter((d) => d.direction == direction)}"
+      isDirectionFocused="{focusedDirection == direction}"
+      onClueFocus="{onClueFocus}" />
   {/each}
 </section>
 
@@ -38,60 +33,8 @@
   section {
     position: sticky;
     top: 1em;
-		flex: 0 1 var(--clue-list-width, 16em);
+    flex: 0 1 var(--clue-list-width, 16em);
     height: fit-content;
     margin: 0 1em;
-  }
-  
-	.list {
-    max-height: 45vh;
-    margin-bottom: 2em;
-    overflow: auto;
-  }
-	
-	p {
-		font-family: var(--clue-font, -apple-system, Helvetica, sans-serif);
-		text-transform: uppercase;
-		padding-left: calc(0.5em + 6px);
-		margin: 0;
-	}
-
-	ul {
-		list-style-type: none;
-		padding-left: 0;
-		margin: 0;
-		margin-top: 1em;
-	}
-
-
-  ::-moz-scrollbar {
-    width: 9px;
-  }
-  ::-webkit-scrollbar {
-    width: 9px;
-  }
-
-  ::-moz-scrollbar-track {
-    box-shadow: none;
-    border-radius: 10px;
-    background: var(--clue-scrollbar-bg, #efefef);
-  }
-  ::-webkit-scrollbar-track {
-    box-shadow: none;
-    border-radius: 10px;
-    background: var(--clue-scrollbar-bg, #efefef);
-  }
-  ::scrollbar-thumb {
-    border-radius: 10px;
-    background: var(--clue-scrollbar-fg, #cdcdcd);
-    box-shadow: none;
-  }
-  ::-moz-scrollbar-thumb {
-    background: var(--clue-scrollbar-fg, #cdcdcd);
-    border-radius: 6px;
-  }
-  ::-webkit-scrollbar-thumb {
-    background: var(--clue-scrollbar-fg, #cdcdcd);
-    border-radius: 6px;
   }
 </style>

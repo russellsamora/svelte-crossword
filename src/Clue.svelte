@@ -4,15 +4,29 @@
   export let isNumberFocused = false;
   export let isDirectionFocused = false;
   export let onFocus = () => {};
+
+  let element;
+
+  $: isFocused = isNumberFocused;
+  const onIsFocusedChange = () => {
+    if (!isFocused) return;
+    if (element)
+      element.scrollIntoView({
+        behavior: "smooth",
+      });
+  };
+  $: isFocused, onIsFocusedChange();
 </script>
 
-<li><button
-  class="clue"
-  class:is-number-focused="{isNumberFocused}"
-  class:is-direction-focused="{isDirectionFocused}"
-  on:click="{onFocus}">
-  {number}. {clue}
-</button>
+<li bind:this="{element}">
+  <button
+    class="clue"
+    class:is-number-focused="{isNumberFocused}"
+    class:is-direction-focused="{isDirectionFocused}"
+    on:click="{onFocus}">
+    {number}.
+    {clue}
+  </button>
 </li>
 
 <style>
@@ -27,10 +41,10 @@
     border-left: 6px solid transparent;
     padding: 0.5em;
     cursor: pointer;
-		line-height: 1.325;
-		color: var(--clue-text-color, #1a1a1a);
-		font-family: var(--clue-font, -apple-system, Helvetica, sans-serif);
-		font-size: 1em;
+    line-height: 1.325;
+    color: var(--clue-text-color, #1a1a1a);
+    font-family: var(--clue-font, -apple-system, Helvetica, sans-serif);
+    font-size: 1em;
   }
   .clue:focus {
     border-color: var(--cell-highlight-color, #ffec99);

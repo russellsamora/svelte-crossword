@@ -6,17 +6,17 @@
   export let onFocus = () => {};
 </script>
 
-<button
+<li><button
   class="clue"
   class:is-number-focused="{isNumberFocused}"
   class:is-direction-focused="{isDirectionFocused}"
   on:click="{onFocus}">
-  {number}.
-  {clue}
+  {number}. {clue}
 </button>
+</li>
 
 <style>
-  .clue {
+  button {
     display: block;
     width: 100%;
     background: none;
@@ -25,8 +25,9 @@
     outline: none;
     border: 1px solid transparent;
     border-left: 6px solid transparent;
-    padding: 0.6em 1em;
+    padding: 0.5em 1em;
     cursor: pointer;
+		line-height: 1.325;
   }
   .clue:focus {
     border-color: #e0d8ff;

@@ -7,6 +7,8 @@
 
 <h1>Svelte Crossword Example: NYT Mini</h1>
 
+<!-- <button on:click={reset}>Reset</button> -->
+
 <Crossword data="{dataNYT}" />
 
 <h1>Svelte Crossword Example: Oreos</h1>

@@ -20,6 +20,7 @@
   {#each ['across', 'down'] as direction}
     <div class="list">
       <p>{direction}</p>
+			<ul>
       {#each clues.filter((d) => d.direction == direction) as clue}
         <Clue
           clue="{clue.clue}"
@@ -28,6 +29,7 @@
           isDirectionFocused="{focusedDirection == direction}"
           onFocus="{() => onClueFocus(clue)}" />
       {/each}
+			</ul>
     </div>
   {/each}
 </section>
@@ -36,15 +38,25 @@
   section {
     position: sticky;
     top: 1em;
-    flex: 0 1 16em;
+    -webkit-box-flex: 0;
+    -ms-flex: 0 1 16rem;
+		flex: 0 1 16rem;
     height: fit-content;
     margin-right: 1em;
   }
-  .list {
+  
+	.list {
     max-height: 45vh;
     margin-bottom: 2em;
     overflow: auto;
   }
+
+	ul {
+		list-style-type: none;
+		padding-left: 0;
+	}
+
+
   ::-moz-scrollbar {
     width: 9px;
   }

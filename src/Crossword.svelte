@@ -1,15 +1,17 @@
 <script>
   import Puzzle from "./Puzzle.svelte";
   import Clues from "./Clues.svelte";
-  import { fromPairs } from "./helpers/utils.js";
   import addClueNumber from "./helpers/addClueNumber.js";
   import createCells from "./helpers/createCells.js";
   import validateClues from "./helpers/validateClues.js";
+	import { fromPairs } from "./helpers/utils.js";
 
   export let data = [];
+	export let hideReset = false;
+	export let hideReveal = false;
 
   let clues = addClueNumber(data);
-  let valid = validateClues(clues);
+  let validated = validateClues(clues);
   let cells = [];
   let focusedDirection = "across";
   let focusedCellIndex = 0;
@@ -17,36 +19,54 @@
   $: focusedCell = cells[focusedCellIndex] || {};
   $: clues, (cells = createCells(clues));
   $: cellIndexMap = fromPairs(cells.map((cell) => [cell["id"], cell["index"]]));
-
-  const onClear = () => {
+  
+	function onReset() {
     cells = cells.map(cell => ({
       ...cell,
       value: "",
     }))
   }
+
+	function onReveal() {
+    cells = cells.map(cell => ({
+      ...cell,
+      value: cell.answer,
+    }))
+  }
 </script>
 
-<button on:click={onClear}>Clear</button>
-<article>
-  {#if valid}
+<div class="toolbar">
+	{#if !hideReset}
+	<button on:click={onReset}>Reset</button>
+	{/if}
+	{#if !hideReveal}
+	<button on:click={onReveal}>Reveal</button>
+	{/if}
+</div>
+
+<article class="crossword">
+  {#if validated}
     <Clues
-      clues="{clues}"
-      cellIndexMap="{cellIndexMap}"
+      {clues}
+      {cellIndexMap}
       bind:focusedCellIndex
       bind:focusedCell
       bind:focusedDirection />
     <Puzzle
-      clues="{clues}"
+      {clues}
+			{focusedCell}
       bind:cells
+			bind:focusedCellIndex
       bind:focusedDirection
-      bind:focusedCellIndex
-      focusedCell="{focusedCell}" />
+		/>
   {/if}
 </article>
 
 <style>
   article {
     display: flex;
-    font-family: sans-serif;
+		display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
   }
 </style>

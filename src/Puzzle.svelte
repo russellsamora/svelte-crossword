@@ -154,7 +154,9 @@
 
 <style>
   section {
-    flex: 3;
+    -webkit-box-flex: 1;
+		-ms-flex: 1;
+		flex: 1;
     --dark-color: #3d3d3d;
   }
   svg {

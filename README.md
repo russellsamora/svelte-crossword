@@ -31,6 +31,16 @@ By [Amelia Wattenberger](https://twitter.com/wattenberger) and [Russell Goldenbe
 You can set your own global CSS variables to override the defaults.
 
 ```
+--puzzle-border-color: #1a1a1a;
+--puzzle-font: -apple-system, Helvetica, sans-serif;
+
+--clue-font: -apple-system, Helvetica, sans-serif;
+--clue-text-color: #1a1a1a;
+--clue-scrollbar-bg: #efefef;
+--clue-scrollbar-fg: #cdcdcd;
+--clue-puzzle-order: row;
+--clue-list-width: 16em;
+
 --cell-highlight-color: #ffec99;
 --cell-secondary-color: #ffcc00;
 --cell-bg-color: #fff;
@@ -44,15 +54,6 @@ You can set your own global CSS variables to override the defaults.
 --number-font-size: 0.1em;
 --number-font-weight: 400;
 --number-color: #8a8a8a;
-
---puzzle-border-color: #1a1a1a;
---puzzle-font: -apple-system, Helvetica, sans-serif;
-
---clue-font: -apple-system, Helvetica, sans-serif;
---clue-text-color: #1a1a1a;
---clue-scrollbar-bg: #efefef;
---clue-scrollbar-fg: #cdcdcd;
---clue-puzzle-order: row;
 ```
 
 ## Roadmap

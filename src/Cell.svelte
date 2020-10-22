@@ -101,10 +101,10 @@
     outline: none;
   }
   g.is-secondarily-focused rect {
-    fill: #e0d8ff;
+    fill: #ffec99;
   }
   g.is-focused rect {
-    fill: #978df0;
+    fill: #ffcc00;
   }
   rect {
     transition: fill 0.1s ease-out;

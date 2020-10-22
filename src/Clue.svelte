@@ -30,12 +30,12 @@
 		line-height: 1.325;
   }
   .clue:focus {
-    border-color: #e0d8ff;
+    border-color: #ffec99;
   }
   .is-number-focused {
-    border-left-color: #e0d8ff;
+    border-left-color: #ffec99;
   }
   .is-number-focused.is-direction-focused {
-    background: #e0d8ff;
+    background: #ffec99;
   }
 </style>

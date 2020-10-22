@@ -127,11 +127,11 @@
   }
 
   .theme-amelia {
-    --theme-puzzle-border-color: #114d4d;
+    --theme-puzzle-border-color: #353b48;
     --theme-puzzle-font: -apple-system, Helvetica, sans-serif;
 
     --theme-clue-font: -apple-system, Helvetica, sans-serif;
-    --theme-clue-text-color: #114d4d;
+    --theme-clue-text-color: #353b48;
     --theme-clue-scrollbar-bg: #d7cefd;
     --theme-clue-scrollbar-fg: #9980fa;
     --theme-clue-puzzle-order: row;
@@ -140,16 +140,16 @@
     --theme-cell-highlight-color: #d7cefd;
     --theme-cell-secondary-color: #9980fa;
     --theme-cell-bg-color: #fff;
-    --theme-cell-border-color: #114d4d;
-    --theme-cell-border-width: 0.01;
-    --theme-cell-text-color: #114d4d;
-    --theme-cell-font-size: 0.7em;
+    --theme-cell-border-color: #353b48;
+    --theme-cell-border-width: 0.027;
+    --theme-cell-text-color: #353b48;
+    --theme-cell-font-size: 0.76em;
     --theme-cell-font-weight: 700;
-    --theme-cell-void-color: #114d4d;
+    --theme-cell-void-color: #353b48;
 
-    --theme-number-font-size: 0.3em;
-    --theme-number-font-weight: 400;
-    --theme-number-color: #114d4d;
+    --theme-number-font-size: 0.25em;
+    --theme-number-font-weight: 100;
+    --theme-number-color: #353b48;
   }
 
   article {

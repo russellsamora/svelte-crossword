@@ -17,7 +17,7 @@
 
 <style>
 	.toolbar {
-    margin: 1em 0;
+    margin-bottom: 2em;
   }
 	button {
 		cursor: pointer;

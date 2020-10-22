@@ -16,7 +16,7 @@
 
 	<section class="oreos">
 		<h1>Svelte Crossword Example: Oreos</h1>
-		<Crossword data="{dataOreo}" />
+		<Crossword data="{dataOreo}" theme="amelia" />
 	</section>
 
 	<section class:is-revealed={revealedUSA} class="usa">

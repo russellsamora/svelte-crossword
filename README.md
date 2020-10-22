@@ -47,11 +47,11 @@ You can set your own global CSS variables to override the defaults.
 --cell-border-color: #1a1a1a;
 --cell-border-width: 0.01;
 --cell-text-color: #1a1a1a;
---cell-font-size: 1em;
+--cell-font-size: 0.7em;
 --cell-font-weight: 700;
 --cell-void-color: #1a1a1a;
 
---number-font-size: 0.1em;
+--number-font-size: 0.25em;
 --number-font-weight: 400;
 --number-color: #8a8a8a;
 ```

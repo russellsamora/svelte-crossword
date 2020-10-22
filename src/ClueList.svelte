@@ -9,7 +9,7 @@
 </script>
 
 <div class="list">
-  <p><strong>{direction}</strong></p>
+  <p>{direction}</p>
   <ul>
     {#each clues as clue}
       <Clue
@@ -32,6 +32,8 @@
 
   p {
     font-family: var(--clue-font, -apple-system, Helvetica, sans-serif);
+		color: var(--clue-text-color, #1a1a1a);
+		font-weight: 700;
     text-transform: uppercase;
     padding-left: calc(0.5em + 6px);
     margin: 0;

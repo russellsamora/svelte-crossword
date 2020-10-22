@@ -103,11 +103,11 @@
   }
 
   g.is-secondarily-focused rect {
-    fill: var(--highlight-word, #ffec99);
+    fill: var(--cell-highlight-color, #ffec99);
   }
 
   g.is-focused rect {
-    fill: var(--highlight-letter, #ffcc00);
+    fill: var(--cell-secondary-color, #ffcc00);
   }
 
   rect {
@@ -118,7 +118,7 @@
     pointer-events: none;
     text-anchor: middle;
     line-height: 1;
-		fill: var(--text-color, #1a1a1a);
+		fill: var(--cell-text-color, #1a1a1a);
   }
 
   .value {

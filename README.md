@@ -28,7 +28,28 @@ By [Amelia Wattenberger](https://twitter.com/wattenberger) and [Russell Goldenbe
 
 ## Custom Style
 
-TODO
+You can set your own global CSS variables to override the defaults.
+
+```
+--cell-highlight-color: #ffec99;
+--cell-secondary-color: #ffcc00;
+--cell-bg-color: #fff;
+--cell-border-color: #1a1a1a;
+--cell-border-width: 0.01;
+--cell-text-color: #1a1a1a;
+--cell-font-size: 0.5em;
+--cell-font-weight: 700;
+--cell-void-color: #1a1a1a;
+
+--number-font-size: 0.1em;
+--number-font-weight: 400;
+--number-color: #8a8a8a;
+
+--puzzle-border-color: #1a1a1a;
+--puzzle-font: -apple-system, Helvetica, sans-serif;
+
+--clue-font: -apple-system, Helvetica, sans-serif;
+```
 
 ## Roadmap
 

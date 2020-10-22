@@ -28,17 +28,17 @@
     padding: 0.5em;
     cursor: pointer;
 		line-height: 1.325;
-		color: var(--text-color, #1a1a1a);
-		font-family: var(--clue-font, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif);
+		color: var(--clue-text-color, #1a1a1a);
+		font-family: var(--clue-font, -apple-system, Helvetica, sans-serif);
 		font-size: 1em;
   }
   .clue:focus {
-    border-color: var(--highlight-letter, #ffec99);
+    border-color: var(--cell-highlight-color, #ffec99);
   }
   .is-number-focused {
-    border-left-color: var(--highlight-letter, #ffec99);
+    border-left-color: var(--cell-highlight-color, #ffec99);
   }
   .is-number-focused.is-direction-focused {
-    background: var(--highlight-letter, #ffec99);
+    background: var(--cell-highlight-color, #ffec99);
   }
 </style>

@@ -13,7 +13,7 @@
   export let hideReveal = false;
   export let revealed = false;
   export let revealDuration = 1000;
-	export let theme = 'classic';
+	export let theme;
 
   let clues = addClueNumber(data);
   let validated = validateClues(clues);
@@ -28,6 +28,7 @@
   $: percentCorrect =
     cells.filter((d) => d.answer == d.value).length / cells.length;
   $: isComplete = percentCorrect == 1;
+	$: themeClass = theme ? `theme-${theme}` : "";
 
   let timeout;
 
@@ -69,7 +70,7 @@
 
 <Toolbar {hideReset} {hideReveal} on:event={onToolbarEvent} />
 
-<article class="crossword theme-{theme}">
+<article class="crossword {themeClass}">
   {#if validated}
     <Clues
       clues="{clues}"

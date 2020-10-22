@@ -30,6 +30,7 @@
   $: cells, focusedCellIndex, focusedDirection, updateSecondarilyFocusedCells();
 
   const onCellUpdate = (index, newValue, diff=1) => {
+    const doReplaceFilledCells = !!cells[index].value
     const newCells = [
       ...cells.slice(0, index),
       { ...cells[index], value: newValue },
@@ -42,7 +43,7 @@
     cellsHistoryIndex = 0
     cells = newCells
 
-    onFocusCellDiff(diff);
+    onFocusCellDiff(diff, doReplaceFilledCells);
   };
 
   const onHistoricalChange = diff => {
@@ -65,20 +66,24 @@
     }
   };
 
-  $: sortedCellsIndicesInDirection = [...cells].sort((a,b) => (
+  $: sortedCellsInDirection = [...cells].sort((a,b) => (
     focusedDirection == "down"
       ? a.x - b.x || a.y - b.y
       : a.y - b.y || a.x - b.x
-  )).map(d => d.index)
+  ))
 
-  const onFocusCellDiff = diff => {
-    const currentCellIndex = sortedCellsIndicesInDirection.findIndex(d => (
-      d == focusedCellIndex
+  const onFocusCellDiff = (diff, doReplaceFilledCells=true) => {
+    const sortedCellsInDirectionFiltered = sortedCellsInDirection.filter(d => (
+      doReplaceFilledCells ? true : !d.value
     ))
-    const nextCellIndex = sortedCellsIndicesInDirection[currentCellIndex + diff]
+    const currentCellIndex = sortedCellsInDirectionFiltered.findIndex(d => (
+      d.index == focusedCellIndex
+    ))
+    console.log(sortedCellsInDirectionFiltered, currentCellIndex)
+    const nextCellIndex = (sortedCellsInDirectionFiltered[currentCellIndex + diff] || {}).index
     const nextCell = cells[nextCellIndex]
     if (!nextCell) return;
-    onFocusCell(nextCell.index);
+    onFocusCell(nextCellIndex);
   };
 
   const onFocusClueDiff = (diff=1) => {

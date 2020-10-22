@@ -39,8 +39,8 @@
     position: sticky;
     top: 1em;
     -webkit-box-flex: 0;
-    -ms-flex: 0 1 16rem;
-		flex: 0 1 16rem;
+    -ms-flex: 0 1 16em;
+		flex: 0 1 16em;
     height: fit-content;
     margin-right: 1em;
   }
@@ -55,11 +55,14 @@
 		font-family: var(--clue-font, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif);
 		text-transform: uppercase;
 		padding-left: calc(0.5em + 6px);
+		margin: 0;
 	}
 
 	ul {
 		list-style-type: none;
 		padding-left: 0;
+		margin: 0;
+		margin-top: 1em;
 	}
 
 

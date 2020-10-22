@@ -4,7 +4,9 @@
   export let value;
   export let number;
   export let index;
-	export let custom;
+  export let custom;
+  export let changeDelay = 0;
+  export let isRevealing = false;
   export let isFocused = false;
   export let isSecondarilyFocused = false;
   export let onFocusCell = () => {};
@@ -25,7 +27,7 @@
 
   const onKeydown = (e) => {
     if (e.ctrlKey && e.key.toLowerCase() == "z") {
-      onHistoricalChange(e.shiftKey ? 1 : -1)
+      onHistoricalChange(e.shiftKey ? 1 : -1);
     }
 
     if (e.ctrlKey) return;
@@ -72,12 +74,21 @@
   const onClick = () => {
     onFocusCell(index);
   };
+
+  const pop = (node, { delay = 0, duration = 200 }) => ({
+    delay,
+    duration,
+    css: (t) =>
+      [
+        `transform: translate(0, ${1 - t}px)`, //
+      ].join(";"),
+  });
 </script>
 
 <!-- <svelte:window on:keydown={onKeydown} /> -->
 
 <g
-	class="cell {custom}"
+  class="cell {custom}"
   class:is-focused="{isFocused}"
   class:is-secondarily-focused="{isSecondarilyFocused}"
   transform="{`translate(${x}, ${y})`}"
@@ -87,8 +98,25 @@
   on:keydown="{onKeydown}"
   bind:this="{element}">
   <rect width="1" height="1"></rect>
-  <text class="value" x="0.5" y="0.9" alignment-baseline="baseline" text-anchor="middle">{value}</text>
-  <text class="number" x="0.1" y="0.1" alignment-baseline="hanging" text-anchor="start">{number}</text>
+  {#if value}
+    <text
+      transition:pop="{{ y: 6, delay: changeDelay, duration: isRevealing ? 200 : 0 }}"
+      class="value"
+      x="0.5"
+      y="0.9"
+      alignment-baseline="baseline"
+      text-anchor="middle">
+      {value}
+    </text>
+  {/if}
+  <text
+    class="number"
+    x="0.1"
+    y="0.1"
+    alignment-baseline="hanging"
+    text-anchor="start">
+    {number}
+  </text>
 </g>
 
 <style>
@@ -116,18 +144,18 @@
   text {
     pointer-events: none;
     line-height: 1;
-		fill: var(--cell-text-color, #1a1a1a);
+    fill: var(--cell-text-color, #1a1a1a);
   }
 
   .value {
-		font-size: var(--cell-font-size, 0.7em);
+    font-size: var(--cell-font-size, 0.7em);
     font-weight: var(--cell-font-weight, 700);
   }
 
   .number {
     font-size: var(--number-font-size, 0.3em);
     font-weight: var(--number-font-weight, 300);
-		fill: var(--number-color, #8a8a8a);
+    fill: var(--number-color, #8a8a8a);
   }
 
   rect {
@@ -135,5 +163,4 @@
     stroke: var(--cell-border-color, #1a1a1a);
     stroke-width: var(--cell-border-width, 0.01);
   }
-
 </style>

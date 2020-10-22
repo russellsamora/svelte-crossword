@@ -9,6 +9,8 @@
   export let focusedDirection;
   export let focusedCellIndex;
   export let focusedCell;
+  export let isRevealing;
+  export let revealDuration = 0;
 
   let cellsHistoryIndex = 0;
   let cellsHistory = [];
@@ -142,6 +144,8 @@
         value="{value}"
         number="{number}"
         custom="{custom}"
+        changeDelay="{isRevealing ? (revealDuration / cells.length) * index : 0}"
+        isRevealing="{isRevealing}"
         isFocused="{focusedCellIndex == index}"
         isSecondarilyFocused="{secondarilyFocusedCells.includes(index)}"
         onFocusCell="{onFocusCell}"

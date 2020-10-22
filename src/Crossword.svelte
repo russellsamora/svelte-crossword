@@ -9,13 +9,13 @@
   export let data = [];
 	export let hideReset = false;
 	export let hideReveal = false;
+	export let revealed = false;
 
   let clues = addClueNumber(data);
   let validated = validateClues(clues);
   let cells = [];
   let focusedDirection = "across";
   let focusedCellIndex = 0;
-	export let revealed = false;
 
   $: focusedCell = cells[focusedCellIndex] || {};
   $: clues, (cells = createCells(clues));

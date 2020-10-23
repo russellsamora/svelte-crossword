@@ -1,11 +1,10 @@
 export default function createCells(data) {
-  const cells = data.map(d => d.cells)
-  const flat = [].concat(...cells);
+  const cells = [].concat(...data.map(d => d.cells));
   let dict = {};
 
   // sort so that ones with number values come first and dedupe
-  flat.sort((a, b) => a.y - b.y || a.x - b.x || b.number - a.number);
-  flat.forEach((d) => {
+  cells.sort((a, b) => a.y - b.y || a.x - b.x || b.number - a.number);
+  cells.forEach((d) => {
     if (!dict[d.id]) {
       dict[d.id] = d;
     } else {

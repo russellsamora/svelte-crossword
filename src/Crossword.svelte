@@ -9,9 +9,8 @@
   import { fromPairs } from "./helpers/utils.js";
 
   export let data = [];
-  export let hideReset = false;
-  export let hideReveal = false;
   export let revealed = false;
+  export let actions = ["reset", "reveal"];
   export let revealDuration = 1000;
   export let theme;
   export let disableHighlight;
@@ -99,10 +98,7 @@
 </script>
 
 <slot name="toolbar" onToolbarEvent="{onToolbarEvent}">
-  <Toolbar
-    hideReset="{hideReset}"
-    hideReveal="{hideReveal}"
-    on:event="{onToolbarEvent}" />
+  <Toolbar actions="{actions}" on:event="{onToolbarEvent}" />
 </slot>
 
 <article class="crossword {themeClass}">

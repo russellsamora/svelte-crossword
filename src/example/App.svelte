@@ -1,6 +1,7 @@
 <script>
   import Crossword from "../Crossword.svelte";
-  import dataNYT from "./data-nyt.json";
+  import dataNYTMini from "./data-nyt-mini.json";
+	import dataNYTDaily from "./data-nyt-daily.json";
   import dataOreo from "./data-oreo.json";
   import dataAmelia from "./data-amelia.json";
   import dataUSA from "./data-usa.json";

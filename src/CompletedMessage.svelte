@@ -1,12 +1,12 @@
 <script>
-  import { fade, fly } from "svelte/transition";
-  import Confetti from "./Confetti.svelte";
+  import { fade } from 'svelte/transition';
+  import Confetti from './Confetti.svelte';
 
   let isOpen = true;
 </script>
 
 {#if isOpen}
-  <div class="c" transition:fly="{{ y: 20 }}">
+  <div class="c" transition:fade="{{ y: 20 }}">
     <div class="content">
       <h3>You did it!</h3>
       <slot />

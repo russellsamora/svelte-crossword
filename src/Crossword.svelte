@@ -14,54 +14,57 @@
   export let revealed = false;
   export let revealDuration = 1000;
   export let theme;
-	export let disableHighlight;
+  export let disableHighlight;
 
   let originalClues = createClues(data);
   let validated = validateClues(originalClues);
-	let clues = originalClues.map(d => ({ ...d }));
+  let clues = originalClues.map((d) => ({ ...d }));
   let cells = createCells(originalClues);
   let focusedDirection = "across";
   let focusedCellIndex = 0;
   let isRevealing = false;
-	let revealTimeout;
-	let clueCompletion;
+  let revealTimeout;
+  let clueCompletion;
 
   $: focusedCell = cells[focusedCellIndex] || {};
   $: cellIndexMap = fromPairs(cells.map((cell) => [cell.id, cell.index]));
-  $: percentCorrect = cells.filter(d => d.answer === d.value).length / cells.length;
+  $: percentCorrect =
+    cells.filter((d) => d.answer === d.value).length / cells.length;
   $: isComplete = percentCorrect == 1;
   $: themeClass = theme ? `theme-${theme}` : "";
-	$: isDisableHighlight = isComplete && disableHighlight;
-	$: cells, clues = checkClues();
+  $: isDisableHighlight = isComplete && disableHighlight;
+  $: cells, (clues = checkClues());
 
-	function checkClues() {
-		return clues.map(d => {
-			const index = d.index;
-			const cellChecks = d.cells.map(c => {
-				const { value } = cells.find(e => e.id === c.id);
-				const hasValue = !!value;
-				const hasCorrect = value === c.answer;
-				return { hasValue, hasCorrect };
-			});
-			const isCorrect = cellChecks.filter(c => c.hasCorrect).length === d.answer.length;
-			const isFilled = cellChecks.filter(c => c.hasValue).length === d.answer.length;
-			return {
-				...d,
-				isCorrect,
-				isFilled,
-			}
-		});
-	}
+  function checkClues() {
+    return clues.map((d) => {
+      const index = d.index;
+      const cellChecks = d.cells.map((c) => {
+        const { value } = cells.find((e) => e.id === c.id);
+        const hasValue = !!value;
+        const hasCorrect = value === c.answer;
+        return { hasValue, hasCorrect };
+      });
+      const isCorrect =
+        cellChecks.filter((c) => c.hasCorrect).length === d.answer.length;
+      const isFilled =
+        cellChecks.filter((c) => c.hasValue).length === d.answer.length;
+      return {
+        ...d,
+        isCorrect,
+        isFilled,
+      };
+    });
+  }
 
-	function clear() {
-		isRevealing = false;
-		focusedCellIndex = 0;
-		focusedDirection = "across";
-	}
+  function clear() {
+    isRevealing = false;
+    focusedCellIndex = 0;
+    focusedDirection = "across";
+  }
 
   function onReset() {
     clear();
-		if (revealTimeout) clearTimeout(revealTimeout);
+    if (revealTimeout) clearTimeout(revealTimeout);
     cells = cells.map((cell) => ({
       ...cell,
       value: "",
@@ -70,7 +73,7 @@
   }
 
   function onReveal() {
-		if (revealed) return true;
+    if (revealed) return true;
     clear();
     cells = cells.map((cell) => ({
       ...cell,
@@ -111,7 +114,7 @@
       clues="{clues}"
       focusedCell="{focusedCell}"
       isRevealing="{isRevealing}"
-			isDisableHighlight="{isDisableHighlight}"
+      isDisableHighlight="{isDisableHighlight}"
       revealDuration="{revealDuration}"
       bind:cells
       bind:focusedCellIndex
@@ -124,7 +127,7 @@
 </article>
 
 <style>
-	.theme-classic {
+  .theme-classic {
     --theme-puzzle-border-color: #1a1a1a;
     --theme-puzzle-font: -apple-system, Helvetica, sans-serif;
 
@@ -150,7 +153,7 @@
     --theme-number-color: #8a8a8a;
   }
 
-	.theme-classic {
+  .theme-classic {
     --theme-puzzle-border-color: #1a1a1a;
     --theme-puzzle-font: -apple-system, Helvetica, sans-serif;
 
@@ -202,8 +205,7 @@
     --theme-number-color: #353b48;
   }
 
-	.theme-russell {
-
+  .theme-russell {
   }
 
   .theme-dark {
@@ -261,22 +263,20 @@
   }
 
   article {
-		--puzzle-border-color: var(
-			--theme-puzzle-border-color,
+    --puzzle-border-color: var(
+      --theme-puzzle-border-color,
       var(--theme-puzzle-border-color)
     );
-    --puzzle-font: var(
-			--theme-puzzle-font,
-			var(--theme-puzzle-font)
-		);
+    --puzzle-font: var(--theme-puzzle-font, var(--theme-puzzle-font));
 
-    --clue-font: var(
-			--theme-clue-font,
-			var(--theme-clue-font)
-		);
+    --clue-font: var(--theme-clue-font, var(--theme-clue-font));
     --clue-text-color: var(
       --theme-clue-text-color,
       var(--theme-clue-text-color)
+    );
+    --clue-background-color: var(
+      --theme-clue-background-color,
+      var(--theme-clue-background-color)
     );
     --clue-scrollbar-bg: var(
       --theme-clue-scrollbar-bg,
@@ -303,10 +303,7 @@
       --theme-cell-secondary-color,
       var(--theme-cell-secondary-color)
     );
-    --cell-bg-color: var(
-			--theme-cell-bg-color,
-			var(--theme-cell-bg-color)
-			);
+    --cell-bg-color: var(--theme-cell-bg-color, var(--theme-cell-bg-color));
     --cell-border-color: var(
       --theme-cell-border-color,
       var(--theme-cell-border-color)
@@ -319,10 +316,7 @@
       --theme-cell-text-color,
       var(--theme-cell-text-color)
     );
-    --cell-font-size: var(
-			--theme-cell-font-size,
-			var(--theme-cell-font-size)
-		);
+    --cell-font-size: var(--theme-cell-font-size, var(--theme-cell-font-size));
     --cell-font-weight: var(
       --theme-cell-font-weight,
       var(--theme-cell-font-weight)
@@ -340,12 +334,9 @@
       --theme-number-font-weight,
       var(--theme-number-font-weight)
     );
-    --number-color: var(
-			--theme-number-color,
-			var(--theme-number-color)
-		);
+    --number-color: var(--theme-number-color, var(--theme-number-color));
 
-		position: relative;
+    position: relative;
     display: flex;
     flex-direction: var(--clue-puzzle-order, row);
   }

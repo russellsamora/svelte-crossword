@@ -6,6 +6,7 @@
   import dataUSA from "./data-usa.json";
 
   let revealedUSA;
+  let theme;
 </script>
 
 <article>
@@ -18,12 +19,15 @@
   <section class="amelia">
     <h1>Oreo</h1>
     <p>Custom themes</p>
-    <select>
-      <option>Classic</option>
-      <option>Dark</option>
-      <option>Amelia</option>
+    <select bind:value="{theme}">
+      <option value="classic">Classic</option>
+      <option value="dark">Dark</option>
+      <option value="amelia">Amelia</option>
+      <option value="mint">Mint</option>
     </select>
-    <Crossword data="{dataOreo}" theme="oreo" />
+    <div style="{theme == 'dark' ? 'background: black; color: white' : ''}">
+      <Crossword data="{dataOreo}" theme="{theme}" />
+    </div>
   </section>
 
   <section class:is-revealed="{revealedUSA}" class="usa">

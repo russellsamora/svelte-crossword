@@ -11,34 +11,37 @@
 
 <article>
   <section class="nyt">
-    <h1>NYT Mini</h1>
-    <p>Default options.</p>
+		<p class="example">Example</p>
+    <h1>Default</h1>
+    <p>An NYT mini puzzle with all default settings.</p>
     <Crossword data="{dataNYT}" />
   </section>
 
   <section class="amelia">
-    <h1>Oreo</h1>
-    <p>Custom themes</p>
+		<p class="example">Example</p>
+    <h1>Themes</h1>
+    <p>A library of preset style themes to choose from.</p>
     <select bind:value="{theme}">
       <option value="classic">Classic</option>
       <option value="dark">Dark</option>
       <option value="amelia">Amelia</option>
       <option value="citrus">Citrus</option>
     </select>
-    <div style="{theme == 'dark' ? 'background: black; color: white' : ''}">
+    <div>
       <Crossword data="{dataOreo}" theme="{theme}" showCompleteMessage="{false}" />
     </div>
   </section>
 
   <section class:is-revealed="{revealedUSA}" class="usa">
-    <h1>People in USA Today puzzles</h1>
+		<p class="example">Example</p>
+    <h1>Simple Customization</h1>
     <p>Custom class name on cells.</p>
     <Crossword data="{dataUSA}" bind:revealed="{revealedUSA}" />
   </section>
 
   <section>
-    <h1>People in USA Today puzzles</h1>
-    <p>Custom completed content.</p>
+    <p class="example">Example</p>
+    <p>Advanced Customization</p>
     <Crossword data="{dataUSA}">
       <div
         class="toolbar"
@@ -74,4 +77,12 @@
     max-width: 640px;
     margin: 1em 0;
   }
+	.example {
+		display: inline-block;
+		background: #ccc;
+		padding: 0.5em;
+		font-weight: bold;
+		font-size: 0.85em;
+		text-transform: uppercase;
+	}
 </style>

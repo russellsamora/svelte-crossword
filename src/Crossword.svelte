@@ -97,38 +97,44 @@
   }
 </script>
 
-<slot name="toolbar" onReset="{onReset}" onReveal="{onReveal}">
-  <Toolbar actions="{actions}" on:event="{onToolbarEvent}" />
-</slot>
 
+{#if validated}
 <article class="crossword {themeClass}">
-  {#if validated}
-    <Clues
-      clues="{clues}"
-      cellIndexMap="{cellIndexMap}"
-      bind:focusedCellIndex
-      bind:focusedCell
-      bind:focusedDirection />
-    <Puzzle
-      clues="{clues}"
-      focusedCell="{focusedCell}"
-      isRevealing="{isRevealing}"
-      isDisableHighlight="{isDisableHighlight}"
-      revealDuration="{revealDuration}"
-      bind:cells
-      bind:focusedCellIndex
-      bind:focusedDirection />
-  {/if}
 
-  {#if isComplete && !isRevealing && showCompleteMessage}
-    <CompletedMessage>
-      <slot name="complete" />
-    </CompletedMessage>
-  {/if}
+	<slot name="toolbar" onReset="{onReset}" onReveal="{onReveal}">
+		<Toolbar actions="{actions}" on:event="{onToolbarEvent}" />
+	</slot>
+
+	<div class="play">
+		<Clues
+			clues="{clues}"
+			cellIndexMap="{cellIndexMap}"
+			bind:focusedCellIndex
+			bind:focusedCell
+			bind:focusedDirection />
+		<Puzzle
+			clues="{clues}"
+			focusedCell="{focusedCell}"
+			isRevealing="{isRevealing}"
+			isDisableHighlight="{isDisableHighlight}"
+			revealDuration="{revealDuration}"
+			bind:cells
+			bind:focusedCellIndex
+			bind:focusedDirection />
+	</div>
+
+	{#if isComplete && !isRevealing && showCompleteMessage}
+			<CompletedMessage>
+				<slot name="complete" />
+			</CompletedMessage>
+		{/if}
 </article>
+{/if}
 
 <style>
   .theme-classic {
+		--theme-crossword-bg: transparent;
+		--theme-crossword-bg: transparent;
     --theme-puzzle-border-color: #1a1a1a;
     --theme-puzzle-font: -apple-system, Helvetica, sans-serif;
 
@@ -155,6 +161,7 @@
   }
 
   .theme-dark {
+		--theme-crossword-bg: #1a1a1a;
     --theme-puzzle-border-color: #8a8a8a;
     --theme-puzzle-font: -apple-system, Helvetica, sans-serif;
     
@@ -182,6 +189,7 @@
   }
 
   .theme-amelia {
+		--theme-crossword-bg: transparent;
     --theme-puzzle-border-color: #353b48;
     --theme-puzzle-font: -apple-system, Helvetica, sans-serif;
 
@@ -208,6 +216,7 @@
   }
 
   .theme-citrus {
+		--theme-crossword-bg: transparent;
     --theme-puzzle-border-color: #193939;
     --theme-puzzle-font: -apple-system, Helvetica, sans-serif;
 
@@ -235,6 +244,10 @@
   }
 
   article {
+		--crossword-bg: var(
+      --theme-crossword-bg,
+      var(--theme-crossword-bg)
+    );
     --puzzle-border-color: var(
       --theme-puzzle-border-color,
       var(--theme-puzzle-border-color)
@@ -309,7 +322,11 @@
     --number-color: var(--theme-number-color, var(--theme-number-color));
 
     position: relative;
-    display: flex;
-    flex-direction: var(--clue-puzzle-order, row);
+    background-color: var(--crossword-bg);
   }
+
+	.play {
+		display: flex;
+    flex-direction: var(--clue-puzzle-order, row);
+	}
 </style>

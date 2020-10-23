@@ -26,7 +26,7 @@
       <option value="citrus">Citrus</option>
     </select>
     <div style="{theme == 'dark' ? 'background: black; color: white' : ''}">
-      <Crossword data="{dataOreo}" theme="{theme}" />
+      <Crossword data="{dataOreo}" theme="{theme}" showCompleteMessage="{false}" />
     </div>
   </section>
 

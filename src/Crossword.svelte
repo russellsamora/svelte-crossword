@@ -13,7 +13,8 @@
   export let actions = ["reset", "reveal"];
   export let revealDuration = 1000;
   export let theme = "classic";
-  export let disableHighlight;
+  export let disableHighlight = false;
+	export let showCompleteMessage = true;
 
   let originalClues = createClues(data);
   let validated = validateClues(originalClues);
@@ -91,13 +92,12 @@
   }
 
   function onToolbarEvent({ detail }) {
-    console.log(detail);
     if (detail === "reset") onReset();
     else if (detail === "reveal") onReveal();
   }
 </script>
 
-<slot name="toolbar" onToolbarEvent="{onToolbarEvent}">
+<slot name="toolbar" onReset="{onReset}" onReveal="{onReveal}">
   <Toolbar actions="{actions}" on:event="{onToolbarEvent}" />
 </slot>
 
@@ -120,7 +120,7 @@
       bind:focusedDirection />
   {/if}
 
-  {#if isComplete && !isRevealing}
+  {#if isComplete && !isRevealing && showCompleteMessage}
     <CompletedMessage>
       <slot name="complete" />
     </CompletedMessage>

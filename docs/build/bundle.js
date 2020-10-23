@@ -857,7 +857,7 @@ var app = (function () {
     					class: true,
     					x: true,
     					y: true,
-    					"alignment-baseline": true,
+    					"dominant-baseline": true,
     					"text-anchor": true
     				},
     				1
@@ -872,7 +872,7 @@ var app = (function () {
     			attr(text_1, "class", "value svelte-1623cyf");
     			attr(text_1, "x", "0.5");
     			attr(text_1, "y", "0.9");
-    			attr(text_1, "alignment-baseline", "baseline");
+    			attr(text_1, "dominant-baseline", "auto");
     			attr(text_1, "text-anchor", "middle");
     		},
     		m(target, anchor) {
@@ -973,7 +973,7 @@ var app = (function () {
     					class: true,
     					x: true,
     					y: true,
-    					"alignment-baseline": true,
+    					"dominant-baseline": true,
     					"text-anchor": true
     				},
     				1
@@ -992,7 +992,7 @@ var app = (function () {
     			attr(text_1, "class", "number svelte-1623cyf");
     			attr(text_1, "x", "0.1");
     			attr(text_1, "y", "0.1");
-    			attr(text_1, "alignment-baseline", "hanging");
+    			attr(text_1, "dominant-baseline", "hanging");
     			attr(text_1, "text-anchor", "start");
     			attr(g, "class", g_class_value = "cell " + /*custom*/ ctx[4] + " svelte-1623cyf");
     			attr(g, "transform", g_transform_value = `translate(${/*x*/ ctx[0]}, ${/*y*/ ctx[1]})`);
@@ -1273,40 +1273,40 @@ var app = (function () {
 
     function get_each_context(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[23] = list[i].x;
-    	child_ctx[24] = list[i].y;
-    	child_ctx[25] = list[i].value;
-    	child_ctx[26] = list[i].index;
-    	child_ctx[27] = list[i].number;
-    	child_ctx[28] = list[i].custom;
+    	child_ctx[24] = list[i].x;
+    	child_ctx[25] = list[i].y;
+    	child_ctx[26] = list[i].value;
+    	child_ctx[27] = list[i].index;
+    	child_ctx[28] = list[i].number;
+    	child_ctx[29] = list[i].custom;
     	return child_ctx;
     }
 
-    // (139:4) {#each cells as { x, y, value, index, number, custom }}
+    // (140:4) {#each cells as { x, y, value, index, number, custom }}
     function create_each_block(ctx) {
     	let cell;
     	let current;
 
     	cell = new Cell({
     			props: {
-    				x: /*x*/ ctx[23],
-    				y: /*y*/ ctx[24],
-    				index: /*index*/ ctx[26],
-    				value: /*value*/ ctx[25],
-    				number: /*number*/ ctx[27],
-    				custom: /*custom*/ ctx[28],
+    				x: /*x*/ ctx[24],
+    				y: /*y*/ ctx[25],
+    				index: /*index*/ ctx[27],
+    				value: /*value*/ ctx[26],
+    				number: /*number*/ ctx[28],
+    				custom: /*custom*/ ctx[29],
     				changeDelay: /*isRevealing*/ ctx[2]
-    				? /*revealDuration*/ ctx[3] / /*cells*/ ctx[0].length * /*index*/ ctx[26]
+    				? /*revealDuration*/ ctx[4] / /*cells*/ ctx[0].length * /*index*/ ctx[27]
     				: 0,
     				isRevealing: /*isRevealing*/ ctx[2],
-    				isFocused: /*focusedCellIndex*/ ctx[1] == /*index*/ ctx[26],
-    				isSecondarilyFocused: /*secondarilyFocusedCells*/ ctx[4].includes(/*index*/ ctx[26]),
-    				onFocusCell: /*onFocusCell*/ ctx[9],
-    				onCellUpdate: /*onCellUpdate*/ ctx[7],
-    				onFocusClueDiff: /*onFocusClueDiff*/ ctx[10],
-    				onMoveFocus: /*onMoveFocus*/ ctx[11],
-    				onFlipDirection: /*onFlipDirection*/ ctx[12],
-    				onHistoricalChange: /*onHistoricalChange*/ ctx[8]
+    				isFocused: /*focusedCellIndex*/ ctx[1] == /*index*/ ctx[27] && !/*isDisableHighlight*/ ctx[3],
+    				isSecondarilyFocused: /*secondarilyFocusedCells*/ ctx[5].includes(/*index*/ ctx[27]) && !/*isDisableHighlight*/ ctx[3],
+    				onFocusCell: /*onFocusCell*/ ctx[10],
+    				onCellUpdate: /*onCellUpdate*/ ctx[8],
+    				onFocusClueDiff: /*onFocusClueDiff*/ ctx[11],
+    				onMoveFocus: /*onMoveFocus*/ ctx[12],
+    				onFlipDirection: /*onFlipDirection*/ ctx[13],
+    				onHistoricalChange: /*onHistoricalChange*/ ctx[9]
     			}
     		});
 
@@ -1323,20 +1323,20 @@ var app = (function () {
     		},
     		p(ctx, dirty) {
     			const cell_changes = {};
-    			if (dirty & /*cells*/ 1) cell_changes.x = /*x*/ ctx[23];
-    			if (dirty & /*cells*/ 1) cell_changes.y = /*y*/ ctx[24];
-    			if (dirty & /*cells*/ 1) cell_changes.index = /*index*/ ctx[26];
-    			if (dirty & /*cells*/ 1) cell_changes.value = /*value*/ ctx[25];
-    			if (dirty & /*cells*/ 1) cell_changes.number = /*number*/ ctx[27];
-    			if (dirty & /*cells*/ 1) cell_changes.custom = /*custom*/ ctx[28];
+    			if (dirty[0] & /*cells*/ 1) cell_changes.x = /*x*/ ctx[24];
+    			if (dirty[0] & /*cells*/ 1) cell_changes.y = /*y*/ ctx[25];
+    			if (dirty[0] & /*cells*/ 1) cell_changes.index = /*index*/ ctx[27];
+    			if (dirty[0] & /*cells*/ 1) cell_changes.value = /*value*/ ctx[26];
+    			if (dirty[0] & /*cells*/ 1) cell_changes.number = /*number*/ ctx[28];
+    			if (dirty[0] & /*cells*/ 1) cell_changes.custom = /*custom*/ ctx[29];
 
-    			if (dirty & /*isRevealing, revealDuration, cells*/ 13) cell_changes.changeDelay = /*isRevealing*/ ctx[2]
-    			? /*revealDuration*/ ctx[3] / /*cells*/ ctx[0].length * /*index*/ ctx[26]
+    			if (dirty[0] & /*isRevealing, revealDuration, cells*/ 21) cell_changes.changeDelay = /*isRevealing*/ ctx[2]
+    			? /*revealDuration*/ ctx[4] / /*cells*/ ctx[0].length * /*index*/ ctx[27]
     			: 0;
 
-    			if (dirty & /*isRevealing*/ 4) cell_changes.isRevealing = /*isRevealing*/ ctx[2];
-    			if (dirty & /*focusedCellIndex, cells*/ 3) cell_changes.isFocused = /*focusedCellIndex*/ ctx[1] == /*index*/ ctx[26];
-    			if (dirty & /*secondarilyFocusedCells, cells*/ 17) cell_changes.isSecondarilyFocused = /*secondarilyFocusedCells*/ ctx[4].includes(/*index*/ ctx[26]);
+    			if (dirty[0] & /*isRevealing*/ 4) cell_changes.isRevealing = /*isRevealing*/ ctx[2];
+    			if (dirty[0] & /*focusedCellIndex, cells, isDisableHighlight*/ 11) cell_changes.isFocused = /*focusedCellIndex*/ ctx[1] == /*index*/ ctx[27] && !/*isDisableHighlight*/ ctx[3];
+    			if (dirty[0] & /*secondarilyFocusedCells, cells, isDisableHighlight*/ 41) cell_changes.isSecondarilyFocused = /*secondarilyFocusedCells*/ ctx[5].includes(/*index*/ ctx[27]) && !/*isDisableHighlight*/ ctx[3];
     			cell.$set(cell_changes);
     		},
     		i(local) {
@@ -1396,7 +1396,7 @@ var app = (function () {
     			this.h();
     		},
     		h() {
-    			attr(svg, "viewBox", svg_viewBox_value = "0 0 " + /*w*/ ctx[5] + " " + /*h*/ ctx[6]);
+    			attr(svg, "viewBox", svg_viewBox_value = "0 0 " + /*w*/ ctx[6] + " " + /*h*/ ctx[7]);
     			attr(svg, "class", "svelte-td5hz8");
     			attr(section, "class", "puzzle svelte-td5hz8");
     		},
@@ -1410,8 +1410,8 @@ var app = (function () {
 
     			current = true;
     		},
-    		p(ctx, [dirty]) {
-    			if (dirty & /*cells, isRevealing, revealDuration, focusedCellIndex, secondarilyFocusedCells, onFocusCell, onCellUpdate, onFocusClueDiff, onMoveFocus, onFlipDirection, onHistoricalChange*/ 8095) {
+    		p(ctx, dirty) {
+    			if (dirty[0] & /*cells, isRevealing, revealDuration, focusedCellIndex, isDisableHighlight, secondarilyFocusedCells, onFocusCell, onCellUpdate, onFocusClueDiff, onMoveFocus, onFlipDirection, onHistoricalChange*/ 16191) {
     				each_value = /*cells*/ ctx[0];
     				let i;
 
@@ -1472,6 +1472,7 @@ var app = (function () {
     	let { focusedCellIndex } = $$props;
     	let { focusedCell } = $$props;
     	let { isRevealing } = $$props;
+    	let { isDisableHighlight } = $$props;
     	let { revealDuration = 0 } = $$props;
     	let cellsHistoryIndex = 0;
     	let cellsHistory = [];
@@ -1481,7 +1482,7 @@ var app = (function () {
     	let secondarilyFocusedCells = [];
 
     	const updateSecondarilyFocusedCells = () => {
-    		$$invalidate(4, secondarilyFocusedCells = getSecondarilyFocusedCells({ cells, focusedDirection, focusedCell }));
+    		$$invalidate(5, secondarilyFocusedCells = getSecondarilyFocusedCells({ cells, focusedDirection, focusedCell }));
     	};
 
     	const onCellUpdate = (index, newValue, diff = 1) => {
@@ -1546,7 +1547,7 @@ var app = (function () {
 
     	const onMoveFocus = (direction, diff) => {
     		if (focusedDirection != direction) {
-    			$$invalidate(13, focusedDirection = direction);
+    			$$invalidate(14, focusedDirection = direction);
     		} else {
     			const nextCell = getCellAfterDiff({ diff, cells, direction, focusedCell });
     			if (!nextCell) return;
@@ -1555,27 +1556,28 @@ var app = (function () {
     	};
 
     	const onFlipDirection = () => {
-    		$$invalidate(13, focusedDirection = ({ across: "down", down: "across" })[focusedDirection]);
+    		$$invalidate(14, focusedDirection = ({ across: "down", down: "across" })[focusedDirection]);
     	};
 
     	$$self.$$set = $$props => {
-    		if ("clues" in $$props) $$invalidate(14, clues = $$props.clues);
+    		if ("clues" in $$props) $$invalidate(15, clues = $$props.clues);
     		if ("cells" in $$props) $$invalidate(0, cells = $$props.cells);
-    		if ("focusedDirection" in $$props) $$invalidate(13, focusedDirection = $$props.focusedDirection);
+    		if ("focusedDirection" in $$props) $$invalidate(14, focusedDirection = $$props.focusedDirection);
     		if ("focusedCellIndex" in $$props) $$invalidate(1, focusedCellIndex = $$props.focusedCellIndex);
-    		if ("focusedCell" in $$props) $$invalidate(15, focusedCell = $$props.focusedCell);
+    		if ("focusedCell" in $$props) $$invalidate(16, focusedCell = $$props.focusedCell);
     		if ("isRevealing" in $$props) $$invalidate(2, isRevealing = $$props.isRevealing);
-    		if ("revealDuration" in $$props) $$invalidate(3, revealDuration = $$props.revealDuration);
+    		if ("isDisableHighlight" in $$props) $$invalidate(3, isDisableHighlight = $$props.isDisableHighlight);
+    		if ("revealDuration" in $$props) $$invalidate(4, revealDuration = $$props.revealDuration);
     	};
 
     	let sortedCellsInDirection;
 
     	$$self.$$.update = () => {
-    		if ($$self.$$.dirty & /*cells, focusedCellIndex, focusedDirection*/ 8195) {
+    		if ($$self.$$.dirty[0] & /*cells, focusedCellIndex, focusedDirection*/ 16387) {
     			 (updateSecondarilyFocusedCells());
     		}
 
-    		if ($$self.$$.dirty & /*cells, focusedDirection*/ 8193) {
+    		if ($$self.$$.dirty[0] & /*cells, focusedDirection*/ 16385) {
     			 sortedCellsInDirection = [...cells].sort((a, b) => focusedDirection == "down"
     			? a.x - b.x || a.y - b.y
     			: a.y - b.y || a.x - b.x);
@@ -1586,6 +1588,7 @@ var app = (function () {
     		cells,
     		focusedCellIndex,
     		isRevealing,
+    		isDisableHighlight,
     		revealDuration,
     		secondarilyFocusedCells,
     		w,
@@ -1606,15 +1609,24 @@ var app = (function () {
     	constructor(options) {
     		super();
 
-    		init(this, options, instance$2, create_fragment$2, safe_not_equal, {
-    			clues: 14,
-    			cells: 0,
-    			focusedDirection: 13,
-    			focusedCellIndex: 1,
-    			focusedCell: 15,
-    			isRevealing: 2,
-    			revealDuration: 3
-    		});
+    		init(
+    			this,
+    			options,
+    			instance$2,
+    			create_fragment$2,
+    			safe_not_equal,
+    			{
+    				clues: 15,
+    				cells: 0,
+    				focusedDirection: 14,
+    				focusedCellIndex: 1,
+    				focusedCell: 16,
+    				isRevealing: 2,
+    				isDisableHighlight: 3,
+    				revealDuration: 4
+    			},
+    			[-1, -1]
+    		);
     	}
     }
 
@@ -1671,9 +1683,10 @@ var app = (function () {
     			this.h();
     		},
     		h() {
-    			attr(button, "class", "clue svelte-1j61t0g");
-    			toggle_class(button, "is-number-focused", /*isNumberFocused*/ ctx[2]);
-    			toggle_class(button, "is-direction-focused", /*isDirectionFocused*/ ctx[3]);
+    			attr(button, "class", "clue svelte-1jz5ixd");
+    			toggle_class(button, "is-number-focused", /*isNumberFocused*/ ctx[3]);
+    			toggle_class(button, "is-direction-focused", /*isDirectionFocused*/ ctx[4]);
+    			toggle_class(button, "is-filled", /*isFilled*/ ctx[2]);
     		},
     		m(target, anchor) {
     			insert(target, li, anchor);
@@ -1681,14 +1694,14 @@ var app = (function () {
     			append(button, t0);
     			append(button, t1);
     			append(button, t2);
-    			/*li_binding*/ ctx[7](li);
+    			/*li_binding*/ ctx[8](li);
 
     			if (!mounted) {
     				dispose = [
     					listen(button, "click", function () {
-    						if (is_function(/*onFocus*/ ctx[4])) /*onFocus*/ ctx[4].apply(this, arguments);
+    						if (is_function(/*onFocus*/ ctx[5])) /*onFocus*/ ctx[5].apply(this, arguments);
     					}),
-    					action_destroyer(scrollTo_action = scrollTo.call(null, li, /*isFocused*/ ctx[6]))
+    					action_destroyer(scrollTo_action = scrollTo.call(null, li, /*isFocused*/ ctx[7]))
     				];
 
     				mounted = true;
@@ -1699,21 +1712,25 @@ var app = (function () {
     			if (dirty & /*number*/ 1) set_data(t0, /*number*/ ctx[0]);
     			if (dirty & /*clue*/ 2) set_data(t2, /*clue*/ ctx[1]);
 
-    			if (dirty & /*isNumberFocused*/ 4) {
-    				toggle_class(button, "is-number-focused", /*isNumberFocused*/ ctx[2]);
+    			if (dirty & /*isNumberFocused*/ 8) {
+    				toggle_class(button, "is-number-focused", /*isNumberFocused*/ ctx[3]);
     			}
 
-    			if (dirty & /*isDirectionFocused*/ 8) {
-    				toggle_class(button, "is-direction-focused", /*isDirectionFocused*/ ctx[3]);
+    			if (dirty & /*isDirectionFocused*/ 16) {
+    				toggle_class(button, "is-direction-focused", /*isDirectionFocused*/ ctx[4]);
     			}
 
-    			if (scrollTo_action && is_function(scrollTo_action.update) && dirty & /*isFocused*/ 64) scrollTo_action.update.call(null, /*isFocused*/ ctx[6]);
+    			if (dirty & /*isFilled*/ 4) {
+    				toggle_class(button, "is-filled", /*isFilled*/ ctx[2]);
+    			}
+
+    			if (scrollTo_action && is_function(scrollTo_action.update) && dirty & /*isFocused*/ 128) scrollTo_action.update.call(null, /*isFocused*/ ctx[7]);
     		},
     		i: noop,
     		o: noop,
     		d(detaching) {
     			if (detaching) detach(li);
-    			/*li_binding*/ ctx[7](null);
+    			/*li_binding*/ ctx[8](null);
     			mounted = false;
     			run_all(dispose);
     		}
@@ -1723,6 +1740,7 @@ var app = (function () {
     function instance$3($$self, $$props, $$invalidate) {
     	let { number } = $$props;
     	let { clue } = $$props;
+    	let { isFilled } = $$props;
     	let { isNumberFocused = false } = $$props;
     	let { isDirectionFocused = false } = $$props;
 
@@ -1735,29 +1753,31 @@ var app = (function () {
     	function li_binding($$value) {
     		binding_callbacks[$$value ? "unshift" : "push"](() => {
     			element = $$value;
-    			$$invalidate(5, element);
+    			$$invalidate(6, element);
     		});
     	}
 
     	$$self.$$set = $$props => {
     		if ("number" in $$props) $$invalidate(0, number = $$props.number);
     		if ("clue" in $$props) $$invalidate(1, clue = $$props.clue);
-    		if ("isNumberFocused" in $$props) $$invalidate(2, isNumberFocused = $$props.isNumberFocused);
-    		if ("isDirectionFocused" in $$props) $$invalidate(3, isDirectionFocused = $$props.isDirectionFocused);
-    		if ("onFocus" in $$props) $$invalidate(4, onFocus = $$props.onFocus);
+    		if ("isFilled" in $$props) $$invalidate(2, isFilled = $$props.isFilled);
+    		if ("isNumberFocused" in $$props) $$invalidate(3, isNumberFocused = $$props.isNumberFocused);
+    		if ("isDirectionFocused" in $$props) $$invalidate(4, isDirectionFocused = $$props.isDirectionFocused);
+    		if ("onFocus" in $$props) $$invalidate(5, onFocus = $$props.onFocus);
     	};
 
     	let isFocused;
 
     	$$self.$$.update = () => {
-    		if ($$self.$$.dirty & /*isNumberFocused*/ 4) {
-    			 $$invalidate(6, isFocused = isNumberFocused);
+    		if ($$self.$$.dirty & /*isNumberFocused*/ 8) {
+    			 $$invalidate(7, isFocused = isNumberFocused);
     		}
     	};
 
     	return [
     		number,
     		clue,
+    		isFilled,
     		isNumberFocused,
     		isDirectionFocused,
     		onFocus,
@@ -1774,9 +1794,10 @@ var app = (function () {
     		init(this, options, instance$3, create_fragment$3, safe_not_equal, {
     			number: 0,
     			clue: 1,
-    			isNumberFocused: 2,
-    			isDirectionFocused: 3,
-    			onFocus: 4
+    			isFilled: 2,
+    			isNumberFocused: 3,
+    			isDirectionFocused: 4,
+    			onFocus: 5
     		});
     	}
     }
@@ -1802,6 +1823,7 @@ var app = (function () {
     			props: {
     				clue: /*clue*/ ctx[6].clue,
     				number: /*clue*/ ctx[6].number,
+    				isFilled: /*clue*/ ctx[6].isFilled,
     				isNumberFocused: /*focusedClueNumbers*/ ctx[2][/*direction*/ ctx[0]] == /*clue*/ ctx[6].number,
     				isDirectionFocused: /*isDirectionFocused*/ ctx[3],
     				onFocus: func
@@ -1824,6 +1846,7 @@ var app = (function () {
     			const clue_changes = {};
     			if (dirty & /*clues*/ 2) clue_changes.clue = /*clue*/ ctx[6].clue;
     			if (dirty & /*clues*/ 2) clue_changes.number = /*clue*/ ctx[6].number;
+    			if (dirty & /*clues*/ 2) clue_changes.isFilled = /*clue*/ ctx[6].isFilled;
     			if (dirty & /*focusedClueNumbers, direction, clues*/ 7) clue_changes.isNumberFocused = /*focusedClueNumbers*/ ctx[2][/*direction*/ ctx[0]] == /*clue*/ ctx[6].number;
     			if (dirty & /*isDirectionFocused*/ 8) clue_changes.isDirectionFocused = /*isDirectionFocused*/ ctx[3];
     			if (dirty & /*onClueFocus, clues*/ 18) clue_changes.onFocus = func;
@@ -2653,13 +2676,13 @@ var app = (function () {
     	}
     }
 
-    function addClueNumber(data) {
-      // add x/y end coords
-      const withId = data.map((d) => ({
+    function createClues(data) {
+      const withId = data.map((d, i) => ({
     		...d,
+    		index: i,
         id: `${d.x}-${d.y}`,
       }));
-
+    	
       // sort asc by start position of clue so we have proper clue ordering
       withId.sort((a, b) => a.y - b.y || a.x - b.x);
 
@@ -2680,15 +2703,11 @@ var app = (function () {
         };
       });
 
-    	withNumber.sort((a, b) => a.number - b.number);
 
-    	return withNumber;
-    }
-
-    function createCells(data) {
-      const cells = data.map((d) => {
-        const chars = d.answer.split("");
-        return chars.map((answer, i) => {
+    	// create cells for each letter
+    	const withCells = withNumber.map(d => {
+    		const chars = d.answer.split("");
+        const cells = chars.map((answer, i) => {
           const x = d.x + (d.direction === "across" ? i : 0);
           const y = d.y + (d.direction === "down" ? i : 0);
           const number = i === 0 ? d.number : "";
@@ -2707,8 +2726,19 @@ var app = (function () {
             custom,
           };
         });
-      });
+    		return {
+    			...d,
+    			cells
+    		}
+    	});
 
+    	withCells.sort((a, b) => a.number - b.number);
+
+    	return withCells;
+    }
+
+    function createCells(data) {
+      const cells = data.map(d => d.cells);
       const flat = [].concat(...cells);
       let dict = {};
 
@@ -2793,32 +2823,32 @@ var app = (function () {
     	let current;
 
     	function clues_1_focusedCellIndex_binding(value) {
-    		/*clues_1_focusedCellIndex_binding*/ ctx[17].call(null, value);
+    		/*clues_1_focusedCellIndex_binding*/ ctx[19].call(null, value);
     	}
 
     	function clues_1_focusedCell_binding(value) {
-    		/*clues_1_focusedCell_binding*/ ctx[18].call(null, value);
+    		/*clues_1_focusedCell_binding*/ ctx[20].call(null, value);
     	}
 
     	function clues_1_focusedDirection_binding(value) {
-    		/*clues_1_focusedDirection_binding*/ ctx[19].call(null, value);
+    		/*clues_1_focusedDirection_binding*/ ctx[21].call(null, value);
     	}
 
     	let clues_1_props = {
-    		clues: /*clues*/ ctx[11],
-    		cellIndexMap: /*cellIndexMap*/ ctx[8]
+    		clues: /*clues*/ ctx[3],
+    		cellIndexMap: /*cellIndexMap*/ ctx[9]
     	};
 
-    	if (/*focusedCellIndex*/ ctx[5] !== void 0) {
-    		clues_1_props.focusedCellIndex = /*focusedCellIndex*/ ctx[5];
+    	if (/*focusedCellIndex*/ ctx[6] !== void 0) {
+    		clues_1_props.focusedCellIndex = /*focusedCellIndex*/ ctx[6];
     	}
 
-    	if (/*focusedCell*/ ctx[7] !== void 0) {
-    		clues_1_props.focusedCell = /*focusedCell*/ ctx[7];
+    	if (/*focusedCell*/ ctx[8] !== void 0) {
+    		clues_1_props.focusedCell = /*focusedCell*/ ctx[8];
     	}
 
-    	if (/*focusedDirection*/ ctx[4] !== void 0) {
-    		clues_1_props.focusedDirection = /*focusedDirection*/ ctx[4];
+    	if (/*focusedDirection*/ ctx[5] !== void 0) {
+    		clues_1_props.focusedDirection = /*focusedDirection*/ ctx[5];
     	}
 
     	clues_1 = new Clues({ props: clues_1_props });
@@ -2827,34 +2857,35 @@ var app = (function () {
     	binding_callbacks.push(() => bind(clues_1, "focusedDirection", clues_1_focusedDirection_binding));
 
     	function puzzle_cells_binding(value) {
-    		/*puzzle_cells_binding*/ ctx[20].call(null, value);
+    		/*puzzle_cells_binding*/ ctx[22].call(null, value);
     	}
 
     	function puzzle_focusedCellIndex_binding(value) {
-    		/*puzzle_focusedCellIndex_binding*/ ctx[21].call(null, value);
+    		/*puzzle_focusedCellIndex_binding*/ ctx[23].call(null, value);
     	}
 
     	function puzzle_focusedDirection_binding(value) {
-    		/*puzzle_focusedDirection_binding*/ ctx[22].call(null, value);
+    		/*puzzle_focusedDirection_binding*/ ctx[24].call(null, value);
     	}
 
     	let puzzle_props = {
-    		clues: /*clues*/ ctx[11],
-    		focusedCell: /*focusedCell*/ ctx[7],
-    		isRevealing: /*isRevealing*/ ctx[6],
+    		clues: /*clues*/ ctx[3],
+    		focusedCell: /*focusedCell*/ ctx[8],
+    		isRevealing: /*isRevealing*/ ctx[7],
+    		isDisableHighlight: /*isDisableHighlight*/ ctx[12],
     		revealDuration: /*revealDuration*/ ctx[2]
     	};
 
-    	if (/*cells*/ ctx[3] !== void 0) {
-    		puzzle_props.cells = /*cells*/ ctx[3];
+    	if (/*cells*/ ctx[4] !== void 0) {
+    		puzzle_props.cells = /*cells*/ ctx[4];
     	}
 
-    	if (/*focusedCellIndex*/ ctx[5] !== void 0) {
-    		puzzle_props.focusedCellIndex = /*focusedCellIndex*/ ctx[5];
+    	if (/*focusedCellIndex*/ ctx[6] !== void 0) {
+    		puzzle_props.focusedCellIndex = /*focusedCellIndex*/ ctx[6];
     	}
 
-    	if (/*focusedDirection*/ ctx[4] !== void 0) {
-    		puzzle_props.focusedDirection = /*focusedDirection*/ ctx[4];
+    	if (/*focusedDirection*/ ctx[5] !== void 0) {
+    		puzzle_props.focusedDirection = /*focusedDirection*/ ctx[5];
     	}
 
     	puzzle = new Puzzle({ props: puzzle_props });
@@ -2881,47 +2912,50 @@ var app = (function () {
     		},
     		p(ctx, dirty) {
     			const clues_1_changes = {};
-    			if (dirty & /*cellIndexMap*/ 256) clues_1_changes.cellIndexMap = /*cellIndexMap*/ ctx[8];
+    			if (dirty[0] & /*clues*/ 8) clues_1_changes.clues = /*clues*/ ctx[3];
+    			if (dirty[0] & /*cellIndexMap*/ 512) clues_1_changes.cellIndexMap = /*cellIndexMap*/ ctx[9];
 
-    			if (!updating_focusedCellIndex && dirty & /*focusedCellIndex*/ 32) {
+    			if (!updating_focusedCellIndex && dirty[0] & /*focusedCellIndex*/ 64) {
     				updating_focusedCellIndex = true;
-    				clues_1_changes.focusedCellIndex = /*focusedCellIndex*/ ctx[5];
+    				clues_1_changes.focusedCellIndex = /*focusedCellIndex*/ ctx[6];
     				add_flush_callback(() => updating_focusedCellIndex = false);
     			}
 
-    			if (!updating_focusedCell && dirty & /*focusedCell*/ 128) {
+    			if (!updating_focusedCell && dirty[0] & /*focusedCell*/ 256) {
     				updating_focusedCell = true;
-    				clues_1_changes.focusedCell = /*focusedCell*/ ctx[7];
+    				clues_1_changes.focusedCell = /*focusedCell*/ ctx[8];
     				add_flush_callback(() => updating_focusedCell = false);
     			}
 
-    			if (!updating_focusedDirection && dirty & /*focusedDirection*/ 16) {
+    			if (!updating_focusedDirection && dirty[0] & /*focusedDirection*/ 32) {
     				updating_focusedDirection = true;
-    				clues_1_changes.focusedDirection = /*focusedDirection*/ ctx[4];
+    				clues_1_changes.focusedDirection = /*focusedDirection*/ ctx[5];
     				add_flush_callback(() => updating_focusedDirection = false);
     			}
 
     			clues_1.$set(clues_1_changes);
     			const puzzle_changes = {};
-    			if (dirty & /*focusedCell*/ 128) puzzle_changes.focusedCell = /*focusedCell*/ ctx[7];
-    			if (dirty & /*isRevealing*/ 64) puzzle_changes.isRevealing = /*isRevealing*/ ctx[6];
-    			if (dirty & /*revealDuration*/ 4) puzzle_changes.revealDuration = /*revealDuration*/ ctx[2];
+    			if (dirty[0] & /*clues*/ 8) puzzle_changes.clues = /*clues*/ ctx[3];
+    			if (dirty[0] & /*focusedCell*/ 256) puzzle_changes.focusedCell = /*focusedCell*/ ctx[8];
+    			if (dirty[0] & /*isRevealing*/ 128) puzzle_changes.isRevealing = /*isRevealing*/ ctx[7];
+    			if (dirty[0] & /*isDisableHighlight*/ 4096) puzzle_changes.isDisableHighlight = /*isDisableHighlight*/ ctx[12];
+    			if (dirty[0] & /*revealDuration*/ 4) puzzle_changes.revealDuration = /*revealDuration*/ ctx[2];
 
-    			if (!updating_cells && dirty & /*cells*/ 8) {
+    			if (!updating_cells && dirty[0] & /*cells*/ 16) {
     				updating_cells = true;
-    				puzzle_changes.cells = /*cells*/ ctx[3];
+    				puzzle_changes.cells = /*cells*/ ctx[4];
     				add_flush_callback(() => updating_cells = false);
     			}
 
-    			if (!updating_focusedCellIndex_1 && dirty & /*focusedCellIndex*/ 32) {
+    			if (!updating_focusedCellIndex_1 && dirty[0] & /*focusedCellIndex*/ 64) {
     				updating_focusedCellIndex_1 = true;
-    				puzzle_changes.focusedCellIndex = /*focusedCellIndex*/ ctx[5];
+    				puzzle_changes.focusedCellIndex = /*focusedCellIndex*/ ctx[6];
     				add_flush_callback(() => updating_focusedCellIndex_1 = false);
     			}
 
-    			if (!updating_focusedDirection_1 && dirty & /*focusedDirection*/ 16) {
+    			if (!updating_focusedDirection_1 && dirty[0] & /*focusedDirection*/ 32) {
     				updating_focusedDirection_1 = true;
-    				puzzle_changes.focusedDirection = /*focusedDirection*/ ctx[4];
+    				puzzle_changes.focusedDirection = /*focusedDirection*/ ctx[5];
     				add_flush_callback(() => updating_focusedDirection_1 = false);
     			}
 
@@ -2946,7 +2980,7 @@ var app = (function () {
     	};
     }
 
-    // (92:2) {#if isComplete && !isRevealing}
+    // (121:2) {#if isComplete && !isRevealing}
     function create_if_block$3(ctx) {
     	let completedmessage;
     	let current;
@@ -2993,9 +3027,9 @@ var app = (function () {
     			}
     		});
 
-    	toolbar.$on("event", /*onToolbarEvent*/ ctx[13]);
-    	let if_block0 = /*validated*/ ctx[12] && create_if_block_1$1(ctx);
-    	let if_block1 = /*isComplete*/ ctx[9] && !/*isRevealing*/ ctx[6] && create_if_block$3();
+    	toolbar.$on("event", /*onToolbarEvent*/ ctx[14]);
+    	let if_block0 = /*validated*/ ctx[13] && create_if_block_1$1(ctx);
+    	let if_block1 = /*isComplete*/ ctx[10] && !/*isRevealing*/ ctx[7] && create_if_block$3();
 
     	return {
     		c() {
@@ -3019,7 +3053,7 @@ var app = (function () {
     			this.h();
     		},
     		h() {
-    			attr(article, "class", article_class_value = "crossword " + /*themeClass*/ ctx[10] + " svelte-b1thkj");
+    			attr(article, "class", article_class_value = "crossword " + /*themeClass*/ ctx[11] + " svelte-gxh9m5");
     		},
     		m(target, anchor) {
     			mount_component(toolbar, target, anchor);
@@ -3030,16 +3064,16 @@ var app = (function () {
     			if (if_block1) if_block1.m(article, null);
     			current = true;
     		},
-    		p(ctx, [dirty]) {
+    		p(ctx, dirty) {
     			const toolbar_changes = {};
-    			if (dirty & /*hideReset*/ 1) toolbar_changes.hideReset = /*hideReset*/ ctx[0];
-    			if (dirty & /*hideReveal*/ 2) toolbar_changes.hideReveal = /*hideReveal*/ ctx[1];
+    			if (dirty[0] & /*hideReset*/ 1) toolbar_changes.hideReset = /*hideReset*/ ctx[0];
+    			if (dirty[0] & /*hideReveal*/ 2) toolbar_changes.hideReveal = /*hideReveal*/ ctx[1];
     			toolbar.$set(toolbar_changes);
-    			if (/*validated*/ ctx[12]) if_block0.p(ctx, dirty);
+    			if (/*validated*/ ctx[13]) if_block0.p(ctx, dirty);
 
-    			if (/*isComplete*/ ctx[9] && !/*isRevealing*/ ctx[6]) {
+    			if (/*isComplete*/ ctx[10] && !/*isRevealing*/ ctx[7]) {
     				if (if_block1) {
-    					if (dirty & /*isComplete, isRevealing*/ 576) {
+    					if (dirty[0] & /*isComplete, isRevealing*/ 1152) {
     						transition_in(if_block1, 1);
     					}
     				} else {
@@ -3058,7 +3092,7 @@ var app = (function () {
     				check_outros();
     			}
 
-    			if (!current || dirty & /*themeClass*/ 1024 && article_class_value !== (article_class_value = "crossword " + /*themeClass*/ ctx[10] + " svelte-b1thkj")) {
+    			if (!current || dirty[0] & /*themeClass*/ 2048 && article_class_value !== (article_class_value = "crossword " + /*themeClass*/ ctx[11] + " svelte-gxh9m5")) {
     				attr(article, "class", article_class_value);
     			}
     		},
@@ -3092,37 +3126,63 @@ var app = (function () {
     	let { revealed = false } = $$props;
     	let { revealDuration = 1000 } = $$props;
     	let { theme } = $$props;
-    	let clues = addClueNumber(data);
-    	let validated = validateClues(clues);
-    	let cells = [];
+    	let { disableHighlight } = $$props;
+    	let originalClues = createClues(data);
+    	let validated = validateClues(originalClues);
+    	let clues = originalClues.map(d => ({ ...d }));
+    	let cells = createCells(originalClues);
     	let focusedDirection = "across";
     	let focusedCellIndex = 0;
     	let isRevealing = false;
-    	let timeout;
+    	let revealTimeout;
+
+    	function checkClues() {
+    		return clues.map(d => {
+    			const index = d.index;
+
+    			const cellChecks = d.cells.map(c => {
+    				const { value } = cells.find(e => e.id === c.id);
+    				const hasValue = !!value;
+    				const hasCorrect = value === c.answer;
+    				return { hasValue, hasCorrect };
+    			});
+
+    			const isCorrect = cellChecks.filter(c => c.hasCorrect).length === d.answer.length;
+    			const isFilled = cellChecks.filter(c => c.hasValue).length === d.answer.length;
+    			return { ...d, isCorrect, isFilled };
+    		});
+    	}
+
+    	function clear() {
+    		$$invalidate(7, isRevealing = false);
+    		$$invalidate(6, focusedCellIndex = 0);
+    		$$invalidate(5, focusedDirection = "across");
+    	}
 
     	function onReset() {
-    		$$invalidate(6, isRevealing = false);
-    		$$invalidate(3, cells = cells.map(cell => ({ ...cell, value: "" })));
-    		$$invalidate(14, revealed = false);
-    		startReveal();
+    		clear();
+    		if (revealTimeout) clearTimeout(revealTimeout);
+    		$$invalidate(4, cells = cells.map(cell => ({ ...cell, value: "" })));
+    		$$invalidate(15, revealed = false);
     	}
 
     	function onReveal() {
-    		$$invalidate(6, isRevealing = false);
-    		$$invalidate(3, cells = cells.map(cell => ({ ...cell, value: cell.answer })));
-    		$$invalidate(14, revealed = true);
+    		if (revealed) return true;
+    		clear();
+    		$$invalidate(4, cells = cells.map(cell => ({ ...cell, value: cell.answer })));
+    		$$invalidate(15, revealed = true);
     		startReveal();
     	}
 
     	function startReveal() {
-    		$$invalidate(6, isRevealing = true);
-    		if (timeout) clearTimeout(timeout);
+    		$$invalidate(7, isRevealing = true);
+    		if (revealTimeout) clearTimeout(revealTimeout);
 
-    		timeout = setTimeout(
+    		revealTimeout = setTimeout(
     			() => {
-    				$$invalidate(6, isRevealing = false);
+    				$$invalidate(7, isRevealing = false);
     			},
-    			revealDuration + 300
+    			revealDuration + 250
     		);
     	}
 
@@ -3132,41 +3192,42 @@ var app = (function () {
 
     	function clues_1_focusedCellIndex_binding(value) {
     		focusedCellIndex = value;
-    		$$invalidate(5, focusedCellIndex);
+    		$$invalidate(6, focusedCellIndex);
     	}
 
     	function clues_1_focusedCell_binding(value) {
     		focusedCell = value;
-    		((($$invalidate(7, focusedCell), $$invalidate(3, cells)), $$invalidate(5, focusedCellIndex)), $$invalidate(11, clues));
+    		(($$invalidate(8, focusedCell), $$invalidate(4, cells)), $$invalidate(6, focusedCellIndex));
     	}
 
     	function clues_1_focusedDirection_binding(value) {
     		focusedDirection = value;
-    		$$invalidate(4, focusedDirection);
+    		$$invalidate(5, focusedDirection);
     	}
 
     	function puzzle_cells_binding(value) {
     		cells = value;
-    		($$invalidate(3, cells), $$invalidate(11, clues));
+    		$$invalidate(4, cells);
     	}
 
     	function puzzle_focusedCellIndex_binding(value) {
     		focusedCellIndex = value;
-    		$$invalidate(5, focusedCellIndex);
+    		$$invalidate(6, focusedCellIndex);
     	}
 
     	function puzzle_focusedDirection_binding(value) {
     		focusedDirection = value;
-    		$$invalidate(4, focusedDirection);
+    		$$invalidate(5, focusedDirection);
     	}
 
     	$$self.$$set = $$props => {
-    		if ("data" in $$props) $$invalidate(15, data = $$props.data);
+    		if ("data" in $$props) $$invalidate(16, data = $$props.data);
     		if ("hideReset" in $$props) $$invalidate(0, hideReset = $$props.hideReset);
     		if ("hideReveal" in $$props) $$invalidate(1, hideReveal = $$props.hideReveal);
-    		if ("revealed" in $$props) $$invalidate(14, revealed = $$props.revealed);
+    		if ("revealed" in $$props) $$invalidate(15, revealed = $$props.revealed);
     		if ("revealDuration" in $$props) $$invalidate(2, revealDuration = $$props.revealDuration);
-    		if ("theme" in $$props) $$invalidate(16, theme = $$props.theme);
+    		if ("theme" in $$props) $$invalidate(17, theme = $$props.theme);
+    		if ("disableHighlight" in $$props) $$invalidate(18, disableHighlight = $$props.disableHighlight);
     	};
 
     	let focusedCell;
@@ -3174,35 +3235,43 @@ var app = (function () {
     	let percentCorrect;
     	let isComplete;
     	let themeClass;
+    	let isDisableHighlight;
 
     	$$self.$$.update = () => {
-    		if ($$self.$$.dirty & /*cells, focusedCellIndex*/ 40) {
-    			 $$invalidate(7, focusedCell = cells[focusedCellIndex] || {});
+    		if ($$self.$$.dirty[0] & /*cells, focusedCellIndex*/ 80) {
+    			 $$invalidate(8, focusedCell = cells[focusedCellIndex] || {});
     		}
 
-    		if ($$self.$$.dirty & /*cells*/ 8) {
-    			 $$invalidate(8, cellIndexMap = fromPairs(cells.map(cell => [cell.id, cell.index])));
+    		if ($$self.$$.dirty[0] & /*cells*/ 16) {
+    			 $$invalidate(9, cellIndexMap = fromPairs(cells.map(cell => [cell.id, cell.index])));
     		}
 
-    		if ($$self.$$.dirty & /*cells*/ 8) {
-    			 $$invalidate(24, percentCorrect = cells.filter(d => d.answer == d.value).length / cells.length);
+    		if ($$self.$$.dirty[0] & /*cells*/ 16) {
+    			 $$invalidate(26, percentCorrect = cells.filter(d => d.answer === d.value).length / cells.length);
     		}
 
-    		if ($$self.$$.dirty & /*percentCorrect*/ 16777216) {
-    			 $$invalidate(9, isComplete = percentCorrect == 1);
+    		if ($$self.$$.dirty[0] & /*percentCorrect*/ 67108864) {
+    			 $$invalidate(10, isComplete = percentCorrect == 1);
     		}
 
-    		if ($$self.$$.dirty & /*theme*/ 65536) {
-    			 $$invalidate(10, themeClass = theme ? `theme-${theme}` : "");
+    		if ($$self.$$.dirty[0] & /*theme*/ 131072) {
+    			 $$invalidate(11, themeClass = theme ? `theme-${theme}` : "");
+    		}
+
+    		if ($$self.$$.dirty[0] & /*isComplete, disableHighlight*/ 263168) {
+    			 $$invalidate(12, isDisableHighlight = isComplete && disableHighlight);
+    		}
+
+    		if ($$self.$$.dirty[0] & /*cells*/ 16) {
+    			 ($$invalidate(3, clues = checkClues()));
     		}
     	};
-
-    	 ($$invalidate(3, cells = createCells(clues)));
 
     	return [
     		hideReset,
     		hideReveal,
     		revealDuration,
+    		clues,
     		cells,
     		focusedDirection,
     		focusedCellIndex,
@@ -3211,12 +3280,13 @@ var app = (function () {
     		cellIndexMap,
     		isComplete,
     		themeClass,
-    		clues,
+    		isDisableHighlight,
     		validated,
     		onToolbarEvent,
     		revealed,
     		data,
     		theme,
+    		disableHighlight,
     		clues_1_focusedCellIndex_binding,
     		clues_1_focusedCell_binding,
     		clues_1_focusedDirection_binding,
@@ -3230,14 +3300,23 @@ var app = (function () {
     	constructor(options) {
     		super();
 
-    		init(this, options, instance$8, create_fragment$8, safe_not_equal, {
-    			data: 15,
-    			hideReset: 0,
-    			hideReveal: 1,
-    			revealed: 14,
-    			revealDuration: 2,
-    			theme: 16
-    		});
+    		init(
+    			this,
+    			options,
+    			instance$8,
+    			create_fragment$8,
+    			safe_not_equal,
+    			{
+    				data: 16,
+    				hideReset: 0,
+    				hideReveal: 1,
+    				revealed: 15,
+    				revealDuration: 2,
+    				theme: 17,
+    				disableHighlight: 18
+    			},
+    			[-1, -1]
+    		);
     	}
     }
 

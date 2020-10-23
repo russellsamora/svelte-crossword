@@ -14,6 +14,7 @@
   export let revealed = false;
   export let revealDuration = 1000;
   export let theme;
+	export let disableHighlight;
 
   let clues = addClueNumber(data);
   let validated = validateClues(clues);
@@ -21,29 +22,35 @@
   let focusedDirection = "across";
   let focusedCellIndex = 0;
   let isRevealing = false;
+	let revealTimeout;
 
   $: focusedCell = cells[focusedCellIndex] || {};
   $: clues, (cells = createCells(clues));
   $: cellIndexMap = fromPairs(cells.map((cell) => [cell.id, cell.index]));
-  $: percentCorrect =
-    cells.filter((d) => d.answer == d.value).length / cells.length;
+  $: percentCorrect = cells.filter(d => d.answer === d.value).length / cells.length;
   $: isComplete = percentCorrect == 1;
   $: themeClass = theme ? `theme-${theme}` : "";
+	$: isDisableHighlight = isComplete && disableHighlight;
 
-  let timeout;
+	function clear() {
+		isRevealing = false;
+		focusedCellIndex = 0;
+		focusedDirection = "across";
+	}
 
   function onReset() {
-    isRevealing = false;
+    clear();
+		if (revealTimeout) clearTimeout(revealTimeout);
     cells = cells.map((cell) => ({
       ...cell,
       value: "",
     }));
     revealed = false;
-    startReveal();
   }
 
   function onReveal() {
-    isRevealing = false;
+		if (revealed) return true;
+    clear();
     cells = cells.map((cell) => ({
       ...cell,
       value: cell.answer,
@@ -54,10 +61,10 @@
 
   function startReveal() {
     isRevealing = true;
-    if (timeout) clearTimeout(timeout);
-    timeout = setTimeout(() => {
+    if (revealTimeout) clearTimeout(revealTimeout);
+    revealTimeout = setTimeout(() => {
       isRevealing = false;
-    }, revealDuration + 300);
+    }, revealDuration + 250);
   }
 
   function onToolbarEvent({ detail }) {
@@ -83,6 +90,7 @@
       clues="{clues}"
       focusedCell="{focusedCell}"
       isRevealing="{isRevealing}"
+			isDisableHighlight="{isDisableHighlight}"
       revealDuration="{revealDuration}"
       bind:cells
       bind:focusedCellIndex
@@ -95,12 +103,33 @@
 </article>
 
 <style>
-  article {
-    position: relative;
-    display: flex;
-    flex-direction: var(--clue-puzzle-order, row);
+	.theme-classic {
+    --theme-puzzle-border-color: #1a1a1a;
+    --theme-puzzle-font: -apple-system, Helvetica, sans-serif;
+
+    --theme-clue-font: -apple-system, Helvetica, sans-serif;
+    --theme-clue-text-color: #1a1a1a;
+    --theme-clue-scrollbar-bg: #efefef;
+    --theme-clue-scrollbar-fg: #cdcdcd;
+    --theme-clue-puzzle-order: row;
+    --theme-clue-list-width: 16em;
+
+    --theme-cell-highlight-color: #ffec99;
+    --theme-cell-secondary-color: #ffcc00;
+    --theme-cell-bg-color: #fff;
+    --theme-cell-border-color: #1a1a1a;
+    --theme-cell-border-width: 0.01;
+    --theme-cell-text-color: #1a1a1a;
+    --theme-cell-font-size: 0.7em;
+    --theme-cell-font-weight: 700;
+    --theme-cell-void-color: #1a1a1a;
+
+    --theme-number-font-size: 0.3em;
+    --theme-number-font-weight: 400;
+    --theme-number-color: #8a8a8a;
   }
-  .theme-classic {
+
+	.theme-classic {
     --theme-puzzle-border-color: #1a1a1a;
     --theme-puzzle-font: -apple-system, Helvetica, sans-serif;
 
@@ -153,38 +182,23 @@
   }
 
 	.theme-russell {
-    --theme-puzzle-border-color: red;
-    --theme-puzzle-font: -apple-system, Helvetica, sans-serif;
-
-    --theme-clue-font: -apple-system, Helvetica, sans-serif;
-    --theme-clue-text-color: green;
-    --theme-clue-scrollbar-bg: orange;
-    --theme-clue-scrollbar-fg: pink;
-    --theme-clue-puzzle-order: row;
-    --theme-clue-list-width: 16em;
-
-    --theme-cell-highlight-color: orange;
-    --theme-cell-secondary-color: pink;
-    --theme-cell-bg-color: yellow;
-    --theme-cell-border-color: green;
-    --theme-cell-border-width: 0.027;
-    --theme-cell-text-color: blue;
-    --theme-cell-font-size: 0.76em;
-    --theme-cell-font-weight: 700;
-    --theme-cell-void-color: blue;
-
-    --theme-number-font-size: 0.25em;
-    --theme-number-font-weight: 100;
-    --theme-number-color: blue;
+    
   }
 
   article {
-    --puzzle-border-color: var(
-      --theme-puzzle-border-color,
+		--puzzle-border-color: var(
+			--theme-puzzle-border-color,
       var(--theme-puzzle-border-color)
     );
-    --puzzle-font: var(--theme-puzzle-font, var(--theme-puzzle-font));
-    --clue-font: var(--theme-clue-font, var(--theme-clue-font));
+    --puzzle-font: var(
+			--theme-puzzle-font,
+			var(--theme-puzzle-font)
+		);
+
+    --clue-font: var(
+			--theme-clue-font,
+			var(--theme-clue-font)
+		);
     --clue-text-color: var(
       --theme-clue-text-color,
       var(--theme-clue-text-color)
@@ -205,6 +219,7 @@
       --theme-clue-list-width,
       var(--theme-clue-list-width)
     );
+
     --cell-highlight-color: var(
       --theme-cell-highlight-color,
       var(--theme-cell-highlight-color)
@@ -213,7 +228,10 @@
       --theme-cell-secondary-color,
       var(--theme-cell-secondary-color)
     );
-    --cell-bg-color: var(--theme-cell-bg-color, var(--theme-cell-bg-color));
+    --cell-bg-color: var(
+			--theme-cell-bg-color,
+			var(--theme-cell-bg-color)
+			);
     --cell-border-color: var(
       --theme-cell-border-color,
       var(--theme-cell-border-color)
@@ -226,7 +244,10 @@
       --theme-cell-text-color,
       var(--theme-cell-text-color)
     );
-    --cell-font-size: var(--theme-cell-font-size, var(--theme-cell-font-size));
+    --cell-font-size: var(
+			--theme-cell-font-size,
+			var(--theme-cell-font-size)
+		);
     --cell-font-weight: var(
       --theme-cell-font-weight,
       var(--theme-cell-font-weight)
@@ -235,6 +256,7 @@
       --theme-cell-void-color,
       var(--theme-cell-void-color)
     );
+		
     --number-font-size: var(
       --theme-number-font-size,
       var(--theme-number-font-size)
@@ -243,6 +265,13 @@
       --theme-number-font-weight,
       var(--theme-number-font-weight)
     );
-    --number-color: var(--theme-number-color, var(--theme-number-color));
+    --number-color: var(
+			--theme-number-color,
+			var(--theme-number-color)
+		);
+
+		position: relative;
+    display: flex;
+    flex-direction: var(--clue-puzzle-order, row);
   }
 </style>

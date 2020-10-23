@@ -10,6 +10,7 @@
   export let focusedCellIndex;
   export let focusedCell;
   export let isRevealing;
+	export let isDisableHighlight;
   export let revealDuration = 0;
 
   let cellsHistoryIndex = 0;
@@ -146,8 +147,8 @@
         custom="{custom}"
         changeDelay="{isRevealing ? (revealDuration / cells.length) * index : 0}"
         isRevealing="{isRevealing}"
-        isFocused="{focusedCellIndex == index}"
-        isSecondarilyFocused="{secondarilyFocusedCells.includes(index)}"
+        isFocused="{focusedCellIndex == index && !isDisableHighlight}"
+        isSecondarilyFocused="{secondarilyFocusedCells.includes(index) && !isDisableHighlight}"
         onFocusCell="{onFocusCell}"
         onCellUpdate="{onCellUpdate}"
         onFocusClueDiff="{onFocusClueDiff}"

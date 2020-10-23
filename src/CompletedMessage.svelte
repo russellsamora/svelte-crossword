@@ -9,6 +9,7 @@
   <div class="c" transition:fly="{{ y: 20 }}">
     <div class="content">
       <h3>You did it!</h3>
+      <slot />
       <button on:click="{() => (isOpen = false)}"> View puzzle </button>
     </div>
     <div class="confetti">
@@ -46,16 +47,18 @@
   }
   h3 {
     margin: 0;
-    margin-bottom: 1em;
+    margin-bottom: 0.5em;
   }
 
   button {
+    display: block;
     appearance: none;
     background: white;
     font-weight: 700;
     border-radius: 2em;
     line-height: 1.3em;
     /* color: white; */
+    margin-top: 0.9em;
     padding: 0.9em 1.3em;
     font-size: 0.9em;
     text-transform: uppercase;

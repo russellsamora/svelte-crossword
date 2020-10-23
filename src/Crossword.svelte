@@ -92,15 +92,18 @@
   }
 
   function onToolbarEvent({ detail }) {
+    console.log(detail);
     if (detail === "reset") onReset();
     else if (detail === "reveal") onReveal();
   }
 </script>
 
-<Toolbar
-  hideReset="{hideReset}"
-  hideReveal="{hideReveal}"
-  on:event="{onToolbarEvent}" />
+<slot name="toolbar" onToolbarEvent="{onToolbarEvent}">
+  <Toolbar
+    hideReset="{hideReset}"
+    hideReveal="{hideReveal}"
+    on:event="{onToolbarEvent}" />
+</slot>
 
 <article class="crossword {themeClass}">
   {#if validated}
@@ -122,7 +125,9 @@
   {/if}
 
   {#if isComplete && !isRevealing}
-    <CompletedMessage />
+    <CompletedMessage>
+      <slot name="complete" />
+    </CompletedMessage>
   {/if}
 </article>
 

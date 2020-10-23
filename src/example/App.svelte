@@ -35,6 +35,25 @@
     <p>Custom class name on cells.</p>
     <Crossword data="{dataUSA}" bind:revealed="{revealedUSA}" />
   </section>
+
+  <section>
+    <h1>People in USA Today puzzles</h1>
+    <p>Custom completed content.</p>
+    <Crossword data="{dataUSA}">
+      <div
+        class="toolbar"
+        slot="toolbar"
+        let:onToolbarEvent
+        style="background: skyblue; padding: 1em; margin-bottom: 2em">
+        <button on:click="{() => onToolbarEvent('reset')}">reset</button>
+        <button on:click="{() => onToolbarEvent('reveal')}">reveal</button>
+      </div>
+      <img
+        slot="complete"
+        alt="celebration"
+        src="https://media3.giphy.com/media/QpOZPQQ2wbjOM/giphy.gif" />
+    </Crossword>
+  </section>
 </article>
 
 <style>

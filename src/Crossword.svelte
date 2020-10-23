@@ -12,7 +12,7 @@
   export let revealed = false;
   export let actions = ["reset", "reveal"];
   export let revealDuration = 1000;
-  export let theme;
+  export let theme = "classic";
   export let disableHighlight;
 
   let originalClues = createClues(data);
@@ -154,30 +154,31 @@
     --theme-number-color: #8a8a8a;
   }
 
-  .theme-classic {
-    --theme-puzzle-border-color: #1a1a1a;
+  .theme-dark {
+    --theme-puzzle-border-color: #8a8a8a;
     --theme-puzzle-font: -apple-system, Helvetica, sans-serif;
-
-    --theme-clue-font: -apple-system, Helvetica, sans-serif;
-    --theme-clue-text-color: #1a1a1a;
-    --theme-clue-scrollbar-bg: #efefef;
-    --theme-clue-scrollbar-fg: #cdcdcd;
+    
+		--theme-clue-font: -apple-system, Helvetica, sans-serif;
+    --theme-clue-text-color: #fff;
+    --theme-clue-background-color: #1a1a1a;
+    --theme-clue-scrollbar-bg: #5a5a5a;
+    --theme-clue-scrollbar-fg: #efefef;
     --theme-clue-puzzle-order: row;
     --theme-clue-list-width: 16em;
-
-    --theme-cell-highlight-color: #ffec99;
-    --theme-cell-secondary-color: #ffcc00;
-    --theme-cell-bg-color: #fff;
-    --theme-cell-border-color: #1a1a1a;
+    
+		--theme-cell-highlight-color: #066;
+    --theme-cell-secondary-color: #003d3d;
+    --theme-cell-bg-color: #1a1a1a;
+    --theme-cell-border-color: #8a8a8a;
     --theme-cell-border-width: 0.01;
-    --theme-cell-text-color: #1a1a1a;
+    --theme-cell-text-color: #fff;
     --theme-cell-font-size: 0.7em;
     --theme-cell-font-weight: 700;
     --theme-cell-void-color: #1a1a1a;
-
-    --theme-number-font-size: 0.3em;
+    
+		--theme-number-font-size: 0.3em;
     --theme-number-font-weight: 400;
-    --theme-number-color: #8a8a8a;
+    --theme-number-color: #cdcdcd;
   }
 
   .theme-amelia {
@@ -206,37 +207,7 @@
     --theme-number-color: #353b48;
   }
 
-  .theme-russell {
-  }
-
-  .theme-dark {
-    --theme-puzzle-border-color: #091520;
-    --theme-puzzle-font: -apple-system, Helvetica, sans-serif;
-
-    --theme-clue-font: -apple-system, Helvetica, sans-serif;
-    --theme-clue-text-color: white;
-    --theme-clue-background-color: black;
-    --theme-clue-scrollbar-bg: #091520;
-    --theme-clue-scrollbar-fg: #1f2b39;
-    --theme-clue-puzzle-order: row;
-    --theme-clue-list-width: 16em;
-
-    --theme-cell-highlight-color: #9c533f;
-    --theme-cell-secondary-color: #81362c;
-    --theme-cell-bg-color: #1f2b39;
-    --theme-cell-border-color: #091520;
-    --theme-cell-border-width: 0.027;
-    --theme-cell-text-color: white;
-    --theme-cell-font-size: 0.76em;
-    --theme-cell-font-weight: 700;
-    --theme-cell-void-color: #091520;
-
-    --theme-number-font-size: 0.25em;
-    --theme-number-font-weight: 100;
-    --theme-number-color: #b4b7bd;
-  }
-
-  .theme-mint {
+  .theme-citrus {
     --theme-puzzle-border-color: #193939;
     --theme-puzzle-font: -apple-system, Helvetica, sans-serif;
 
@@ -252,14 +223,14 @@
     --theme-cell-secondary-color: #ff957d;
     --theme-cell-bg-color: #fff;
     --theme-cell-border-color: #193939;
-    --theme-cell-border-width: 0.027;
+    --theme-cell-border-width: 0.01;
     --theme-cell-text-color: #193939;
-    --theme-cell-font-size: 0.76em;
+    --theme-cell-font-size: 0.7em;
     --theme-cell-font-weight: 700;
     --theme-cell-void-color: #266b6b;
 
-    --theme-number-font-size: 0.25em;
-    --theme-number-font-weight: 100;
+    --theme-number-font-size: 0.3em;
+    --theme-number-font-weight: 400;
     --theme-number-color: #266b6b;
   }
 

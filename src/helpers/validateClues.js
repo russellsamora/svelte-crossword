@@ -43,5 +43,5 @@ export default function validateClues(data) {
 		}
   });
 
-	return !failedProp;
+	return !failedProp && !failedCell;
 }

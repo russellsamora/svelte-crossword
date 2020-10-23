@@ -23,7 +23,7 @@
       <option value="classic">Classic</option>
       <option value="dark">Dark</option>
       <option value="amelia">Amelia</option>
-      <option value="mint">Mint</option>
+      <option value="citrus">Citrus</option>
     </select>
     <div style="{theme == 'dark' ? 'background: black; color: white' : ''}">
       <Crossword data="{dataOreo}" theme="{theme}" />
@@ -43,14 +43,11 @@
       <div
         class="toolbar"
         slot="toolbar"
-        let:onToolbarEvent
-        style="background: skyblue; padding: 2em; margin-bottom: 2em">
-        <button
-          on:click="{() => onToolbarEvent({ detail: 'reset' })}">reset</button>
-        <button
-          on:click="{() => onToolbarEvent({
-              detail: 'reveal',
-            })}">reveal</button>
+        let:onReset
+				let:onReveal
+        style="background: yellow; padding: 2em;">
+        <button on:click="{onReset}">reset</button>
+        <button on:click="{onReveal}">reveal</button>
       </div>
       <img
         slot="complete"

@@ -104,7 +104,7 @@
       class="value"
       x="0.5"
       y="0.9"
-      alignment-baseline="baseline"
+      dominant-baseline="auto"
       text-anchor="middle">
       {value}
     </text>
@@ -113,7 +113,7 @@
     class="number"
     x="0.1"
     y="0.1"
-    alignment-baseline="hanging"
+    dominant-baseline="hanging"
     text-anchor="start">
     {number}
   </text>

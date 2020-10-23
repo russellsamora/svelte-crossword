@@ -3,7 +3,7 @@
   import Puzzle from "./Puzzle.svelte";
   import Clues from "./Clues.svelte";
   import CompletedMessage from "./CompletedMessage.svelte";
-  import addClueNumber from "./helpers/addClueNumber.js";
+  import createClues from "./helpers/createClues.js";
   import createCells from "./helpers/createCells.js";
   import validateClues from "./helpers/validateClues.js";
   import { fromPairs } from "./helpers/utils.js";
@@ -16,21 +16,42 @@
   export let theme;
 	export let disableHighlight;
 
-  let clues = addClueNumber(data);
-  let validated = validateClues(clues);
-  let cells = [];
+  let originalClues = createClues(data);
+  let validated = validateClues(originalClues);
+	let clues = originalClues.map(d => ({ ...d }));
+  let cells = createCells(originalClues);
   let focusedDirection = "across";
   let focusedCellIndex = 0;
   let isRevealing = false;
 	let revealTimeout;
+	let clueCompletion;
 
   $: focusedCell = cells[focusedCellIndex] || {};
-  $: clues, (cells = createCells(clues));
   $: cellIndexMap = fromPairs(cells.map((cell) => [cell.id, cell.index]));
   $: percentCorrect = cells.filter(d => d.answer === d.value).length / cells.length;
   $: isComplete = percentCorrect == 1;
   $: themeClass = theme ? `theme-${theme}` : "";
 	$: isDisableHighlight = isComplete && disableHighlight;
+	$: cells, clues = checkClues();
+
+	function checkClues() {
+		return clues.map(d => {
+			const index = d.index;
+			const cellChecks = d.cells.map(c => {
+				const { value } = cells.find(e => e.id === c.id);
+				const hasValue = !!value;
+				const hasCorrect = value === c.answer;
+				return { hasValue, hasCorrect };
+			});
+			const isCorrect = cellChecks.filter(c => c.hasCorrect).length === d.answer.length;
+			const isFilled = cellChecks.filter(c => c.hasValue).length === d.answer.length;
+			return {
+				...d,
+				isCorrect,
+				isFilled,
+			}
+		});
+	}
 
 	function clear() {
 		isRevealing = false;

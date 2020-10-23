@@ -2,14 +2,12 @@
   "name": "svelte-crossword",
   "version": "0.0.2",
   "description": "Crossword component for Svelte",
-  "main": "src/index.js",
-  "module": "src/index.js",
-  "svelte": "src/index.js",
+  "svelte": "src/Crossword.svelte",
   "scripts": {
-    "build": "rollup -c",
     "dev": "rollup -c -w",
     "start": "sirv public",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "predeploy": "rollup -c",
+    "deploy": "rollup -c rollup.config-ssr.js"
   },
   "repository": {
     "type": "git",
@@ -36,9 +34,11 @@
     "prettier": "^2.1.2",
     "prettier-plugin-svelte": "^1.4.1",
     "rollup": "^2.32.0",
+    "rollup-plugin-execute": "^1.1.1",
     "rollup-plugin-hot": "^0.1.1",
     "rollup-plugin-svelte": "^5.0.3",
     "rollup-plugin-svelte-hot": "^0.10.0",
+    "shelljs": "^0.8.4",
     "sirv-cli": "^0.4.4",
     "svelte": "^3.29.0"
   }

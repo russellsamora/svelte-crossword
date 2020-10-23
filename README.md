@@ -10,7 +10,7 @@ By [Amelia Wattenberger](https://twitter.com/wattenberger) and [Russell Goldenbe
 
 ```javascript
 <script>
-  import { Crossword } from "svelte-crossword";
+  import Crossword from "svelte-crossword";
   const data = [
     {
       "clue": "Black-and-white cookie",
@@ -65,22 +65,13 @@ You can set your own global CSS variables to override theme defaults or roll-you
 --number-color: #8a8a8a;
 ```
 
-## Roadmap
+## Features
 
-- Generate puzzle and clues from a data source (format json)
-- Ability to clear or fill
-- Focus / unfocus for key type bindings
-- Move to next cell on type
-- Current cell(s) is highligted and bound to clue highlight
-- List of clues is clickable to jump to cell and highlights cells
-- Mobile layout for clues
-- Multiple taps or arrow on same cell changes directional highlight
-- Multiple clue layout configurations
-- Fully customizable style options
-- Converter function to parse txt file board/clues to array
-- Validate data format
-- Custom class on cells
-- Completion state
+- Generate puzzle from just clue/answer/positions data
+- Toolbar options (reveal, reset)
+- Fully responsive
+- Optimized for mobile
+- Preset style themes and fully customizable
 
 ## Development
 

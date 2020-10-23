@@ -1,9 +1,8 @@
 <script>
-  import { Crossword } from "../index.js";
+  import Crossword from "../Crossword.svelte";
   import dataNYT from "./data-nyt.json";
   import dataOreo from "./data-oreo.json";
   import dataAmelia from "./data-amelia.json";
-	import dataRussell from "./data-russell.json";
   import dataUSA from "./data-usa.json";
 
   let revealedUSA;
@@ -11,27 +10,25 @@
 
 <article>
   <section class="nyt">
-    <h1>Svelte Crossword Example: NYT Mini</h1>
+    <h1>NYT Mini</h1>
+		<p>Default options.</p>
     <Crossword data="{dataNYT}" />
   </section>
 
-  <section class="oreos">
-    <h1>Svelte Crossword Example: Oreos</h1>
-    <Crossword data="{dataOreo}" theme="amelia" />
-  </section>
-  
-	<section class="amelia">
-    <h1>Svelte Crossword Example: mystery</h1>
-    <Crossword data="{dataAmelia}" theme="amelia" />
-  </section>
-
-	<section class="amelia">
-    <h1>Svelte Crossword Example: ???</h1>
-    <Crossword data="{dataRussell}" theme="russell" />
+  <section class="amelia">
+    <h1>Oreo</h1>
+		<p>Custom themes</p>
+		<select>
+			<option>Classic</option>
+			<option>Dark</option>
+			<option>Amelia</option>
+		</select>
+    <Crossword data="{dataOreo}" theme="oreo" />
   </section>
 
   <section class:is-revealed="{revealedUSA}" class="usa">
-    <h1>Svelte Crossword Example: USA Today people</h1>
+    <h1>People in USA Today puzzles</h1>
+		<p>Custom class name on cells.</p>
     <Crossword data="{dataUSA}" bind:revealed="{revealedUSA}" />
   </section>
 </article>
@@ -40,12 +37,18 @@
   article {
     font-family: sans-serif;
   }
-  h1 {
-    margin-top: 3rem;
-    font-size: 2rem;
-  }
-  section {
+	  section {
     max-width: 960px;
-    margin: 0 auto;
+    margin: 5em auto;
   }
+  h1 {
+		margin: 0;
+    font-size: 2em;
+		max-width: 640px;
+  }
+	p {
+		max-width: 640px;
+		margin: 1em 0;
+	}
+
 </style>

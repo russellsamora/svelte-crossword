@@ -30,10 +30,16 @@ By [Amelia Wattenberger](https://twitter.com/wattenberger) and [Russell Goldenbe
 
 #### Parameters
 
-| parameter | default      | description                         |
-| --------- | ------------ | ----------------------------------- |
-| `data`    | \*_required_ | Array of crossword clue/answer data |
-| `theme`   | `classic`    | String of preset theme to use       |
+| parameter | default    | description                         |
+| --------- | ---------- | ----------------------------------- |
+| `data`    | _required_ | Array of crossword clue/answer data |
+| `theme`   | `classic`  | String of preset theme to use       |
+
+#### Bindings
+
+| binding    | type    | description                                 |
+| ---------- | ------- | ------------------------------------------- |
+| `revealed` | Boolean | If the puzzle is showing all answers or not |
 
 ## Themes and Custom Styles
 

@@ -48,7 +48,7 @@
 		<p class="example">Example</p>
     <h1>Simple Customization</h1>
     <p>Custom class name on cells.</p>
-    <Crossword data="{dataUSA}" bind:revealed="{revealedUSA}" />
+    <Crossword data="{dataUSA}" disableHighlight="{revealedUSA}" bind:revealed="{revealedUSA}" />
   </section>
 
   <section>

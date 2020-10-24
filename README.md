@@ -26,6 +26,15 @@ By [Amelia Wattenberger](https://twitter.com/wattenberger) and [Russell Goldenbe
 <Crossword {data} />
 ```
 
+## Parameters
+
+#### Parameters
+
+| parameter | default      | description                         |
+| --------- | ------------ | ----------------------------------- |
+| `data`    | \*_required_ | Array of crossword clue/answer data |
+| `theme`   | `classic`    | String of preset theme to use       |
+
 ## Themes and Custom Styles
 
 You can choose a preset theme by passing the prop:

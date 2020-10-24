@@ -11,6 +11,10 @@
 </script>
 
 <article>
+	<div class="intro">
+		<h1>Svelte Crossword</h1>
+		<p>A crossword component for <a href="https://svelte.dev">Svelte</a>. Read the docs on <a href="https://github.com/russellgoldenberg/svelte-crossword#svelte-crossword">Github</a>.</p>
+	</div>
   <section class="nyt-mini">
 		<p class="example">Example</p>
     <h1>Default</h1>
@@ -72,6 +76,11 @@
   article {
     font-family: sans-serif;
   }
+	.intro {
+		text-align: center;
+		max-width: 640px;
+		margin: 0 auto;
+	}
   section {
     max-width: 960px;
     margin: 5em auto;

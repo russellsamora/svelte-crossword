@@ -1,6 +1,5 @@
 <script>
   import ClueList from "./ClueList.svelte";
-
   import Clue from "./Clue.svelte";
 
   export let clues;

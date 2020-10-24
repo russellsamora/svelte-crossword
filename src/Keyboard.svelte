@@ -1,6 +1,6 @@
 <script>
 	import { createEventDispatcher } from 'svelte';
-	import keyboardData from './keyboard-data.js';
+	import keyboardData from './helpers/keyboard-data.js';
   const dispatch = createEventDispatcher();
 	
 	const unique = arr => [...new Set(arr)];

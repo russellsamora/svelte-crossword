@@ -1,6 +1,5 @@
 <script>
   import Crossword from "../Crossword.svelte";
-	import Keyboard from "./Keyboard.svelte";
   import dataNYTMini from "./data-nyt-mini.json";
 	import dataNYTDaily from "./data-nyt-daily.json";
   import dataOreo from "./data-oreo.json";
@@ -10,9 +9,6 @@
 
   let revealedUSA;
   let theme;
-
-
-	let onKeydownDefault;
 </script>
 
 <article>
@@ -25,8 +21,7 @@
 		<p class="example">Example</p>
     <h1>Default</h1>
     <p>An <a href="https://www.nytimes.com/crosswords/game/mini/2020/10/21">NYT mini</a> puzzle with all default settings.</p>
-    <Crossword bind:onKeydown={onKeydownDefault} data="{dataNYTMini}" />
-		<Keyboard on:keydown={onKeydownDefault} />
+    <Crossword data="{dataNYTMini}" />
   </section>
 
 	<section id="default2">

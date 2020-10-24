@@ -2,6 +2,7 @@
   import Toolbar from "./Toolbar.svelte";
   import Puzzle from "./Puzzle.svelte";
   import Clues from "./Clues.svelte";
+	import Keyboard from "./Keyboard.svelte";
   import CompletedMessage from "./CompletedMessage.svelte";
   import createClues from "./helpers/createClues.js";
   import createCells from "./helpers/createCells.js";
@@ -130,10 +131,12 @@
 	</div>
 
 	{#if isComplete && !isRevealing && showCompleteMessage}
-			<CompletedMessage>
-				<slot name="complete" />
-			</CompletedMessage>
-		{/if}
+		<CompletedMessage>
+			<slot name="complete" />
+		</CompletedMessage>
+	{/if}
+
+	<Keyboard on:keydown={onKeydown} />
 </article>
 {/if}
 

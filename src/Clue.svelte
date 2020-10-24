@@ -1,5 +1,5 @@
 <script>
-  import scrollTo from "./scroll-to";
+  import scrollTo from "./helpers/scroll-to";
 
   export let number;
   export let clue;

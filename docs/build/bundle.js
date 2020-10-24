@@ -2953,56 +2953,26 @@ var app = (function () {
     	onReveal: /*onReveal*/ ctx[15]
     });
 
-    // (100:63)    
-    function fallback_block(ctx) {
-    	let toolbar;
-    	let current;
-    	toolbar = new Toolbar({ props: { actions: /*actions*/ ctx[0] } });
-    	toolbar.$on("event", /*onToolbarEvent*/ ctx[16]);
-
-    	return {
-    		c() {
-    			create_component(toolbar.$$.fragment);
-    		},
-    		l(nodes) {
-    			claim_component(toolbar.$$.fragment, nodes);
-    		},
-    		m(target, anchor) {
-    			mount_component(toolbar, target, anchor);
-    			current = true;
-    		},
-    		p(ctx, dirty) {
-    			const toolbar_changes = {};
-    			if (dirty[0] & /*actions*/ 1) toolbar_changes.actions = /*actions*/ ctx[0];
-    			toolbar.$set(toolbar_changes);
-    		},
-    		i(local) {
-    			if (current) return;
-    			transition_in(toolbar.$$.fragment, local);
-    			current = true;
-    		},
-    		o(local) {
-    			transition_out(toolbar.$$.fragment, local);
-    			current = false;
-    		},
-    		d(detaching) {
-    			destroy_component(toolbar, detaching);
-    		}
-    	};
-    }
-
-    // (105:2) {#if validated}
-    function create_if_block_1$1(ctx) {
+    // (101:0) {#if validated}
+    function create_if_block$3(ctx) {
+    	let article;
+    	let t0;
+    	let div;
     	let clues_1;
     	let updating_focusedCellIndex;
     	let updating_focusedCell;
     	let updating_focusedDirection;
-    	let t;
+    	let t1;
     	let puzzle;
     	let updating_cells;
     	let updating_focusedCellIndex_1;
     	let updating_focusedDirection_1;
+    	let t2;
+    	let article_class_value;
     	let current;
+    	const toolbar_slot_template = /*#slots*/ ctx[21].toolbar;
+    	const toolbar_slot = create_slot(toolbar_slot_template, ctx, /*$$scope*/ ctx[28], get_toolbar_slot_context);
+    	const toolbar_slot_or_fallback = toolbar_slot || fallback_block(ctx);
 
     	function clues_1_focusedCellIndex_binding(value) {
     		/*clues_1_focusedCellIndex_binding*/ ctx[22].call(null, value);
@@ -3074,25 +3044,68 @@ var app = (function () {
     	binding_callbacks.push(() => bind(puzzle, "cells", puzzle_cells_binding));
     	binding_callbacks.push(() => bind(puzzle, "focusedCellIndex", puzzle_focusedCellIndex_binding));
     	binding_callbacks.push(() => bind(puzzle, "focusedDirection", puzzle_focusedDirection_binding));
+    	let if_block = /*isComplete*/ ctx[10] && !/*isRevealing*/ ctx[7] && /*showCompleteMessage*/ ctx[2] && create_if_block_1$1(ctx);
 
     	return {
     		c() {
+    			article = element("article");
+    			if (toolbar_slot_or_fallback) toolbar_slot_or_fallback.c();
+    			t0 = space();
+    			div = element("div");
     			create_component(clues_1.$$.fragment);
-    			t = space();
+    			t1 = space();
     			create_component(puzzle.$$.fragment);
+    			t2 = space();
+    			if (if_block) if_block.c();
+    			this.h();
     		},
     		l(nodes) {
-    			claim_component(clues_1.$$.fragment, nodes);
-    			t = claim_space(nodes);
-    			claim_component(puzzle.$$.fragment, nodes);
+    			article = claim_element(nodes, "ARTICLE", { class: true });
+    			var article_nodes = children(article);
+    			if (toolbar_slot_or_fallback) toolbar_slot_or_fallback.l(article_nodes);
+    			t0 = claim_space(article_nodes);
+    			div = claim_element(article_nodes, "DIV", { class: true });
+    			var div_nodes = children(div);
+    			claim_component(clues_1.$$.fragment, div_nodes);
+    			t1 = claim_space(div_nodes);
+    			claim_component(puzzle.$$.fragment, div_nodes);
+    			div_nodes.forEach(detach);
+    			t2 = claim_space(article_nodes);
+    			if (if_block) if_block.l(article_nodes);
+    			article_nodes.forEach(detach);
+    			this.h();
+    		},
+    		h() {
+    			attr(div, "class", "play svelte-1cndb7v");
+    			attr(article, "class", article_class_value = "crossword " + /*themeClass*/ ctx[11] + " svelte-1cndb7v");
     		},
     		m(target, anchor) {
-    			mount_component(clues_1, target, anchor);
-    			insert(target, t, anchor);
-    			mount_component(puzzle, target, anchor);
+    			insert(target, article, anchor);
+
+    			if (toolbar_slot_or_fallback) {
+    				toolbar_slot_or_fallback.m(article, null);
+    			}
+
+    			append(article, t0);
+    			append(article, div);
+    			mount_component(clues_1, div, null);
+    			append(div, t1);
+    			mount_component(puzzle, div, null);
+    			append(article, t2);
+    			if (if_block) if_block.m(article, null);
     			current = true;
     		},
     		p(ctx, dirty) {
+    			if (toolbar_slot) {
+    				if (toolbar_slot.p && dirty[0] & /*$$scope*/ 268435456) {
+    					update_slot(toolbar_slot, toolbar_slot_template, ctx, /*$$scope*/ ctx[28], dirty, get_toolbar_slot_changes, get_toolbar_slot_context);
+    				}
+    			} else {
+    				if (toolbar_slot_or_fallback && toolbar_slot_or_fallback.p && dirty[0] & /*actions*/ 1) {
+    					toolbar_slot_or_fallback.p(ctx, dirty);
+    				}
+    			}
+
     			const clues_1_changes = {};
     			if (dirty[0] & /*clues*/ 8) clues_1_changes.clues = /*clues*/ ctx[3];
     			if (dirty[0] & /*cellIndexMap*/ 512) clues_1_changes.cellIndexMap = /*cellIndexMap*/ ctx[9];
@@ -3142,28 +3155,99 @@ var app = (function () {
     			}
 
     			puzzle.$set(puzzle_changes);
+
+    			if (/*isComplete*/ ctx[10] && !/*isRevealing*/ ctx[7] && /*showCompleteMessage*/ ctx[2]) {
+    				if (if_block) {
+    					if_block.p(ctx, dirty);
+
+    					if (dirty[0] & /*isComplete, isRevealing, showCompleteMessage*/ 1156) {
+    						transition_in(if_block, 1);
+    					}
+    				} else {
+    					if_block = create_if_block_1$1(ctx);
+    					if_block.c();
+    					transition_in(if_block, 1);
+    					if_block.m(article, null);
+    				}
+    			} else if (if_block) {
+    				group_outros();
+
+    				transition_out(if_block, 1, 1, () => {
+    					if_block = null;
+    				});
+
+    				check_outros();
+    			}
+
+    			if (!current || dirty[0] & /*themeClass*/ 2048 && article_class_value !== (article_class_value = "crossword " + /*themeClass*/ ctx[11] + " svelte-1cndb7v")) {
+    				attr(article, "class", article_class_value);
+    			}
     		},
     		i(local) {
     			if (current) return;
+    			transition_in(toolbar_slot_or_fallback, local);
     			transition_in(clues_1.$$.fragment, local);
     			transition_in(puzzle.$$.fragment, local);
+    			transition_in(if_block);
     			current = true;
     		},
     		o(local) {
+    			transition_out(toolbar_slot_or_fallback, local);
     			transition_out(clues_1.$$.fragment, local);
     			transition_out(puzzle.$$.fragment, local);
+    			transition_out(if_block);
     			current = false;
     		},
     		d(detaching) {
-    			destroy_component(clues_1, detaching);
-    			if (detaching) detach(t);
-    			destroy_component(puzzle, detaching);
+    			if (detaching) detach(article);
+    			if (toolbar_slot_or_fallback) toolbar_slot_or_fallback.d(detaching);
+    			destroy_component(clues_1);
+    			destroy_component(puzzle);
+    			if (if_block) if_block.d();
     		}
     	};
     }
 
-    // (123:2) {#if isComplete && !isRevealing && showCompleteMessage}
-    function create_if_block$3(ctx) {
+    // (104:64)    
+    function fallback_block(ctx) {
+    	let toolbar;
+    	let current;
+    	toolbar = new Toolbar({ props: { actions: /*actions*/ ctx[0] } });
+    	toolbar.$on("event", /*onToolbarEvent*/ ctx[16]);
+
+    	return {
+    		c() {
+    			create_component(toolbar.$$.fragment);
+    		},
+    		l(nodes) {
+    			claim_component(toolbar.$$.fragment, nodes);
+    		},
+    		m(target, anchor) {
+    			mount_component(toolbar, target, anchor);
+    			current = true;
+    		},
+    		p(ctx, dirty) {
+    			const toolbar_changes = {};
+    			if (dirty[0] & /*actions*/ 1) toolbar_changes.actions = /*actions*/ ctx[0];
+    			toolbar.$set(toolbar_changes);
+    		},
+    		i(local) {
+    			if (current) return;
+    			transition_in(toolbar.$$.fragment, local);
+    			current = true;
+    		},
+    		o(local) {
+    			transition_out(toolbar.$$.fragment, local);
+    			current = false;
+    		},
+    		d(detaching) {
+    			destroy_component(toolbar, detaching);
+    		}
+    	};
+    }
+
+    // (126:1) {#if isComplete && !isRevealing && showCompleteMessage}
+    function create_if_block_1$1(ctx) {
     	let completedmessage;
     	let current;
 
@@ -3209,7 +3293,7 @@ var app = (function () {
     	};
     }
 
-    // (124:4) <CompletedMessage>
+    // (127:3) <CompletedMessage>
     function create_default_slot(ctx) {
     	let current;
     	const complete_slot_template = /*#slots*/ ctx[21].complete;
@@ -3252,112 +3336,39 @@ var app = (function () {
     }
 
     function create_fragment$8(ctx) {
-    	let t0;
-    	let article;
-    	let t1;
-    	let article_class_value;
+    	let if_block_anchor;
     	let current;
-    	const toolbar_slot_template = /*#slots*/ ctx[21].toolbar;
-    	const toolbar_slot = create_slot(toolbar_slot_template, ctx, /*$$scope*/ ctx[28], get_toolbar_slot_context);
-    	const toolbar_slot_or_fallback = toolbar_slot || fallback_block(ctx);
-    	let if_block0 = /*validated*/ ctx[13] && create_if_block_1$1(ctx);
-    	let if_block1 = /*isComplete*/ ctx[10] && !/*isRevealing*/ ctx[7] && /*showCompleteMessage*/ ctx[2] && create_if_block$3(ctx);
+    	let if_block = /*validated*/ ctx[13] && create_if_block$3(ctx);
 
     	return {
     		c() {
-    			if (toolbar_slot_or_fallback) toolbar_slot_or_fallback.c();
-    			t0 = space();
-    			article = element("article");
-    			if (if_block0) if_block0.c();
-    			t1 = space();
-    			if (if_block1) if_block1.c();
-    			this.h();
+    			if (if_block) if_block.c();
+    			if_block_anchor = empty();
     		},
     		l(nodes) {
-    			if (toolbar_slot_or_fallback) toolbar_slot_or_fallback.l(nodes);
-    			t0 = claim_space(nodes);
-    			article = claim_element(nodes, "ARTICLE", { class: true });
-    			var article_nodes = children(article);
-    			if (if_block0) if_block0.l(article_nodes);
-    			t1 = claim_space(article_nodes);
-    			if (if_block1) if_block1.l(article_nodes);
-    			article_nodes.forEach(detach);
-    			this.h();
-    		},
-    		h() {
-    			attr(article, "class", article_class_value = "crossword " + /*themeClass*/ ctx[11] + " svelte-193oi9r");
+    			if (if_block) if_block.l(nodes);
+    			if_block_anchor = empty();
     		},
     		m(target, anchor) {
-    			if (toolbar_slot_or_fallback) {
-    				toolbar_slot_or_fallback.m(target, anchor);
-    			}
-
-    			insert(target, t0, anchor);
-    			insert(target, article, anchor);
-    			if (if_block0) if_block0.m(article, null);
-    			append(article, t1);
-    			if (if_block1) if_block1.m(article, null);
+    			if (if_block) if_block.m(target, anchor);
+    			insert(target, if_block_anchor, anchor);
     			current = true;
     		},
     		p(ctx, dirty) {
-    			if (toolbar_slot) {
-    				if (toolbar_slot.p && dirty[0] & /*$$scope*/ 268435456) {
-    					update_slot(toolbar_slot, toolbar_slot_template, ctx, /*$$scope*/ ctx[28], dirty, get_toolbar_slot_changes, get_toolbar_slot_context);
-    				}
-    			} else {
-    				if (toolbar_slot_or_fallback && toolbar_slot_or_fallback.p && dirty[0] & /*actions*/ 1) {
-    					toolbar_slot_or_fallback.p(ctx, dirty);
-    				}
-    			}
-
-    			if (/*validated*/ ctx[13]) if_block0.p(ctx, dirty);
-
-    			if (/*isComplete*/ ctx[10] && !/*isRevealing*/ ctx[7] && /*showCompleteMessage*/ ctx[2]) {
-    				if (if_block1) {
-    					if_block1.p(ctx, dirty);
-
-    					if (dirty[0] & /*isComplete, isRevealing, showCompleteMessage*/ 1156) {
-    						transition_in(if_block1, 1);
-    					}
-    				} else {
-    					if_block1 = create_if_block$3(ctx);
-    					if_block1.c();
-    					transition_in(if_block1, 1);
-    					if_block1.m(article, null);
-    				}
-    			} else if (if_block1) {
-    				group_outros();
-
-    				transition_out(if_block1, 1, 1, () => {
-    					if_block1 = null;
-    				});
-
-    				check_outros();
-    			}
-
-    			if (!current || dirty[0] & /*themeClass*/ 2048 && article_class_value !== (article_class_value = "crossword " + /*themeClass*/ ctx[11] + " svelte-193oi9r")) {
-    				attr(article, "class", article_class_value);
-    			}
+    			if (/*validated*/ ctx[13]) if_block.p(ctx, dirty);
     		},
     		i(local) {
     			if (current) return;
-    			transition_in(toolbar_slot_or_fallback, local);
-    			transition_in(if_block0);
-    			transition_in(if_block1);
+    			transition_in(if_block);
     			current = true;
     		},
     		o(local) {
-    			transition_out(toolbar_slot_or_fallback, local);
-    			transition_out(if_block0);
-    			transition_out(if_block1);
+    			transition_out(if_block);
     			current = false;
     		},
     		d(detaching) {
-    			if (toolbar_slot_or_fallback) toolbar_slot_or_fallback.d(detaching);
-    			if (detaching) detach(t0);
-    			if (detaching) detach(article);
-    			if (if_block0) if_block0.d();
-    			if (if_block1) if_block1.d();
+    			if (if_block) if_block.d(detaching);
+    			if (detaching) detach(if_block_anchor);
     		}
     	};
     }
@@ -3569,7 +3580,7 @@ var app = (function () {
     	}
     }
 
-    var dataNYT = [
+    var dataNYTMini = [
     	{
     		clue: "The 1% of 1% milk",
     		answer: "FAT",
@@ -3639,6 +3650,541 @@ var app = (function () {
     		direction: "down",
     		x: 1,
     		y: 1
+    	}
+    ];
+
+    var dataNYTDaily = [
+    	{
+    		clue: "Bellyache",
+    		answer: "BEEF",
+    		direction: "across",
+    		x: 0,
+    		y: 0
+    	},
+    	{
+    		clue: "What many people have for public speaking",
+    		answer: "PHOBIA",
+    		direction: "across",
+    		x: 5,
+    		y: 0
+    	},
+    	{
+    		clue: "\"We ___ loudest when we ___ to ourselves\": Eric Hoffer",
+    		answer: "LIE",
+    		direction: "across",
+    		x: 12,
+    		y: 0
+    	},
+    	{
+    		clue: "Taj Mahal city",
+    		answer: "AGRA",
+    		direction: "across",
+    		x: 0,
+    		y: 1
+    	},
+    	{
+    		clue: "College in Manhattan",
+    		answer: "BARUCH",
+    		direction: "across",
+    		x: 5,
+    		y: 1
+    	},
+    	{
+    		clue: "Halloween time: Abbr.",
+    		answer: "OCT",
+    		direction: "across",
+    		x: 12,
+    		y: 1
+    	},
+    	{
+    		clue: "Ways to cross a river in Switzerland?",
+    		answer: "BERNBRIDGES",
+    		direction: "across",
+    		x: 0,
+    		y: 2
+    	},
+    	{
+    		clue: "Big expense for some city dwellers",
+    		answer: "CAR",
+    		direction: "across",
+    		x: 12,
+    		y: 2
+    	},
+    	{
+    		clue: "Old Glory's land, for short",
+    		answer: "USOFA",
+    		direction: "across",
+    		x: 0,
+    		y: 3
+    	},
+    	{
+    		clue: "Funny Brooks",
+    		answer: "MEL",
+    		direction: "across",
+    		x: 6,
+    		y: 3
+    	},
+    	{
+    		clue: "Prop for Mr. Peanut",
+    		answer: "CANE",
+    		direction: "across",
+    		x: 11,
+    		y: 3
+    	},
+    	{
+    		clue: "Crow, e.g.",
+    		answer: "TRIBE",
+    		direction: "across",
+    		x: 1,
+    		y: 4
+    	},
+    	{
+    		clue: "Fixed a mistake at a card table",
+    		answer: "REDEALT",
+    		direction: "across",
+    		x: 7,
+    		y: 4
+    	},
+    	{
+    		clue: "First showing at a film festival in France?",
+    		answer: "CANNESOPENER",
+    		direction: "across",
+    		x: 3,
+    		y: 5
+    	},
+    	{
+    		clue: "Co. that merged into Verizon",
+    		answer: "GTE",
+    		direction: "across",
+    		x: 0,
+    		y: 6
+    	},
+    	{
+    		clue: "Owned",
+    		answer: "HAD",
+    		direction: "across",
+    		x: 5,
+    		y: 6
+    	},
+    	{
+    		clue: "___ Conventions",
+    		answer: "GENEVA",
+    		direction: "across",
+    		x: 9,
+    		y: 6
+    	},
+    	{
+    		clue: "Supercharge, as an engine",
+    		answer: "REV",
+    		direction: "across",
+    		x: 0,
+    		y: 7
+    	},
+    	{
+    		clue: "Lightly touch, as with a handkerchief",
+    		answer: "DAB",
+    		direction: "across",
+    		x: 4,
+    		y: 7
+    	},
+    	{
+    		clue: "Wyoming-to-Missouri dir.",
+    		answer: "ESE",
+    		direction: "across",
+    		x: 8,
+    		y: 7
+    	},
+    	{
+    		clue: "Chinese dynasty circa A.D. 250",
+    		answer: "WEI",
+    		direction: "across",
+    		x: 12,
+    		y: 7
+    	},
+    	{
+    		clue: "Actress Brie of \"Mad Men\"",
+    		answer: "ALISON",
+    		direction: "across",
+    		x: 0,
+    		y: 8
+    	},
+    	{
+    		clue: "Colorful fish",
+    		answer: "KOI",
+    		direction: "across",
+    		x: 7,
+    		y: 8
+    	},
+    	{
+    		clue: "Creator of sketches, in brief",
+    		answer: "SNL",
+    		direction: "across",
+    		x: 12,
+    		y: 8
+    	},
+    	{
+    		clue: "Census taker in India?",
+    		answer: "DELHICOUNTER",
+    		direction: "across",
+    		x: 0,
+    		y: 9
+    	},
+    	{
+    		clue: "Like Barack Obama's presidency",
+    		answer: "TWOTERM",
+    		direction: "across",
+    		x: 1,
+    		y: 10
+    	},
+    	{
+    		clue: "Loads",
+    		answer: "SLEWS",
+    		direction: "across",
+    		x: 9,
+    		y: 10
+    	},
+    	{
+    		clue: "Denny's competitor",
+    		answer: "IHOP",
+    		direction: "across",
+    		x: 0,
+    		y: 11
+    	},
+    	{
+    		clue: "Mensa stats",
+    		answer: "IQS",
+    		direction: "across",
+    		x: 6,
+    		y: 11
+    	},
+    	{
+    		clue: "Urban sitting spot",
+    		answer: "STOOP",
+    		direction: "across",
+    		x: 10,
+    		y: 11
+    	},
+    	{
+    		clue: "Classic tattoo word",
+    		answer: "MOM",
+    		direction: "across",
+    		x: 0,
+    		y: 12
+    	},
+    	{
+    		clue: "Police dragnet in South Korea?",
+    		answer: "SEOULSEARCH",
+    		direction: "across",
+    		x: 4,
+    		y: 12
+    	},
+    	{
+    		clue: "Spanish article",
+    		answer: "UNA",
+    		direction: "across",
+    		x: 0,
+    		y: 13
+    	},
+    	{
+    		clue: "How café may be served",
+    		answer: "AULAIT",
+    		direction: "across",
+    		x: 4,
+    		y: 13
+    	},
+    	{
+    		clue: "\"If you're asking me,\" in textspeak",
+    		answer: "IMHO",
+    		direction: "across",
+    		x: 11,
+    		y: 13
+    	},
+    	{
+    		clue: "W-2 fig.",
+    		answer: "SSN",
+    		direction: "across",
+    		x: 0,
+    		y: 14
+    	},
+    	{
+    		clue: "Fairly",
+    		answer: "PRETTY",
+    		direction: "across",
+    		x: 4,
+    		y: 14
+    	},
+    	{
+    		clue: "\"___ Eyes\" (1975 Eagles hit)",
+    		answer: "LYIN",
+    		direction: "across",
+    		x: 11,
+    		y: 14
+    	},
+    	{
+    		clue: "Hindu title of respect",
+    		answer: "BABU",
+    		direction: "down",
+    		x: 0,
+    		y: 0
+    	},
+    	{
+    		clue: "Expel",
+    		answer: "EGEST",
+    		direction: "down",
+    		x: 1,
+    		y: 0
+    	},
+    	{
+    		clue: "Misspeaking, e.g.",
+    		answer: "ERROR",
+    		direction: "down",
+    		x: 2,
+    		y: 0
+    	},
+    	{
+    		clue: "Some derivative stories, colloquially",
+    		answer: "FANFIC",
+    		direction: "down",
+    		x: 3,
+    		y: 0
+    	},
+    	{
+    		clue: "Brew with hipster cred",
+    		answer: "PBR",
+    		direction: "down",
+    		x: 5,
+    		y: 0
+    	},
+    	{
+    		clue: "American pop-rock band composed of three sisters",
+    		answer: "HAIM",
+    		direction: "down",
+    		x: 6,
+    		y: 0
+    	},
+    	{
+    		clue: "Said \"I'll have ...\"",
+    		answer: "ORDERED",
+    		direction: "down",
+    		x: 7,
+    		y: 0
+    	},
+    	{
+    		clue: "Cone-shaped corn snacks",
+    		answer: "BUGLES",
+    		direction: "down",
+    		x: 8,
+    		y: 0
+    	},
+    	{
+    		clue: "Swelling reducer",
+    		answer: "ICE",
+    		direction: "down",
+    		x: 9,
+    		y: 0
+    	},
+    	{
+    		clue: "Sounds of satisfaction",
+    		answer: "AHS",
+    		direction: "down",
+    		x: 10,
+    		y: 0
+    	},
+    	{
+    		clue: "Broadcast often seen at 6:00 p.m. and 11:00 p.m.",
+    		answer: "LOCALNEWS",
+    		direction: "down",
+    		x: 12,
+    		y: 0
+    	},
+    	{
+    		clue: "\"That is too much for me\"",
+    		answer: "ICANTEVEN",
+    		direction: "down",
+    		x: 13,
+    		y: 0
+    	},
+    	{
+    		clue: "To be: Fr.",
+    		answer: "ETRE",
+    		direction: "down",
+    		x: 14,
+    		y: 0
+    	},
+    	{
+    		clue: "Cake with rum",
+    		answer: "BABA",
+    		direction: "down",
+    		x: 4,
+    		y: 2
+    	},
+    	{
+    		clue: "Battle of Normandy city",
+    		answer: "CAEN",
+    		direction: "down",
+    		x: 11,
+    		y: 3
+    	},
+    	{
+    		clue: "Increase, as resolution",
+    		answer: "ENHANCE",
+    		direction: "down",
+    		x: 5,
+    		y: 4
+    	},
+    	{
+    		clue: "Watches Bowser, say",
+    		answer: "DOGSITS",
+    		direction: "down",
+    		x: 9,
+    		y: 4
+    	},
+    	{
+    		clue: "Dueling sword",
+    		answer: "EPEE",
+    		direction: "down",
+    		x: 10,
+    		y: 4
+    	},
+    	{
+    		clue: "Catch",
+    		answer: "NAB",
+    		direction: "down",
+    		x: 6,
+    		y: 5
+    	},
+    	{
+    		clue: "Skate park feature",
+    		answer: "RAIL",
+    		direction: "down",
+    		x: 14,
+    		y: 5
+    	},
+    	{
+    		clue: "Many a May or June honoree",
+    		answer: "GRAD",
+    		direction: "down",
+    		x: 0,
+    		y: 6
+    	},
+    	{
+    		clue: "Some fund-raisers",
+    		answer: "TELETHONS",
+    		direction: "down",
+    		x: 1,
+    		y: 6
+    	},
+    	{
+    		clue: "1975 hit by the Electric Light Orchestra",
+    		answer: "EVILWOMAN",
+    		direction: "down",
+    		x: 2,
+    		y: 6
+    	},
+    	{
+    		clue: "\"Just ___\" (Nike slogan)",
+    		answer: "DOIT",
+    		direction: "down",
+    		x: 4,
+    		y: 7
+    	},
+    	{
+    		clue: "Very long time",
+    		answer: "EON",
+    		direction: "down",
+    		x: 8,
+    		y: 7
+    	},
+    	{
+    		clue: "Union workplace",
+    		answer: "SHOP",
+    		direction: "down",
+    		x: 3,
+    		y: 8
+    	},
+    	{
+    		clue: "Small citrus fruit",
+    		answer: "KUMQUAT",
+    		direction: "down",
+    		x: 7,
+    		y: 8
+    	},
+    	{
+    		clue: "Baltimore athlete",
+    		answer: "ORIOLE",
+    		direction: "down",
+    		x: 6,
+    		y: 9
+    	},
+    	{
+    		clue: "If-___ (computer programming statement)",
+    		answer: "ELSE",
+    		direction: "down",
+    		x: 10,
+    		y: 9
+    	},
+    	{
+    		clue: "Wholesale's opposite",
+    		answer: "RETAIL",
+    		direction: "down",
+    		x: 11,
+    		y: 9
+    	},
+    	{
+    		clue: "Like a bad apple",
+    		answer: "WORMY",
+    		direction: "down",
+    		x: 12,
+    		y: 10
+    	},
+    	{
+    		clue: "2014 Winter Olympics locale",
+    		answer: "SOCHI",
+    		direction: "down",
+    		x: 13,
+    		y: 10
+    	},
+    	{
+    		clue: "\"___ in the Morning\" (bygone radio show)",
+    		answer: "IMUS",
+    		direction: "down",
+    		x: 0,
+    		y: 11
+    	},
+    	{
+    		clue: "Narrow opening",
+    		answer: "SLIT",
+    		direction: "down",
+    		x: 8,
+    		y: 11
+    	},
+    	{
+    		clue: "Sound: Prefix",
+    		answer: "PHON",
+    		direction: "down",
+    		x: 14,
+    		y: 11
+    	},
+    	{
+    		clue: "Gradually weaken",
+    		answer: "SAP",
+    		direction: "down",
+    		x: 4,
+    		y: 12
+    	},
+    	{
+    		clue: "Home of most of the members of NATO: Abbr.",
+    		answer: "EUR",
+    		direction: "down",
+    		x: 5,
+    		y: 12
+    	},
+    	{
+    		clue: "Total mess",
+    		answer: "STY",
+    		direction: "down",
+    		x: 9,
+    		y: 12
     	}
     ];
 
@@ -3951,7 +4497,7 @@ var app = (function () {
     	};
     }
 
-    // (52:6) <img         slot="complete"         alt="celebration"         src="https://media3.giphy.com/media/QpOZPQQ2wbjOM/giphy.gif" />
+    // (67:6) <img         slot="complete"         alt="celebration"         src="https://media3.giphy.com/media/QpOZPQQ2wbjOM/giphy.gif" />
     function create_complete_slot(ctx) {
     	let img;
     	let img_src_value;
@@ -3979,7 +4525,7 @@ var app = (function () {
     	};
     }
 
-    // (42:4) <Crossword data="{dataUSA}">
+    // (57:4) <Crossword data="{dataNYTDaily}">
     function create_default_slot$1(ctx) {
     	let t;
 
@@ -4002,60 +4548,100 @@ var app = (function () {
 
     function create_fragment$9(ctx) {
     	let article;
-    	let section0;
+    	let div0;
     	let h10;
     	let t0;
     	let t1;
     	let p0;
     	let t2;
+    	let a0;
     	let t3;
-    	let crossword0;
     	let t4;
-    	let section1;
-    	let h11;
+    	let a1;
     	let t5;
     	let t6;
-    	let p1;
     	let t7;
+    	let section0;
+    	let p1;
     	let t8;
-    	let select;
-    	let option0;
     	let t9;
-    	let option1;
+    	let h11;
     	let t10;
-    	let option2;
     	let t11;
-    	let option3;
-    	let t12;
-    	let t13;
-    	let div;
-    	let crossword1;
-    	let div_style_value;
-    	let t14;
-    	let section2;
-    	let h12;
-    	let t15;
-    	let t16;
     	let p2;
+    	let t12;
+    	let a2;
+    	let t13;
+    	let t14;
+    	let t15;
+    	let crossword0;
+    	let t16;
+    	let section1;
+    	let p3;
     	let t17;
     	let t18;
-    	let crossword2;
-    	let updating_revealed;
+    	let h12;
     	let t19;
-    	let section3;
-    	let h13;
     	let t20;
+    	let p4;
     	let t21;
-    	let p3;
+    	let a3;
     	let t22;
     	let t23;
+    	let t24;
+    	let crossword1;
+    	let t25;
+    	let section2;
+    	let p5;
+    	let t26;
+    	let t27;
+    	let h13;
+    	let t28;
+    	let t29;
+    	let p6;
+    	let t30;
+    	let t31;
+    	let select;
+    	let option0;
+    	let t32;
+    	let option1;
+    	let t33;
+    	let option2;
+    	let t34;
+    	let option3;
+    	let t35;
+    	let t36;
+    	let div1;
+    	let crossword2;
+    	let t37;
+    	let section3;
+    	let p7;
+    	let t38;
+    	let t39;
+    	let h14;
+    	let t40;
+    	let t41;
+    	let p8;
+    	let t42;
+    	let t43;
     	let crossword3;
+    	let updating_revealed;
+    	let t44;
+    	let section4;
+    	let p9;
+    	let t45;
+    	let t46;
+    	let p10;
+    	let t47;
+    	let t48;
+    	let crossword4;
     	let current;
     	let mounted;
     	let dispose;
-    	crossword0 = new Crossword({ props: { data: dataNYT } });
+    	crossword0 = new Crossword({ props: { data: dataNYTMini } });
+    	crossword1 = new Crossword({ props: { data: dataNYTDaily } });
 
-    	crossword1 = new Crossword({
+    	crossword2 = new Crossword({
     			props: {
     				data: dataOreo,
     				theme: /*theme*/ ctx[1],
@@ -4063,22 +4649,22 @@ var app = (function () {
     			}
     		});
 
-    	function crossword2_revealed_binding(value) {
-    		/*crossword2_revealed_binding*/ ctx[3].call(null, value);
+    	function crossword3_revealed_binding(value) {
+    		/*crossword3_revealed_binding*/ ctx[3].call(null, value);
     	}
 
-    	let crossword2_props = { data: dataUSA };
+    	let crossword3_props = { data: dataUSA };
 
     	if (/*revealedUSA*/ ctx[0] !== void 0) {
-    		crossword2_props.revealed = /*revealedUSA*/ ctx[0];
+    		crossword3_props.revealed = /*revealedUSA*/ ctx[0];
     	}
 
-    	crossword2 = new Crossword({ props: crossword2_props });
-    	binding_callbacks.push(() => bind(crossword2, "revealed", crossword2_revealed_binding));
+    	crossword3 = new Crossword({ props: crossword3_props });
+    	binding_callbacks.push(() => bind(crossword3, "revealed", crossword3_revealed_binding));
 
-    	crossword3 = new Crossword({
+    	crossword4 = new Crossword({
     			props: {
-    				data: dataUSA,
+    				data: dataNYTDaily,
     				$$slots: {
     					default: [create_default_slot$1],
     					complete: [create_complete_slot],
@@ -4095,148 +4681,269 @@ var app = (function () {
     	return {
     		c() {
     			article = element("article");
-    			section0 = element("section");
+    			div0 = element("div");
     			h10 = element("h1");
-    			t0 = text("NYT Mini");
+    			t0 = text("Svelte Crossword");
     			t1 = space();
     			p0 = element("p");
-    			t2 = text("Default options.");
-    			t3 = space();
-    			create_component(crossword0.$$.fragment);
-    			t4 = space();
-    			section1 = element("section");
-    			h11 = element("h1");
-    			t5 = text("Oreo");
-    			t6 = space();
+    			t2 = text("A crossword component for ");
+    			a0 = element("a");
+    			t3 = text("Svelte");
+    			t4 = text(". Read the docs on ");
+    			a1 = element("a");
+    			t5 = text("Github");
+    			t6 = text(".");
+    			t7 = space();
+    			section0 = element("section");
     			p1 = element("p");
-    			t7 = text("Custom themes");
-    			t8 = space();
+    			t8 = text("Example");
+    			t9 = space();
+    			h11 = element("h1");
+    			t10 = text("Default");
+    			t11 = space();
+    			p2 = element("p");
+    			t12 = text("An ");
+    			a2 = element("a");
+    			t13 = text("NYT mini");
+    			t14 = text(" puzzle with all default settings.");
+    			t15 = space();
+    			create_component(crossword0.$$.fragment);
+    			t16 = space();
+    			section1 = element("section");
+    			p3 = element("p");
+    			t17 = text("Example");
+    			t18 = space();
+    			h12 = element("h1");
+    			t19 = text("Default");
+    			t20 = space();
+    			p4 = element("p");
+    			t21 = text("An ");
+    			a3 = element("a");
+    			t22 = text("NYT daily");
+    			t23 = text(" puzzle with all default settings.");
+    			t24 = space();
+    			create_component(crossword1.$$.fragment);
+    			t25 = space();
+    			section2 = element("section");
+    			p5 = element("p");
+    			t26 = text("Example");
+    			t27 = space();
+    			h13 = element("h1");
+    			t28 = text("Themes");
+    			t29 = space();
+    			p6 = element("p");
+    			t30 = text("A library of preset style themes to choose from.");
+    			t31 = space();
     			select = element("select");
     			option0 = element("option");
-    			t9 = text("Classic");
+    			t32 = text("Classic");
     			option1 = element("option");
-    			t10 = text("Dark");
+    			t33 = text("Dark");
     			option2 = element("option");
-    			t11 = text("Amelia");
+    			t34 = text("Amelia");
     			option3 = element("option");
-    			t12 = text("Citrus");
-    			t13 = space();
-    			div = element("div");
-    			create_component(crossword1.$$.fragment);
-    			t14 = space();
-    			section2 = element("section");
-    			h12 = element("h1");
-    			t15 = text("People in USA Today puzzles");
-    			t16 = space();
-    			p2 = element("p");
-    			t17 = text("Custom class name on cells.");
-    			t18 = space();
+    			t35 = text("Citrus");
+    			t36 = space();
+    			div1 = element("div");
     			create_component(crossword2.$$.fragment);
-    			t19 = space();
+    			t37 = space();
     			section3 = element("section");
-    			h13 = element("h1");
-    			t20 = text("People in USA Today puzzles");
-    			t21 = space();
-    			p3 = element("p");
-    			t22 = text("Custom completed content.");
-    			t23 = space();
+    			p7 = element("p");
+    			t38 = text("Example");
+    			t39 = space();
+    			h14 = element("h1");
+    			t40 = text("Simple Customization");
+    			t41 = space();
+    			p8 = element("p");
+    			t42 = text("Custom class name on cells.");
+    			t43 = space();
     			create_component(crossword3.$$.fragment);
+    			t44 = space();
+    			section4 = element("section");
+    			p9 = element("p");
+    			t45 = text("Example");
+    			t46 = space();
+    			p10 = element("p");
+    			t47 = text("Advanced Customization");
+    			t48 = space();
+    			create_component(crossword4.$$.fragment);
     			this.h();
     		},
     		l(nodes) {
     			article = claim_element(nodes, "ARTICLE", { class: true });
     			var article_nodes = children(article);
+    			div0 = claim_element(article_nodes, "DIV", { class: true });
+    			var div0_nodes = children(div0);
+    			h10 = claim_element(div0_nodes, "H1", { class: true });
+    			var h10_nodes = children(h10);
+    			t0 = claim_text(h10_nodes, "Svelte Crossword");
+    			h10_nodes.forEach(detach);
+    			t1 = claim_space(div0_nodes);
+    			p0 = claim_element(div0_nodes, "P", { class: true });
+    			var p0_nodes = children(p0);
+    			t2 = claim_text(p0_nodes, "A crossword component for ");
+    			a0 = claim_element(p0_nodes, "A", { href: true });
+    			var a0_nodes = children(a0);
+    			t3 = claim_text(a0_nodes, "Svelte");
+    			a0_nodes.forEach(detach);
+    			t4 = claim_text(p0_nodes, ". Read the docs on ");
+    			a1 = claim_element(p0_nodes, "A", { href: true });
+    			var a1_nodes = children(a1);
+    			t5 = claim_text(a1_nodes, "Github");
+    			a1_nodes.forEach(detach);
+    			t6 = claim_text(p0_nodes, ".");
+    			p0_nodes.forEach(detach);
+    			div0_nodes.forEach(detach);
+    			t7 = claim_space(article_nodes);
     			section0 = claim_element(article_nodes, "SECTION", { class: true });
     			var section0_nodes = children(section0);
-    			h10 = claim_element(section0_nodes, "H1", { class: true });
-    			var h10_nodes = children(h10);
-    			t0 = claim_text(h10_nodes, "NYT Mini");
-    			h10_nodes.forEach(detach);
-    			t1 = claim_space(section0_nodes);
-    			p0 = claim_element(section0_nodes, "P", { class: true });
-    			var p0_nodes = children(p0);
-    			t2 = claim_text(p0_nodes, "Default options.");
-    			p0_nodes.forEach(detach);
-    			t3 = claim_space(section0_nodes);
+    			p1 = claim_element(section0_nodes, "P", { class: true });
+    			var p1_nodes = children(p1);
+    			t8 = claim_text(p1_nodes, "Example");
+    			p1_nodes.forEach(detach);
+    			t9 = claim_space(section0_nodes);
+    			h11 = claim_element(section0_nodes, "H1", { class: true });
+    			var h11_nodes = children(h11);
+    			t10 = claim_text(h11_nodes, "Default");
+    			h11_nodes.forEach(detach);
+    			t11 = claim_space(section0_nodes);
+    			p2 = claim_element(section0_nodes, "P", { class: true });
+    			var p2_nodes = children(p2);
+    			t12 = claim_text(p2_nodes, "An ");
+    			a2 = claim_element(p2_nodes, "A", { href: true });
+    			var a2_nodes = children(a2);
+    			t13 = claim_text(a2_nodes, "NYT mini");
+    			a2_nodes.forEach(detach);
+    			t14 = claim_text(p2_nodes, " puzzle with all default settings.");
+    			p2_nodes.forEach(detach);
+    			t15 = claim_space(section0_nodes);
     			claim_component(crossword0.$$.fragment, section0_nodes);
     			section0_nodes.forEach(detach);
-    			t4 = claim_space(article_nodes);
+    			t16 = claim_space(article_nodes);
     			section1 = claim_element(article_nodes, "SECTION", { class: true });
     			var section1_nodes = children(section1);
-    			h11 = claim_element(section1_nodes, "H1", { class: true });
-    			var h11_nodes = children(h11);
-    			t5 = claim_text(h11_nodes, "Oreo");
-    			h11_nodes.forEach(detach);
-    			t6 = claim_space(section1_nodes);
-    			p1 = claim_element(section1_nodes, "P", { class: true });
-    			var p1_nodes = children(p1);
-    			t7 = claim_text(p1_nodes, "Custom themes");
-    			p1_nodes.forEach(detach);
-    			t8 = claim_space(section1_nodes);
-    			select = claim_element(section1_nodes, "SELECT", {});
+    			p3 = claim_element(section1_nodes, "P", { class: true });
+    			var p3_nodes = children(p3);
+    			t17 = claim_text(p3_nodes, "Example");
+    			p3_nodes.forEach(detach);
+    			t18 = claim_space(section1_nodes);
+    			h12 = claim_element(section1_nodes, "H1", { class: true });
+    			var h12_nodes = children(h12);
+    			t19 = claim_text(h12_nodes, "Default");
+    			h12_nodes.forEach(detach);
+    			t20 = claim_space(section1_nodes);
+    			p4 = claim_element(section1_nodes, "P", { class: true });
+    			var p4_nodes = children(p4);
+    			t21 = claim_text(p4_nodes, "An ");
+    			a3 = claim_element(p4_nodes, "A", { href: true });
+    			var a3_nodes = children(a3);
+    			t22 = claim_text(a3_nodes, "NYT daily");
+    			a3_nodes.forEach(detach);
+    			t23 = claim_text(p4_nodes, " puzzle with all default settings.");
+    			p4_nodes.forEach(detach);
+    			t24 = claim_space(section1_nodes);
+    			claim_component(crossword1.$$.fragment, section1_nodes);
+    			section1_nodes.forEach(detach);
+    			t25 = claim_space(article_nodes);
+    			section2 = claim_element(article_nodes, "SECTION", { class: true });
+    			var section2_nodes = children(section2);
+    			p5 = claim_element(section2_nodes, "P", { class: true });
+    			var p5_nodes = children(p5);
+    			t26 = claim_text(p5_nodes, "Example");
+    			p5_nodes.forEach(detach);
+    			t27 = claim_space(section2_nodes);
+    			h13 = claim_element(section2_nodes, "H1", { class: true });
+    			var h13_nodes = children(h13);
+    			t28 = claim_text(h13_nodes, "Themes");
+    			h13_nodes.forEach(detach);
+    			t29 = claim_space(section2_nodes);
+    			p6 = claim_element(section2_nodes, "P", { class: true });
+    			var p6_nodes = children(p6);
+    			t30 = claim_text(p6_nodes, "A library of preset style themes to choose from.");
+    			p6_nodes.forEach(detach);
+    			t31 = claim_space(section2_nodes);
+    			select = claim_element(section2_nodes, "SELECT", {});
     			var select_nodes = children(select);
     			option0 = claim_element(select_nodes, "OPTION", { value: true });
     			var option0_nodes = children(option0);
-    			t9 = claim_text(option0_nodes, "Classic");
+    			t32 = claim_text(option0_nodes, "Classic");
     			option0_nodes.forEach(detach);
     			option1 = claim_element(select_nodes, "OPTION", { value: true });
     			var option1_nodes = children(option1);
-    			t10 = claim_text(option1_nodes, "Dark");
+    			t33 = claim_text(option1_nodes, "Dark");
     			option1_nodes.forEach(detach);
     			option2 = claim_element(select_nodes, "OPTION", { value: true });
     			var option2_nodes = children(option2);
-    			t11 = claim_text(option2_nodes, "Amelia");
+    			t34 = claim_text(option2_nodes, "Amelia");
     			option2_nodes.forEach(detach);
     			option3 = claim_element(select_nodes, "OPTION", { value: true });
     			var option3_nodes = children(option3);
-    			t12 = claim_text(option3_nodes, "Citrus");
+    			t35 = claim_text(option3_nodes, "Citrus");
     			option3_nodes.forEach(detach);
     			select_nodes.forEach(detach);
-    			t13 = claim_space(section1_nodes);
-    			div = claim_element(section1_nodes, "DIV", { style: true });
-    			var div_nodes = children(div);
-    			claim_component(crossword1.$$.fragment, div_nodes);
-    			div_nodes.forEach(detach);
-    			section1_nodes.forEach(detach);
-    			t14 = claim_space(article_nodes);
-    			section2 = claim_element(article_nodes, "SECTION", { class: true });
-    			var section2_nodes = children(section2);
-    			h12 = claim_element(section2_nodes, "H1", { class: true });
-    			var h12_nodes = children(h12);
-    			t15 = claim_text(h12_nodes, "People in USA Today puzzles");
-    			h12_nodes.forEach(detach);
-    			t16 = claim_space(section2_nodes);
-    			p2 = claim_element(section2_nodes, "P", { class: true });
-    			var p2_nodes = children(p2);
-    			t17 = claim_text(p2_nodes, "Custom class name on cells.");
-    			p2_nodes.forEach(detach);
-    			t18 = claim_space(section2_nodes);
-    			claim_component(crossword2.$$.fragment, section2_nodes);
+    			t36 = claim_space(section2_nodes);
+    			div1 = claim_element(section2_nodes, "DIV", {});
+    			var div1_nodes = children(div1);
+    			claim_component(crossword2.$$.fragment, div1_nodes);
+    			div1_nodes.forEach(detach);
     			section2_nodes.forEach(detach);
-    			t19 = claim_space(article_nodes);
+    			t37 = claim_space(article_nodes);
     			section3 = claim_element(article_nodes, "SECTION", { class: true });
     			var section3_nodes = children(section3);
-    			h13 = claim_element(section3_nodes, "H1", { class: true });
-    			var h13_nodes = children(h13);
-    			t20 = claim_text(h13_nodes, "People in USA Today puzzles");
-    			h13_nodes.forEach(detach);
-    			t21 = claim_space(section3_nodes);
-    			p3 = claim_element(section3_nodes, "P", { class: true });
-    			var p3_nodes = children(p3);
-    			t22 = claim_text(p3_nodes, "Custom completed content.");
-    			p3_nodes.forEach(detach);
-    			t23 = claim_space(section3_nodes);
+    			p7 = claim_element(section3_nodes, "P", { class: true });
+    			var p7_nodes = children(p7);
+    			t38 = claim_text(p7_nodes, "Example");
+    			p7_nodes.forEach(detach);
+    			t39 = claim_space(section3_nodes);
+    			h14 = claim_element(section3_nodes, "H1", { class: true });
+    			var h14_nodes = children(h14);
+    			t40 = claim_text(h14_nodes, "Simple Customization");
+    			h14_nodes.forEach(detach);
+    			t41 = claim_space(section3_nodes);
+    			p8 = claim_element(section3_nodes, "P", { class: true });
+    			var p8_nodes = children(p8);
+    			t42 = claim_text(p8_nodes, "Custom class name on cells.");
+    			p8_nodes.forEach(detach);
+    			t43 = claim_space(section3_nodes);
     			claim_component(crossword3.$$.fragment, section3_nodes);
     			section3_nodes.forEach(detach);
+    			t44 = claim_space(article_nodes);
+    			section4 = claim_element(article_nodes, "SECTION", { class: true });
+    			var section4_nodes = children(section4);
+    			p9 = claim_element(section4_nodes, "P", { class: true });
+    			var p9_nodes = children(p9);
+    			t45 = claim_text(p9_nodes, "Example");
+    			p9_nodes.forEach(detach);
+    			t46 = claim_space(section4_nodes);
+    			p10 = claim_element(section4_nodes, "P", { class: true });
+    			var p10_nodes = children(p10);
+    			t47 = claim_text(p10_nodes, "Advanced Customization");
+    			p10_nodes.forEach(detach);
+    			t48 = claim_space(section4_nodes);
+    			claim_component(crossword4.$$.fragment, section4_nodes);
+    			section4_nodes.forEach(detach);
     			article_nodes.forEach(detach);
     			this.h();
     		},
     		h() {
-    			attr(h10, "class", "svelte-1y2vm2o");
-    			attr(p0, "class", "svelte-1y2vm2o");
-    			attr(section0, "class", "nyt svelte-1y2vm2o");
-    			attr(h11, "class", "svelte-1y2vm2o");
-    			attr(p1, "class", "svelte-1y2vm2o");
+    			attr(h10, "class", "svelte-1o1l0pp");
+    			attr(a0, "href", "https://svelte.dev");
+    			attr(a1, "href", "https://github.com/russellgoldenberg/svelte-crossword#svelte-crossword");
+    			attr(p0, "class", "svelte-1o1l0pp");
+    			attr(div0, "class", "intro svelte-1o1l0pp");
+    			attr(p1, "class", "example svelte-1o1l0pp");
+    			attr(h11, "class", "svelte-1o1l0pp");
+    			attr(a2, "href", "https://www.nytimes.com/crosswords/game/mini/2020/10/21");
+    			attr(p2, "class", "svelte-1o1l0pp");
+    			attr(section0, "class", "nyt-mini svelte-1o1l0pp");
+    			attr(p3, "class", "example svelte-1o1l0pp");
+    			attr(h12, "class", "svelte-1o1l0pp");
+    			attr(a3, "href", "https://www.nytimes.com/crosswords/game/daily/2020/10/21");
+    			attr(p4, "class", "svelte-1o1l0pp");
+    			attr(section1, "class", "nyt-daily svelte-1o1l0pp");
+    			attr(p5, "class", "example svelte-1o1l0pp");
+    			attr(h13, "class", "svelte-1o1l0pp");
+    			attr(p6, "class", "svelte-1o1l0pp");
     			option0.__value = "classic";
     			option0.value = option0.__value;
     			option1.__value = "dark";
@@ -4246,70 +4953,106 @@ var app = (function () {
     			option3.__value = "citrus";
     			option3.value = option3.__value;
     			if (/*theme*/ ctx[1] === void 0) add_render_callback(() => /*select_change_handler*/ ctx[2].call(select));
-
-    			attr(div, "style", div_style_value = /*theme*/ ctx[1] == "dark"
-    			? "background: black; color: white"
-    			: "");
-
-    			attr(section1, "class", "amelia svelte-1y2vm2o");
-    			attr(h12, "class", "svelte-1y2vm2o");
-    			attr(p2, "class", "svelte-1y2vm2o");
-    			attr(section2, "class", "usa svelte-1y2vm2o");
-    			toggle_class(section2, "is-revealed", /*revealedUSA*/ ctx[0]);
-    			attr(h13, "class", "svelte-1y2vm2o");
-    			attr(p3, "class", "svelte-1y2vm2o");
-    			attr(section3, "class", "svelte-1y2vm2o");
-    			attr(article, "class", "svelte-1y2vm2o");
+    			attr(section2, "class", "amelia svelte-1o1l0pp");
+    			attr(p7, "class", "example svelte-1o1l0pp");
+    			attr(h14, "class", "svelte-1o1l0pp");
+    			attr(p8, "class", "svelte-1o1l0pp");
+    			attr(section3, "class", "usa svelte-1o1l0pp");
+    			toggle_class(section3, "is-revealed", /*revealedUSA*/ ctx[0]);
+    			attr(p9, "class", "example svelte-1o1l0pp");
+    			attr(p10, "class", "svelte-1o1l0pp");
+    			attr(section4, "class", "svelte-1o1l0pp");
+    			attr(article, "class", "svelte-1o1l0pp");
     		},
     		m(target, anchor) {
     			insert(target, article, anchor);
-    			append(article, section0);
-    			append(section0, h10);
+    			append(article, div0);
+    			append(div0, h10);
     			append(h10, t0);
-    			append(section0, t1);
-    			append(section0, p0);
+    			append(div0, t1);
+    			append(div0, p0);
     			append(p0, t2);
-    			append(section0, t3);
+    			append(p0, a0);
+    			append(a0, t3);
+    			append(p0, t4);
+    			append(p0, a1);
+    			append(a1, t5);
+    			append(p0, t6);
+    			append(article, t7);
+    			append(article, section0);
+    			append(section0, p1);
+    			append(p1, t8);
+    			append(section0, t9);
+    			append(section0, h11);
+    			append(h11, t10);
+    			append(section0, t11);
+    			append(section0, p2);
+    			append(p2, t12);
+    			append(p2, a2);
+    			append(a2, t13);
+    			append(p2, t14);
+    			append(section0, t15);
     			mount_component(crossword0, section0, null);
-    			append(article, t4);
+    			append(article, t16);
     			append(article, section1);
-    			append(section1, h11);
-    			append(h11, t5);
-    			append(section1, t6);
-    			append(section1, p1);
-    			append(p1, t7);
-    			append(section1, t8);
-    			append(section1, select);
-    			append(select, option0);
-    			append(option0, t9);
-    			append(select, option1);
-    			append(option1, t10);
-    			append(select, option2);
-    			append(option2, t11);
-    			append(select, option3);
-    			append(option3, t12);
-    			select_option(select, /*theme*/ ctx[1]);
-    			append(section1, t13);
-    			append(section1, div);
-    			mount_component(crossword1, div, null);
-    			append(article, t14);
+    			append(section1, p3);
+    			append(p3, t17);
+    			append(section1, t18);
+    			append(section1, h12);
+    			append(h12, t19);
+    			append(section1, t20);
+    			append(section1, p4);
+    			append(p4, t21);
+    			append(p4, a3);
+    			append(a3, t22);
+    			append(p4, t23);
+    			append(section1, t24);
+    			mount_component(crossword1, section1, null);
+    			append(article, t25);
     			append(article, section2);
-    			append(section2, h12);
-    			append(h12, t15);
-    			append(section2, t16);
-    			append(section2, p2);
-    			append(p2, t17);
-    			append(section2, t18);
-    			mount_component(crossword2, section2, null);
-    			append(article, t19);
+    			append(section2, p5);
+    			append(p5, t26);
+    			append(section2, t27);
+    			append(section2, h13);
+    			append(h13, t28);
+    			append(section2, t29);
+    			append(section2, p6);
+    			append(p6, t30);
+    			append(section2, t31);
+    			append(section2, select);
+    			append(select, option0);
+    			append(option0, t32);
+    			append(select, option1);
+    			append(option1, t33);
+    			append(select, option2);
+    			append(option2, t34);
+    			append(select, option3);
+    			append(option3, t35);
+    			select_option(select, /*theme*/ ctx[1]);
+    			append(section2, t36);
+    			append(section2, div1);
+    			mount_component(crossword2, div1, null);
+    			append(article, t37);
     			append(article, section3);
-    			append(section3, h13);
-    			append(h13, t20);
-    			append(section3, t21);
-    			append(section3, p3);
-    			append(p3, t22);
-    			append(section3, t23);
+    			append(section3, p7);
+    			append(p7, t38);
+    			append(section3, t39);
+    			append(section3, h14);
+    			append(h14, t40);
+    			append(section3, t41);
+    			append(section3, p8);
+    			append(p8, t42);
+    			append(section3, t43);
     			mount_component(crossword3, section3, null);
+    			append(article, t44);
+    			append(article, section4);
+    			append(section4, p9);
+    			append(p9, t45);
+    			append(section4, t46);
+    			append(section4, p10);
+    			append(p10, t47);
+    			append(section4, t48);
+    			mount_component(crossword4, section4, null);
     			current = true;
 
     			if (!mounted) {
@@ -4322,37 +5065,30 @@ var app = (function () {
     				select_option(select, /*theme*/ ctx[1]);
     			}
 
-    			const crossword1_changes = {};
-    			if (dirty & /*theme*/ 2) crossword1_changes.theme = /*theme*/ ctx[1];
-    			crossword1.$set(crossword1_changes);
-
-    			if (!current || dirty & /*theme*/ 2 && div_style_value !== (div_style_value = /*theme*/ ctx[1] == "dark"
-    			? "background: black; color: white"
-    			: "")) {
-    				attr(div, "style", div_style_value);
-    			}
-
     			const crossword2_changes = {};
+    			if (dirty & /*theme*/ 2) crossword2_changes.theme = /*theme*/ ctx[1];
+    			crossword2.$set(crossword2_changes);
+    			const crossword3_changes = {};
 
     			if (!updating_revealed && dirty & /*revealedUSA*/ 1) {
     				updating_revealed = true;
-    				crossword2_changes.revealed = /*revealedUSA*/ ctx[0];
+    				crossword3_changes.revealed = /*revealedUSA*/ ctx[0];
     				add_flush_callback(() => updating_revealed = false);
     			}
 
-    			crossword2.$set(crossword2_changes);
+    			crossword3.$set(crossword3_changes);
 
     			if (dirty & /*revealedUSA*/ 1) {
-    				toggle_class(section2, "is-revealed", /*revealedUSA*/ ctx[0]);
+    				toggle_class(section3, "is-revealed", /*revealedUSA*/ ctx[0]);
     			}
 
-    			const crossword3_changes = {};
+    			const crossword4_changes = {};
 
     			if (dirty & /*$$scope, onReveal, onReset*/ 112) {
-    				crossword3_changes.$$scope = { dirty, ctx };
+    				crossword4_changes.$$scope = { dirty, ctx };
     			}
 
-    			crossword3.$set(crossword3_changes);
+    			crossword4.$set(crossword4_changes);
     		},
     		i(local) {
     			if (current) return;
@@ -4360,6 +5096,7 @@ var app = (function () {
     			transition_in(crossword1.$$.fragment, local);
     			transition_in(crossword2.$$.fragment, local);
     			transition_in(crossword3.$$.fragment, local);
+    			transition_in(crossword4.$$.fragment, local);
     			current = true;
     		},
     		o(local) {
@@ -4367,6 +5104,7 @@ var app = (function () {
     			transition_out(crossword1.$$.fragment, local);
     			transition_out(crossword2.$$.fragment, local);
     			transition_out(crossword3.$$.fragment, local);
+    			transition_out(crossword4.$$.fragment, local);
     			current = false;
     		},
     		d(detaching) {
@@ -4375,6 +5113,7 @@ var app = (function () {
     			destroy_component(crossword1);
     			destroy_component(crossword2);
     			destroy_component(crossword3);
+    			destroy_component(crossword4);
     			mounted = false;
     			dispose();
     		}
@@ -4390,12 +5129,12 @@ var app = (function () {
     		$$invalidate(1, theme);
     	}
 
-    	function crossword2_revealed_binding(value) {
+    	function crossword3_revealed_binding(value) {
     		revealedUSA = value;
     		$$invalidate(0, revealedUSA);
     	}
 
-    	return [revealedUSA, theme, select_change_handler, crossword2_revealed_binding];
+    	return [revealedUSA, theme, select_change_handler, crossword3_revealed_binding];
     }
 
     class App extends SvelteComponent {

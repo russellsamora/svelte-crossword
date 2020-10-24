@@ -80,8 +80,8 @@ You can set your own global CSS variables to override theme defaults or roll-you
 
 ## Notes
 
-- Example data is from the October 21, 2020 NYT [mini crossword](https://www.nytimes.com/crosswords/game/mini)
-- Example data is from the October 22, 2020 NYT [mini crossword](https://www.nytimes.com/crosswords/game/daily)
+- Example data is from the October 21, 2020 NYT [mini crossword](https://www.nytimes.com/crosswords/game/mini/2020/10/21)
+- Example data is from the October 22, 2020 NYT [mini crossword](https://www.nytimes.com/crosswords/game/daily/2020/10/21)
 
 ### Approaches
 

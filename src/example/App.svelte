@@ -11,11 +11,18 @@
 </script>
 
 <article>
-  <section class="nyt">
+  <section class="nyt-mini">
 		<p class="example">Example</p>
     <h1>Default</h1>
-    <p>An NYT mini puzzle with all default settings.</p>
-    <Crossword data="{dataNYT}" />
+    <p>An <a href="https://www.nytimes.com/crosswords/game/mini/2020/10/21">NYT mini</a> puzzle with all default settings.</p>
+    <Crossword data="{dataNYTMini}" />
+  </section>
+
+	<section class="nyt-daily">
+		<p class="example">Example</p>
+    <h1>Default</h1>
+    <p>An <a href="https://www.nytimes.com/crosswords/game/daily/2020/10/21">NYT daily</a> puzzle with all default settings.</p>
+    <Crossword data="{dataNYTDaily}" />
   </section>
 
   <section class="amelia">
@@ -43,7 +50,7 @@
   <section>
     <p class="example">Example</p>
     <p>Advanced Customization</p>
-    <Crossword data="{dataUSA}">
+    <Crossword data="{dataNYTDaily}">
       <div
         class="toolbar"
         slot="toolbar"

@@ -1,0 +1,19 @@
+export default [{
+	"row": 0,
+	"value": "Q"
+}, {
+	"row": 0,
+	"value": "W"
+}, {
+	"row": 0,
+	"value": "E"
+}, {
+	"row": 0,
+	"value": "R"
+}, {
+	"row": 0,
+	"value": "T"
+}, {
+	"row": 0,
+	"value": "Y"
+}, ]

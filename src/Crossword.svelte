@@ -16,6 +16,10 @@
   export let disableHighlight = false;
 	export let showCompleteMessage = true;
 
+	export const onKeydown = ({ detail }) => {
+		console.log(detail);
+	}
+
   let originalClues = createClues(data);
   let validated = validateClues(originalClues);
   let clues = originalClues.map((d) => ({ ...d }));
@@ -95,10 +99,12 @@
     if (detail === "reset") onReset();
     else if (detail === "reveal") onReveal();
   }
+
 </script>
 
 
 {#if validated}
+
 <article class="crossword {themeClass}">
 
 	<slot name="toolbar" onReset="{onReset}" onReveal="{onReveal}">

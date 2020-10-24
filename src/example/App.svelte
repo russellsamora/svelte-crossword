@@ -1,13 +1,18 @@
 <script>
   import Crossword from "../Crossword.svelte";
+	import Keyboard from "./Keyboard.svelte";
   import dataNYTMini from "./data-nyt-mini.json";
 	import dataNYTDaily from "./data-nyt-daily.json";
   import dataOreo from "./data-oreo.json";
   import dataAmelia from "./data-amelia.json";
   import dataUSA from "./data-usa.json";
+	
 
   let revealedUSA;
   let theme;
+
+
+	let onKeydownDefault;
 </script>
 
 <article>
@@ -15,21 +20,23 @@
 		<h1>Svelte Crossword</h1>
 		<p>A crossword component for <a href="https://svelte.dev">Svelte</a>. Read the docs on <a href="https://github.com/russellgoldenberg/svelte-crossword#svelte-crossword">Github</a>.</p>
 	</div>
-  <section class="nyt-mini">
+
+  <section id="default">
 		<p class="example">Example</p>
     <h1>Default</h1>
     <p>An <a href="https://www.nytimes.com/crosswords/game/mini/2020/10/21">NYT mini</a> puzzle with all default settings.</p>
-    <Crossword data="{dataNYTMini}" />
+    <Crossword bind:onKeydown={onKeydownDefault} data="{dataNYTMini}" />
+		<Keyboard on:keydown={onKeydownDefault} />
   </section>
 
-	<section class="nyt-daily">
+	<section id="default2">
 		<p class="example">Example</p>
     <h1>Default</h1>
     <p>An <a href="https://www.nytimes.com/crosswords/game/daily/2020/10/21">NYT daily</a> puzzle with all default settings.</p>
     <Crossword data="{dataNYTDaily}" />
   </section>
 
-  <section class="amelia">
+  <section id="themes">
 		<p class="example">Example</p>
     <h1>Themes</h1>
     <p>A library of preset style themes to choose from.</p>
@@ -44,14 +51,14 @@
     </div>
   </section>
 
-  <section class:is-revealed="{revealedUSA}" class="usa">
+  <section id="simple-customization" class:is-revealed="{revealedUSA}">
 		<p class="example">Example</p>
     <h1>Simple Customization</h1>
     <p>Custom class name on cells.</p>
     <Crossword data="{dataUSA}" disableHighlight="{revealedUSA}" bind:revealed="{revealedUSA}" />
   </section>
 
-  <section>
+  <section id="advanced-customization">
     <p class="example">Example</p>
     <p>Advanced Customization</p>
     <Crossword data="{dataNYTDaily}">

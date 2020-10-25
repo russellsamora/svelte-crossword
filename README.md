@@ -79,6 +79,17 @@ You can set your own global CSS variables to override theme defaults or roll-you
 --number-font-size: 0.3em;
 --number-font-weight: 400;
 --number-color: #8a8a8a;
+
+--toolbar-font: -apple-system, Helvetica, sans-serif;
+--toolbar-font-size: 0.85em;
+--toolbar-bg: transparent;
+--toolbar-button-bg: #efefef;
+--toolbar-button-border-radius: 4px;
+--toolbar-button-color: #6a6a6a;
+--toolbar-button-padding: 0.75em;
+--toolbar-button-border: none;
+--toolbar-button-font-weight: 400;
+--toolbar-button-bg-hover: #cdcdcd;
 ```
 
 ## Features

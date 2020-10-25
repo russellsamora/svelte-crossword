@@ -11,7 +11,7 @@
 
   export let data = [];
   export let revealed = false;
-  export let actions = ["reset", "reveal"];
+  export let actions = ["clear", "reveal"];
   export let revealDuration = 1000;
   export let theme = "classic";
   export let disableHighlight = false;
@@ -61,14 +61,14 @@
     });
   }
 
-  function clear() {
+  function reset() {
     isRevealing = false;
     focusedCellIndex = 0;
     focusedDirection = "across";
   }
 
-  function onReset() {
-    clear();
+  function onClear() {
+    reset();
     if (revealTimeout) clearTimeout(revealTimeout);
     cells = cells.map((cell) => ({
       ...cell,
@@ -79,7 +79,7 @@
 
   function onReveal() {
     if (revealed) return true;
-    clear();
+    reset();
     cells = cells.map((cell) => ({
       ...cell,
       value: cell.answer,
@@ -97,7 +97,7 @@
   }
 
   function onToolbarEvent({ detail }) {
-    if (detail === "reset") onReset();
+    if (detail === "reset") onClear();
     else if (detail === "reveal") onReveal();
   }
 
@@ -108,7 +108,7 @@
 
 <article class="crossword {themeClass}">
 
-	<slot name="toolbar" onReset="{onReset}" onReveal="{onReveal}">
+	<slot name="toolbar" onClear="{onClear}" onReveal="{onReveal}">
 		<Toolbar actions="{actions}" on:event="{onToolbarEvent}" />
 	</slot>
 
@@ -166,12 +166,23 @@
 
     --theme-number-font-size: 0.3em;
     --theme-number-font-weight: 400;
-    --theme-number-color: #8a8a8a;
+    --theme-number-color: #6a6a6a;
+		
+		--theme-toolbar-font: -apple-system, Helvetica, sans-serif;
+		--theme-toolbar-font-size: 0.85em;
+		--theme-toolbar-bg: transparent;
+		--theme-toolbar-button-bg: #efefef;
+		--theme-toolbar-button-border-radius: 4px;
+		--theme-toolbar-button-color: #6a6a6a;
+		--theme-toolbar-button-padding: 0.75em;
+		--theme-toolbar-button-border: none;
+		--theme-toolbar-button-font-weight: 400;
+		--theme-toolbar-button-bg-hover: #cdcdcd;
   }
 
   .theme-dark {
 		--theme-crossword-bg: #1a1a1a;
-    --theme-puzzle-border-color: #8a8a8a;
+    --theme-puzzle-border-color: #6a6a6a;
     --theme-puzzle-font: -apple-system, Helvetica, sans-serif;
     
 		--theme-clue-font: -apple-system, Helvetica, sans-serif;
@@ -195,6 +206,17 @@
 		--theme-number-font-size: 0.3em;
     --theme-number-font-weight: 400;
     --theme-number-color: #cdcdcd;
+		
+		--theme-toolbar-font: -apple-system, Helvetica, sans-serif;
+		--theme-toolbar-font-size: 0.85em;
+		--theme-toolbar-bg: transparent;
+		--theme-toolbar-button-bg: #efefef;
+		--theme-toolbar-button-border-radius: 4px;
+		--theme-toolbar-button-color: #6a6a6a;
+		--theme-toolbar-button-padding: 0.75em;
+		--theme-toolbar-button-border: none;
+		--theme-toolbar-button-font-weight: 400;
+		--theme-toolbar-button-bg-hover: #cdcdcd;
   }
 
   .theme-amelia {
@@ -222,6 +244,17 @@
     --theme-number-font-size: 0.25em;
     --theme-number-font-weight: 100;
     --theme-number-color: #353b48;
+		
+		--theme-toolbar-font: -apple-system, Helvetica, sans-serif;
+		--theme-toolbar-font-size: 0.85em;
+		--theme-toolbar-bg: transparent;
+		--theme-toolbar-button-bg: #efefef;
+		--theme-toolbar-button-border-radius: 4px;
+		--theme-toolbar-button-color: #6a6a6a;
+		--theme-toolbar-button-padding: 0.75em;
+		--theme-toolbar-button-border: none;
+		--theme-toolbar-button-font-weight: 400;
+		--theme-toolbar-button-bg-hover: #cdcdcd;
   }
 
   .theme-citrus {
@@ -250,6 +283,17 @@
     --theme-number-font-size: 0.3em;
     --theme-number-font-weight: 400;
     --theme-number-color: #266b6b;
+		
+		--theme-toolbar-font: -apple-system, Helvetica, sans-serif;
+		--theme-toolbar-font-size: 0.85em;
+		--theme-toolbar-bg: transparent;
+		--theme-toolbar-button-bg: #efefef;
+		--theme-toolbar-button-border-radius: 4px;
+		--theme-toolbar-button-color: #6a6a6a;
+		--theme-toolbar-button-padding: 0.75em;
+		--theme-toolbar-button-border: none;
+		--theme-toolbar-button-font-weight: 400;
+		--theme-toolbar-button-bg-hover: #cdcdcd;
   }
 
   article {
@@ -329,6 +373,48 @@
       var(--theme-number-font-weight)
     );
     --number-color: var(--theme-number-color, var(--theme-number-color));
+
+		--toolbar-font: var(
+			--theme-toolbar-font,
+			var(--theme-toolbar-font)
+		);
+		--toolbar-font-size: var(
+			--theme-toolbar-font-size,
+			var(--theme-toolbar-font-size)
+		);
+		--toolbar-bg: var(
+			--theme-toolbar-bg,
+			var(--theme-toolbar-bg)
+		);
+		--toolbar-button-bg: var(
+			--theme-toolbar-button-bg,
+			var(--theme-toolbar-button-bg)
+		);
+		--toolbar-button-border-radius: var(
+			--theme-toolbar-button-border-radius,
+			var(--theme-toolbar-button-border-radius)
+		);
+		--toolbar-button-color: var(
+			--theme-toolbar-button-color,
+			var(--theme-toolbar-button-color)
+		);
+		--toolbar-button-padding: var(
+			--theme-toolbar-button-padding,
+			var(--theme-toolbar-button-padding)
+		);
+		--toolbar-button-border: var(
+			--theme-toolbar-button-border,
+			var(--theme-toolbar-button-border)
+		);
+		--toolbar-button-font-weight: var(
+			--theme-toolbar-button-font-weight,
+			var(--theme-toolbar-button-font-weight)
+		);
+		--toolbar-button-bg-hover: var(
+			--theme-toolbar-button-bg-hover,
+			var(--theme-toolbar-button-bg-hover)
+		);
+   
 
     position: relative;
     background-color: var(--crossword-bg);

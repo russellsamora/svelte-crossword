@@ -84,7 +84,7 @@ You can set your own global CSS variables to override theme defaults or roll-you
 ## Features
 
 - Generate puzzle from just clue/answer/positions data
-- Toolbar options (reveal, reset)
+- Toolbar options (reveal, clear)
 - Fully responsive
 - Optimized for mobile
 - Preset style themes and fully customizable

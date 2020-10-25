@@ -23,7 +23,7 @@ By [Amelia Wattenberger](https://twitter.com/wattenberger) and [Russell Goldenbe
   ]
 </script>
 
-<Crossword {data} />
+<Crossword data="{data}" />
 ```
 
 ## Parameters

@@ -75,7 +75,7 @@
     onFocusCell(index);
   };
 
-  const pop = (node, { delay = 0, duration = 200 }) => ({
+  const pop = (node, { delay = 0, duration = 250 }) => ({
     delay,
     duration,
     css: (t) =>
@@ -100,7 +100,7 @@
   <rect width="1" height="1"></rect>
   {#if value}
     <text
-      transition:pop="{{ y: 6, delay: changeDelay, duration: isRevealing ? 200 : 0 }}"
+      transition:pop="{{ y: 5, delay: changeDelay, duration: isRevealing ? 250 : 0 }}"
       class="value"
       x="0.5"
       y="0.9"

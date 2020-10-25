@@ -5,7 +5,7 @@ import json from "@rollup/plugin-json";
 import execute from "rollup-plugin-execute";
 
 export default {
-  input: "src/example/App.svelte",
+  input: "example/App.svelte",
   output: {
     format: "cjs",
     file: "docs/.tmp/ssr.js"

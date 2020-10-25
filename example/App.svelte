@@ -1,5 +1,5 @@
 <script>
-  import Crossword from "../Crossword.svelte";
+  import Crossword from "../src/Crossword.svelte";
   import dataNYTMini from "./data-nyt-mini.json";
   import dataNYTDaily from "./data-nyt-daily.json";
   import dataOreo from "./data-oreo.json";

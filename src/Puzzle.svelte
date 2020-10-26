@@ -12,11 +12,6 @@
   export let isRevealing;
 	export let isDisableHighlight;
 	export let revealDuration = 0;
-	export let onCellUpdate;
-
-	export let testing = () => {
-		console.log('hi');
-	}
 
   let cellsHistoryIndex = 0;
   let cellsHistory = [];
@@ -39,7 +34,7 @@
 	
   $: cells, focusedCellIndex, focusedDirection, updateSecondarilyFocusedCells();
 
-  onCellUpdate = (index, newValue, diff = 1) => {
+  function onCellUpdate(index, newValue, diff = 1) {
     const doReplaceFilledCells = !!cells[index].value;
     const newCells = [
       ...cells.slice(0, index),

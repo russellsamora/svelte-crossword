@@ -18,10 +18,6 @@
 	export let showCompleteMessage = true;
 	export let showConfetti = true;
 
-	export const onKeydown = ({ detail }) => {
-		console.log(detail);
-	}
-
   let originalClues = createClues(data);
   let validated = validateClues(originalClues);
   let clues = originalClues.map((d) => ({ ...d }));
@@ -100,15 +96,18 @@
   function onToolbarEvent({ detail }) {
     if (detail === "clear") onClear();
 		else if (detail === "reveal") onReveal();
-		testing();
-  }
+	}
+	
+	function onKeydown({ detail }) {
+		console.log(detail);
+	}
+
 </script>
 
 
 {#if validated}
 
 <article class="crossword {themeClass}">
-
 	<slot name="toolbar" onClear="{onClear}" onReveal="{onReveal}">
 		<Toolbar actions="{actions}" on:event="{onToolbarEvent}" />
 	</slot>
@@ -128,9 +127,7 @@
 			revealDuration="{revealDuration}"
 			bind:cells
 			bind:focusedCellIndex
-			bind:focusedDirection
-			let:testing
-			/>
+			bind:focusedDirection />
 	</div>
 
 	{#if isComplete && !isRevealing && showCompleteMessage}
@@ -139,7 +136,9 @@
 		</CompletedMessage>
 	{/if}
 
-	<Keyboard on:keydown={onKeydown} />
+	<div class="keyboard">
+		<Keyboard on:keydown={onKeydown} />
+	</div>
 </article>
 {/if}
 
@@ -431,6 +430,9 @@
 	@media only screen and (min-width: 720px) {
 		.play {
 			flex-direction: var(--clue-puzzle-order, row);
+		}
+		.keyboard {
+			display: none;
 		}
 	}
 </style>

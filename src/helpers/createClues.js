@@ -1,5 +1,17 @@
 export default function createClues(data) {
-  const withId = data.map((d, i) => ({
+	// determine if 0 or 1 based
+	const minX = Math.min(...data.map(d => d.x));
+	const minY = Math.min(...data.map(d => d.y));
+	const adjust = Math.min(minX, minY);
+
+	
+	const withAdjust = data.map(d => ({
+		...d,
+		x: d.x - adjust,
+		y: d.y - adjust
+	}));
+
+  const withId = withAdjust.map((d, i) => ({
 		...d,
     id: `${d.x}-${d.y}`,
   }));

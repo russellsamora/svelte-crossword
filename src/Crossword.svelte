@@ -127,7 +127,8 @@
 			revealDuration="{revealDuration}"
 			bind:cells
 			bind:focusedCellIndex
-			bind:focusedDirection />
+			bind:focusedDirection
+			/>
 	</div>
 
 	{#if isComplete && !isRevealing && showCompleteMessage}

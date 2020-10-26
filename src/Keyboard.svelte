@@ -32,6 +32,7 @@
 		justify-content: center;
 		
 	}
+	
 	button {
 		font-size: 1em;
 		width: 2em;
@@ -43,5 +44,10 @@
 		border: none;
 		outline: none;
 		cursor: pointer;
+	}
+	
+	button:active {
+		transform: scale(2);
+		background-color: #cdcdcd;
 	}
 </style>

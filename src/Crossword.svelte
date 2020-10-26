@@ -2,7 +2,6 @@
   import Toolbar from "./Toolbar.svelte";
   import Puzzle from "./Puzzle.svelte";
   import Clues from "./Clues.svelte";
-	import Keyboard from "./Keyboard.svelte";
   import CompletedMessage from "./CompletedMessage.svelte";
   import createClues from "./helpers/createClues.js";
   import createCells from "./helpers/createCells.js";
@@ -96,12 +95,7 @@
   function onToolbarEvent({ detail }) {
     if (detail === "clear") onClear();
 		else if (detail === "reveal") onReveal();
-	}
-	
-	function onKeydown({ detail }) {
-		console.log(detail);
-	}
-
+	}	
 </script>
 
 
@@ -135,10 +129,6 @@
 			<slot name="complete" />
 		</CompletedMessage>
 	{/if}
-
-	<div class="keyboard">
-		<Keyboard on:keydown={onKeydown} />
-	</div>
 </article>
 {/if}
 
@@ -156,8 +146,8 @@
     --theme-clue-puzzle-order: row;
     --theme-clue-list-width: 16em;
 
-    --theme-cell-highlight-color: #ffec99;
-    --theme-cell-secondary-color: #ffcc00;
+    --theme-cell-highlight-color: #ffcc00;
+    --theme-cell-secondary-color: #ffec99;
     --theme-cell-bg-color: #fff;
     --theme-cell-border-color: #1a1a1a;
     --theme-cell-border-width: 0.01;
@@ -424,15 +414,12 @@
 
 	.play {
 		display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
 	}
 
 	@media only screen and (min-width: 720px) {
 		.play {
 			flex-direction: var(--clue-puzzle-order, row);
-		}
-		.keyboard {
-			display: none;
 		}
 	}
 </style>

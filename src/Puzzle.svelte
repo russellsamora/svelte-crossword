@@ -1,4 +1,5 @@
 <script>
+	import Keyboard from "./Keyboard.svelte";
   import getSecondarilyFocusedCells from "./helpers/getSecondarilyFocusedCells.js";
   import getCellAfterDiff from "./helpers/getCellAfterDiff.js";
 
@@ -133,7 +134,12 @@
       across: "down",
       down: "across",
     }[focusedDirection];
-  }
+	}
+	
+	function onKeydown({ detail }) {
+		const diff = detail === "delete" ? -1 : 1;
+		onCellUpdate(focusedCellIndex, detail, diff);
+	}
 </script>
 
 <section class="puzzle">
@@ -158,13 +164,19 @@
         onFlipDirection="{onFlipDirection}"
         onHistoricalChange="{onHistoricalChange}" />
     {/each}
-  </svg>
+	</svg>
 </section>
+
+<div class="keyboard">
+	<Keyboard on:keydown={onKeydown} />
+</div>
+
 
 <style>
   section {
     flex: 1;
     height: fit-content;
+		order: -1;
   }
   svg {
     display: block;
@@ -173,10 +185,17 @@
     border: 4px solid var(--puzzle-border-color, #1a1a1a);
     font-family: var(--puzzle-font, -apple-system, Helvetica, sans-serif);
   }
+	.keyboard {
+		order: 3;
+	}
 	@media only screen and (min-width: 720px) {
 		section {
 			position: sticky;
     	top: 1em;
+			order: 0;
+		}
+		.keyboard {
+			display: none;
 		}
 	}
 </style>

@@ -79,11 +79,11 @@
       <div
         class="toolbar"
         slot="toolbar"
-        let:onReset
+        let:onClear
         let:onReveal
         style="background: yellow; padding: 2em;">
-        <button on:click="{onReset}">reset</button>
-        <button on:click="{onReveal}">reveal</button>
+        <button on:click="{onClear}">clear puzzle</button>
+        <button on:click="{onReveal}">show answers</button>
       </div>
       <div slot="complete">
 				<h3>OMG, congrats!</h3>

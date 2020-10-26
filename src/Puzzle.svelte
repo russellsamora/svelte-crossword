@@ -14,6 +14,10 @@
 	export let revealDuration = 0;
 	export let onCellUpdate;
 
+	export let testing = () => {
+		console.log('hi');
+	}
+
   let cellsHistoryIndex = 0;
   let cellsHistory = [];
   let focusedCellIndexHistoryIndex = 0;

@@ -99,7 +99,8 @@
 
   function onToolbarEvent({ detail }) {
     if (detail === "clear") onClear();
-    else if (detail === "reveal") onReveal();
+		else if (detail === "reveal") onReveal();
+		testing();
   }
 </script>
 
@@ -128,6 +129,7 @@
 			bind:cells
 			bind:focusedCellIndex
 			bind:focusedDirection
+			let:testing
 			/>
 	</div>
 

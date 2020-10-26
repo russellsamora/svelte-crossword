@@ -97,7 +97,7 @@
   }
 
   function onToolbarEvent({ detail }) {
-    if (detail === "reset") onClear();
+    if (detail === "clear") onClear();
     else if (detail === "reveal") onReveal();
   }
 

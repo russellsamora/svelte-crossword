@@ -85,10 +85,10 @@
         <button on:click="{onReset}">reset</button>
         <button on:click="{onReveal}">reveal</button>
       </div>
-      <img
-        slot="complete"
-        alt="celebration"
-        src="https://media3.giphy.com/media/QpOZPQQ2wbjOM/giphy.gif" />
+      <div slot="complete">
+				<h3>OMG, congrats!</h3>
+				<img alt="celebration" src="https://media3.giphy.com/media/QpOZPQQ2wbjOM/giphy.gif" />
+			</div>
     </Crossword>
   </section>
 </article>

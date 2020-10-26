@@ -16,4 +16,71 @@ export default [{
 }, {
 	"row": 0,
 	"value": "Y"
-}, ]
+}, {
+	"row": 0,
+	"value": "U"
+},  {
+	"row": 0,
+	"value": "I"
+},  {
+	"row": 0,
+	"value": "O"
+},  {
+	"row": 0,
+	"value": "P"
+}, {
+	"row": 1,
+	"value": "A"
+}, {
+	"row": 1,
+	"value": "S"
+}, {
+	"row": 1,
+	"value": "D"
+}, {
+	"row": 1,
+	"value": "F"
+}, {
+	"row": 1,
+	"value": "G"
+}, {
+	"row": 1,
+	"value": "H"
+}, {
+	"row": 1,
+	"value": "J"
+}, {
+	"row": 1,
+	"value": "K"
+}, {
+	"row": 1,
+	"value": "L"
+}, {
+	"row": 2,
+	"value": "123"
+}, {
+	"row": 2,
+	"value": "Z"
+}, {
+	"row": 2,
+	"value": "X"
+}, {
+	"row": 2,
+	"value": "C"
+}, {
+	"row": 2,
+	"value": "V"
+}, {
+	"row": 2,
+	"value": "B"
+}, {
+	"row": 2,
+	"value": "N"
+}, {
+	"row": 2,
+	"value": "M"
+}, {
+	"row": 2,
+	"value": "delete"
+}
+ ]

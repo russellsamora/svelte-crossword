@@ -1,6 +1,6 @@
 <script>
-  import ClueList from "./ClueList.svelte";
-  import Clue from "./Clue.svelte";
+	import ClueList from "./ClueList.svelte";
+	import ClueBar from "./ClueBar.svelte";
 
   export let clues;
   export let cellIndexMap;
@@ -8,24 +8,30 @@
   export let focusedCellIndex;
   export let focusedCell;
 
-  $: focusedClueNumbers = focusedCell.clueNumbers || {};
+	$: focusedClueNumbers = focusedCell.clueNumbers || {};
+	$: currentClue = clues.find(c => c.direction === focusedDirection && c.number === focusedClueNumbers[focusedDirection]);
 
-  const onClueFocus = (clue) => {
-    focusedDirection = clue.direction;
-    const cellId = [clue.x, clue.y].join("-");
-    focusedCellIndex = cellIndexMap[cellId] || 0;
-  };
+  function onClueFocus({ direction, id }) {
+    focusedDirection = direction;
+    focusedCellIndex = cellIndexMap[id] || 0;
+	}
+	
 </script>
 
 <section class="clues">
+	<div class="desktop">
   {#each ['across', 'down'] as direction}
     <ClueList
       direction="{direction}"
       focusedClueNumbers="{focusedClueNumbers}"
-      clues="{clues.filter((d) => d.direction == direction)}"
-      isDirectionFocused="{focusedDirection == direction}"
+      clues="{clues.filter((d) => d.direction === direction)}"
+      isDirectionFocused="{focusedDirection === direction}"
       onClueFocus="{onClueFocus}" />
-  {/each}
+	{/each}
+	</div>
+	<div class="mobile">
+		<ClueBar {currentClue} />
+	</div>
 </section>
 
 <style>

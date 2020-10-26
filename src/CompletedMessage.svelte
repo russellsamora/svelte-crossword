@@ -2,42 +2,50 @@
   import { fade } from 'svelte/transition';
   import Confetti from './Confetti.svelte';
 
+	export let showConfetti = true;
+
   let isOpen = true;
 </script>
 
 {#if isOpen}
-  <div class="curtain" transition:fade="{{ y: 20 }}">
-    <div class="content">
+  <div class="completed" transition:fade="{{ y: 20 }}">
+		
+		<div class="content">
 			<div class="message">
 				<slot name="message">
 					<h3>You solved it!</h3>
 				</slot>
 			</div>
-      <button on:click="{() => (isOpen = false)}"> View puzzle </button>
-    </div>
-    <div class="confetti">
-      <Confetti />
-    </div>
+
+      <button on:click="{() => (isOpen = false)}">View puzzle</button>
+		</div>
+		
+		{#if showConfetti}
+		<div class="confetti">
+			<Confetti />
+		</div>
+		{/if}
+
   </div>
   <div
-    class="background"
+    class="curtain"
     transition:fade="{{ duration: 250 }}"
     on:click="{() => (isOpen = false)}"></div>
 {/if}
 
 <style>
-  .curtain {
+  .completed {
     position: absolute;
     top: min(50%, 15em);
     left: 50%;
     background: white;
     transform: translate(-50%, -50%);
     border-radius: 4px;
-    z-index: 10;
+    z-index: 100;
     box-shadow: 0 4px 8px 4px rgba(0, 0, 0, 0.2);
   }
 
-  .background {
+  .curtain {
     position: absolute;
     top: 0;
     right: 0;
@@ -46,7 +54,7 @@
     background: #fff;
     opacity: 0.9;
     cursor: pointer;
-    z-index: 2;
+    z-index: 1;
   }
 
   h3 {
@@ -77,7 +85,6 @@
     flex-direction: column;
     align-items: center;
     padding: 2em;
-    z-index: 10;
   }
 
 	.message {

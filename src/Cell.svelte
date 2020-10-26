@@ -18,14 +18,14 @@
 
   let element;
 
-  const onFocusSelf = () => {
+  function onFocusSelf() {
     if (!element) return;
     if (isFocused) element.focus();
-  };
+  }
 
   $: isFocused, onFocusSelf();
 
-  const onKeydown = (e) => {
+  function onKeydown(e) {
     if (e.ctrlKey && e.key.toLowerCase() == "z") {
       onHistoricalChange(e.shiftKey ? 1 : -1);
     }
@@ -70,19 +70,22 @@
       e.stopPropagation();
       return;
     }
-  };
-  const onClick = () => {
+	}
+	
+  function onClick() {
     onFocusCell(index);
-  };
+  }
 
-  const pop = (node, { delay = 0, duration = 250 }) => ({
-    delay,
-    duration,
-    css: (t) =>
-      [
-        `transform: translate(0, ${1 - t}px)`, //
-      ].join(";"),
-  });
+  function pop(node, { delay = 0, duration = 250 }) {
+		return {
+			delay,
+			duration,
+			css: (t) =>
+				[
+					`transform: translate(0, ${1 - t}px)`, //
+				].join(";"),
+		}
+	}
 </script>
 
 <!-- <svelte:window on:keydown={onKeydown} /> -->

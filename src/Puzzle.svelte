@@ -23,16 +23,18 @@
   const h = Math.max(...cells.map((d) => d.y)) + 1;
 
   let secondarilyFocusedCells = [];
-  const updateSecondarilyFocusedCells = () => {
+	
+	function updateSecondarilyFocusedCells() {
     secondarilyFocusedCells = getSecondarilyFocusedCells({
       cells,
       focusedDirection,
       focusedCell,
     });
-  };
+	}
+	
   $: cells, focusedCellIndex, focusedDirection, updateSecondarilyFocusedCells();
 
-  const onCellUpdate = (index, newValue, diff = 1) => {
+  function onCellUpdate(index, newValue, diff = 1) {
     const doReplaceFilledCells = !!cells[index].value;
     const newCells = [
       ...cells.slice(0, index),
@@ -47,17 +49,17 @@
     cells = newCells;
 
     onFocusCellDiff(diff, doReplaceFilledCells);
-  };
+  }
 
-  const onHistoricalChange = (diff) => {
+  function onHistoricalChange(diff) {
     cellsHistoryIndex += -diff;
     cells = cellsHistory[cellsHistoryIndex] || cells;
     focusedCellIndexHistoryIndex += -diff;
     focusedCellIndex =
       focusedCellIndexHistory[cellsHistoryIndex] || focusedCellIndex;
-  };
+  }
 
-  const onFocusCell = (index) => {
+  function onFocusCell(index) {
     if (index == focusedCellIndex) {
       onFlipDirection();
     } else {
@@ -72,9 +74,9 @@
 
   $: sortedCellsInDirection = [...cells].sort((a, b) =>
     focusedDirection == "down" ? a.x - b.x || a.y - b.y : a.y - b.y || a.x - b.x
-  );
+  )
 
-  const onFocusCellDiff = (diff, doReplaceFilledCells = true) => {
+  function onFocusCellDiff(diff, doReplaceFilledCells = true) {
     const sortedCellsInDirectionFiltered = sortedCellsInDirection.filter((d) =>
       doReplaceFilledCells ? true : !d.value
     );
@@ -87,9 +89,9 @@
     const nextCell = cells[nextCellIndex];
     if (!nextCell) return;
     onFocusCell(nextCellIndex);
-  };
+  }
 
-  const onFocusClueDiff = (diff = 1) => {
+  function onFocusClueDiff(diff = 1) {
     const currentNumber = focusedCell.clueNumbers[focusedDirection];
     let nextCluesInDirection = clues.filter(
       (clue) =>
@@ -108,9 +110,9 @@
     focusedCellIndex = cells.findIndex(
       (cell) => cell.x == nextClue.x && cell.y == nextClue.y
     );
-  };
+  }
 
-  const onMoveFocus = (direction, diff) => {
+  function onMoveFocus(direction, diff) {
     if (focusedDirection != direction) {
       const dimension = direction == "across" ? "x" : "y";
       focusedDirection = direction;
@@ -124,14 +126,14 @@
       if (!nextCell) return;
       onFocusCell(nextCell.index);
     }
-  };
+  }
 
-  const onFlipDirection = () => {
+  function onFlipDirection() {
     focusedDirection = {
       across: "down",
       down: "across",
     }[focusedDirection];
-  };
+  }
 </script>
 
 <section class="puzzle">

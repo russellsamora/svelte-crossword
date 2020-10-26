@@ -5,7 +5,8 @@
   export let clues;
   export let focusedClueNumbers;
   export let isDirectionFocused;
-  export let onClueFocus;
+	export let onClueFocus;
+	
 </script>
 
 <div class="list">
@@ -16,7 +17,7 @@
         clue="{clue.clue}"
         number="{clue.number}"
 				isFilled="{clue.isFilled}"
-        isNumberFocused="{focusedClueNumbers[direction] == clue.number}"
+        isNumberFocused="{focusedClueNumbers[direction] === clue.number}"
         isDirectionFocused="{isDirectionFocused}"
         onFocus="{() => onClueFocus(clue)}" />
     {/each}

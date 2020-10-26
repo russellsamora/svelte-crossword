@@ -16,6 +16,7 @@
   export let theme = "classic";
   export let disableHighlight = false;
 	export let showCompleteMessage = true;
+	export let showConfetti = true;
 
 	export const onKeydown = ({ detail }) => {
 		console.log(detail);
@@ -131,7 +132,7 @@
 	</div>
 
 	{#if isComplete && !isRevealing && showCompleteMessage}
-		<CompletedMessage>
+		<CompletedMessage {showConfetti}>
 			<slot name="complete" />
 		</CompletedMessage>
 	{/if}

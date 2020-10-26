@@ -41,5 +41,7 @@
 		border-radius: 2px;
 		background-color: #efefef;
 		border: none;
+		outline: none;
+		cursor: pointer;
 	}
 </style>

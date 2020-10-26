@@ -164,8 +164,6 @@
 <style>
   section {
     flex: 1;
-    position: sticky;
-    top: 1em;
     height: fit-content;
   }
   svg {
@@ -175,4 +173,10 @@
     border: 4px solid var(--puzzle-border-color, #1a1a1a);
     font-family: var(--puzzle-font, -apple-system, Helvetica, sans-serif);
   }
+	@media only screen and (min-width: 720px) {
+		section {
+			position: sticky;
+    	top: 1em;
+		}
+	}
 </style>

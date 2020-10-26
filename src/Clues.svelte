@@ -15,7 +15,15 @@
     focusedDirection = direction;
     focusedCellIndex = cellIndexMap[id] || 0;
 	}
-	
+
+
+	function onNextClue({ detail }) {
+		let next = detail;
+		if (next < 0) next = clues.length - 1;
+		else if (next > clues.length - 1) next = 0;
+		const { direction, id } = clues[next];
+		onClueFocus({ direction, id });
+	}
 </script>
 
 <section class="clues">
@@ -30,16 +38,36 @@
 	{/each}
 	</div>
 	<div class="mobile">
-		<ClueBar {currentClue} />
+		<ClueBar {currentClue} on:nextClue="{onNextClue}" />
 	</div>
 </section>
 
 <style>
   section {
-    position: sticky;
-    top: 1em;
-    flex: 0 1 var(--clue-list-width, 16em);
     height: fit-content;
     margin: 0 1em;
   }
+	
+	.mobile {
+		display: block;
+		margin: 2em 0;
+	}
+	
+	.desktop {
+		display: none;
+	}
+
+	@media only screen and (min-width: 720px) {
+		.mobile {
+			display: none;
+		}
+		.desktop {
+			display: block;
+		}
+		section {
+			position: sticky;
+			top: 1em;
+			flex: 0 1 var(--clue-list-width, 16em);
+		}
+	}
 </style>

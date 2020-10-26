@@ -101,7 +101,6 @@
     if (detail === "clear") onClear();
     else if (detail === "reveal") onReveal();
   }
-
 </script>
 
 
@@ -423,6 +422,12 @@
 
 	.play {
 		display: flex;
-    flex-direction: var(--clue-puzzle-order, row);
+    flex-direction: column-reverse;
+	}
+
+	@media only screen and (min-width: 720px) {
+		.play {
+			flex-direction: var(--clue-puzzle-order, row);
+		}
 	}
 </style>

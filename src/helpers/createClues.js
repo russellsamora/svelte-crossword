@@ -1,7 +1,6 @@
 export default function createClues(data) {
   const withId = data.map((d, i) => ({
 		...d,
-		index: i,
     id: `${d.x}-${d.y}`,
   }));
 	
@@ -54,7 +53,14 @@ export default function createClues(data) {
 		}
 	});
 
-	withCells.sort((a, b) => a.number - b.number);
-
-	return withCells;
+	withCells.sort((a, b) => {
+		if (a.direction < b.direction) return -1;
+		else if (a.direction > b.direction) return 1;
+		return a.number - b.number;
+	});
+	const withIndex = withCells.map((d, i) => ({
+		...d,
+		index: i
+	}));
+	return withIndex;
 }

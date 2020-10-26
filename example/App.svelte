@@ -101,6 +101,7 @@
   section {
     max-width: 960px;
     margin: 5em auto;
+		padding: 0 1em;
   }
   h1 {
     margin: 0;
@@ -110,13 +111,5 @@
   p {
     max-width: 640px;
     margin: 1em 0;
-  }
-  .example {
-		max-width: 100%;
-    padding: 0.5em;
-    font-weight: bold;
-    font-size: 0.85em;
-    text-transform: uppercase;
-		border-top: 2px solid #ccc;
   }
 </style>

@@ -9,18 +9,20 @@
   import { fromPairs } from "./helpers/utils.js";
 
   export let data = [];
-  export let revealed = false;
   export let actions = ["clear", "reveal"];
-  export let revealDuration = 1000;
-  export let theme = "classic";
+	export let theme = "classic";
+	export let revealDuration = 1000;
+	export let breakpoint = 720;
+	export let revealed = false;
   export let disableHighlight = false;
 	export let showCompleteMessage = true;
 	export let showConfetti = true;
-
+	
   let originalClues = createClues(data);
   let validated = validateClues(originalClues);
   let clues = originalClues.map((d) => ({ ...d }));
-  let cells = createCells(originalClues);
+	let cells = createCells(originalClues);
+	let width = 0;
   let focusedDirection = "across";
   let focusedCellIndex = 0;
   let isRevealing = false;
@@ -34,7 +36,9 @@
   $: isComplete = percentCorrect == 1;
   $: themeClass = theme ? `theme-${theme}` : "";
   $: isDisableHighlight = isComplete && disableHighlight;
-  $: cells, (clues = checkClues());
+	$: cells, (clues = checkClues());
+	
+	$: desktop = width >= breakpoint;
 
   function checkClues() {
     return clues.map((d) => {
@@ -101,15 +105,16 @@
 
 {#if validated}
 
-<article class="crossword {themeClass}">
+<article class="crossword {themeClass}" bind:offsetWidth={width}>
 	<slot name="toolbar" onClear="{onClear}" onReveal="{onReveal}">
 		<Toolbar actions="{actions}" on:event="{onToolbarEvent}" />
 	</slot>
 
-	<div class="play">
+	<div class="play" class:desktop>
 		<Clues
 			clues="{clues}"
 			cellIndexMap="{cellIndexMap}"
+			desktop="{desktop}"
 			bind:focusedCellIndex
 			bind:focusedCell
 			bind:focusedDirection />
@@ -119,6 +124,7 @@
 			isRevealing="{isRevealing}"
 			isDisableHighlight="{isDisableHighlight}"
 			revealDuration="{revealDuration}"
+			desktop="{desktop}"
 			bind:cells
 			bind:focusedCellIndex
 			bind:focusedDirection />
@@ -417,9 +423,7 @@
     flex-direction: column;
 	}
 
-	@media only screen and (min-width: 720px) {
-		.play {
-			flex-direction: var(--clue-puzzle-order, row);
-		}
+	.play.desktop {
+		flex-direction: var(--clue-puzzle-order, row);
 	}
 </style>

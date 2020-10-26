@@ -22,30 +22,28 @@
   </div>
 
   <section id="default">
-    <p class="example">Example</p>
     <h1>Default</h1>
     <p>
-      An
-      <a href="https://www.nytimes.com/crosswords/game/mini/2020/10/21">NYT mini</a>
-      puzzle with all default settings.
-    </p>
-    <Crossword data="{dataNYTMini}" />
-  </section>
-
-  <section id="default2">
-    <p class="example">Example</p>
-    <h1>Default</h1>
-    <p>
-      An
+      A
       <a href="https://www.nytimes.com/crosswords/game/daily/2020/10/21">NYT
         daily</a>
       puzzle with all default settings.
     </p>
     <Crossword data="{dataNYTDaily}" />
+	</section>
+	
+
+  <section id="mini" style="max-width: 480px;">
+    <h1>Mobile</h1>
+    <p>
+			A
+      <a href="https://www.nytimes.com/crosswords/game/mini/2020/10/21">NYT mini</a>
+      puzzle with all default settings and forced mobile view.
+    </p>
+		<Crossword data="{dataNYTMini}" />
   </section>
 
   <section id="themes">
-    <p class="example">Example</p>
     <h1>Themes</h1>
     <p>A library of preset style themes to choose from.</p>
     <select bind:value="{theme}">
@@ -63,7 +61,6 @@
   </section>
 
   <section id="simple-customization" class:is-revealed="{revealedUSA}">
-    <p class="example">Example</p>
     <h1>Simple Customization</h1>
     <p>Custom class name on cells.</p>
     <Crossword
@@ -73,7 +70,6 @@
   </section>
 
   <section id="advanced-customization">
-    <p class="example">Example</p>
     <p>Advanced Customization</p>
     <Crossword data="{dataNYTDaily}">
       <div
@@ -116,11 +112,11 @@
     margin: 1em 0;
   }
   .example {
-    display: inline-block;
-    background: #ccc;
+		max-width: 100%;
     padding: 0.5em;
     font-weight: bold;
     font-size: 0.85em;
     text-transform: uppercase;
+		border-top: 2px solid #ccc;
   }
 </style>

@@ -6,7 +6,8 @@
   export let cellIndexMap;
   export let focusedDirection;
   export let focusedCellIndex;
-  export let focusedCell;
+	export let focusedCell;
+	export let desktop;
 
 	$: focusedClueNumbers = focusedCell.clueNumbers || {};
 	$: currentClue = clues.find(c => c.direction === focusedDirection && c.number === focusedClueNumbers[focusedDirection]);
@@ -26,8 +27,8 @@
 	}
 </script>
 
-<section class="clues">
-	<div class="desktop">
+<section class="clues" class:desktop>
+	<div class="clues--desktop" class:desktop>
   {#each ['across', 'down'] as direction}
     <ClueList
       direction="{direction}"
@@ -37,38 +38,34 @@
       onClueFocus="{onClueFocus}" />
 	{/each}
 	</div>
-	<div class="mobile">
+	<div class="clues--mobile" class:desktop>
 		<ClueBar {currentClue} on:nextClue="{onNextClue}" />
 	</div>
 </section>
 
 <style>
-  section {
-    
-  }
-	
-	.mobile {
-		display: block;
-		margin: 2em 0;
-	}
-	
-	.desktop {
-		display: none;
-	}
-
-	@media only screen and (min-width: 720px) {
-		.mobile {
-			display: none;
-		}
-		.desktop {
-			display: block;
-		}
-		section {
+	section.desktop {
 			position: sticky;
 			top: 1em;
 			flex: 0 1 var(--clue-list-width, 16em);
 			height: fit-content;
     	margin: 0 1em;
 		}
+	
+	.clues--mobile {
+		display: block;
+		margin: 2em 0;
+	}
+	
+	.clues--mobile.desktop {
+		display: none;
+	}
+	
+	.clues--desktop {
+		display: none;
+	}
+	
+	.clues--desktop.desktop {
+		display: block;
 	}
 </style>

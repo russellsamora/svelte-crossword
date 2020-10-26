@@ -12,6 +12,7 @@
   export let focusedCell;
   export let isRevealing;
 	export let isDisableHighlight;
+	export let desktop;
 	export let revealDuration = 0;
 
   let cellsHistoryIndex = 0;
@@ -138,11 +139,12 @@
 	
 	function onKeydown({ detail }) {
 		const diff = detail === "delete" ? -1 : 1;
-		onCellUpdate(focusedCellIndex, detail, diff);
+		const value = detail === "delete" ? "" : detail;
+		onCellUpdate(focusedCellIndex, value, diff);
 	}
 </script>
 
-<section class="puzzle">
+<section class="puzzle" class:desktop>
   <svg viewBox="0 0 {w} {h}">
     <!-- svg -->
     {#each cells as { x, y, value, index, number, custom }}
@@ -167,7 +169,7 @@
 	</svg>
 </section>
 
-<div class="keyboard">
+<div class="keyboard" class:desktop>
 	<Keyboard on:keydown={onKeydown} />
 </div>
 
@@ -178,6 +180,11 @@
     height: fit-content;
 		order: -1;
   }
+	section.desktop {
+			position: sticky;
+    	top: 1em;
+			order: 0;
+	}
   svg {
     display: block;
     font-size: 1px;
@@ -188,14 +195,7 @@
 	.keyboard {
 		order: 3;
 	}
-	@media only screen and (min-width: 720px) {
-		section {
-			position: sticky;
-    	top: 1em;
-			order: 0;
-		}
-		.keyboard {
-			display: none;
-		}
+	.keyboard.desktop {
+		display: none;
 	}
 </style>

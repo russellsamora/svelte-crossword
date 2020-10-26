@@ -8,10 +8,12 @@
 	rows.sort((a,b) => a - b);
 
 	const swaps = {
-		"delete": '<svg width="5vw" height="5vw" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-delete"><path d="M21 4H8l-7 8 7 8h13a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"></path><line x1="18" y1="9" x2="12" y2="15"></line><line x1="12" y1="9" x2="18" y2="15"></line></svg>'
+		"delete": '<svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-delete"><path d="M21 4H8l-7 8 7 8h13a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"></path><line x1="18" y1="9" x2="12" y2="15"></line><line x1="12" y1="9" x2="18" y2="15"></line></svg>'
 	};
 
 	$: rowData = rows.map(r => keyboardData.filter(k => k.row === r));
+	$: maxInRow = Math.max(...rowData.map(r => r.length));
+	$: percentWidth = `${1 / maxInRow * 100}%`;
 
 	function onKey() {
 		const value = this.innerText;
@@ -25,6 +27,7 @@
 		<div class="row">
 		{#each keys as { value }}
 			<button
+				style="width: {value.length === 1 ? percentWidth : 'auto'};"
 				class:single={value.length === 1}
 				on:touchstart="{() => dispatch("keydown", value)}"
 				on:click="{() => dispatch("keydown", value)}">
@@ -47,9 +50,8 @@
 	}
 	
 	button {
-		font-size: 5vw;
+		font-size: 1em;
 		text-align: center;
-		width: auto;
 		padding: 0.5em;
 		margin: 0.1em;
 		border-radius: 2px;
@@ -67,7 +69,6 @@
 	}
 
 	button.single {
-		width: 8vw;
 		padding: 0.5em 0;
 	}
 </style>

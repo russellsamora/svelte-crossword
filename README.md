@@ -2,6 +2,10 @@
 
 By [Amelia Wattenberger](https://twitter.com/wattenberger) and [Russell Goldenberg](https://twitter.com/codenberg).
 
+## Examples
+
+[Example page](https://russellgoldenberg.github.io/svelte-crossword)
+
 ## Installation
 
 `npm install svelte-crossword`

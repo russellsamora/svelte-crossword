@@ -194,7 +194,7 @@
 		--theme-cell-highlight-color: #066;
     --theme-cell-secondary-color: #003d3d;
     --theme-cell-bg-color: #1a1a1a;
-    --theme-cell-border-color: #8a8a8a;
+    --theme-cell-border-color: #6a6a6a;
     --theme-cell-border-width: 0.01;
     --theme-cell-text-color: #fff;
     --theme-cell-font-size: 0.7em;

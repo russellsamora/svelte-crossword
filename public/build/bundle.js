@@ -2546,10 +2546,10 @@ var app = (function () {
     }
 
     function create_fragment$5(ctx) {
-    	let div;
     	let p;
     	let t0;
     	let t1;
+    	let div;
     	let ul;
     	let current;
     	let each_value = /*clues*/ ctx[1];
@@ -2565,10 +2565,10 @@ var app = (function () {
 
     	return {
     		c() {
-    			div = element("div");
     			p = element("p");
     			t0 = text(/*direction*/ ctx[0]);
     			t1 = space();
+    			div = element("div");
     			ul = element("ul");
 
     			for (let i = 0; i < each_blocks.length; i += 1) {
@@ -2578,13 +2578,13 @@ var app = (function () {
     			this.h();
     		},
     		l(nodes) {
-    			div = claim_element(nodes, "DIV", { class: true });
-    			var div_nodes = children(div);
-    			p = claim_element(div_nodes, "P", { class: true });
+    			p = claim_element(nodes, "P", { class: true });
     			var p_nodes = children(p);
     			t0 = claim_text(p_nodes, /*direction*/ ctx[0]);
     			p_nodes.forEach(detach);
-    			t1 = claim_space(div_nodes);
+    			t1 = claim_space(nodes);
+    			div = claim_element(nodes, "DIV", { class: true });
+    			var div_nodes = children(div);
     			ul = claim_element(div_nodes, "UL", { class: true });
     			var ul_nodes = children(ul);
 
@@ -2597,15 +2597,15 @@ var app = (function () {
     			this.h();
     		},
     		h() {
-    			attr(p, "class", "svelte-jdhgl");
-    			attr(ul, "class", "svelte-jdhgl");
-    			attr(div, "class", "list svelte-jdhgl");
+    			attr(p, "class", "svelte-1ezmsjk");
+    			attr(ul, "class", "svelte-1ezmsjk");
+    			attr(div, "class", "list svelte-1ezmsjk");
     		},
     		m(target, anchor) {
-    			insert(target, div, anchor);
-    			append(div, p);
+    			insert(target, p, anchor);
     			append(p, t0);
-    			append(div, t1);
+    			insert(target, t1, anchor);
+    			insert(target, div, anchor);
     			append(div, ul);
 
     			for (let i = 0; i < each_blocks.length; i += 1) {
@@ -2663,6 +2663,8 @@ var app = (function () {
     			current = false;
     		},
     		d(detaching) {
+    			if (detaching) detach(p);
+    			if (detaching) detach(t1);
     			if (detaching) detach(div);
     			destroy_each(each_blocks, detaching);
     		}
@@ -3987,9 +3989,9 @@ var app = (function () {
     			this.h();
     		},
     		h() {
-    			attr(div, "class", "play svelte-1yhttaz");
+    			attr(div, "class", "play svelte-7uktid");
     			toggle_class(div, "desktop", /*desktop*/ ctx[15]);
-    			attr(article, "class", article_class_value = "crossword " + /*themeClass*/ ctx[13] + " svelte-1yhttaz");
+    			attr(article, "class", article_class_value = "crossword " + /*themeClass*/ ctx[13] + " svelte-7uktid");
     			add_render_callback(() => /*article_elementresize_handler*/ ctx[32].call(article));
     		},
     		m(target, anchor) {
@@ -4099,7 +4101,7 @@ var app = (function () {
     				check_outros();
     			}
 
-    			if (!current || dirty[0] & /*themeClass*/ 8192 && article_class_value !== (article_class_value = "crossword " + /*themeClass*/ ctx[13] + " svelte-1yhttaz")) {
+    			if (!current || dirty[0] & /*themeClass*/ 8192 && article_class_value !== (article_class_value = "crossword " + /*themeClass*/ ctx[13] + " svelte-7uktid")) {
     				attr(article, "class", article_class_value);
     			}
     		},
@@ -5442,7 +5444,7 @@ var app = (function () {
     	};
     }
 
-    // (84:6) <div slot="complete">
+    // (95:6) <div slot="complete">
     function create_complete_slot(ctx) {
     	let div;
     	let h3;
@@ -5490,7 +5492,7 @@ var app = (function () {
     	};
     }
 
-    // (74:4) <Crossword data="{dataNYTDaily}">
+    // (85:4) <Crossword data="{dataNYTDaily}">
     function create_default_slot$1(ctx) {
     	let t;
 
@@ -5514,7 +5516,7 @@ var app = (function () {
     function create_fragment$b(ctx) {
     	let article;
     	let div0;
-    	let h10;
+    	let h1;
     	let t0;
     	let t1;
     	let p0;
@@ -5527,7 +5529,8 @@ var app = (function () {
     	let t6;
     	let t7;
     	let section0;
-    	let h11;
+    	let div1;
+    	let h20;
     	let t8;
     	let t9;
     	let p1;
@@ -5539,7 +5542,8 @@ var app = (function () {
     	let crossword0;
     	let t14;
     	let section1;
-    	let h12;
+    	let div2;
+    	let h21;
     	let t15;
     	let t16;
     	let p2;
@@ -5551,7 +5555,8 @@ var app = (function () {
     	let crossword1;
     	let t21;
     	let section2;
-    	let h13;
+    	let div3;
+    	let h22;
     	let t22;
     	let t23;
     	let p3;
@@ -5567,11 +5572,12 @@ var app = (function () {
     	let option3;
     	let t29;
     	let t30;
-    	let div1;
+    	let div4;
     	let crossword2;
     	let t31;
     	let section3;
-    	let h14;
+    	let div5;
+    	let h23;
     	let t32;
     	let t33;
     	let p4;
@@ -5581,9 +5587,13 @@ var app = (function () {
     	let updating_revealed;
     	let t36;
     	let section4;
-    	let p5;
+    	let div6;
+    	let h24;
     	let t37;
     	let t38;
+    	let p5;
+    	let t39;
+    	let t40;
     	let crossword4;
     	let current;
     	let mounted;
@@ -5635,7 +5645,7 @@ var app = (function () {
     		c() {
     			article = element("article");
     			div0 = element("div");
-    			h10 = element("h1");
+    			h1 = element("h1");
     			t0 = text("Svelte Crossword");
     			t1 = space();
     			p0 = element("p");
@@ -5648,31 +5658,34 @@ var app = (function () {
     			t6 = text(".");
     			t7 = space();
     			section0 = element("section");
-    			h11 = element("h1");
+    			div1 = element("div");
+    			h20 = element("h2");
     			t8 = text("Default");
     			t9 = space();
     			p1 = element("p");
-    			t10 = text("A\n      ");
+    			t10 = text("A\n\t\t\t\t");
     			a2 = element("a");
-    			t11 = text("NYT\n        daily");
-    			t12 = text("\n      puzzle with all default settings.");
+    			t11 = text("NYT\n\t\t\t\t\tdaily");
+    			t12 = text("\n\t\t\t\tpuzzle with all default settings.");
     			t13 = space();
     			create_component(crossword0.$$.fragment);
     			t14 = space();
     			section1 = element("section");
-    			h12 = element("h1");
+    			div2 = element("div");
+    			h21 = element("h2");
     			t15 = text("Mobile");
     			t16 = space();
     			p2 = element("p");
-    			t17 = text("A\n      ");
+    			t17 = text("A\n\t\t\t\t");
     			a3 = element("a");
     			t18 = text("NYT mini");
-    			t19 = text("\n      puzzle with all default settings and forced mobile view.");
+    			t19 = text("\n\t\t\t\tpuzzle with all default settings and forced mobile view.");
     			t20 = space();
     			create_component(crossword1.$$.fragment);
     			t21 = space();
     			section2 = element("section");
-    			h13 = element("h1");
+    			div3 = element("div");
+    			h22 = element("h2");
     			t22 = text("Themes");
     			t23 = space();
     			p3 = element("p");
@@ -5688,11 +5701,12 @@ var app = (function () {
     			option3 = element("option");
     			t29 = text("Citrus");
     			t30 = space();
-    			div1 = element("div");
+    			div4 = element("div");
     			create_component(crossword2.$$.fragment);
     			t31 = space();
     			section3 = element("section");
-    			h14 = element("h1");
+    			div5 = element("div");
+    			h23 = element("h2");
     			t32 = text("Simple Customization");
     			t33 = space();
     			p4 = element("p");
@@ -5701,9 +5715,13 @@ var app = (function () {
     			create_component(crossword3.$$.fragment);
     			t36 = space();
     			section4 = element("section");
-    			p5 = element("p");
+    			div6 = element("div");
+    			h24 = element("h2");
     			t37 = text("Advanced Customization");
     			t38 = space();
+    			p5 = element("p");
+    			t39 = text("TBD.");
+    			t40 = space();
     			create_component(crossword4.$$.fragment);
     			this.h();
     		},
@@ -5712,10 +5730,10 @@ var app = (function () {
     			var article_nodes = children(article);
     			div0 = claim_element(article_nodes, "DIV", { class: true });
     			var div0_nodes = children(div0);
-    			h10 = claim_element(div0_nodes, "H1", { class: true });
-    			var h10_nodes = children(h10);
-    			t0 = claim_text(h10_nodes, "Svelte Crossword");
-    			h10_nodes.forEach(detach);
+    			h1 = claim_element(div0_nodes, "H1", { class: true });
+    			var h1_nodes = children(h1);
+    			t0 = claim_text(h1_nodes, "Svelte Crossword");
+    			h1_nodes.forEach(detach);
     			t1 = claim_space(div0_nodes);
     			p0 = claim_element(div0_nodes, "P", { class: true });
     			var p0_nodes = children(p0);
@@ -5735,57 +5753,65 @@ var app = (function () {
     			t7 = claim_space(article_nodes);
     			section0 = claim_element(article_nodes, "SECTION", { id: true, class: true });
     			var section0_nodes = children(section0);
-    			h11 = claim_element(section0_nodes, "H1", { class: true });
-    			var h11_nodes = children(h11);
-    			t8 = claim_text(h11_nodes, "Default");
-    			h11_nodes.forEach(detach);
-    			t9 = claim_space(section0_nodes);
-    			p1 = claim_element(section0_nodes, "P", { class: true });
+    			div1 = claim_element(section0_nodes, "DIV", { class: true });
+    			var div1_nodes = children(div1);
+    			h20 = claim_element(div1_nodes, "H2", { class: true });
+    			var h20_nodes = children(h20);
+    			t8 = claim_text(h20_nodes, "Default");
+    			h20_nodes.forEach(detach);
+    			t9 = claim_space(div1_nodes);
+    			p1 = claim_element(div1_nodes, "P", { class: true });
     			var p1_nodes = children(p1);
-    			t10 = claim_text(p1_nodes, "A\n      ");
+    			t10 = claim_text(p1_nodes, "A\n\t\t\t\t");
     			a2 = claim_element(p1_nodes, "A", { href: true });
     			var a2_nodes = children(a2);
-    			t11 = claim_text(a2_nodes, "NYT\n        daily");
+    			t11 = claim_text(a2_nodes, "NYT\n\t\t\t\t\tdaily");
     			a2_nodes.forEach(detach);
-    			t12 = claim_text(p1_nodes, "\n      puzzle with all default settings.");
+    			t12 = claim_text(p1_nodes, "\n\t\t\t\tpuzzle with all default settings.");
     			p1_nodes.forEach(detach);
+    			div1_nodes.forEach(detach);
     			t13 = claim_space(section0_nodes);
     			claim_component(crossword0.$$.fragment, section0_nodes);
     			section0_nodes.forEach(detach);
     			t14 = claim_space(article_nodes);
     			section1 = claim_element(article_nodes, "SECTION", { id: true, style: true, class: true });
     			var section1_nodes = children(section1);
-    			h12 = claim_element(section1_nodes, "H1", { class: true });
-    			var h12_nodes = children(h12);
-    			t15 = claim_text(h12_nodes, "Mobile");
-    			h12_nodes.forEach(detach);
-    			t16 = claim_space(section1_nodes);
-    			p2 = claim_element(section1_nodes, "P", { class: true });
+    			div2 = claim_element(section1_nodes, "DIV", { class: true });
+    			var div2_nodes = children(div2);
+    			h21 = claim_element(div2_nodes, "H2", { class: true });
+    			var h21_nodes = children(h21);
+    			t15 = claim_text(h21_nodes, "Mobile");
+    			h21_nodes.forEach(detach);
+    			t16 = claim_space(div2_nodes);
+    			p2 = claim_element(div2_nodes, "P", { class: true });
     			var p2_nodes = children(p2);
-    			t17 = claim_text(p2_nodes, "A\n      ");
+    			t17 = claim_text(p2_nodes, "A\n\t\t\t\t");
     			a3 = claim_element(p2_nodes, "A", { href: true });
     			var a3_nodes = children(a3);
     			t18 = claim_text(a3_nodes, "NYT mini");
     			a3_nodes.forEach(detach);
-    			t19 = claim_text(p2_nodes, "\n      puzzle with all default settings and forced mobile view.");
+    			t19 = claim_text(p2_nodes, "\n\t\t\t\tpuzzle with all default settings and forced mobile view.");
     			p2_nodes.forEach(detach);
+    			div2_nodes.forEach(detach);
     			t20 = claim_space(section1_nodes);
     			claim_component(crossword1.$$.fragment, section1_nodes);
     			section1_nodes.forEach(detach);
     			t21 = claim_space(article_nodes);
     			section2 = claim_element(article_nodes, "SECTION", { id: true, class: true });
     			var section2_nodes = children(section2);
-    			h13 = claim_element(section2_nodes, "H1", { class: true });
-    			var h13_nodes = children(h13);
-    			t22 = claim_text(h13_nodes, "Themes");
-    			h13_nodes.forEach(detach);
-    			t23 = claim_space(section2_nodes);
-    			p3 = claim_element(section2_nodes, "P", { class: true });
+    			div3 = claim_element(section2_nodes, "DIV", { class: true });
+    			var div3_nodes = children(div3);
+    			h22 = claim_element(div3_nodes, "H2", { class: true });
+    			var h22_nodes = children(h22);
+    			t22 = claim_text(h22_nodes, "Themes");
+    			h22_nodes.forEach(detach);
+    			t23 = claim_space(div3_nodes);
+    			p3 = claim_element(div3_nodes, "P", { class: true });
     			var p3_nodes = children(p3);
     			t24 = claim_text(p3_nodes, "A library of preset style themes to choose from.");
     			p3_nodes.forEach(detach);
-    			t25 = claim_space(section2_nodes);
-    			select = claim_element(section2_nodes, "SELECT", {});
+    			t25 = claim_space(div3_nodes);
+    			select = claim_element(div3_nodes, "SELECT", {});
     			var select_nodes = children(select);
     			option0 = claim_element(select_nodes, "OPTION", { value: true });
     			var option0_nodes = children(option0);
@@ -5804,59 +5830,73 @@ var app = (function () {
     			t29 = claim_text(option3_nodes, "Citrus");
     			option3_nodes.forEach(detach);
     			select_nodes.forEach(detach);
+    			div3_nodes.forEach(detach);
     			t30 = claim_space(section2_nodes);
-    			div1 = claim_element(section2_nodes, "DIV", {});
-    			var div1_nodes = children(div1);
-    			claim_component(crossword2.$$.fragment, div1_nodes);
-    			div1_nodes.forEach(detach);
+    			div4 = claim_element(section2_nodes, "DIV", {});
+    			var div4_nodes = children(div4);
+    			claim_component(crossword2.$$.fragment, div4_nodes);
+    			div4_nodes.forEach(detach);
     			section2_nodes.forEach(detach);
     			t31 = claim_space(article_nodes);
     			section3 = claim_element(article_nodes, "SECTION", { id: true, class: true });
     			var section3_nodes = children(section3);
-    			h14 = claim_element(section3_nodes, "H1", { class: true });
-    			var h14_nodes = children(h14);
-    			t32 = claim_text(h14_nodes, "Simple Customization");
-    			h14_nodes.forEach(detach);
-    			t33 = claim_space(section3_nodes);
-    			p4 = claim_element(section3_nodes, "P", { class: true });
+    			div5 = claim_element(section3_nodes, "DIV", { class: true });
+    			var div5_nodes = children(div5);
+    			h23 = claim_element(div5_nodes, "H2", { class: true });
+    			var h23_nodes = children(h23);
+    			t32 = claim_text(h23_nodes, "Simple Customization");
+    			h23_nodes.forEach(detach);
+    			t33 = claim_space(div5_nodes);
+    			p4 = claim_element(div5_nodes, "P", { class: true });
     			var p4_nodes = children(p4);
     			t34 = claim_text(p4_nodes, "Custom class name on cells.");
     			p4_nodes.forEach(detach);
+    			div5_nodes.forEach(detach);
     			t35 = claim_space(section3_nodes);
     			claim_component(crossword3.$$.fragment, section3_nodes);
     			section3_nodes.forEach(detach);
     			t36 = claim_space(article_nodes);
     			section4 = claim_element(article_nodes, "SECTION", { id: true, class: true });
     			var section4_nodes = children(section4);
-    			p5 = claim_element(section4_nodes, "P", { class: true });
+    			div6 = claim_element(section4_nodes, "DIV", { class: true });
+    			var div6_nodes = children(div6);
+    			h24 = claim_element(div6_nodes, "H2", { class: true });
+    			var h24_nodes = children(h24);
+    			t37 = claim_text(h24_nodes, "Advanced Customization");
+    			h24_nodes.forEach(detach);
+    			t38 = claim_space(div6_nodes);
+    			p5 = claim_element(div6_nodes, "P", { class: true });
     			var p5_nodes = children(p5);
-    			t37 = claim_text(p5_nodes, "Advanced Customization");
+    			t39 = claim_text(p5_nodes, "TBD.");
     			p5_nodes.forEach(detach);
-    			t38 = claim_space(section4_nodes);
+    			div6_nodes.forEach(detach);
+    			t40 = claim_space(section4_nodes);
     			claim_component(crossword4.$$.fragment, section4_nodes);
     			section4_nodes.forEach(detach);
     			article_nodes.forEach(detach);
     			this.h();
     		},
     		h() {
-    			attr(h10, "class", "svelte-1g7on86");
+    			attr(h1, "class", "svelte-hz1mll");
     			attr(a0, "href", "https://svelte.dev");
     			attr(a1, "href", "https://github.com/russellgoldenberg/svelte-crossword#svelte-crossword");
-    			attr(p0, "class", "svelte-1g7on86");
-    			attr(div0, "class", "intro svelte-1g7on86");
-    			attr(h11, "class", "svelte-1g7on86");
+    			attr(p0, "class", "svelte-hz1mll");
+    			attr(div0, "class", "intro svelte-hz1mll");
+    			attr(h20, "class", "svelte-hz1mll");
     			attr(a2, "href", "https://www.nytimes.com/crosswords/game/daily/2020/10/21");
-    			attr(p1, "class", "svelte-1g7on86");
+    			attr(p1, "class", "svelte-hz1mll");
+    			attr(div1, "class", "info svelte-hz1mll");
     			attr(section0, "id", "default");
-    			attr(section0, "class", "svelte-1g7on86");
-    			attr(h12, "class", "svelte-1g7on86");
+    			attr(section0, "class", "svelte-hz1mll");
+    			attr(h21, "class", "svelte-hz1mll");
     			attr(a3, "href", "https://www.nytimes.com/crosswords/game/mini/2020/10/21");
-    			attr(p2, "class", "svelte-1g7on86");
+    			attr(p2, "class", "svelte-hz1mll");
+    			attr(div2, "class", "info svelte-hz1mll");
     			attr(section1, "id", "mini");
     			set_style(section1, "max-width", "480px");
-    			attr(section1, "class", "svelte-1g7on86");
-    			attr(h13, "class", "svelte-1g7on86");
-    			attr(p3, "class", "svelte-1g7on86");
+    			attr(section1, "class", "svelte-hz1mll");
+    			attr(h22, "class", "svelte-hz1mll");
+    			attr(p3, "class", "svelte-hz1mll");
     			option0.__value = "classic";
     			option0.value = option0.__value;
     			option1.__value = "dark";
@@ -5866,23 +5906,27 @@ var app = (function () {
     			option3.__value = "citrus";
     			option3.value = option3.__value;
     			if (/*theme*/ ctx[1] === void 0) add_render_callback(() => /*select_change_handler*/ ctx[2].call(select));
+    			attr(div3, "class", "info svelte-hz1mll");
     			attr(section2, "id", "themes");
-    			attr(section2, "class", "svelte-1g7on86");
-    			attr(h14, "class", "svelte-1g7on86");
-    			attr(p4, "class", "svelte-1g7on86");
+    			attr(section2, "class", "svelte-hz1mll");
+    			attr(h23, "class", "svelte-hz1mll");
+    			attr(p4, "class", "svelte-hz1mll");
+    			attr(div5, "class", "info svelte-hz1mll");
     			attr(section3, "id", "simple-customization");
-    			attr(section3, "class", "svelte-1g7on86");
+    			attr(section3, "class", "svelte-hz1mll");
     			toggle_class(section3, "is-revealed", /*revealedUSA*/ ctx[0]);
-    			attr(p5, "class", "svelte-1g7on86");
+    			attr(h24, "class", "svelte-hz1mll");
+    			attr(p5, "class", "svelte-hz1mll");
+    			attr(div6, "class", "info svelte-hz1mll");
     			attr(section4, "id", "advanced-customization");
-    			attr(section4, "class", "svelte-1g7on86");
-    			attr(article, "class", "svelte-1g7on86");
+    			attr(section4, "class", "svelte-hz1mll");
+    			attr(article, "class", "svelte-hz1mll");
     		},
     		m(target, anchor) {
     			insert(target, article, anchor);
     			append(article, div0);
-    			append(div0, h10);
-    			append(h10, t0);
+    			append(div0, h1);
+    			append(h1, t0);
     			append(div0, t1);
     			append(div0, p0);
     			append(p0, t2);
@@ -5894,10 +5938,11 @@ var app = (function () {
     			append(p0, t6);
     			append(article, t7);
     			append(article, section0);
-    			append(section0, h11);
-    			append(h11, t8);
-    			append(section0, t9);
-    			append(section0, p1);
+    			append(section0, div1);
+    			append(div1, h20);
+    			append(h20, t8);
+    			append(div1, t9);
+    			append(div1, p1);
     			append(p1, t10);
     			append(p1, a2);
     			append(a2, t11);
@@ -5906,10 +5951,11 @@ var app = (function () {
     			mount_component(crossword0, section0, null);
     			append(article, t14);
     			append(article, section1);
-    			append(section1, h12);
-    			append(h12, t15);
-    			append(section1, t16);
-    			append(section1, p2);
+    			append(section1, div2);
+    			append(div2, h21);
+    			append(h21, t15);
+    			append(div2, t16);
+    			append(div2, p2);
     			append(p2, t17);
     			append(p2, a3);
     			append(a3, t18);
@@ -5918,13 +5964,14 @@ var app = (function () {
     			mount_component(crossword1, section1, null);
     			append(article, t21);
     			append(article, section2);
-    			append(section2, h13);
-    			append(h13, t22);
-    			append(section2, t23);
-    			append(section2, p3);
+    			append(section2, div3);
+    			append(div3, h22);
+    			append(h22, t22);
+    			append(div3, t23);
+    			append(div3, p3);
     			append(p3, t24);
-    			append(section2, t25);
-    			append(section2, select);
+    			append(div3, t25);
+    			append(div3, select);
     			append(select, option0);
     			append(option0, t26);
     			append(select, option1);
@@ -5935,22 +5982,27 @@ var app = (function () {
     			append(option3, t29);
     			select_option(select, /*theme*/ ctx[1]);
     			append(section2, t30);
-    			append(section2, div1);
-    			mount_component(crossword2, div1, null);
+    			append(section2, div4);
+    			mount_component(crossword2, div4, null);
     			append(article, t31);
     			append(article, section3);
-    			append(section3, h14);
-    			append(h14, t32);
-    			append(section3, t33);
-    			append(section3, p4);
+    			append(section3, div5);
+    			append(div5, h23);
+    			append(h23, t32);
+    			append(div5, t33);
+    			append(div5, p4);
     			append(p4, t34);
     			append(section3, t35);
     			mount_component(crossword3, section3, null);
     			append(article, t36);
     			append(article, section4);
-    			append(section4, p5);
-    			append(p5, t37);
-    			append(section4, t38);
+    			append(section4, div6);
+    			append(div6, h24);
+    			append(h24, t37);
+    			append(div6, t38);
+    			append(div6, p5);
+    			append(p5, t39);
+    			append(section4, t40);
     			mount_component(crossword4, section4, null);
     			current = true;
 

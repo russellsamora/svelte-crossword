@@ -9,8 +9,8 @@
 	
 </script>
 
+<p>{direction}</p>
 <div class="list">
-  <p>{direction}</p>
   <ul>
     {#each clues as clue}
       <Clue
@@ -38,6 +38,7 @@
 		font-weight: 700;
     text-transform: uppercase;
     padding-left: calc(0.5em + 6px);
+		padding-bottom: 0.5em;
     margin: 0;
   }
 

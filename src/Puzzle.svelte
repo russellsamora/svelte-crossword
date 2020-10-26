@@ -1,5 +1,5 @@
 <script>
-	import Keyboard from "./Keyboard.svelte";
+	import Keyboard from "svelte-keyboard";
   import getSecondarilyFocusedCells from "./helpers/getSecondarilyFocusedCells.js";
   import getCellAfterDiff from "./helpers/getCellAfterDiff.js";
 

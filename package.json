@@ -1,8 +1,8 @@
 {
   "name": "svelte-crossword",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Crossword component for Svelte",
-	"svelte": "src/Crossword.svelte",
+  "svelte": "src/Crossword.svelte",
   "scripts": {
     "dev": "rollup -c -w",
     "start": "sirv public",

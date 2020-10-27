@@ -114,7 +114,7 @@ npm run dev
 ## Notes
 
 - Example data is from the October 21, 2020 NYT [mini crossword](https://www.nytimes.com/crosswords/game/mini/2020/10/21)
-- Example data is from the October 22, 2020 NYT [mini crossword](https://www.nytimes.com/crosswords/game/daily/2020/10/21)
+- Example data is from the October 21, 2020 NYT [daily crossword](https://www.nytimes.com/crosswords/game/daily/2020/10/21)
 
 ### Approaches
 

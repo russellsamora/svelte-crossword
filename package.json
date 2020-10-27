@@ -23,5 +23,8 @@
   },
   "dependencies": {
     "svelte-keyboard": "0.0.2"
-  }
+	},
+	"files": [
+		"src/Crossword.svelte"
+	]
 }

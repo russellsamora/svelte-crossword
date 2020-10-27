@@ -1,14 +1,14 @@
-import svelte from "rollup-plugin-svelte-hot";
+import svelte from 'rollup-plugin-svelte';
 import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import json from "@rollup/plugin-json";
 import execute from "rollup-plugin-execute";
 
 export default {
-  input: "example/App.svelte",
+  input: "App.svelte",
   output: {
     format: "cjs",
-    file: "docs/.tmp/ssr.js"
+    file: "../docs/.tmp/ssr.js"
   },
   plugins: [
     svelte({

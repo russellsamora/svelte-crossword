@@ -19,12 +19,16 @@
   let cellsHistory = [];
   let focusedCellIndexHistoryIndex = 0;
   let focusedCellIndexHistory = [];
-  const numberOfStatesInHistory = 10;
+  let secondarilyFocusedCells = [];
 
+  const numberOfStatesInHistory = 10;
   const w = Math.max(...cells.map((d) => d.x)) + 1;
   const h = Math.max(...cells.map((d) => d.y)) + 1;
 
-  let secondarilyFocusedCells = [];
+  $: cells, focusedCellIndex, focusedDirection, updateSecondarilyFocusedCells();
+  $: sortedCellsInDirection = [...cells].sort((a, b) =>
+    focusedDirection == "down" ? a.x - b.x || a.y - b.y : a.y - b.y || a.x - b.x
+  );
 
   function updateSecondarilyFocusedCells() {
     secondarilyFocusedCells = getSecondarilyFocusedCells({
@@ -33,8 +37,6 @@
       focusedCell,
     });
   }
-
-  $: cells, focusedCellIndex, focusedDirection, updateSecondarilyFocusedCells();
 
   function onCellUpdate(index, newValue, diff = 1) {
     const doReplaceFilledCells = !!cells[index].value;
@@ -73,10 +75,6 @@
       focusedCellIndexHistoryIndex = 0;
     }
   }
-
-  $: sortedCellsInDirection = [...cells].sort((a, b) =>
-    focusedDirection == "down" ? a.x - b.x || a.y - b.y : a.y - b.y || a.x - b.x
-  );
 
   function onFocusCellDiff(diff, doReplaceFilledCells = true) {
     const sortedCellsInDirectionFiltered = sortedCellsInDirection.filter((d) =>
@@ -146,7 +144,6 @@
 
 <section class="puzzle" class:desktop>
   <svg viewBox="0 0 {w} {h}">
-    <!-- svg -->
     {#each cells as { x, y, value, index, number, custom }}
       <Cell
         x="{x}"

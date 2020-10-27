@@ -106,7 +106,10 @@ You can set your own global CSS variables to override theme defaults or roll-you
 
 ## Development
 
-`npm run dev`
+```
+cd example
+npm run dev
+```
 
 ## Notes
 

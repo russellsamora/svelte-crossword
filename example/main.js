@@ -1,17 +1,7 @@
-import App from "./App.svelte";
-
-const dev = !!import.meta.hot;
+import App from './App.svelte';
 
 const app = new App({
-  target: document.querySelector("main"),
-  hydrate: !dev
+	target: document.querySelector("main")
 });
-
-if (dev) {
-  import.meta.hot.dispose(() => {
-    app.$destroy();
-  });
-  import.meta.hot.accept();
-}
 
 export default app;

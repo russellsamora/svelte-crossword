@@ -1,10 +1,10 @@
 <script>
   import Crossword from "../src/Crossword.svelte";
-  import dataNYTMini from "./data-nyt-mini.json";
-  import dataNYTDaily from "./data-nyt-daily.json";
-  import dataOreo from "./data-oreo.json";
-  import dataAmelia from "./data-amelia.json";
-  import dataUSA from "./data-usa.json";
+  import dataNYTMini from "./data/nyt-mini.json";
+  import dataNYTDaily from "./data/nyt-daily.json";
+  import dataOreo from "./data/oreo.json";
+  import dataAmelia from "./data/amelia.json";
+  import dataUSA from "./data/usa.json";
 
   let revealedUSA;
   let theme;

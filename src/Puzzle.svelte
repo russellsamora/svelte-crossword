@@ -179,6 +179,9 @@
   }
 
   section.stacked {
+    position: relative;
+    top: auto;
+    height: auto;
     order: -1;
   }
 

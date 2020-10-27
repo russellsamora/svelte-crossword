@@ -59,6 +59,9 @@
   }
 
   section.stacked {
+    position: static;
+    height: auto;
+    top: auto;
     display: block;
     margin: 2em 0;
   }

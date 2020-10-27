@@ -24,13 +24,21 @@
   let isRevealing = false;
   let revealTimeout;
   let clueCompletion;
+
+  let originalClues = [];
+  let validated = [];
+  let clues = [];
   let cells = [];
 
-  $: originalClues = createClues(data);
-  $: validated = validateClues(originalClues);
-  $: clues = originalClues.map((d) => ({ ...d }));
-  $: originalClues, (cells = createCells(originalClues));
+  const onDataUpdate = () => {
+    originalClues = createClues(data);
+    validated = validateClues(originalClues);
+    clues = originalClues.map((d) => ({ ...d }));
+    cells = createCells(originalClues);
+    reset();
+  };
 
+  $: data, onDataUpdate();
   $: focusedCell = cells[focusedCellIndex] || {};
   $: cellIndexMap = fromPairs(cells.map((cell) => [cell.id, cell.index]));
   $: percentCorrect =
@@ -40,8 +48,6 @@
   $: isDisableHighlight = isComplete && disableHighlight;
   $: cells, (clues = checkClues());
   $: stacked = width < breakpoint;
-
-  $: originalClues, reset();
 
   function checkClues() {
     return clues.map((d) => {

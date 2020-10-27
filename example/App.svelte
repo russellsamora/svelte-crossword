@@ -5,6 +5,7 @@
   import dataOreo from "./data/oreo.json";
   import dataAmelia from "./data/amelia.json";
   import dataUSA from "./data/usa.json";
+  import dataUSA2020 from "./data/usa2020.json";
 
   let revealedUSA;
   let theme;

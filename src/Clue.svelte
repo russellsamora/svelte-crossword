@@ -33,7 +33,7 @@
     text-align: left;
     appearance: none;
     outline: none;
-    border: 1px solid transparent;
+    border: none;
     border-left: 6px solid transparent;
     padding: 0.5em;
     cursor: pointer;

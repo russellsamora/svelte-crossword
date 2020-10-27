@@ -129,10 +129,9 @@
   }
 
   function onFlipDirection() {
-    focusedDirection = {
-      across: "down",
-      down: "across",
-    }[focusedDirection];
+    const newDirection = focusedDirection === "across" ? "down" : "across";
+    const hasClueInNewDirection = !!focusedCell["clueNumbers"][newDirection];
+    if (hasClueInNewDirection) focusedDirection = newDirection;
   }
 
   function onKeydown({ detail }) {

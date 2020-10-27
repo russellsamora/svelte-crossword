@@ -63,10 +63,11 @@
     height: auto;
     top: auto;
     display: block;
-    margin: 2em 0;
+    margin: 1em 0;
+    flex: auto;
   }
 
   .clues--stacked {
-    margin: 2em 0;
+    margin: 0;
   }
 </style>

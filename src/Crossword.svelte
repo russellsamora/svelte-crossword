@@ -17,6 +17,7 @@
   export let disableHighlight = false;
   export let showCompleteMessage = true;
   export let showConfetti = true;
+  export let showKeyboard = false;
 
   let width = 0;
   let focusedDirection = "across";
@@ -131,6 +132,7 @@
         isRevealing="{isRevealing}"
         isDisableHighlight="{isDisableHighlight}"
         revealDuration="{revealDuration}"
+        showKeyboard="{showKeyboard}"
         stacked="{stacked}"
         bind:cells
         bind:focusedCellIndex

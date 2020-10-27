@@ -1,7 +1,9 @@
 <script>
+  import { onMount } from "svelte";
   import Keyboard from "svelte-keyboard";
   import getSecondarilyFocusedCells from "./helpers/getSecondarilyFocusedCells.js";
   import getCellAfterDiff from "./helpers/getCellAfterDiff.js";
+  import checkMobile from "./helpers/checkMobile.js";
 
   import Cell from "./Cell.svelte";
 
@@ -14,21 +16,29 @@
   export let isDisableHighlight;
   export let stacked;
   export let revealDuration = 0;
+  export let showKeyboard;
 
   let cellsHistoryIndex = 0;
   let cellsHistory = [];
   let focusedCellIndexHistoryIndex = 0;
   let focusedCellIndexHistory = [];
   let secondarilyFocusedCells = [];
+  let isMobile = false;
 
   const numberOfStatesInHistory = 10;
   $: w = Math.max(...cells.map((d) => d.x)) + 1;
   $: h = Math.max(...cells.map((d) => d.y)) + 1;
+  $: keyboardVisible =
+    typeof showKeyboard === "boolean" ? showKeyboard : isMobile;
 
   $: cells, focusedCellIndex, focusedDirection, updateSecondarilyFocusedCells();
   $: sortedCellsInDirection = [...cells].sort((a, b) =>
     focusedDirection == "down" ? a.x - b.x || a.y - b.y : a.y - b.y || a.x - b.x
   );
+
+  onMount(() => {
+    isMobile = checkMobile();
+  });
 
   function updateSecondarilyFocusedCells() {
     secondarilyFocusedCells = getSecondarilyFocusedCells({
@@ -165,9 +175,11 @@
   </svg>
 </section>
 
-<div class="keyboard">
-  <Keyboard on:keydown="{onKeydown}" />
-</div>
+'{#if keyboardVisible}
+  <div class="keyboard">
+    <Keyboard on:keydown="{onKeydown}" />
+  </div>
+{/if}
 
 <style>
   section {
@@ -194,12 +206,5 @@
   }
   .keyboard {
     order: 3;
-    display: block;
-  }
-
-  @media only screen and (min-width: 640px) {
-    .keyboard {
-      display: none;
-    }
   }
 </style>

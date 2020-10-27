@@ -44,7 +44,7 @@
         puzzle with all default settings and forced mobile view.
       </p>
     </div>
-    <Crossword data="{dataNYTMini}" />
+    <Crossword data="{dataNYTMini}" showKeyboard="{true}" />
   </section>
 
   <section id="themes">

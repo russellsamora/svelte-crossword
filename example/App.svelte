@@ -8,11 +8,6 @@
 
   let revealedUSA;
   let theme;
-
-  let dataChange = dataNYTDaily;
-  setTimeout(() => {
-    dataChange = dataNYTMini;
-  }, 3000);
 </script>
 
 <article>
@@ -36,7 +31,7 @@
         puzzle with all default settings.
       </p>
     </div>
-    <Crossword data="{dataChange}" />
+    <Crossword data="{dataNYTDaily}" />
   </section>
 
   <section id="mini" style="max-width: 480px;">

@@ -5,8 +5,7 @@
   export let clues;
   export let focusedClueNumbers;
   export let isDirectionFocused;
-	export let onClueFocus;
-	
+  export let onClueFocus;
 </script>
 
 <p>{direction}</p>
@@ -16,7 +15,7 @@
       <Clue
         clue="{clue.clue}"
         number="{clue.number}"
-				isFilled="{clue.isFilled}"
+        isFilled="{clue.isFilled}"
         isNumberFocused="{focusedClueNumbers[direction] === clue.number}"
         isDirectionFocused="{isDirectionFocused}"
         onFocus="{() => onClueFocus(clue)}" />
@@ -34,11 +33,11 @@
 
   p {
     font-family: var(--clue-font, -apple-system, Helvetica, sans-serif);
-		color: var(--clue-text-color, #1a1a1a);
-		font-weight: 700;
+    color: var(--clue-text-color, #1a1a1a);
+    font-weight: 700;
     text-transform: uppercase;
     padding-left: calc(0.5em + 6px);
-		padding-bottom: 0.5em;
+    padding-bottom: 0.5em;
     margin: 0;
   }
 

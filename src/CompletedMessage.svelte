@@ -1,31 +1,29 @@
 <script>
-  import { fade } from 'svelte/transition';
-  import Confetti from './Confetti.svelte';
+  import { fade } from "svelte/transition";
+  import Confetti from "./Confetti.svelte";
 
-	export let showConfetti = true;
+  export let showConfetti = true;
 
   let isOpen = true;
 </script>
 
 {#if isOpen}
   <div class="completed" transition:fade="{{ y: 20 }}">
-		
-		<div class="content">
-			<div class="message">
-				<slot name="message">
-					<h3>You solved it!</h3>
-				</slot>
-			</div>
+    <div class="content">
+      <div class="message">
+        <slot name="message">
+          <h3>You solved it!</h3>
+        </slot>
+      </div>
 
       <button on:click="{() => (isOpen = false)}">View puzzle</button>
-		</div>
-		
-		{#if showConfetti}
-		<div class="confetti">
-			<Confetti />
-		</div>
-		{/if}
+    </div>
 
+    {#if showConfetti}
+      <div class="confetti">
+        <Confetti />
+      </div>
+    {/if}
   </div>
   <div
     class="curtain"
@@ -64,22 +62,22 @@
 
   button {
     cursor: pointer;
-		margin-left: 1em;
-		font-size: 1em;
-		background-color: var(--toolbar-button-bg, #efefef);
-		border-radius: var(--toolbar-button-border-radius, 4px);
-		color: var(--toolbar-button-color, #6a6a6a);
-		padding: var(--toolbar-button-padding, 0.75em);
-		border: var(--toolbar-button-border, none);
-		font-weight: var(--toolbar-button-font-weight, 400);
-		transition: background-color 150ms;
+    margin-left: 1em;
+    font-size: 1em;
+    background-color: var(--toolbar-button-bg, #efefef);
+    border-radius: var(--toolbar-button-border-radius, 4px);
+    color: var(--toolbar-button-color, #6a6a6a);
+    padding: var(--toolbar-button-padding, 0.75em);
+    border: var(--toolbar-button-border, none);
+    font-weight: var(--toolbar-button-font-weight, 400);
+    transition: background-color 150ms;
   }
 
-	button:hover {
-		background-color: var(--toolbar-button-bg-hover, #cdcdcd);
-	}
-  
-	.content {
+  button:hover {
+    background-color: var(--toolbar-button-bg-hover, #cdcdcd);
+  }
+
+  .content {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -87,9 +85,9 @@
     padding: 2em;
   }
 
-	.message {
-		margin-bottom: 1em;
-	}
+  .message {
+    margin-bottom: 1em;
+  }
 
   .confetti {
     position: absolute;

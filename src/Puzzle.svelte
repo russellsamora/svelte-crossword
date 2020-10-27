@@ -1,5 +1,5 @@
 <script>
-	import Keyboard from "svelte-keyboard";
+  import Keyboard from "svelte-keyboard";
   import getSecondarilyFocusedCells from "./helpers/getSecondarilyFocusedCells.js";
   import getCellAfterDiff from "./helpers/getCellAfterDiff.js";
 
@@ -11,9 +11,9 @@
   export let focusedCellIndex;
   export let focusedCell;
   export let isRevealing;
-	export let isDisableHighlight;
-	export let desktop;
-	export let revealDuration = 0;
+  export let isDisableHighlight;
+  export let desktop;
+  export let revealDuration = 0;
 
   let cellsHistoryIndex = 0;
   let cellsHistory = [];
@@ -25,15 +25,15 @@
   const h = Math.max(...cells.map((d) => d.y)) + 1;
 
   let secondarilyFocusedCells = [];
-	
-	function updateSecondarilyFocusedCells() {
+
+  function updateSecondarilyFocusedCells() {
     secondarilyFocusedCells = getSecondarilyFocusedCells({
       cells,
       focusedDirection,
       focusedCell,
     });
-	}
-	
+  }
+
   $: cells, focusedCellIndex, focusedDirection, updateSecondarilyFocusedCells();
 
   function onCellUpdate(index, newValue, diff = 1) {
@@ -72,11 +72,11 @@
       ];
       focusedCellIndexHistoryIndex = 0;
     }
-  };
+  }
 
   $: sortedCellsInDirection = [...cells].sort((a, b) =>
     focusedDirection == "down" ? a.x - b.x || a.y - b.y : a.y - b.y || a.x - b.x
-  )
+  );
 
   function onFocusCellDiff(diff, doReplaceFilledCells = true) {
     const sortedCellsInDirectionFiltered = sortedCellsInDirection.filter((d) =>
@@ -135,13 +135,13 @@
       across: "down",
       down: "across",
     }[focusedDirection];
-	}
-	
-	function onKeydown({ detail }) {
-		const diff = detail === "delete" ? -1 : 1;
-		const value = detail === "delete" ? "" : detail;
-		onCellUpdate(focusedCellIndex, value, diff);
-	}
+  }
+
+  function onKeydown({ detail }) {
+    const diff = detail === "delete" ? -1 : 1;
+    const value = detail === "delete" ? "" : detail;
+    onCellUpdate(focusedCellIndex, value, diff);
+  }
 </script>
 
 <section class="puzzle" class:desktop>
@@ -166,25 +166,24 @@
         onFlipDirection="{onFlipDirection}"
         onHistoricalChange="{onHistoricalChange}" />
     {/each}
-	</svg>
+  </svg>
 </section>
 
 <div class="keyboard" class:desktop>
-	<Keyboard on:keydown={onKeydown} />
+  <Keyboard on:keydown="{onKeydown}" />
 </div>
-
 
 <style>
   section {
     flex: 1;
     height: fit-content;
-		order: -1;
+    order: -1;
   }
-	section.desktop {
-			position: sticky;
-    	top: 1em;
-			order: 0;
-	}
+  section.desktop {
+    position: sticky;
+    top: 1em;
+    order: 0;
+  }
   svg {
     display: block;
     font-size: 1px;
@@ -192,10 +191,10 @@
     border: 4px solid var(--puzzle-border-color, #1a1a1a);
     font-family: var(--puzzle-font, -apple-system, Helvetica, sans-serif);
   }
-	.keyboard {
-		order: 3;
-	}
-	.keyboard.desktop {
-		display: none;
-	}
+  .keyboard {
+    order: 3;
+  }
+  .keyboard.desktop {
+    display: none;
+  }
 </style>

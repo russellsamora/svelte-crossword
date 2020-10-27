@@ -70,22 +70,22 @@
       e.stopPropagation();
       return;
     }
-	}
-	
+  }
+
   function onClick() {
     onFocusCell(index);
   }
 
   function pop(node, { delay = 0, duration = 250 }) {
-		return {
-			delay,
-			duration,
-			css: (t) =>
-				[
-					`transform: translate(0, ${1 - t}px)`, //
-				].join(";"),
-		}
-	}
+    return {
+      delay,
+      duration,
+      css: (t) =>
+        [
+          `transform: translate(0, ${1 - t}px)`, //
+        ].join(";"),
+    };
+  }
 </script>
 
 <!-- <svelte:window on:keydown={onKeydown} /> -->

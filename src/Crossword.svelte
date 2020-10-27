@@ -10,19 +10,19 @@
 
   export let data = [];
   export let actions = ["clear", "reveal"];
-	export let theme = "classic";
-	export let revealDuration = 1000;
-	export let breakpoint = 720;
-	export let revealed = false;
+  export let theme = "classic";
+  export let revealDuration = 1000;
+  export let breakpoint = 720;
+  export let revealed = false;
   export let disableHighlight = false;
-	export let showCompleteMessage = true;
-	export let showConfetti = true;
-	
+  export let showCompleteMessage = true;
+  export let showConfetti = true;
+
   let originalClues = createClues(data);
   let validated = validateClues(originalClues);
   let clues = originalClues.map((d) => ({ ...d }));
-	let cells = createCells(originalClues);
-	let width = 0;
+  let cells = createCells(originalClues);
+  let width = 0;
   let focusedDirection = "across";
   let focusedCellIndex = 0;
   let isRevealing = false;
@@ -36,9 +36,9 @@
   $: isComplete = percentCorrect == 1;
   $: themeClass = theme ? `theme-${theme}` : "";
   $: isDisableHighlight = isComplete && disableHighlight;
-	$: cells, (clues = checkClues());
-	
-	$: desktop = width >= breakpoint;
+  $: cells, (clues = checkClues());
+
+  $: desktop = width >= breakpoint;
 
   function checkClues() {
     return clues.map((d) => {
@@ -98,50 +98,48 @@
 
   function onToolbarEvent({ detail }) {
     if (detail === "clear") onClear();
-		else if (detail === "reveal") onReveal();
-	}	
+    else if (detail === "reveal") onReveal();
+  }
 </script>
 
-
 {#if validated}
+  <article class="crossword {themeClass}" bind:offsetWidth="{width}">
+    <slot name="toolbar" onClear="{onClear}" onReveal="{onReveal}">
+      <Toolbar actions="{actions}" on:event="{onToolbarEvent}" />
+    </slot>
 
-<article class="crossword {themeClass}" bind:offsetWidth={width}>
-	<slot name="toolbar" onClear="{onClear}" onReveal="{onReveal}">
-		<Toolbar actions="{actions}" on:event="{onToolbarEvent}" />
-	</slot>
+    <div class="play" class:desktop>
+      <Clues
+        clues="{clues}"
+        cellIndexMap="{cellIndexMap}"
+        desktop="{desktop}"
+        bind:focusedCellIndex
+        bind:focusedCell
+        bind:focusedDirection />
+      <Puzzle
+        clues="{clues}"
+        focusedCell="{focusedCell}"
+        isRevealing="{isRevealing}"
+        isDisableHighlight="{isDisableHighlight}"
+        revealDuration="{revealDuration}"
+        desktop="{desktop}"
+        bind:cells
+        bind:focusedCellIndex
+        bind:focusedDirection />
+    </div>
 
-	<div class="play" class:desktop>
-		<Clues
-			clues="{clues}"
-			cellIndexMap="{cellIndexMap}"
-			desktop="{desktop}"
-			bind:focusedCellIndex
-			bind:focusedCell
-			bind:focusedDirection />
-		<Puzzle
-			clues="{clues}"
-			focusedCell="{focusedCell}"
-			isRevealing="{isRevealing}"
-			isDisableHighlight="{isDisableHighlight}"
-			revealDuration="{revealDuration}"
-			desktop="{desktop}"
-			bind:cells
-			bind:focusedCellIndex
-			bind:focusedDirection />
-	</div>
-
-	{#if isComplete && !isRevealing && showCompleteMessage}
-		<CompletedMessage {showConfetti}>
-			<slot name="complete" />
-		</CompletedMessage>
-	{/if}
-</article>
+    {#if isComplete && !isRevealing && showCompleteMessage}
+      <CompletedMessage showConfetti="{showConfetti}">
+        <slot name="complete" />
+      </CompletedMessage>
+    {/if}
+  </article>
 {/if}
 
 <style>
   .theme-classic {
-		--theme-crossword-bg: transparent;
-		--theme-crossword-bg: transparent;
+    --theme-crossword-bg: transparent;
+    --theme-crossword-bg: transparent;
     --theme-puzzle-border-color: #1a1a1a;
     --theme-puzzle-font: -apple-system, Helvetica, sans-serif;
 
@@ -165,33 +163,33 @@
     --theme-number-font-size: 0.3em;
     --theme-number-font-weight: 400;
     --theme-number-color: #6a6a6a;
-		
-		--theme-toolbar-font: -apple-system, Helvetica, sans-serif;
-		--theme-toolbar-font-size: 0.85em;
-		--theme-toolbar-bg: transparent;
-		--theme-toolbar-button-bg: #efefef;
-		--theme-toolbar-button-border-radius: 4px;
-		--theme-toolbar-button-color: #6a6a6a;
-		--theme-toolbar-button-padding: 0.75em;
-		--theme-toolbar-button-border: none;
-		--theme-toolbar-button-font-weight: 400;
-		--theme-toolbar-button-bg-hover: #cdcdcd;
+
+    --theme-toolbar-font: -apple-system, Helvetica, sans-serif;
+    --theme-toolbar-font-size: 0.85em;
+    --theme-toolbar-bg: transparent;
+    --theme-toolbar-button-bg: #efefef;
+    --theme-toolbar-button-border-radius: 4px;
+    --theme-toolbar-button-color: #6a6a6a;
+    --theme-toolbar-button-padding: 0.75em;
+    --theme-toolbar-button-border: none;
+    --theme-toolbar-button-font-weight: 400;
+    --theme-toolbar-button-bg-hover: #cdcdcd;
   }
 
   .theme-dark {
-		--theme-crossword-bg: #1a1a1a;
+    --theme-crossword-bg: #1a1a1a;
     --theme-puzzle-border-color: #6a6a6a;
     --theme-puzzle-font: -apple-system, Helvetica, sans-serif;
-    
-		--theme-clue-font: -apple-system, Helvetica, sans-serif;
+
+    --theme-clue-font: -apple-system, Helvetica, sans-serif;
     --theme-clue-text-color: #fff;
     --theme-clue-background-color: #1a1a1a;
     --theme-clue-scrollbar-bg: #5a5a5a;
     --theme-clue-scrollbar-fg: #efefef;
     --theme-clue-puzzle-order: row;
     --theme-clue-list-width: 16em;
-    
-		--theme-cell-highlight-color: #066;
+
+    --theme-cell-highlight-color: #066;
     --theme-cell-secondary-color: #003d3d;
     --theme-cell-bg-color: #1a1a1a;
     --theme-cell-border-color: #6a6a6a;
@@ -200,25 +198,25 @@
     --theme-cell-font-size: 0.7em;
     --theme-cell-font-weight: 700;
     --theme-cell-void-color: #1a1a1a;
-    
-		--theme-number-font-size: 0.3em;
+
+    --theme-number-font-size: 0.3em;
     --theme-number-font-weight: 400;
     --theme-number-color: #cdcdcd;
-		
-		--theme-toolbar-font: -apple-system, Helvetica, sans-serif;
-		--theme-toolbar-font-size: 0.85em;
-		--theme-toolbar-bg: transparent;
-		--theme-toolbar-button-bg: #efefef;
-		--theme-toolbar-button-border-radius: 4px;
-		--theme-toolbar-button-color: #6a6a6a;
-		--theme-toolbar-button-padding: 0.75em;
-		--theme-toolbar-button-border: none;
-		--theme-toolbar-button-font-weight: 400;
-		--theme-toolbar-button-bg-hover: #cdcdcd;
+
+    --theme-toolbar-font: -apple-system, Helvetica, sans-serif;
+    --theme-toolbar-font-size: 0.85em;
+    --theme-toolbar-bg: transparent;
+    --theme-toolbar-button-bg: #efefef;
+    --theme-toolbar-button-border-radius: 4px;
+    --theme-toolbar-button-color: #6a6a6a;
+    --theme-toolbar-button-padding: 0.75em;
+    --theme-toolbar-button-border: none;
+    --theme-toolbar-button-font-weight: 400;
+    --theme-toolbar-button-bg-hover: #cdcdcd;
   }
 
   .theme-amelia {
-		--theme-crossword-bg: transparent;
+    --theme-crossword-bg: transparent;
     --theme-puzzle-border-color: #353b48;
     --theme-puzzle-font: -apple-system, Helvetica, sans-serif;
 
@@ -242,21 +240,21 @@
     --theme-number-font-size: 0.25em;
     --theme-number-font-weight: 100;
     --theme-number-color: #353b48;
-		
-		--theme-toolbar-font: -apple-system, Helvetica, sans-serif;
-		--theme-toolbar-font-size: 0.85em;
-		--theme-toolbar-bg: transparent;
-		--theme-toolbar-button-bg: #efefef;
-		--theme-toolbar-button-border-radius: 4px;
-		--theme-toolbar-button-color: #6a6a6a;
-		--theme-toolbar-button-padding: 0.75em;
-		--theme-toolbar-button-border: none;
-		--theme-toolbar-button-font-weight: 400;
-		--theme-toolbar-button-bg-hover: #cdcdcd;
+
+    --theme-toolbar-font: -apple-system, Helvetica, sans-serif;
+    --theme-toolbar-font-size: 0.85em;
+    --theme-toolbar-bg: transparent;
+    --theme-toolbar-button-bg: #efefef;
+    --theme-toolbar-button-border-radius: 4px;
+    --theme-toolbar-button-color: #6a6a6a;
+    --theme-toolbar-button-padding: 0.75em;
+    --theme-toolbar-button-border: none;
+    --theme-toolbar-button-font-weight: 400;
+    --theme-toolbar-button-bg-hover: #cdcdcd;
   }
 
   .theme-citrus {
-		--theme-crossword-bg: transparent;
+    --theme-crossword-bg: transparent;
     --theme-puzzle-border-color: #193939;
     --theme-puzzle-font: -apple-system, Helvetica, sans-serif;
 
@@ -281,24 +279,21 @@
     --theme-number-font-size: 0.3em;
     --theme-number-font-weight: 400;
     --theme-number-color: #266b6b;
-		
-		--theme-toolbar-font: -apple-system, Helvetica, sans-serif;
-		--theme-toolbar-font-size: 0.85em;
-		--theme-toolbar-bg: transparent;
-		--theme-toolbar-button-bg: #efefef;
-		--theme-toolbar-button-border-radius: 4px;
-		--theme-toolbar-button-color: #6a6a6a;
-		--theme-toolbar-button-padding: 0.75em;
-		--theme-toolbar-button-border: none;
-		--theme-toolbar-button-font-weight: 400;
-		--theme-toolbar-button-bg-hover: #cdcdcd;
+
+    --theme-toolbar-font: -apple-system, Helvetica, sans-serif;
+    --theme-toolbar-font-size: 0.85em;
+    --theme-toolbar-bg: transparent;
+    --theme-toolbar-button-bg: #efefef;
+    --theme-toolbar-button-border-radius: 4px;
+    --theme-toolbar-button-color: #6a6a6a;
+    --theme-toolbar-button-padding: 0.75em;
+    --theme-toolbar-button-border: none;
+    --theme-toolbar-button-font-weight: 400;
+    --theme-toolbar-button-bg-hover: #cdcdcd;
   }
 
   article {
-		--crossword-bg: var(
-      --theme-crossword-bg,
-      var(--theme-crossword-bg)
-    );
+    --crossword-bg: var(--theme-crossword-bg, var(--theme-crossword-bg));
     --puzzle-border-color: var(
       --theme-puzzle-border-color,
       var(--theme-puzzle-border-color)
@@ -372,58 +367,51 @@
     );
     --number-color: var(--theme-number-color, var(--theme-number-color));
 
-		--toolbar-font: var(
-			--theme-toolbar-font,
-			var(--theme-toolbar-font)
-		);
-		--toolbar-font-size: var(
-			--theme-toolbar-font-size,
-			var(--theme-toolbar-font-size)
-		);
-		--toolbar-bg: var(
-			--theme-toolbar-bg,
-			var(--theme-toolbar-bg)
-		);
-		--toolbar-button-bg: var(
-			--theme-toolbar-button-bg,
-			var(--theme-toolbar-button-bg)
-		);
-		--toolbar-button-border-radius: var(
-			--theme-toolbar-button-border-radius,
-			var(--theme-toolbar-button-border-radius)
-		);
-		--toolbar-button-color: var(
-			--theme-toolbar-button-color,
-			var(--theme-toolbar-button-color)
-		);
-		--toolbar-button-padding: var(
-			--theme-toolbar-button-padding,
-			var(--theme-toolbar-button-padding)
-		);
-		--toolbar-button-border: var(
-			--theme-toolbar-button-border,
-			var(--theme-toolbar-button-border)
-		);
-		--toolbar-button-font-weight: var(
-			--theme-toolbar-button-font-weight,
-			var(--theme-toolbar-button-font-weight)
-		);
-		--toolbar-button-bg-hover: var(
-			--theme-toolbar-button-bg-hover,
-			var(--theme-toolbar-button-bg-hover)
-		);
-   
+    --toolbar-font: var(--theme-toolbar-font, var(--theme-toolbar-font));
+    --toolbar-font-size: var(
+      --theme-toolbar-font-size,
+      var(--theme-toolbar-font-size)
+    );
+    --toolbar-bg: var(--theme-toolbar-bg, var(--theme-toolbar-bg));
+    --toolbar-button-bg: var(
+      --theme-toolbar-button-bg,
+      var(--theme-toolbar-button-bg)
+    );
+    --toolbar-button-border-radius: var(
+      --theme-toolbar-button-border-radius,
+      var(--theme-toolbar-button-border-radius)
+    );
+    --toolbar-button-color: var(
+      --theme-toolbar-button-color,
+      var(--theme-toolbar-button-color)
+    );
+    --toolbar-button-padding: var(
+      --theme-toolbar-button-padding,
+      var(--theme-toolbar-button-padding)
+    );
+    --toolbar-button-border: var(
+      --theme-toolbar-button-border,
+      var(--theme-toolbar-button-border)
+    );
+    --toolbar-button-font-weight: var(
+      --theme-toolbar-button-font-weight,
+      var(--theme-toolbar-button-font-weight)
+    );
+    --toolbar-button-bg-hover: var(
+      --theme-toolbar-button-bg-hover,
+      var(--theme-toolbar-button-bg-hover)
+    );
 
     position: relative;
     background-color: var(--crossword-bg);
   }
 
-	.play {
-		display: flex;
+  .play {
+    display: flex;
     flex-direction: column;
-	}
+  }
 
-	.play.desktop {
-		flex-direction: var(--clue-puzzle-order, row);
-	}
+  .play.desktop {
+    flex-direction: var(--clue-puzzle-order, row);
+  }
 </style>

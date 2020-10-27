@@ -22,42 +22,42 @@
   </div>
 
   <section id="default">
-		<div class="info">
-			<h2>Default</h2>
-			<p>
-				A
-				<a href="https://www.nytimes.com/crosswords/game/daily/2020/10/21">NYT
-					daily</a>
-				puzzle with all default settings.
-			</p>
-		</div>
+    <div class="info">
+      <h2>Default</h2>
+      <p>
+        A
+        <a href="https://www.nytimes.com/crosswords/game/daily/2020/10/21">NYT
+          daily</a>
+        puzzle with all default settings.
+      </p>
+    </div>
     <Crossword data="{dataNYTDaily}" />
-	</section>
-	
+  </section>
 
   <section id="mini" style="max-width: 480px;">
-		<div class="info">
-			<h2>Mobile</h2>
-			<p>
-				A
-				<a href="https://www.nytimes.com/crosswords/game/mini/2020/10/21">NYT mini</a>
-				puzzle with all default settings and forced mobile view.
-			</p>
-		</div>
-		<Crossword data="{dataNYTMini}" />
+    <div class="info">
+      <h2>Mobile</h2>
+      <p>
+        A
+        <a href="https://www.nytimes.com/crosswords/game/mini/2020/10/21">NYT
+          mini</a>
+        puzzle with all default settings and forced mobile view.
+      </p>
+    </div>
+    <Crossword data="{dataNYTMini}" />
   </section>
 
   <section id="themes">
-		<div class="info">
-			<h2>Themes</h2>
-			<p>A library of preset style themes to choose from.</p>
-			<select bind:value="{theme}">
-				<option value="classic">Classic</option>
-				<option value="dark">Dark</option>
-				<option value="amelia">Amelia</option>
-				<option value="citrus">Citrus</option>
-			</select>
-		</div>
+    <div class="info">
+      <h2>Themes</h2>
+      <p>A library of preset style themes to choose from.</p>
+      <select bind:value="{theme}">
+        <option value="classic">Classic</option>
+        <option value="dark">Dark</option>
+        <option value="amelia">Amelia</option>
+        <option value="citrus">Citrus</option>
+      </select>
+    </div>
     <div>
       <Crossword
         data="{dataOreo}"
@@ -67,10 +67,10 @@
   </section>
 
   <section id="simple-customization" class:is-revealed="{revealedUSA}">
-		<div class="info">
-			<h2>Simple Customization</h2>
-			<p>Custom class name on cells.</p>
-		</div>
+    <div class="info">
+      <h2>Simple Customization</h2>
+      <p>Custom class name on cells.</p>
+    </div>
     <Crossword
       data="{dataUSA}"
       disableHighlight="{revealedUSA}"
@@ -78,10 +78,10 @@
   </section>
 
   <section id="advanced-customization">
-		<div class="info">
-			<h2>Advanced Customization</h2>
-			<p>TBD.</p>
-		</div>
+    <div class="info">
+      <h2>Advanced Customization</h2>
+      <p>TBD.</p>
+    </div>
     <Crossword data="{dataNYTDaily}">
       <div
         class="toolbar"
@@ -93,9 +93,11 @@
         <button on:click="{onReveal}">show answers</button>
       </div>
       <div slot="complete">
-				<h3>OMG, congrats!</h3>
-				<img alt="celebration" src="https://media3.giphy.com/media/QpOZPQQ2wbjOM/giphy.gif" />
-			</div>
+        <h3>OMG, congrats!</h3>
+        <img
+          alt="celebration"
+          src="https://media3.giphy.com/media/QpOZPQQ2wbjOM/giphy.gif" />
+      </div>
     </Crossword>
   </section>
 </article>
@@ -112,24 +114,24 @@
   section {
     max-width: 960px;
     margin: 5em auto;
-		padding: 0 1em;
+    padding: 0 1em;
   }
 
-	.info {
-		max-width: 640px;
-		margin: 1em auto;
-		text-align: center;
-	}
+  .info {
+    max-width: 640px;
+    margin: 1em auto;
+    text-align: center;
+  }
   h1 {
     font-size: 2em;
-		text-align: center;
+    text-align: center;
   }
-	h2 {
-		font-size: 1.625em;
-		text-align: center;
-	}
+  h2 {
+    font-size: 1.625em;
+    text-align: center;
+  }
   p {
     margin: 1em auto;
-		text-align: center;
+    text-align: center;
   }
 </style>

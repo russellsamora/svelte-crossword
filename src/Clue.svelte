@@ -3,7 +3,7 @@
 
   export let number;
   export let clue;
-	export let isFilled;
+  export let isFilled;
   export let isNumberFocused = false;
   export let isDirectionFocused = false;
   export let onFocus = () => {};
@@ -18,7 +18,7 @@
     class="clue"
     class:is-number-focused="{isNumberFocused}"
     class:is-direction-focused="{isDirectionFocused}"
-		class:is-filled="{isFilled}"
+    class:is-filled="{isFilled}"
     on:click="{onFocus}">
     {number}.
     {clue}
@@ -41,7 +41,7 @@
     color: var(--clue-text-color, #1a1a1a);
     font-family: var(--clue-font, -apple-system, Helvetica, sans-serif);
     font-size: 1em;
-		cursor: pointer;
+    cursor: pointer;
   }
   .clue:focus {
     border-color: var(--cell-highlight-color, #ffec99);
@@ -52,7 +52,7 @@
   .is-number-focused.is-direction-focused {
     background: var(--cell-highlight-color, #ffec99);
   }
-	.is-filled {
-		opacity: 0.33;
-	}
+  .is-filled {
+    opacity: 0.33;
+  }
 </style>

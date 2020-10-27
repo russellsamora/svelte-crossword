@@ -1,40 +1,58 @@
 <script>
-	import { createEventDispatcher } from 'svelte';
+  import { createEventDispatcher } from "svelte";
   const dispatch = createEventDispatcher();
 
-	export let currentClue;
-	$: clue = currentClue["clue"];
+  export let currentClue;
+  $: clue = currentClue["clue"];
 </script>
 
-
 <div class="bar">
-	<button on:click={() => dispatch("nextClue", currentClue.index - 1)}>
-		<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-left"><polyline points="15 18 9 12 15 6"></polyline></svg>
-	</button>
-	<p>{clue}</p>
-	<button on:click={() => dispatch("nextClue", currentClue.index + 1)}>
-		<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
-	</button>
+  <button on:click="{() => dispatch('nextClue', currentClue.index - 1)}">
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      class="feather feather-chevron-left"><polyline
+        points="15 18 9 12 15 6"></polyline></svg>
+  </button>
+  <p>{clue}</p>
+  <button on:click="{() => dispatch('nextClue', currentClue.index + 1)}">
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      class="feather feather-chevron-right"><polyline
+        points="9 18 15 12 9 6"></polyline></svg>
+  </button>
 </div>
 
 <style>
-	.bar {
-		width: 100%;
-		display: flex;
-		justify-content: space-between;
-		background-color: #efefef;
-	}
+  .bar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    background-color: #efefef;
+  }
 
-	p {
-		padding: 0 1em;
-		line-height: 1.325;
-	}
-	
-	button {
+  p {
+    padding: 0 1em;
+    line-height: 1.325;
+  }
+
+  button {
     cursor: pointer;
-		font-size: 1em;
-		border: none;
-		line-height: 1;
+    font-size: 1em;
+    border: none;
+    line-height: 1;
   }
 </style>
-

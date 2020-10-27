@@ -5,10 +5,14 @@
   import dataOreo from "./data/oreo.json";
   import dataAmelia from "./data/amelia.json";
   import dataUSA from "./data/usa.json";
-  import dataUSA2020 from "./data/usa2020.json";
 
   let revealedUSA;
   let theme;
+
+  let dataChange = dataNYTDaily;
+  setTimeout(() => {
+    dataChange = dataNYTMini;
+  }, 3000);
 </script>
 
 <article>
@@ -32,7 +36,7 @@
         puzzle with all default settings.
       </p>
     </div>
-    <Crossword data="{dataNYTDaily}" />
+    <Crossword data="{dataChange}" />
   </section>
 
   <section id="mini" style="max-width: 480px;">

@@ -12,7 +12,7 @@
   export let focusedCell;
   export let isRevealing;
   export let isDisableHighlight;
-  export let desktop;
+  export let stacked;
   export let revealDuration = 0;
 
   let cellsHistoryIndex = 0;
@@ -22,8 +22,8 @@
   let secondarilyFocusedCells = [];
 
   const numberOfStatesInHistory = 10;
-  const w = Math.max(...cells.map((d) => d.x)) + 1;
-  const h = Math.max(...cells.map((d) => d.y)) + 1;
+  $: w = Math.max(...cells.map((d) => d.x)) + 1;
+  $: h = Math.max(...cells.map((d) => d.y)) + 1;
 
   $: cells, focusedCellIndex, focusedDirection, updateSecondarilyFocusedCells();
   $: sortedCellsInDirection = [...cells].sort((a, b) =>
@@ -141,7 +141,7 @@
   }
 </script>
 
-<section class="puzzle" class:desktop>
+<section class="puzzle" class:stacked>
   <svg viewBox="0 0 {w} {h}">
     {#each cells as { x, y, value, index, number, custom }}
       <Cell
@@ -165,21 +165,23 @@
   </svg>
 </section>
 
-<div class="keyboard" class:desktop>
+<div class="keyboard">
   <Keyboard on:keydown="{onKeydown}" />
 </div>
 
 <style>
   section {
-    flex: 1;
-    height: fit-content;
-    order: -1;
-  }
-  section.desktop {
     position: sticky;
     top: 1em;
     order: 0;
+    flex: 1;
+    height: fit-content;
   }
+
+  section.stacked {
+    order: -1;
+  }
+
   svg {
     display: block;
     font-size: 1px;
@@ -189,8 +191,12 @@
   }
   .keyboard {
     order: 3;
+    display: block;
   }
-  .keyboard.desktop {
-    display: none;
+
+  @media only screen and (min-width: 640px) {
+    .keyboard {
+      display: none;
+    }
   }
 </style>

@@ -7,7 +7,7 @@
   export let focusedDirection;
   export let focusedCellIndex;
   export let focusedCell;
-  export let desktop;
+  export let stacked;
 
   $: focusedClueNumbers = focusedCell.clueNumbers || {};
   $: currentClue = clues.find(
@@ -30,24 +30,27 @@
   }
 </script>
 
-<section class="clues" class:desktop>
-  <div class="clues--desktop" class:desktop>
-    {#each ['across', 'down'] as direction}
-      <ClueList
-        direction="{direction}"
-        focusedClueNumbers="{focusedClueNumbers}"
-        clues="{clues.filter((d) => d.direction === direction)}"
-        isDirectionFocused="{focusedDirection === direction}"
-        onClueFocus="{onClueFocus}" />
-    {/each}
-  </div>
-  <div class="clues--mobile" class:desktop>
-    <ClueBar currentClue="{currentClue}" on:nextClue="{onNextClue}" />
-  </div>
+<section class="clues" class:stacked>
+  {#if stacked}
+    <div class="clues--stacked">
+      <ClueBar currentClue="{currentClue}" on:nextClue="{onNextClue}" />
+    </div>
+  {:else}
+    <div class="clues--list">
+      {#each ['across', 'down'] as direction}
+        <ClueList
+          direction="{direction}"
+          focusedClueNumbers="{focusedClueNumbers}"
+          clues="{clues.filter((d) => d.direction === direction)}"
+          isDirectionFocused="{focusedDirection === direction}"
+          onClueFocus="{onClueFocus}" />
+      {/each}
+    </div>
+  {/if}
 </section>
 
 <style>
-  section.desktop {
+  section {
     position: sticky;
     top: 1em;
     flex: 0 1 var(--clue-list-width, 16em);
@@ -55,20 +58,12 @@
     margin: 0 1em;
   }
 
-  .clues--mobile {
+  section.stacked {
     display: block;
     margin: 2em 0;
   }
 
-  .clues--mobile.desktop {
-    display: none;
-  }
-
-  .clues--desktop {
-    display: none;
-  }
-
-  .clues--desktop.desktop {
-    display: block;
+  .clues--stacked {
+    margin: 2em 0;
   }
 </style>

@@ -2398,14 +2398,13 @@ var app = (function () {
     			div = element("div");
     			create_component(keyboard.$$.fragment);
     			attr_dev(svg, "viewBox", svg_viewBox_value = "0 0 " + /*w*/ ctx[7] + " " + /*h*/ ctx[8]);
-    			attr_dev(svg, "class", "svelte-8s1bxc");
-    			add_location(svg, file$3, 144, 2, 4364);
-    			attr_dev(section, "class", "puzzle svelte-8s1bxc");
-    			toggle_class(section, "desktop", /*desktop*/ ctx[4]);
-    			add_location(section, file$3, 143, 0, 4323);
-    			attr_dev(div, "class", "keyboard svelte-8s1bxc");
-    			toggle_class(div, "desktop", /*desktop*/ ctx[4]);
-    			add_location(div, file$3, 167, 0, 5165);
+    			attr_dev(svg, "class", "svelte-96b0");
+    			add_location(svg, file$3, 144, 2, 4358);
+    			attr_dev(section, "class", "puzzle svelte-96b0");
+    			toggle_class(section, "stacked", /*stacked*/ ctx[4]);
+    			add_location(section, file$3, 143, 0, 4317);
+    			attr_dev(div, "class", "keyboard svelte-96b0");
+    			add_location(div, file$3, 167, 0, 5159);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -2452,12 +2451,12 @@ var app = (function () {
     				check_outros();
     			}
 
-    			if (dirty[0] & /*desktop*/ 16) {
-    				toggle_class(section, "desktop", /*desktop*/ ctx[4]);
+    			if (!current || dirty[0] & /*w, h*/ 384 && svg_viewBox_value !== (svg_viewBox_value = "0 0 " + /*w*/ ctx[7] + " " + /*h*/ ctx[8])) {
+    				attr_dev(svg, "viewBox", svg_viewBox_value);
     			}
 
-    			if (dirty[0] & /*desktop*/ 16) {
-    				toggle_class(div, "desktop", /*desktop*/ ctx[4]);
+    			if (dirty[0] & /*stacked*/ 16) {
+    				toggle_class(section, "stacked", /*stacked*/ ctx[4]);
     			}
     		},
     		i: function intro(local) {
@@ -2512,15 +2511,13 @@ var app = (function () {
     	let { focusedCell } = $$props;
     	let { isRevealing } = $$props;
     	let { isDisableHighlight } = $$props;
-    	let { desktop } = $$props;
+    	let { stacked } = $$props;
     	let { revealDuration = 0 } = $$props;
     	let cellsHistoryIndex = 0;
     	let cellsHistory = [];
     	let focusedCellIndexHistoryIndex = 0;
     	let focusedCellIndexHistory = [];
     	let secondarilyFocusedCells = [];
-    	const w = Math.max(...cells.map(d => d.x)) + 1;
-    	const h = Math.max(...cells.map(d => d.y)) + 1;
 
     	function updateSecondarilyFocusedCells() {
     		$$invalidate(6, secondarilyFocusedCells = getSecondarilyFocusedCells({ cells, focusedDirection, focusedCell }));
@@ -2618,7 +2615,7 @@ var app = (function () {
     		"focusedCell",
     		"isRevealing",
     		"isDisableHighlight",
-    		"desktop",
+    		"stacked",
     		"revealDuration"
     	];
 
@@ -2634,7 +2631,7 @@ var app = (function () {
     		if ("focusedCell" in $$props) $$invalidate(18, focusedCell = $$props.focusedCell);
     		if ("isRevealing" in $$props) $$invalidate(2, isRevealing = $$props.isRevealing);
     		if ("isDisableHighlight" in $$props) $$invalidate(3, isDisableHighlight = $$props.isDisableHighlight);
-    		if ("desktop" in $$props) $$invalidate(4, desktop = $$props.desktop);
+    		if ("stacked" in $$props) $$invalidate(4, stacked = $$props.stacked);
     		if ("revealDuration" in $$props) $$invalidate(5, revealDuration = $$props.revealDuration);
     	};
 
@@ -2650,7 +2647,7 @@ var app = (function () {
     		focusedCell,
     		isRevealing,
     		isDisableHighlight,
-    		desktop,
+    		stacked,
     		revealDuration,
     		cellsHistoryIndex,
     		cellsHistory,
@@ -2658,8 +2655,6 @@ var app = (function () {
     		focusedCellIndexHistory,
     		secondarilyFocusedCells,
     		numberOfStatesInHistory,
-    		w,
-    		h,
     		updateSecondarilyFocusedCells,
     		onCellUpdate,
     		onHistoricalChange,
@@ -2669,6 +2664,8 @@ var app = (function () {
     		onMoveFocus,
     		onFlipDirection,
     		onKeydown,
+    		w,
+    		h,
     		sortedCellsInDirection
     	});
 
@@ -2680,16 +2677,20 @@ var app = (function () {
     		if ("focusedCell" in $$props) $$invalidate(18, focusedCell = $$props.focusedCell);
     		if ("isRevealing" in $$props) $$invalidate(2, isRevealing = $$props.isRevealing);
     		if ("isDisableHighlight" in $$props) $$invalidate(3, isDisableHighlight = $$props.isDisableHighlight);
-    		if ("desktop" in $$props) $$invalidate(4, desktop = $$props.desktop);
+    		if ("stacked" in $$props) $$invalidate(4, stacked = $$props.stacked);
     		if ("revealDuration" in $$props) $$invalidate(5, revealDuration = $$props.revealDuration);
     		if ("cellsHistoryIndex" in $$props) cellsHistoryIndex = $$props.cellsHistoryIndex;
     		if ("cellsHistory" in $$props) cellsHistory = $$props.cellsHistory;
     		if ("focusedCellIndexHistoryIndex" in $$props) focusedCellIndexHistoryIndex = $$props.focusedCellIndexHistoryIndex;
     		if ("focusedCellIndexHistory" in $$props) focusedCellIndexHistory = $$props.focusedCellIndexHistory;
     		if ("secondarilyFocusedCells" in $$props) $$invalidate(6, secondarilyFocusedCells = $$props.secondarilyFocusedCells);
+    		if ("w" in $$props) $$invalidate(7, w = $$props.w);
+    		if ("h" in $$props) $$invalidate(8, h = $$props.h);
     		if ("sortedCellsInDirection" in $$props) sortedCellsInDirection = $$props.sortedCellsInDirection;
     	};
 
+    	let w;
+    	let h;
     	let sortedCellsInDirection;
 
     	if ($$props && "$$inject" in $$props) {
@@ -2697,6 +2698,14 @@ var app = (function () {
     	}
 
     	$$self.$$.update = () => {
+    		if ($$self.$$.dirty[0] & /*cells*/ 1) {
+    			 $$invalidate(7, w = Math.max(...cells.map(d => d.x)) + 1);
+    		}
+
+    		if ($$self.$$.dirty[0] & /*cells*/ 1) {
+    			 $$invalidate(8, h = Math.max(...cells.map(d => d.y)) + 1);
+    		}
+
     		if ($$self.$$.dirty[0] & /*cells, focusedCellIndex, focusedDirection*/ 65539) {
     			 (updateSecondarilyFocusedCells());
     		}
@@ -2713,7 +2722,7 @@ var app = (function () {
     		focusedCellIndex,
     		isRevealing,
     		isDisableHighlight,
-    		desktop,
+    		stacked,
     		revealDuration,
     		secondarilyFocusedCells,
     		w,
@@ -2749,7 +2758,7 @@ var app = (function () {
     				focusedCell: 18,
     				isRevealing: 2,
     				isDisableHighlight: 3,
-    				desktop: 4,
+    				stacked: 4,
     				revealDuration: 5
     			},
     			[-1, -1]
@@ -2793,8 +2802,8 @@ var app = (function () {
     			console.warn("<Puzzle> was created without expected prop 'isDisableHighlight'");
     		}
 
-    		if (/*desktop*/ ctx[4] === undefined && !("desktop" in props)) {
-    			console.warn("<Puzzle> was created without expected prop 'desktop'");
+    		if (/*stacked*/ ctx[4] === undefined && !("stacked" in props)) {
+    			console.warn("<Puzzle> was created without expected prop 'stacked'");
     		}
     	}
 
@@ -2854,11 +2863,11 @@ var app = (function () {
     		throw new Error("<Puzzle>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
 
-    	get desktop() {
+    	get stacked() {
     		throw new Error("<Puzzle>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
 
-    	set desktop(value) {
+    	set stacked(value) {
     		throw new Error("<Puzzle>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
 
@@ -3693,7 +3702,163 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (35:4) {#each ['across', 'down'] as direction}
+    // (38:2) {:else}
+    function create_else_block$1(ctx) {
+    	let div;
+    	let current;
+    	let each_value = ["across", "down"];
+    	validate_each_argument(each_value);
+    	let each_blocks = [];
+
+    	for (let i = 0; i < 2; i += 1) {
+    		each_blocks[i] = create_each_block$4(get_each_context$4(ctx, each_value, i));
+    	}
+
+    	const out = i => transition_out(each_blocks[i], 1, 1, () => {
+    		each_blocks[i] = null;
+    	});
+
+    	const block = {
+    		c: function create() {
+    			div = element("div");
+
+    			for (let i = 0; i < 2; i += 1) {
+    				each_blocks[i].c();
+    			}
+
+    			attr_dev(div, "class", "clues--list");
+    			add_location(div, file$7, 38, 4, 1015);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div, anchor);
+
+    			for (let i = 0; i < 2; i += 1) {
+    				each_blocks[i].m(div, null);
+    			}
+
+    			current = true;
+    		},
+    		p: function update(ctx, dirty) {
+    			if (dirty & /*focusedClueNumbers, clues, focusedDirection, onClueFocus*/ 43) {
+    				each_value = ["across", "down"];
+    				validate_each_argument(each_value);
+    				let i;
+
+    				for (i = 0; i < 2; i += 1) {
+    					const child_ctx = get_each_context$4(ctx, each_value, i);
+
+    					if (each_blocks[i]) {
+    						each_blocks[i].p(child_ctx, dirty);
+    						transition_in(each_blocks[i], 1);
+    					} else {
+    						each_blocks[i] = create_each_block$4(child_ctx);
+    						each_blocks[i].c();
+    						transition_in(each_blocks[i], 1);
+    						each_blocks[i].m(div, null);
+    					}
+    				}
+
+    				group_outros();
+
+    				for (i = 2; i < 2; i += 1) {
+    					out(i);
+    				}
+
+    				check_outros();
+    			}
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+
+    			for (let i = 0; i < 2; i += 1) {
+    				transition_in(each_blocks[i]);
+    			}
+
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			each_blocks = each_blocks.filter(Boolean);
+
+    			for (let i = 0; i < 2; i += 1) {
+    				transition_out(each_blocks[i]);
+    			}
+
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(div);
+    			destroy_each(each_blocks, detaching);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_else_block$1.name,
+    		type: "else",
+    		source: "(38:2) {:else}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (34:2) {#if stacked}
+    function create_if_block$3(ctx) {
+    	let div;
+    	let cluebar;
+    	let current;
+
+    	cluebar = new ClueBar({
+    			props: { currentClue: /*currentClue*/ ctx[4] },
+    			$$inline: true
+    		});
+
+    	cluebar.$on("nextClue", /*onNextClue*/ ctx[6]);
+
+    	const block = {
+    		c: function create() {
+    			div = element("div");
+    			create_component(cluebar.$$.fragment);
+    			attr_dev(div, "class", "clues--stacked svelte-xxpthd");
+    			add_location(div, file$7, 34, 4, 888);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div, anchor);
+    			mount_component(cluebar, div, null);
+    			current = true;
+    		},
+    		p: function update(ctx, dirty) {
+    			const cluebar_changes = {};
+    			if (dirty & /*currentClue*/ 16) cluebar_changes.currentClue = /*currentClue*/ ctx[4];
+    			cluebar.$set(cluebar_changes);
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(cluebar.$$.fragment, local);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(cluebar.$$.fragment, local);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(div);
+    			destroy_component(cluebar);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block$3.name,
+    		type: "if",
+    		source: "(34:2) {#if stacked}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (40:6) {#each ['across', 'down'] as direction}
     function create_each_block$4(ctx) {
     	let cluelist;
     	let current;
@@ -3747,7 +3912,7 @@ var app = (function () {
     		block,
     		id: create_each_block$4.name,
     		type: "each",
-    		source: "(35:4) {#each ['across', 'down'] as direction}",
+    		source: "(40:6) {#each ['across', 'down'] as direction}",
     		ctx
     	});
 
@@ -3756,50 +3921,26 @@ var app = (function () {
 
     function create_fragment$7(ctx) {
     	let section;
-    	let div0;
-    	let t;
-    	let div1;
-    	let cluebar;
+    	let current_block_type_index;
+    	let if_block;
     	let current;
-    	let each_value = ["across", "down"];
-    	validate_each_argument(each_value);
-    	let each_blocks = [];
+    	const if_block_creators = [create_if_block$3, create_else_block$1];
+    	const if_blocks = [];
 
-    	for (let i = 0; i < 2; i += 1) {
-    		each_blocks[i] = create_each_block$4(get_each_context$4(ctx, each_value, i));
+    	function select_block_type(ctx, dirty) {
+    		if (/*stacked*/ ctx[2]) return 0;
+    		return 1;
     	}
 
-    	const out = i => transition_out(each_blocks[i], 1, 1, () => {
-    		each_blocks[i] = null;
-    	});
-
-    	cluebar = new ClueBar({
-    			props: { currentClue: /*currentClue*/ ctx[4] },
-    			$$inline: true
-    		});
-
-    	cluebar.$on("nextClue", /*onNextClue*/ ctx[6]);
+    	current_block_type_index = select_block_type(ctx);
+    	if_block = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
 
     	const block = {
     		c: function create() {
     			section = element("section");
-    			div0 = element("div");
-
-    			for (let i = 0; i < 2; i += 1) {
-    				each_blocks[i].c();
-    			}
-
-    			t = space();
-    			div1 = element("div");
-    			create_component(cluebar.$$.fragment);
-    			attr_dev(div0, "class", "clues--desktop svelte-1qb7ypz");
-    			toggle_class(div0, "desktop", /*desktop*/ ctx[2]);
-    			add_location(div0, file$7, 33, 2, 870);
-    			attr_dev(div1, "class", "clues--mobile svelte-1qb7ypz");
-    			toggle_class(div1, "desktop", /*desktop*/ ctx[2]);
-    			add_location(div1, file$7, 43, 2, 1244);
-    			attr_dev(section, "class", "clues svelte-1qb7ypz");
-    			toggle_class(section, "desktop", /*desktop*/ ctx[2]);
+    			if_block.c();
+    			attr_dev(section, "class", "clues svelte-xxpthd");
+    			toggle_class(section, "stacked", /*stacked*/ ctx[2]);
     			add_location(section, file$7, 32, 0, 830);
     		},
     		l: function claim(nodes) {
@@ -3807,86 +3948,50 @@ var app = (function () {
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, section, anchor);
-    			append_dev(section, div0);
-
-    			for (let i = 0; i < 2; i += 1) {
-    				each_blocks[i].m(div0, null);
-    			}
-
-    			append_dev(section, t);
-    			append_dev(section, div1);
-    			mount_component(cluebar, div1, null);
+    			if_blocks[current_block_type_index].m(section, null);
     			current = true;
     		},
     		p: function update(ctx, [dirty]) {
-    			if (dirty & /*focusedClueNumbers, clues, focusedDirection, onClueFocus*/ 43) {
-    				each_value = ["across", "down"];
-    				validate_each_argument(each_value);
-    				let i;
+    			let previous_block_index = current_block_type_index;
+    			current_block_type_index = select_block_type(ctx);
 
-    				for (i = 0; i < 2; i += 1) {
-    					const child_ctx = get_each_context$4(ctx, each_value, i);
-
-    					if (each_blocks[i]) {
-    						each_blocks[i].p(child_ctx, dirty);
-    						transition_in(each_blocks[i], 1);
-    					} else {
-    						each_blocks[i] = create_each_block$4(child_ctx);
-    						each_blocks[i].c();
-    						transition_in(each_blocks[i], 1);
-    						each_blocks[i].m(div0, null);
-    					}
-    				}
-
+    			if (current_block_type_index === previous_block_index) {
+    				if_blocks[current_block_type_index].p(ctx, dirty);
+    			} else {
     				group_outros();
 
-    				for (i = 2; i < 2; i += 1) {
-    					out(i);
-    				}
+    				transition_out(if_blocks[previous_block_index], 1, 1, () => {
+    					if_blocks[previous_block_index] = null;
+    				});
 
     				check_outros();
+    				if_block = if_blocks[current_block_type_index];
+
+    				if (!if_block) {
+    					if_block = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
+    					if_block.c();
+    				}
+
+    				transition_in(if_block, 1);
+    				if_block.m(section, null);
     			}
 
-    			if (dirty & /*desktop*/ 4) {
-    				toggle_class(div0, "desktop", /*desktop*/ ctx[2]);
-    			}
-
-    			const cluebar_changes = {};
-    			if (dirty & /*currentClue*/ 16) cluebar_changes.currentClue = /*currentClue*/ ctx[4];
-    			cluebar.$set(cluebar_changes);
-
-    			if (dirty & /*desktop*/ 4) {
-    				toggle_class(div1, "desktop", /*desktop*/ ctx[2]);
-    			}
-
-    			if (dirty & /*desktop*/ 4) {
-    				toggle_class(section, "desktop", /*desktop*/ ctx[2]);
+    			if (dirty & /*stacked*/ 4) {
+    				toggle_class(section, "stacked", /*stacked*/ ctx[2]);
     			}
     		},
     		i: function intro(local) {
     			if (current) return;
-
-    			for (let i = 0; i < 2; i += 1) {
-    				transition_in(each_blocks[i]);
-    			}
-
-    			transition_in(cluebar.$$.fragment, local);
+    			transition_in(if_block);
     			current = true;
     		},
     		o: function outro(local) {
-    			each_blocks = each_blocks.filter(Boolean);
-
-    			for (let i = 0; i < 2; i += 1) {
-    				transition_out(each_blocks[i]);
-    			}
-
-    			transition_out(cluebar.$$.fragment, local);
+    			transition_out(if_block);
     			current = false;
     		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(section);
-    			destroy_each(each_blocks, detaching);
-    			destroy_component(cluebar);
+    			if_blocks[current_block_type_index].d();
     		}
     	};
 
@@ -3909,7 +4014,7 @@ var app = (function () {
     	let { focusedDirection } = $$props;
     	let { focusedCellIndex } = $$props;
     	let { focusedCell } = $$props;
-    	let { desktop } = $$props;
+    	let { stacked } = $$props;
 
     	function onClueFocus({ direction, id }) {
     		$$invalidate(0, focusedDirection = direction);
@@ -3929,7 +4034,7 @@ var app = (function () {
     		"focusedDirection",
     		"focusedCellIndex",
     		"focusedCell",
-    		"desktop"
+    		"stacked"
     	];
 
     	Object.keys($$props).forEach(key => {
@@ -3944,7 +4049,7 @@ var app = (function () {
     		if ("focusedDirection" in $$props) $$invalidate(0, focusedDirection = $$props.focusedDirection);
     		if ("focusedCellIndex" in $$props) $$invalidate(7, focusedCellIndex = $$props.focusedCellIndex);
     		if ("focusedCell" in $$props) $$invalidate(9, focusedCell = $$props.focusedCell);
-    		if ("desktop" in $$props) $$invalidate(2, desktop = $$props.desktop);
+    		if ("stacked" in $$props) $$invalidate(2, stacked = $$props.stacked);
     	};
 
     	$$self.$capture_state = () => ({
@@ -3955,7 +4060,7 @@ var app = (function () {
     		focusedDirection,
     		focusedCellIndex,
     		focusedCell,
-    		desktop,
+    		stacked,
     		onClueFocus,
     		onNextClue,
     		focusedClueNumbers,
@@ -3968,7 +4073,7 @@ var app = (function () {
     		if ("focusedDirection" in $$props) $$invalidate(0, focusedDirection = $$props.focusedDirection);
     		if ("focusedCellIndex" in $$props) $$invalidate(7, focusedCellIndex = $$props.focusedCellIndex);
     		if ("focusedCell" in $$props) $$invalidate(9, focusedCell = $$props.focusedCell);
-    		if ("desktop" in $$props) $$invalidate(2, desktop = $$props.desktop);
+    		if ("stacked" in $$props) $$invalidate(2, stacked = $$props.stacked);
     		if ("focusedClueNumbers" in $$props) $$invalidate(3, focusedClueNumbers = $$props.focusedClueNumbers);
     		if ("currentClue" in $$props) $$invalidate(4, currentClue = $$props.currentClue);
     	};
@@ -3993,7 +4098,7 @@ var app = (function () {
     	return [
     		focusedDirection,
     		clues,
-    		desktop,
+    		stacked,
     		focusedClueNumbers,
     		currentClue,
     		onClueFocus,
@@ -4015,7 +4120,7 @@ var app = (function () {
     			focusedDirection: 0,
     			focusedCellIndex: 7,
     			focusedCell: 9,
-    			desktop: 2
+    			stacked: 2
     		});
 
     		dispatch_dev("SvelteRegisterComponent", {
@@ -4048,8 +4153,8 @@ var app = (function () {
     			console.warn("<Clues> was created without expected prop 'focusedCell'");
     		}
 
-    		if (/*desktop*/ ctx[2] === undefined && !("desktop" in props)) {
-    			console.warn("<Clues> was created without expected prop 'desktop'");
+    		if (/*stacked*/ ctx[2] === undefined && !("stacked" in props)) {
+    			console.warn("<Clues> was created without expected prop 'stacked'");
     		}
     	}
 
@@ -4093,11 +4198,11 @@ var app = (function () {
     		throw new Error("<Clues>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
 
-    	get desktop() {
+    	get stacked() {
     		throw new Error("<Clues>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
 
-    	set desktop(value) {
+    	set stacked(value) {
     		throw new Error("<Clues>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
     }
@@ -4380,7 +4485,7 @@ var app = (function () {
     const get_message_slot_context = ctx => ({});
 
     // (10:0) {#if isOpen}
-    function create_if_block$3(ctx) {
+    function create_if_block$4(ctx) {
     	let div2;
     	let div1;
     	let div0;
@@ -4518,7 +4623,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block$3.name,
+    		id: create_if_block$4.name,
     		type: "if",
     		source: "(10:0) {#if isOpen}",
     		ctx
@@ -4605,7 +4710,7 @@ var app = (function () {
     function create_fragment$9(ctx) {
     	let if_block_anchor;
     	let current;
-    	let if_block = /*isOpen*/ ctx[1] && create_if_block$3(ctx);
+    	let if_block = /*isOpen*/ ctx[1] && create_if_block$4(ctx);
 
     	const block = {
     		c: function create() {
@@ -4629,7 +4734,7 @@ var app = (function () {
     						transition_in(if_block, 1);
     					}
     				} else {
-    					if_block = create_if_block$3(ctx);
+    					if_block = create_if_block$4(ctx);
     					if_block.c();
     					transition_in(if_block, 1);
     					if_block.m(if_block_anchor.parentNode, if_block_anchor);
@@ -4899,8 +5004,8 @@ var app = (function () {
     	onReveal: /*onReveal*/ ctx[18]
     });
 
-    // (105:0) {#if validated}
-    function create_if_block$4(ctx) {
+    // (108:0) {#if validated}
+    function create_if_block$5(ctx) {
     	let article;
     	let t0;
     	let div;
@@ -4934,21 +5039,21 @@ var app = (function () {
     	}
 
     	let clues_1_props = {
-    		clues: /*clues*/ ctx[4],
-    		cellIndexMap: /*cellIndexMap*/ ctx[11],
-    		desktop: /*desktop*/ ctx[15]
+    		clues: /*clues*/ ctx[10],
+    		cellIndexMap: /*cellIndexMap*/ ctx[12],
+    		stacked: /*stacked*/ ctx[16]
     	};
 
-    	if (/*focusedCellIndex*/ ctx[8] !== void 0) {
-    		clues_1_props.focusedCellIndex = /*focusedCellIndex*/ ctx[8];
+    	if (/*focusedCellIndex*/ ctx[6] !== void 0) {
+    		clues_1_props.focusedCellIndex = /*focusedCellIndex*/ ctx[6];
     	}
 
-    	if (/*focusedCell*/ ctx[10] !== void 0) {
-    		clues_1_props.focusedCell = /*focusedCell*/ ctx[10];
+    	if (/*focusedCell*/ ctx[11] !== void 0) {
+    		clues_1_props.focusedCell = /*focusedCell*/ ctx[11];
     	}
 
-    	if (/*focusedDirection*/ ctx[7] !== void 0) {
-    		clues_1_props.focusedDirection = /*focusedDirection*/ ctx[7];
+    	if (/*focusedDirection*/ ctx[5] !== void 0) {
+    		clues_1_props.focusedDirection = /*focusedDirection*/ ctx[5];
     	}
 
     	clues_1 = new Clues({ props: clues_1_props, $$inline: true });
@@ -4969,31 +5074,31 @@ var app = (function () {
     	}
 
     	let puzzle_props = {
-    		clues: /*clues*/ ctx[4],
-    		focusedCell: /*focusedCell*/ ctx[10],
-    		isRevealing: /*isRevealing*/ ctx[9],
-    		isDisableHighlight: /*isDisableHighlight*/ ctx[14],
+    		clues: /*clues*/ ctx[10],
+    		focusedCell: /*focusedCell*/ ctx[11],
+    		isRevealing: /*isRevealing*/ ctx[7],
+    		isDisableHighlight: /*isDisableHighlight*/ ctx[15],
     		revealDuration: /*revealDuration*/ ctx[1],
-    		desktop: /*desktop*/ ctx[15]
+    		stacked: /*stacked*/ ctx[16]
     	};
 
-    	if (/*cells*/ ctx[5] !== void 0) {
-    		puzzle_props.cells = /*cells*/ ctx[5];
+    	if (/*cells*/ ctx[8] !== void 0) {
+    		puzzle_props.cells = /*cells*/ ctx[8];
     	}
 
-    	if (/*focusedCellIndex*/ ctx[8] !== void 0) {
-    		puzzle_props.focusedCellIndex = /*focusedCellIndex*/ ctx[8];
+    	if (/*focusedCellIndex*/ ctx[6] !== void 0) {
+    		puzzle_props.focusedCellIndex = /*focusedCellIndex*/ ctx[6];
     	}
 
-    	if (/*focusedDirection*/ ctx[7] !== void 0) {
-    		puzzle_props.focusedDirection = /*focusedDirection*/ ctx[7];
+    	if (/*focusedDirection*/ ctx[5] !== void 0) {
+    		puzzle_props.focusedDirection = /*focusedDirection*/ ctx[5];
     	}
 
     	puzzle = new Puzzle({ props: puzzle_props, $$inline: true });
     	binding_callbacks.push(() => bind(puzzle, "cells", puzzle_cells_binding));
     	binding_callbacks.push(() => bind(puzzle, "focusedCellIndex", puzzle_focusedCellIndex_binding));
     	binding_callbacks.push(() => bind(puzzle, "focusedDirection", puzzle_focusedDirection_binding));
-    	let if_block = /*isComplete*/ ctx[12] && !/*isRevealing*/ ctx[9] && /*showCompleteMessage*/ ctx[2] && create_if_block_1$2(ctx);
+    	let if_block = /*isComplete*/ ctx[13] && !/*isRevealing*/ ctx[7] && /*showCompleteMessage*/ ctx[2] && create_if_block_1$2(ctx);
 
     	const block = {
     		c: function create() {
@@ -5006,12 +5111,12 @@ var app = (function () {
     			create_component(puzzle.$$.fragment);
     			t2 = space();
     			if (if_block) if_block.c();
-    			attr_dev(div, "class", "play svelte-9nwuv5");
-    			toggle_class(div, "desktop", /*desktop*/ ctx[15]);
-    			add_location(div, file$a, 110, 4, 3175);
-    			attr_dev(article, "class", article_class_value = "crossword " + /*themeClass*/ ctx[13] + " svelte-9nwuv5");
+    			attr_dev(div, "class", "play svelte-1ein5he");
+    			toggle_class(div, "stacked", /*stacked*/ ctx[16]);
+    			add_location(div, file$a, 113, 4, 3235);
+    			attr_dev(article, "class", article_class_value = "crossword " + /*themeClass*/ ctx[14] + " svelte-1ein5he");
     			add_render_callback(() => /*article_elementresize_handler*/ ctx[32].call(article));
-    			add_location(article, file$a, 105, 2, 2956);
+    			add_location(article, file$a, 108, 2, 3016);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, article, anchor);
@@ -5042,66 +5147,66 @@ var app = (function () {
     			}
 
     			const clues_1_changes = {};
-    			if (dirty[0] & /*clues*/ 16) clues_1_changes.clues = /*clues*/ ctx[4];
-    			if (dirty[0] & /*cellIndexMap*/ 2048) clues_1_changes.cellIndexMap = /*cellIndexMap*/ ctx[11];
-    			if (dirty[0] & /*desktop*/ 32768) clues_1_changes.desktop = /*desktop*/ ctx[15];
+    			if (dirty[0] & /*clues*/ 1024) clues_1_changes.clues = /*clues*/ ctx[10];
+    			if (dirty[0] & /*cellIndexMap*/ 4096) clues_1_changes.cellIndexMap = /*cellIndexMap*/ ctx[12];
+    			if (dirty[0] & /*stacked*/ 65536) clues_1_changes.stacked = /*stacked*/ ctx[16];
 
-    			if (!updating_focusedCellIndex && dirty[0] & /*focusedCellIndex*/ 256) {
+    			if (!updating_focusedCellIndex && dirty[0] & /*focusedCellIndex*/ 64) {
     				updating_focusedCellIndex = true;
-    				clues_1_changes.focusedCellIndex = /*focusedCellIndex*/ ctx[8];
+    				clues_1_changes.focusedCellIndex = /*focusedCellIndex*/ ctx[6];
     				add_flush_callback(() => updating_focusedCellIndex = false);
     			}
 
-    			if (!updating_focusedCell && dirty[0] & /*focusedCell*/ 1024) {
+    			if (!updating_focusedCell && dirty[0] & /*focusedCell*/ 2048) {
     				updating_focusedCell = true;
-    				clues_1_changes.focusedCell = /*focusedCell*/ ctx[10];
+    				clues_1_changes.focusedCell = /*focusedCell*/ ctx[11];
     				add_flush_callback(() => updating_focusedCell = false);
     			}
 
-    			if (!updating_focusedDirection && dirty[0] & /*focusedDirection*/ 128) {
+    			if (!updating_focusedDirection && dirty[0] & /*focusedDirection*/ 32) {
     				updating_focusedDirection = true;
-    				clues_1_changes.focusedDirection = /*focusedDirection*/ ctx[7];
+    				clues_1_changes.focusedDirection = /*focusedDirection*/ ctx[5];
     				add_flush_callback(() => updating_focusedDirection = false);
     			}
 
     			clues_1.$set(clues_1_changes);
     			const puzzle_changes = {};
-    			if (dirty[0] & /*clues*/ 16) puzzle_changes.clues = /*clues*/ ctx[4];
-    			if (dirty[0] & /*focusedCell*/ 1024) puzzle_changes.focusedCell = /*focusedCell*/ ctx[10];
-    			if (dirty[0] & /*isRevealing*/ 512) puzzle_changes.isRevealing = /*isRevealing*/ ctx[9];
-    			if (dirty[0] & /*isDisableHighlight*/ 16384) puzzle_changes.isDisableHighlight = /*isDisableHighlight*/ ctx[14];
+    			if (dirty[0] & /*clues*/ 1024) puzzle_changes.clues = /*clues*/ ctx[10];
+    			if (dirty[0] & /*focusedCell*/ 2048) puzzle_changes.focusedCell = /*focusedCell*/ ctx[11];
+    			if (dirty[0] & /*isRevealing*/ 128) puzzle_changes.isRevealing = /*isRevealing*/ ctx[7];
+    			if (dirty[0] & /*isDisableHighlight*/ 32768) puzzle_changes.isDisableHighlight = /*isDisableHighlight*/ ctx[15];
     			if (dirty[0] & /*revealDuration*/ 2) puzzle_changes.revealDuration = /*revealDuration*/ ctx[1];
-    			if (dirty[0] & /*desktop*/ 32768) puzzle_changes.desktop = /*desktop*/ ctx[15];
+    			if (dirty[0] & /*stacked*/ 65536) puzzle_changes.stacked = /*stacked*/ ctx[16];
 
-    			if (!updating_cells && dirty[0] & /*cells*/ 32) {
+    			if (!updating_cells && dirty[0] & /*cells*/ 256) {
     				updating_cells = true;
-    				puzzle_changes.cells = /*cells*/ ctx[5];
+    				puzzle_changes.cells = /*cells*/ ctx[8];
     				add_flush_callback(() => updating_cells = false);
     			}
 
-    			if (!updating_focusedCellIndex_1 && dirty[0] & /*focusedCellIndex*/ 256) {
+    			if (!updating_focusedCellIndex_1 && dirty[0] & /*focusedCellIndex*/ 64) {
     				updating_focusedCellIndex_1 = true;
-    				puzzle_changes.focusedCellIndex = /*focusedCellIndex*/ ctx[8];
+    				puzzle_changes.focusedCellIndex = /*focusedCellIndex*/ ctx[6];
     				add_flush_callback(() => updating_focusedCellIndex_1 = false);
     			}
 
-    			if (!updating_focusedDirection_1 && dirty[0] & /*focusedDirection*/ 128) {
+    			if (!updating_focusedDirection_1 && dirty[0] & /*focusedDirection*/ 32) {
     				updating_focusedDirection_1 = true;
-    				puzzle_changes.focusedDirection = /*focusedDirection*/ ctx[7];
+    				puzzle_changes.focusedDirection = /*focusedDirection*/ ctx[5];
     				add_flush_callback(() => updating_focusedDirection_1 = false);
     			}
 
     			puzzle.$set(puzzle_changes);
 
-    			if (dirty[0] & /*desktop*/ 32768) {
-    				toggle_class(div, "desktop", /*desktop*/ ctx[15]);
+    			if (dirty[0] & /*stacked*/ 65536) {
+    				toggle_class(div, "stacked", /*stacked*/ ctx[16]);
     			}
 
-    			if (/*isComplete*/ ctx[12] && !/*isRevealing*/ ctx[9] && /*showCompleteMessage*/ ctx[2]) {
+    			if (/*isComplete*/ ctx[13] && !/*isRevealing*/ ctx[7] && /*showCompleteMessage*/ ctx[2]) {
     				if (if_block) {
     					if_block.p(ctx, dirty);
 
-    					if (dirty[0] & /*isComplete, isRevealing, showCompleteMessage*/ 4612) {
+    					if (dirty[0] & /*isComplete, isRevealing, showCompleteMessage*/ 8324) {
     						transition_in(if_block, 1);
     					}
     				} else {
@@ -5120,7 +5225,7 @@ var app = (function () {
     				check_outros();
     			}
 
-    			if (!current || dirty[0] & /*themeClass*/ 8192 && article_class_value !== (article_class_value = "crossword " + /*themeClass*/ ctx[13] + " svelte-9nwuv5")) {
+    			if (!current || dirty[0] & /*themeClass*/ 16384 && article_class_value !== (article_class_value = "crossword " + /*themeClass*/ ctx[14] + " svelte-1ein5he")) {
     				attr_dev(article, "class", article_class_value);
     			}
     		},
@@ -5151,16 +5256,16 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block$4.name,
+    		id: create_if_block$5.name,
     		type: "if",
-    		source: "(105:0) {#if validated}",
+    		source: "(108:0) {#if validated}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (107:67)        
+    // (110:67)        
     function fallback_block$1(ctx) {
     	let toolbar;
     	let current;
@@ -5203,14 +5308,14 @@ var app = (function () {
     		block,
     		id: fallback_block$1.name,
     		type: "fallback",
-    		source: "(107:67)        ",
+    		source: "(110:67)        ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (131:4) {#if isComplete && !isRevealing && showCompleteMessage}
+    // (134:4) {#if isComplete && !isRevealing && showCompleteMessage}
     function create_if_block_1$2(ctx) {
     	let completedmessage;
     	let current;
@@ -5260,14 +5365,14 @@ var app = (function () {
     		block,
     		id: create_if_block_1$2.name,
     		type: "if",
-    		source: "(131:4) {#if isComplete && !isRevealing && showCompleteMessage}",
+    		source: "(134:4) {#if isComplete && !isRevealing && showCompleteMessage}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (132:6) <CompletedMessage showConfetti="{showConfetti}">
+    // (135:6) <CompletedMessage showConfetti="{showConfetti}">
     function create_default_slot(ctx) {
     	let current;
     	const complete_slot_template = /*#slots*/ ctx[25].complete;
@@ -5309,7 +5414,7 @@ var app = (function () {
     		block,
     		id: create_default_slot.name,
     		type: "slot",
-    		source: "(132:6) <CompletedMessage showConfetti=\\\"{showConfetti}\\\">",
+    		source: "(135:6) <CompletedMessage showConfetti=\\\"{showConfetti}\\\">",
     		ctx
     	});
 
@@ -5319,7 +5424,7 @@ var app = (function () {
     function create_fragment$a(ctx) {
     	let if_block_anchor;
     	let current;
-    	let if_block = /*validated*/ ctx[16] && create_if_block$4(ctx);
+    	let if_block = /*validated*/ ctx[9] && create_if_block$5(ctx);
 
     	const block = {
     		c: function create() {
@@ -5335,7 +5440,28 @@ var app = (function () {
     			current = true;
     		},
     		p: function update(ctx, dirty) {
-    			if (/*validated*/ ctx[16]) if_block.p(ctx, dirty);
+    			if (/*validated*/ ctx[9]) {
+    				if (if_block) {
+    					if_block.p(ctx, dirty);
+
+    					if (dirty[0] & /*validated*/ 512) {
+    						transition_in(if_block, 1);
+    					}
+    				} else {
+    					if_block = create_if_block$5(ctx);
+    					if_block.c();
+    					transition_in(if_block, 1);
+    					if_block.m(if_block_anchor.parentNode, if_block_anchor);
+    				}
+    			} else if (if_block) {
+    				group_outros();
+
+    				transition_out(if_block, 1, 1, () => {
+    					if_block = null;
+    				});
+
+    				check_outros();
+    			}
     		},
     		i: function intro(local) {
     			if (current) return;
@@ -5375,16 +5501,13 @@ var app = (function () {
     	let { disableHighlight = false } = $$props;
     	let { showCompleteMessage = true } = $$props;
     	let { showConfetti = true } = $$props;
-    	let originalClues = createClues(data);
-    	let validated = validateClues(originalClues);
-    	let clues = originalClues.map(d => ({ ...d }));
-    	let cells = createCells(originalClues);
     	let width = 0;
     	let focusedDirection = "across";
     	let focusedCellIndex = 0;
     	let isRevealing = false;
     	let revealTimeout;
     	let clueCompletion;
+    	let cells = [];
 
     	function checkClues() {
     		return clues.map(d => {
@@ -5404,33 +5527,33 @@ var app = (function () {
     	}
 
     	function reset() {
-    		$$invalidate(9, isRevealing = false);
-    		$$invalidate(8, focusedCellIndex = 0);
-    		$$invalidate(7, focusedDirection = "across");
+    		$$invalidate(7, isRevealing = false);
+    		$$invalidate(6, focusedCellIndex = 0);
+    		$$invalidate(5, focusedDirection = "across");
     	}
 
     	function onClear() {
     		reset();
     		if (revealTimeout) clearTimeout(revealTimeout);
-    		$$invalidate(5, cells = cells.map(cell => ({ ...cell, value: "" })));
+    		$$invalidate(8, cells = cells.map(cell => ({ ...cell, value: "" })));
     		$$invalidate(20, revealed = false);
     	}
 
     	function onReveal() {
     		if (revealed) return true;
     		reset();
-    		$$invalidate(5, cells = cells.map(cell => ({ ...cell, value: cell.answer })));
+    		$$invalidate(8, cells = cells.map(cell => ({ ...cell, value: cell.answer })));
     		$$invalidate(20, revealed = true);
     		startReveal();
     	}
 
     	function startReveal() {
-    		$$invalidate(9, isRevealing = true);
+    		$$invalidate(7, isRevealing = true);
     		if (revealTimeout) clearTimeout(revealTimeout);
 
     		revealTimeout = setTimeout(
     			() => {
-    				$$invalidate(9, isRevealing = false);
+    				$$invalidate(7, isRevealing = false);
     			},
     			revealDuration + 250
     		);
@@ -5458,37 +5581,37 @@ var app = (function () {
 
     	function clues_1_focusedCellIndex_binding(value) {
     		focusedCellIndex = value;
-    		$$invalidate(8, focusedCellIndex);
+    		$$invalidate(6, focusedCellIndex);
     	}
 
     	function clues_1_focusedCell_binding(value) {
     		focusedCell = value;
-    		(($$invalidate(10, focusedCell), $$invalidate(5, cells)), $$invalidate(8, focusedCellIndex));
+    		(((($$invalidate(11, focusedCell), $$invalidate(8, cells)), $$invalidate(6, focusedCellIndex)), $$invalidate(35, originalClues)), $$invalidate(21, data));
     	}
 
     	function clues_1_focusedDirection_binding(value) {
     		focusedDirection = value;
-    		$$invalidate(7, focusedDirection);
+    		$$invalidate(5, focusedDirection);
     	}
 
     	function puzzle_cells_binding(value) {
     		cells = value;
-    		$$invalidate(5, cells);
+    		(($$invalidate(8, cells), $$invalidate(35, originalClues)), $$invalidate(21, data));
     	}
 
     	function puzzle_focusedCellIndex_binding(value) {
     		focusedCellIndex = value;
-    		$$invalidate(8, focusedCellIndex);
+    		$$invalidate(6, focusedCellIndex);
     	}
 
     	function puzzle_focusedDirection_binding(value) {
     		focusedDirection = value;
-    		$$invalidate(7, focusedDirection);
+    		$$invalidate(5, focusedDirection);
     	}
 
     	function article_elementresize_handler() {
     		width = this.offsetWidth;
-    		$$invalidate(6, width);
+    		$$invalidate(4, width);
     	}
 
     	$$self.$$set = $$props => {
@@ -5522,29 +5645,29 @@ var app = (function () {
     		disableHighlight,
     		showCompleteMessage,
     		showConfetti,
-    		originalClues,
-    		validated,
-    		clues,
-    		cells,
     		width,
     		focusedDirection,
     		focusedCellIndex,
     		isRevealing,
     		revealTimeout,
     		clueCompletion,
+    		cells,
     		checkClues,
     		reset,
     		onClear,
     		onReveal,
     		startReveal,
     		onToolbarEvent,
+    		originalClues,
+    		validated,
+    		clues,
     		focusedCell,
     		cellIndexMap,
     		percentCorrect,
     		isComplete,
     		themeClass,
     		isDisableHighlight,
-    		desktop
+    		stacked
     	});
 
     	$$self.$inject_state = $$props => {
@@ -5557,68 +5680,91 @@ var app = (function () {
     		if ("disableHighlight" in $$props) $$invalidate(24, disableHighlight = $$props.disableHighlight);
     		if ("showCompleteMessage" in $$props) $$invalidate(2, showCompleteMessage = $$props.showCompleteMessage);
     		if ("showConfetti" in $$props) $$invalidate(3, showConfetti = $$props.showConfetti);
-    		if ("originalClues" in $$props) originalClues = $$props.originalClues;
-    		if ("validated" in $$props) $$invalidate(16, validated = $$props.validated);
-    		if ("clues" in $$props) $$invalidate(4, clues = $$props.clues);
-    		if ("cells" in $$props) $$invalidate(5, cells = $$props.cells);
-    		if ("width" in $$props) $$invalidate(6, width = $$props.width);
-    		if ("focusedDirection" in $$props) $$invalidate(7, focusedDirection = $$props.focusedDirection);
-    		if ("focusedCellIndex" in $$props) $$invalidate(8, focusedCellIndex = $$props.focusedCellIndex);
-    		if ("isRevealing" in $$props) $$invalidate(9, isRevealing = $$props.isRevealing);
+    		if ("width" in $$props) $$invalidate(4, width = $$props.width);
+    		if ("focusedDirection" in $$props) $$invalidate(5, focusedDirection = $$props.focusedDirection);
+    		if ("focusedCellIndex" in $$props) $$invalidate(6, focusedCellIndex = $$props.focusedCellIndex);
+    		if ("isRevealing" in $$props) $$invalidate(7, isRevealing = $$props.isRevealing);
     		if ("revealTimeout" in $$props) revealTimeout = $$props.revealTimeout;
     		if ("clueCompletion" in $$props) clueCompletion = $$props.clueCompletion;
-    		if ("focusedCell" in $$props) $$invalidate(10, focusedCell = $$props.focusedCell);
-    		if ("cellIndexMap" in $$props) $$invalidate(11, cellIndexMap = $$props.cellIndexMap);
-    		if ("percentCorrect" in $$props) $$invalidate(35, percentCorrect = $$props.percentCorrect);
-    		if ("isComplete" in $$props) $$invalidate(12, isComplete = $$props.isComplete);
-    		if ("themeClass" in $$props) $$invalidate(13, themeClass = $$props.themeClass);
-    		if ("isDisableHighlight" in $$props) $$invalidate(14, isDisableHighlight = $$props.isDisableHighlight);
-    		if ("desktop" in $$props) $$invalidate(15, desktop = $$props.desktop);
+    		if ("cells" in $$props) $$invalidate(8, cells = $$props.cells);
+    		if ("originalClues" in $$props) $$invalidate(35, originalClues = $$props.originalClues);
+    		if ("validated" in $$props) $$invalidate(9, validated = $$props.validated);
+    		if ("clues" in $$props) $$invalidate(10, clues = $$props.clues);
+    		if ("focusedCell" in $$props) $$invalidate(11, focusedCell = $$props.focusedCell);
+    		if ("cellIndexMap" in $$props) $$invalidate(12, cellIndexMap = $$props.cellIndexMap);
+    		if ("percentCorrect" in $$props) $$invalidate(36, percentCorrect = $$props.percentCorrect);
+    		if ("isComplete" in $$props) $$invalidate(13, isComplete = $$props.isComplete);
+    		if ("themeClass" in $$props) $$invalidate(14, themeClass = $$props.themeClass);
+    		if ("isDisableHighlight" in $$props) $$invalidate(15, isDisableHighlight = $$props.isDisableHighlight);
+    		if ("stacked" in $$props) $$invalidate(16, stacked = $$props.stacked);
     	};
 
+    	let originalClues;
+    	let validated;
+    	let clues;
     	let focusedCell;
     	let cellIndexMap;
     	let percentCorrect;
     	let isComplete;
     	let themeClass;
     	let isDisableHighlight;
-    	let desktop;
+    	let stacked;
 
     	if ($$props && "$$inject" in $$props) {
     		$$self.$inject_state($$props.$$inject);
     	}
 
     	$$self.$$.update = () => {
-    		if ($$self.$$.dirty[0] & /*cells, focusedCellIndex*/ 288) {
-    			 $$invalidate(10, focusedCell = cells[focusedCellIndex] || {});
+    		if ($$self.$$.dirty[0] & /*data*/ 2097152) {
+    			 $$invalidate(35, originalClues = createClues(data));
     		}
 
-    		if ($$self.$$.dirty[0] & /*cells*/ 32) {
-    			 $$invalidate(11, cellIndexMap = fromPairs(cells.map(cell => [cell.id, cell.index])));
+    		if ($$self.$$.dirty[1] & /*originalClues*/ 16) {
+    			 $$invalidate(9, validated = validateClues(originalClues));
     		}
 
-    		if ($$self.$$.dirty[0] & /*cells*/ 32) {
-    			 $$invalidate(35, percentCorrect = cells.filter(d => d.answer === d.value).length / cells.length);
+    		if ($$self.$$.dirty[1] & /*originalClues*/ 16) {
+    			 $$invalidate(10, clues = originalClues.map(d => ({ ...d })));
     		}
 
-    		if ($$self.$$.dirty[1] & /*percentCorrect*/ 16) {
-    			 $$invalidate(12, isComplete = percentCorrect == 1);
+    		if ($$self.$$.dirty[1] & /*originalClues*/ 16) {
+    			 ($$invalidate(8, cells = createCells(originalClues)));
+    		}
+
+    		if ($$self.$$.dirty[0] & /*cells, focusedCellIndex*/ 320) {
+    			 $$invalidate(11, focusedCell = cells[focusedCellIndex] || {});
+    		}
+
+    		if ($$self.$$.dirty[0] & /*cells*/ 256) {
+    			 $$invalidate(12, cellIndexMap = fromPairs(cells.map(cell => [cell.id, cell.index])));
+    		}
+
+    		if ($$self.$$.dirty[0] & /*cells*/ 256) {
+    			 $$invalidate(36, percentCorrect = cells.filter(d => d.answer === d.value).length / cells.length);
+    		}
+
+    		if ($$self.$$.dirty[1] & /*percentCorrect*/ 32) {
+    			 $$invalidate(13, isComplete = percentCorrect == 1);
     		}
 
     		if ($$self.$$.dirty[0] & /*theme*/ 4194304) {
-    			 $$invalidate(13, themeClass = theme ? `theme-${theme}` : "");
+    			 $$invalidate(14, themeClass = theme ? `theme-${theme}` : "");
     		}
 
-    		if ($$self.$$.dirty[0] & /*isComplete, disableHighlight*/ 16781312) {
-    			 $$invalidate(14, isDisableHighlight = isComplete && disableHighlight);
+    		if ($$self.$$.dirty[0] & /*isComplete, disableHighlight*/ 16785408) {
+    			 $$invalidate(15, isDisableHighlight = isComplete && disableHighlight);
     		}
 
-    		if ($$self.$$.dirty[0] & /*cells*/ 32) {
-    			 ($$invalidate(4, clues = checkClues()));
+    		if ($$self.$$.dirty[0] & /*cells*/ 256) {
+    			 ($$invalidate(10, clues = checkClues()));
     		}
 
-    		if ($$self.$$.dirty[0] & /*width, breakpoint*/ 8388672) {
-    			 $$invalidate(15, desktop = width >= breakpoint);
+    		if ($$self.$$.dirty[0] & /*width, breakpoint*/ 8388624) {
+    			 $$invalidate(16, stacked = width < breakpoint);
+    		}
+
+    		if ($$self.$$.dirty[1] & /*originalClues*/ 16) {
+    			 (reset());
     		}
     	};
 
@@ -5627,19 +5773,19 @@ var app = (function () {
     		revealDuration,
     		showCompleteMessage,
     		showConfetti,
-    		clues,
-    		cells,
     		width,
     		focusedDirection,
     		focusedCellIndex,
     		isRevealing,
+    		cells,
+    		validated,
+    		clues,
     		focusedCell,
     		cellIndexMap,
     		isComplete,
     		themeClass,
     		isDisableHighlight,
-    		desktop,
-    		validated,
+    		stacked,
     		onClear,
     		onReveal,
     		onToolbarEvent,
@@ -6638,153 +6784,10 @@ var app = (function () {
     	}
     ];
 
-    var dataUSA2020 = [
-    	{
-    		x: 0,
-    		y: 0,
-    		answer: "TRACE",
-    		direction: "across",
-    		clue: "\"Hustlers\" actress Lysette",
-    		race: "white",
-    		binaryRace: "white",
-    		hispanic: "FALSE",
-    		gender: "woman",
-    		name: "Trace Lysette",
-    		wiki: "https://en.wikipedia.org/wiki/Trace_Lysette",
-    		description: "American actor"
-    	},
-    	{
-    		x: 2,
-    		y: 0,
-    		answer: "ANITA",
-    		direction: "down",
-    		clue: "Rita's role in \"West Side Story\"",
-    		race: "urm",
-    		binaryRace: "white",
-    		hispanic: "TRUE",
-    		gender: "woman",
-    		name: "Rita Moreno",
-    		wiki: "https://en.wikipedia.org/wiki/Rita_Moreno",
-    		description: "Puerto Rican singer, dancer, and actress"
-    	},
-    	{
-    		x: 3,
-    		y: 0,
-    		answer: "CHE",
-    		direction: "down",
-    		clue: "Guerrilla Guevara",
-    		race: "urm",
-    		binaryRace: "white",
-    		hispanic: "TRUE",
-    		gender: "man",
-    		name: "Che Guevara",
-    		wiki: "https://en.wikipedia.org/wiki/Che_Guevara",
-    		description: "Argentine Marxist revolutionary"
-    	},
-    	{
-    		x: 4,
-    		y: 0,
-    		answer: "ELL",
-    		direction: "down",
-    		clue: "\"I Don't Love You\" singer Lindsay",
-    		race: "white",
-    		binaryRace: "white",
-    		hispanic: "FALSE",
-    		gender: "woman",
-    		name: "Lindsay Ell",
-    		wiki: "https://en.wikipedia.org/wiki/Lindsay_Ell",
-    		description: "Canadian musician"
-    	},
-    	{
-    		x: 2,
-    		y: 1,
-    		answer: "NHL",
-    		direction: "across",
-    		clue: "Willie O'Ree played in it (Abbr.)",
-    		race: "urm",
-    		binaryRace: "poc",
-    		hispanic: "FALSE",
-    		gender: "man",
-    		name: "Willie O'Ree",
-    		wiki: "https://en.wikipedia.org/wiki/Willie_O%27Ree",
-    		description: "20th-century Canadian ice hockey player"
-    	},
-    	{
-    		x: 0,
-    		y: 2,
-    		answer: "ARIEL",
-    		direction: "across",
-    		clue: "\"Modern Family\" actress Winter",
-    		race: "white",
-    		binaryRace: "white",
-    		hispanic: "FALSE",
-    		gender: "woman",
-    		name: "Ariel Winter",
-    		wiki: "https://en.wikipedia.org/wiki/Ariel_Winter",
-    		description: "American actress, model and occasional singer"
-    	},
-    	{
-    		x: 0,
-    		y: 2,
-    		answer: "ALI",
-    		direction: "down",
-    		clue: "Broadway star Stroker",
-    		race: "white",
-    		binaryRace: "white",
-    		hispanic: "FALSE",
-    		gender: "woman",
-    		name: "Ali Stroker",
-    		wiki: "https://en.wikipedia.org/wiki/Ali_Stroker",
-    		description: "American actress"
-    	},
-    	{
-    		x: 1,
-    		y: 2,
-    		answer: "REC",
-    		direction: "down",
-    		clue: "\"Parks and ___\" (Amy Poehler sitcom, for short)",
-    		race: "white",
-    		binaryRace: "white",
-    		hispanic: "FALSE",
-    		gender: "woman",
-    		name: "Amy Poehler",
-    		wiki: "https://en.wikipedia.org/wiki/Amy_Poehler",
-    		description: "American actress"
-    	},
-    	{
-    		x: 0,
-    		y: 3,
-    		answer: "LET",
-    		direction: "across",
-    		clue: "\"___ America Be America Again\" (Langston Hughes poem)",
-    		race: "urm",
-    		binaryRace: "poc",
-    		hispanic: "FALSE",
-    		gender: "man",
-    		name: "Langston Hughes",
-    		wiki: "https://en.wikipedia.org/wiki/Langston_Hughes",
-    		description: "American writer and social activist"
-    	},
-    	{
-    		x: 0,
-    		y: 4,
-    		answer: "ICARE",
-    		direction: "across",
-    		clue: "Beyonce song about emotional investment",
-    		race: "urm",
-    		binaryRace: "poc",
-    		hispanic: "FALSE",
-    		gender: "woman",
-    		name: "Beyoncé",
-    		wiki: "https://en.wikipedia.org/wiki/Beyonc%C3%A9",
-    		description: "American singer, songwriter, producer, and actress"
-    	}
-    ];
-
     /* App.svelte generated by Svelte v3.29.0 */
     const file$b = "App.svelte";
 
-    // (94:6) <div         class="toolbar"         slot="toolbar"         let:onClear         let:onReveal         style="background: yellow; padding: 2em;">
+    // (91:6) <div         class="toolbar"         slot="toolbar"         let:onClear         let:onReveal         style="background: yellow; padding: 2em;">
     function create_toolbar_slot(ctx) {
     	let div;
     	let button0;
@@ -6801,13 +6804,13 @@ var app = (function () {
     			t1 = space();
     			button1 = element("button");
     			button1.textContent = "show answers";
-    			add_location(button0, file$b, 99, 8, 2630);
-    			add_location(button1, file$b, 100, 8, 2689);
+    			add_location(button0, file$b, 96, 8, 2544);
+    			add_location(button1, file$b, 97, 8, 2603);
     			attr_dev(div, "class", "toolbar");
     			attr_dev(div, "slot", "toolbar");
     			set_style(div, "background", "yellow");
     			set_style(div, "padding", "2em");
-    			add_location(div, file$b, 93, 6, 2478);
+    			add_location(div, file$b, 90, 6, 2392);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -6821,7 +6824,7 @@ var app = (function () {
     						button0,
     						"click",
     						function () {
-    							if (is_function(/*onClear*/ ctx[4])) /*onClear*/ ctx[4].apply(this, arguments);
+    							if (is_function(/*onClear*/ ctx[5])) /*onClear*/ ctx[5].apply(this, arguments);
     						},
     						false,
     						false,
@@ -6831,7 +6834,7 @@ var app = (function () {
     						button1,
     						"click",
     						function () {
-    							if (is_function(/*onReveal*/ ctx[5])) /*onReveal*/ ctx[5].apply(this, arguments);
+    							if (is_function(/*onReveal*/ ctx[6])) /*onReveal*/ ctx[6].apply(this, arguments);
     						},
     						false,
     						false,
@@ -6856,14 +6859,14 @@ var app = (function () {
     		block,
     		id: create_toolbar_slot.name,
     		type: "slot",
-    		source: "(94:6) <div         class=\\\"toolbar\\\"         slot=\\\"toolbar\\\"         let:onClear         let:onReveal         style=\\\"background: yellow; padding: 2em;\\\">",
+    		source: "(91:6) <div         class=\\\"toolbar\\\"         slot=\\\"toolbar\\\"         let:onClear         let:onReveal         style=\\\"background: yellow; padding: 2em;\\\">",
     		ctx
     	});
 
     	return block;
     }
 
-    // (103:6) <div slot="complete">
+    // (100:6) <div slot="complete">
     function create_complete_slot(ctx) {
     	let div;
     	let h3;
@@ -6878,12 +6881,12 @@ var app = (function () {
     			h3.textContent = "OMG, congrats!";
     			t1 = space();
     			img = element("img");
-    			add_location(h3, file$b, 103, 8, 2790);
+    			add_location(h3, file$b, 100, 8, 2704);
     			attr_dev(img, "alt", "celebration");
     			if (img.src !== (img_src_value = "https://media3.giphy.com/media/QpOZPQQ2wbjOM/giphy.gif")) attr_dev(img, "src", img_src_value);
-    			add_location(img, file$b, 104, 8, 2822);
+    			add_location(img, file$b, 101, 8, 2736);
     			attr_dev(div, "slot", "complete");
-    			add_location(div, file$b, 102, 6, 2760);
+    			add_location(div, file$b, 99, 6, 2674);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -6900,14 +6903,14 @@ var app = (function () {
     		block,
     		id: create_complete_slot.name,
     		type: "slot",
-    		source: "(103:6) <div slot=\\\"complete\\\">",
+    		source: "(100:6) <div slot=\\\"complete\\\">",
     		ctx
     	});
 
     	return block;
     }
 
-    // (93:4) <Crossword data="{dataNYTDaily}">
+    // (90:4) <Crossword data="{dataNYTDaily}">
     function create_default_slot$1(ctx) {
     	let t;
 
@@ -6928,7 +6931,7 @@ var app = (function () {
     		block,
     		id: create_default_slot$1.name,
     		type: "slot",
-    		source: "(93:4) <Crossword data=\\\"{dataNYTDaily}\\\">",
+    		source: "(90:4) <Crossword data=\\\"{dataNYTDaily}\\\">",
     		ctx
     	});
 
@@ -6951,81 +6954,70 @@ var app = (function () {
     	let div1;
     	let h20;
     	let t9;
-    	let crossword0;
+    	let p1;
     	let t10;
+    	let a2;
+    	let t12;
+    	let t13;
+    	let crossword0;
+    	let t14;
     	let section1;
     	let div2;
     	let h21;
-    	let t12;
-    	let p1;
-    	let t13;
-    	let a2;
-    	let t15;
     	let t16;
-    	let crossword1;
+    	let p2;
     	let t17;
+    	let a3;
+    	let t19;
+    	let t20;
+    	let crossword1;
+    	let t21;
     	let section2;
     	let div3;
     	let h22;
-    	let t19;
-    	let p2;
-    	let t20;
-    	let a3;
-    	let t22;
     	let t23;
-    	let crossword2;
-    	let t24;
-    	let section3;
-    	let div4;
-    	let h23;
-    	let t26;
     	let p3;
-    	let t28;
+    	let t25;
     	let select;
     	let option0;
     	let option1;
     	let option2;
     	let option3;
-    	let t33;
+    	let t30;
+    	let div4;
+    	let crossword2;
+    	let t31;
+    	let section3;
     	let div5;
+    	let h23;
+    	let t33;
+    	let p4;
+    	let t35;
     	let crossword3;
-    	let t34;
+    	let updating_revealed;
+    	let t36;
     	let section4;
     	let div6;
     	let h24;
-    	let t36;
-    	let p4;
     	let t38;
-    	let crossword4;
-    	let updating_revealed;
-    	let t39;
-    	let section5;
-    	let div7;
-    	let h25;
-    	let t41;
     	let p5;
-    	let t43;
-    	let crossword5;
+    	let t40;
+    	let crossword4;
     	let current;
     	let mounted;
     	let dispose;
 
     	crossword0 = new Crossword({
-    			props: { data: dataUSA2020 },
+    			props: { data: /*dataChange*/ ctx[2] },
     			$$inline: true
     		});
 
     	crossword1 = new Crossword({
-    			props: { data: dataNYTDaily },
-    			$$inline: true
-    		});
-
-    	crossword2 = new Crossword({
     			props: { data: dataNYTMini },
     			$$inline: true
     		});
 
-    	crossword3 = new Crossword({
+    	crossword2 = new Crossword({
     			props: {
     				data: dataOreo,
     				theme: /*theme*/ ctx[1],
@@ -7034,23 +7026,23 @@ var app = (function () {
     			$$inline: true
     		});
 
-    	function crossword4_revealed_binding(value) {
-    		/*crossword4_revealed_binding*/ ctx[3].call(null, value);
+    	function crossword3_revealed_binding(value) {
+    		/*crossword3_revealed_binding*/ ctx[4].call(null, value);
     	}
 
-    	let crossword4_props = {
+    	let crossword3_props = {
     		data: dataUSA,
     		disableHighlight: /*revealedUSA*/ ctx[0]
     	};
 
     	if (/*revealedUSA*/ ctx[0] !== void 0) {
-    		crossword4_props.revealed = /*revealedUSA*/ ctx[0];
+    		crossword3_props.revealed = /*revealedUSA*/ ctx[0];
     	}
 
-    	crossword4 = new Crossword({ props: crossword4_props, $$inline: true });
-    	binding_callbacks.push(() => bind(crossword4, "revealed", crossword4_revealed_binding));
+    	crossword3 = new Crossword({ props: crossword3_props, $$inline: true });
+    	binding_callbacks.push(() => bind(crossword3, "revealed", crossword3_revealed_binding));
 
-    	crossword5 = new Crossword({
+    	crossword4 = new Crossword({
     			props: {
     				data: dataNYTDaily,
     				$$slots: {
@@ -7058,8 +7050,8 @@ var app = (function () {
     					complete: [create_complete_slot],
     					toolbar: [
     						create_toolbar_slot,
-    						({ onClear, onReveal }) => ({ 4: onClear, 5: onReveal }),
-    						({ onClear, onReveal }) => (onClear ? 16 : 0) | (onReveal ? 32 : 0)
+    						({ onClear, onReveal }) => ({ 5: onClear, 6: onReveal }),
+    						({ onClear, onReveal }) => (onClear ? 32 : 0) | (onReveal ? 64 : 0)
     					]
     				},
     				$$scope: { ctx }
@@ -7086,44 +7078,37 @@ var app = (function () {
     			section0 = element("section");
     			div1 = element("div");
     			h20 = element("h2");
-    			h20.textContent = "Test";
+    			h20.textContent = "Default";
     			t9 = space();
+    			p1 = element("p");
+    			t10 = text("A\n        ");
+    			a2 = element("a");
+    			a2.textContent = "NYT\n          daily";
+    			t12 = text("\n        puzzle with all default settings.");
+    			t13 = space();
     			create_component(crossword0.$$.fragment);
-    			t10 = space();
+    			t14 = space();
     			section1 = element("section");
     			div2 = element("div");
     			h21 = element("h2");
-    			h21.textContent = "Default";
-    			t12 = space();
-    			p1 = element("p");
-    			t13 = text("A\n        ");
-    			a2 = element("a");
-    			a2.textContent = "NYT\n          daily";
-    			t15 = text("\n        puzzle with all default settings.");
+    			h21.textContent = "Mobile";
     			t16 = space();
+    			p2 = element("p");
+    			t17 = text("A\n        ");
+    			a3 = element("a");
+    			a3.textContent = "NYT\n          mini";
+    			t19 = text("\n        puzzle with all default settings and forced mobile view.");
+    			t20 = space();
     			create_component(crossword1.$$.fragment);
-    			t17 = space();
+    			t21 = space();
     			section2 = element("section");
     			div3 = element("div");
     			h22 = element("h2");
-    			h22.textContent = "Mobile";
-    			t19 = space();
-    			p2 = element("p");
-    			t20 = text("A\n        ");
-    			a3 = element("a");
-    			a3.textContent = "NYT\n          mini";
-    			t22 = text("\n        puzzle with all default settings and forced mobile view.");
+    			h22.textContent = "Themes";
     			t23 = space();
-    			create_component(crossword2.$$.fragment);
-    			t24 = space();
-    			section3 = element("section");
-    			div4 = element("div");
-    			h23 = element("h2");
-    			h23.textContent = "Themes";
-    			t26 = space();
     			p3 = element("p");
     			p3.textContent = "A library of preset style themes to choose from.";
-    			t28 = space();
+    			t25 = space();
     			select = element("select");
     			option0 = element("option");
     			option0.textContent = "Classic";
@@ -7133,114 +7118,107 @@ var app = (function () {
     			option2.textContent = "Amelia";
     			option3 = element("option");
     			option3.textContent = "Citrus";
-    			t33 = space();
+    			t30 = space();
+    			div4 = element("div");
+    			create_component(crossword2.$$.fragment);
+    			t31 = space();
+    			section3 = element("section");
     			div5 = element("div");
+    			h23 = element("h2");
+    			h23.textContent = "Simple Customization";
+    			t33 = space();
+    			p4 = element("p");
+    			p4.textContent = "Custom class name on cells.";
+    			t35 = space();
     			create_component(crossword3.$$.fragment);
-    			t34 = space();
+    			t36 = space();
     			section4 = element("section");
     			div6 = element("div");
     			h24 = element("h2");
-    			h24.textContent = "Simple Customization";
-    			t36 = space();
-    			p4 = element("p");
-    			p4.textContent = "Custom class name on cells.";
+    			h24.textContent = "Advanced Customization";
     			t38 = space();
-    			create_component(crossword4.$$.fragment);
-    			t39 = space();
-    			section5 = element("section");
-    			div7 = element("div");
-    			h25 = element("h2");
-    			h25.textContent = "Advanced Customization";
-    			t41 = space();
     			p5 = element("p");
     			p5.textContent = "TBD.";
-    			t43 = space();
-    			create_component(crossword5.$$.fragment);
+    			t40 = space();
+    			create_component(crossword4.$$.fragment);
     			attr_dev(h1, "class", "svelte-powwth");
-    			add_location(h1, file$b, 15, 4, 422);
+    			add_location(h1, file$b, 19, 4, 470);
     			attr_dev(a0, "href", "https://svelte.dev");
-    			add_location(a0, file$b, 18, 6, 494);
+    			add_location(a0, file$b, 22, 6, 542);
     			attr_dev(a1, "href", "https://github.com/russellgoldenberg/svelte-crossword#svelte-crossword");
-    			add_location(a1, file$b, 19, 6, 558);
+    			add_location(a1, file$b, 23, 6, 606);
     			attr_dev(p0, "class", "svelte-powwth");
-    			add_location(p0, file$b, 16, 4, 452);
+    			add_location(p0, file$b, 20, 4, 500);
     			attr_dev(div0, "class", "intro svelte-powwth");
-    			add_location(div0, file$b, 14, 2, 398);
+    			add_location(div0, file$b, 18, 2, 446);
     			attr_dev(h20, "class", "svelte-powwth");
-    			add_location(h20, file$b, 26, 6, 732);
+    			add_location(h20, file$b, 30, 6, 780);
+    			attr_dev(a2, "href", "https://www.nytimes.com/crosswords/game/daily/2020/10/21");
+    			add_location(a2, file$b, 33, 8, 825);
+    			attr_dev(p1, "class", "svelte-powwth");
+    			add_location(p1, file$b, 31, 6, 803);
     			attr_dev(div1, "class", "info svelte-powwth");
-    			add_location(div1, file$b, 25, 4, 707);
+    			add_location(div1, file$b, 29, 4, 755);
     			attr_dev(section0, "id", "default");
     			attr_dev(section0, "class", "svelte-powwth");
-    			add_location(section0, file$b, 24, 2, 680);
+    			add_location(section0, file$b, 28, 2, 728);
     			attr_dev(h21, "class", "svelte-powwth");
-    			add_location(h21, file$b, 33, 6, 864);
-    			attr_dev(a2, "href", "https://www.nytimes.com/crosswords/game/daily/2020/10/21");
-    			add_location(a2, file$b, 36, 8, 909);
-    			attr_dev(p1, "class", "svelte-powwth");
-    			add_location(p1, file$b, 34, 6, 887);
-    			attr_dev(div2, "class", "info svelte-powwth");
-    			add_location(div2, file$b, 32, 4, 839);
-    			attr_dev(section1, "id", "default");
-    			attr_dev(section1, "class", "svelte-powwth");
-    			add_location(section1, file$b, 31, 2, 812);
-    			attr_dev(h22, "class", "svelte-powwth");
-    			add_location(h22, file$b, 46, 6, 1195);
+    			add_location(h21, file$b, 43, 6, 1109);
     			attr_dev(a3, "href", "https://www.nytimes.com/crosswords/game/mini/2020/10/21");
-    			add_location(a3, file$b, 49, 8, 1239);
+    			add_location(a3, file$b, 46, 8, 1153);
     			attr_dev(p2, "class", "svelte-powwth");
-    			add_location(p2, file$b, 47, 6, 1217);
-    			attr_dev(div3, "class", "info svelte-powwth");
-    			add_location(div3, file$b, 45, 4, 1170);
-    			attr_dev(section2, "id", "mini");
-    			set_style(section2, "max-width", "480px");
-    			attr_dev(section2, "class", "svelte-powwth");
-    			add_location(section2, file$b, 44, 2, 1120);
-    			attr_dev(h23, "class", "svelte-powwth");
-    			add_location(h23, file$b, 59, 6, 1521);
+    			add_location(p2, file$b, 44, 6, 1131);
+    			attr_dev(div2, "class", "info svelte-powwth");
+    			add_location(div2, file$b, 42, 4, 1084);
+    			attr_dev(section1, "id", "mini");
+    			set_style(section1, "max-width", "480px");
+    			attr_dev(section1, "class", "svelte-powwth");
+    			add_location(section1, file$b, 41, 2, 1034);
+    			attr_dev(h22, "class", "svelte-powwth");
+    			add_location(h22, file$b, 56, 6, 1435);
     			attr_dev(p3, "class", "svelte-powwth");
-    			add_location(p3, file$b, 60, 6, 1543);
+    			add_location(p3, file$b, 57, 6, 1457);
     			option0.__value = "classic";
     			option0.value = option0.__value;
-    			add_location(option0, file$b, 62, 8, 1643);
+    			add_location(option0, file$b, 59, 8, 1557);
     			option1.__value = "dark";
     			option1.value = option1.__value;
-    			add_location(option1, file$b, 63, 8, 1692);
+    			add_location(option1, file$b, 60, 8, 1606);
     			option2.__value = "amelia";
     			option2.value = option2.__value;
-    			add_location(option2, file$b, 64, 8, 1735);
+    			add_location(option2, file$b, 61, 8, 1649);
     			option3.__value = "citrus";
     			option3.value = option3.__value;
-    			add_location(option3, file$b, 65, 8, 1782);
-    			if (/*theme*/ ctx[1] === void 0) add_render_callback(() => /*select_change_handler*/ ctx[2].call(select));
-    			add_location(select, file$b, 61, 6, 1605);
-    			attr_dev(div4, "class", "info svelte-powwth");
-    			add_location(div4, file$b, 58, 4, 1496);
-    			add_location(div5, file$b, 68, 4, 1852);
-    			attr_dev(section3, "id", "themes");
-    			attr_dev(section3, "class", "svelte-powwth");
-    			add_location(section3, file$b, 57, 2, 1470);
-    			attr_dev(h24, "class", "svelte-powwth");
-    			add_location(h24, file$b, 78, 6, 2092);
+    			add_location(option3, file$b, 62, 8, 1696);
+    			if (/*theme*/ ctx[1] === void 0) add_render_callback(() => /*select_change_handler*/ ctx[3].call(select));
+    			add_location(select, file$b, 58, 6, 1519);
+    			attr_dev(div3, "class", "info svelte-powwth");
+    			add_location(div3, file$b, 55, 4, 1410);
+    			add_location(div4, file$b, 65, 4, 1766);
+    			attr_dev(section2, "id", "themes");
+    			attr_dev(section2, "class", "svelte-powwth");
+    			add_location(section2, file$b, 54, 2, 1384);
+    			attr_dev(h23, "class", "svelte-powwth");
+    			add_location(h23, file$b, 75, 6, 2006);
     			attr_dev(p4, "class", "svelte-powwth");
-    			add_location(p4, file$b, 79, 6, 2128);
-    			attr_dev(div6, "class", "info svelte-powwth");
-    			add_location(div6, file$b, 77, 4, 2067);
-    			attr_dev(section4, "id", "simple-customization");
-    			attr_dev(section4, "class", "svelte-powwth");
-    			toggle_class(section4, "is-revealed", /*revealedUSA*/ ctx[0]);
-    			add_location(section4, file$b, 76, 2, 1993);
-    			attr_dev(h25, "class", "svelte-powwth");
-    			add_location(h25, file$b, 89, 6, 2373);
+    			add_location(p4, file$b, 76, 6, 2042);
+    			attr_dev(div5, "class", "info svelte-powwth");
+    			add_location(div5, file$b, 74, 4, 1981);
+    			attr_dev(section3, "id", "simple-customization");
+    			attr_dev(section3, "class", "svelte-powwth");
+    			toggle_class(section3, "is-revealed", /*revealedUSA*/ ctx[0]);
+    			add_location(section3, file$b, 73, 2, 1907);
+    			attr_dev(h24, "class", "svelte-powwth");
+    			add_location(h24, file$b, 86, 6, 2287);
     			attr_dev(p5, "class", "svelte-powwth");
-    			add_location(p5, file$b, 90, 6, 2411);
-    			attr_dev(div7, "class", "info svelte-powwth");
-    			add_location(div7, file$b, 88, 4, 2348);
-    			attr_dev(section5, "id", "advanced-customization");
-    			attr_dev(section5, "class", "svelte-powwth");
-    			add_location(section5, file$b, 87, 2, 2306);
+    			add_location(p5, file$b, 87, 6, 2325);
+    			attr_dev(div6, "class", "info svelte-powwth");
+    			add_location(div6, file$b, 85, 4, 2262);
+    			attr_dev(section4, "id", "advanced-customization");
+    			attr_dev(section4, "class", "svelte-powwth");
+    			add_location(section4, file$b, 84, 2, 2220);
     			attr_dev(article, "class", "svelte-powwth");
-    			add_location(article, file$b, 13, 0, 386);
+    			add_location(article, file$b, 17, 0, 434);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -7260,99 +7238,97 @@ var app = (function () {
     			append_dev(article, section0);
     			append_dev(section0, div1);
     			append_dev(div1, h20);
-    			append_dev(section0, t9);
+    			append_dev(div1, t9);
+    			append_dev(div1, p1);
+    			append_dev(p1, t10);
+    			append_dev(p1, a2);
+    			append_dev(p1, t12);
+    			append_dev(section0, t13);
     			mount_component(crossword0, section0, null);
-    			append_dev(article, t10);
+    			append_dev(article, t14);
     			append_dev(article, section1);
     			append_dev(section1, div2);
     			append_dev(div2, h21);
-    			append_dev(div2, t12);
-    			append_dev(div2, p1);
-    			append_dev(p1, t13);
-    			append_dev(p1, a2);
-    			append_dev(p1, t15);
-    			append_dev(section1, t16);
+    			append_dev(div2, t16);
+    			append_dev(div2, p2);
+    			append_dev(p2, t17);
+    			append_dev(p2, a3);
+    			append_dev(p2, t19);
+    			append_dev(section1, t20);
     			mount_component(crossword1, section1, null);
-    			append_dev(article, t17);
+    			append_dev(article, t21);
     			append_dev(article, section2);
     			append_dev(section2, div3);
     			append_dev(div3, h22);
-    			append_dev(div3, t19);
-    			append_dev(div3, p2);
-    			append_dev(p2, t20);
-    			append_dev(p2, a3);
-    			append_dev(p2, t22);
-    			append_dev(section2, t23);
-    			mount_component(crossword2, section2, null);
-    			append_dev(article, t24);
-    			append_dev(article, section3);
-    			append_dev(section3, div4);
-    			append_dev(div4, h23);
-    			append_dev(div4, t26);
-    			append_dev(div4, p3);
-    			append_dev(div4, t28);
-    			append_dev(div4, select);
+    			append_dev(div3, t23);
+    			append_dev(div3, p3);
+    			append_dev(div3, t25);
+    			append_dev(div3, select);
     			append_dev(select, option0);
     			append_dev(select, option1);
     			append_dev(select, option2);
     			append_dev(select, option3);
     			select_option(select, /*theme*/ ctx[1]);
-    			append_dev(section3, t33);
+    			append_dev(section2, t30);
+    			append_dev(section2, div4);
+    			mount_component(crossword2, div4, null);
+    			append_dev(article, t31);
+    			append_dev(article, section3);
     			append_dev(section3, div5);
-    			mount_component(crossword3, div5, null);
-    			append_dev(article, t34);
+    			append_dev(div5, h23);
+    			append_dev(div5, t33);
+    			append_dev(div5, p4);
+    			append_dev(section3, t35);
+    			mount_component(crossword3, section3, null);
+    			append_dev(article, t36);
     			append_dev(article, section4);
     			append_dev(section4, div6);
     			append_dev(div6, h24);
-    			append_dev(div6, t36);
-    			append_dev(div6, p4);
-    			append_dev(section4, t38);
+    			append_dev(div6, t38);
+    			append_dev(div6, p5);
+    			append_dev(section4, t40);
     			mount_component(crossword4, section4, null);
-    			append_dev(article, t39);
-    			append_dev(article, section5);
-    			append_dev(section5, div7);
-    			append_dev(div7, h25);
-    			append_dev(div7, t41);
-    			append_dev(div7, p5);
-    			append_dev(section5, t43);
-    			mount_component(crossword5, section5, null);
     			current = true;
 
     			if (!mounted) {
-    				dispose = listen_dev(select, "change", /*select_change_handler*/ ctx[2]);
+    				dispose = listen_dev(select, "change", /*select_change_handler*/ ctx[3]);
     				mounted = true;
     			}
     		},
     		p: function update(ctx, [dirty]) {
+    			const crossword0_changes = {};
+    			if (dirty & /*dataChange*/ 4) crossword0_changes.data = /*dataChange*/ ctx[2];
+    			crossword0.$set(crossword0_changes);
+
     			if (dirty & /*theme*/ 2) {
     				select_option(select, /*theme*/ ctx[1]);
     			}
 
+    			const crossword2_changes = {};
+    			if (dirty & /*theme*/ 2) crossword2_changes.theme = /*theme*/ ctx[1];
+    			crossword2.$set(crossword2_changes);
     			const crossword3_changes = {};
-    			if (dirty & /*theme*/ 2) crossword3_changes.theme = /*theme*/ ctx[1];
-    			crossword3.$set(crossword3_changes);
-    			const crossword4_changes = {};
-    			if (dirty & /*revealedUSA*/ 1) crossword4_changes.disableHighlight = /*revealedUSA*/ ctx[0];
+    			if (dirty & /*revealedUSA*/ 1) crossword3_changes.disableHighlight = /*revealedUSA*/ ctx[0];
 
     			if (!updating_revealed && dirty & /*revealedUSA*/ 1) {
     				updating_revealed = true;
-    				crossword4_changes.revealed = /*revealedUSA*/ ctx[0];
+    				crossword3_changes.revealed = /*revealedUSA*/ ctx[0];
     				add_flush_callback(() => updating_revealed = false);
     			}
 
-    			crossword4.$set(crossword4_changes);
+    			crossword3.$set(crossword3_changes);
 
     			if (dirty & /*revealedUSA*/ 1) {
-    				toggle_class(section4, "is-revealed", /*revealedUSA*/ ctx[0]);
+    				toggle_class(section3, "is-revealed", /*revealedUSA*/ ctx[0]);
     			}
 
-    			const crossword5_changes = {};
+    			const crossword4_changes = {};
 
-    			if (dirty & /*$$scope, onReveal, onClear*/ 112) {
-    				crossword5_changes.$$scope = { dirty, ctx };
+    			if (dirty & /*$$scope, onReveal, onClear*/ 224) {
+    				crossword4_changes.$$scope = { dirty, ctx };
     			}
 
-    			crossword5.$set(crossword5_changes);
+    			crossword4.$set(crossword4_changes);
     		},
     		i: function intro(local) {
     			if (current) return;
@@ -7361,7 +7337,6 @@ var app = (function () {
     			transition_in(crossword2.$$.fragment, local);
     			transition_in(crossword3.$$.fragment, local);
     			transition_in(crossword4.$$.fragment, local);
-    			transition_in(crossword5.$$.fragment, local);
     			current = true;
     		},
     		o: function outro(local) {
@@ -7370,7 +7345,6 @@ var app = (function () {
     			transition_out(crossword2.$$.fragment, local);
     			transition_out(crossword3.$$.fragment, local);
     			transition_out(crossword4.$$.fragment, local);
-    			transition_out(crossword5.$$.fragment, local);
     			current = false;
     		},
     		d: function destroy(detaching) {
@@ -7380,7 +7354,6 @@ var app = (function () {
     			destroy_component(crossword2);
     			destroy_component(crossword3);
     			destroy_component(crossword4);
-    			destroy_component(crossword5);
     			mounted = false;
     			dispose();
     		}
@@ -7402,6 +7375,15 @@ var app = (function () {
     	validate_slots("App", slots, []);
     	let revealedUSA;
     	let theme;
+    	let dataChange = dataNYTDaily;
+
+    	setTimeout(
+    		() => {
+    			$$invalidate(2, dataChange = dataNYTMini);
+    		},
+    		3000
+    	);
+
     	const writable_props = [];
 
     	Object.keys($$props).forEach(key => {
@@ -7413,7 +7395,7 @@ var app = (function () {
     		$$invalidate(1, theme);
     	}
 
-    	function crossword4_revealed_binding(value) {
+    	function crossword3_revealed_binding(value) {
     		revealedUSA = value;
     		$$invalidate(0, revealedUSA);
     	}
@@ -7425,21 +7407,28 @@ var app = (function () {
     		dataOreo,
     		dataAmelia,
     		dataUSA,
-    		dataUSA2020,
     		revealedUSA,
-    		theme
+    		theme,
+    		dataChange
     	});
 
     	$$self.$inject_state = $$props => {
     		if ("revealedUSA" in $$props) $$invalidate(0, revealedUSA = $$props.revealedUSA);
     		if ("theme" in $$props) $$invalidate(1, theme = $$props.theme);
+    		if ("dataChange" in $$props) $$invalidate(2, dataChange = $$props.dataChange);
     	};
 
     	if ($$props && "$$inject" in $$props) {
     		$$self.$inject_state($$props.$$inject);
     	}
 
-    	return [revealedUSA, theme, select_change_handler, crossword4_revealed_binding];
+    	return [
+    		revealedUSA,
+    		theme,
+    		dataChange,
+    		select_change_handler,
+    		crossword3_revealed_binding
+    	];
     }
 
     class App extends SvelteComponentDev {

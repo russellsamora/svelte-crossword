@@ -18,16 +18,18 @@
   export let showCompleteMessage = true;
   export let showConfetti = true;
 
-  let originalClues = createClues(data);
-  let validated = validateClues(originalClues);
-  let clues = originalClues.map((d) => ({ ...d }));
-  let cells = createCells(originalClues);
   let width = 0;
   let focusedDirection = "across";
   let focusedCellIndex = 0;
   let isRevealing = false;
   let revealTimeout;
   let clueCompletion;
+  let cells = [];
+
+  $: originalClues = createClues(data);
+  $: validated = validateClues(originalClues);
+  $: clues = originalClues.map((d) => ({ ...d }));
+  $: originalClues, (cells = createCells(originalClues));
 
   $: focusedCell = cells[focusedCellIndex] || {};
   $: cellIndexMap = fromPairs(cells.map((cell) => [cell.id, cell.index]));
@@ -37,8 +39,9 @@
   $: themeClass = theme ? `theme-${theme}` : "";
   $: isDisableHighlight = isComplete && disableHighlight;
   $: cells, (clues = checkClues());
+  $: stacked = width < breakpoint;
 
-  $: desktop = width >= breakpoint;
+  $: originalClues, reset();
 
   function checkClues() {
     return clues.map((d) => {
@@ -108,11 +111,11 @@
       <Toolbar actions="{actions}" on:event="{onToolbarEvent}" />
     </slot>
 
-    <div class="play" class:desktop>
+    <div class="play" class:stacked>
       <Clues
         clues="{clues}"
         cellIndexMap="{cellIndexMap}"
-        desktop="{desktop}"
+        stacked="{stacked}"
         bind:focusedCellIndex
         bind:focusedCell
         bind:focusedDirection />
@@ -122,7 +125,7 @@
         isRevealing="{isRevealing}"
         isDisableHighlight="{isDisableHighlight}"
         revealDuration="{revealDuration}"
-        desktop="{desktop}"
+        stacked="{stacked}"
         bind:cells
         bind:focusedCellIndex
         bind:focusedDirection />
@@ -408,10 +411,10 @@
 
   .play {
     display: flex;
-    flex-direction: column;
+    flex-direction: var(--clue-puzzle-order, row);
   }
 
-  .play.desktop {
-    flex-direction: var(--clue-puzzle-order, row);
+  .play.stacked {
+    flex-direction: column;
   }
 </style>

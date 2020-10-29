@@ -52,48 +52,15 @@ You can choose a preset theme by passing the prop:
 
 Available themes:
 
-- `classic`
-- `amelia`
-- `russell`
+- `classic` (default)
+- `dark`
+- `citrus`
 
-You can set your own global CSS variables to override theme defaults or roll-your-own.
+You can set your own global CSS variables to override theme defaults or roll-your-own. A list of properites can be found [here](https://github.com/russellgoldenberg/svelte-crossword/blob/main/src/themes/classic.js). Simply create new a CSS variable prefixed with `xd-` to override the defaults. For example...
 
-```
---crossword-bg: transparent;
---puzzle-border-color: #1a1a1a;
---puzzle-font: -apple-system, Helvetica, sans-serif;
-
---clue-font: -apple-system, Helvetica, sans-serif;
---clue-text-color: #1a1a1a;
---clue-scrollbar-bg: #efefef;
---clue-scrollbar-fg: #cdcdcd;
---clue-puzzle-order: row;
---clue-list-width: 16em;
-
---cell-highlight-color: #ffec99;
---cell-secondary-color: #ffcc00;
---cell-bg-color: #fff;
---cell-border-color: #1a1a1a;
---cell-border-width: 0.01;
---cell-text-color: #1a1a1a;
---cell-font-size: 0.7em;
---cell-font-weight: 700;
---cell-void-color: #1a1a1a;
-
---number-font-size: 0.3em;
---number-font-weight: 400;
---number-color: #8a8a8a;
-
---toolbar-font: -apple-system, Helvetica, sans-serif;
---toolbar-font-size: 0.85em;
---toolbar-bg: transparent;
---toolbar-button-bg: #efefef;
---toolbar-button-border-radius: 4px;
---toolbar-button-color: #6a6a6a;
---toolbar-button-padding: 0.75em;
---toolbar-button-border: none;
---toolbar-button-font-weight: 400;
---toolbar-button-bg-hover: #cdcdcd;
+```css
+:root {
+	--xd-highlight-color: #f00;
 ```
 
 ## Features

@@ -7123,13 +7123,13 @@ var app = (function () {
     			t1 = space();
     			button1 = element("button");
     			button1.textContent = "show answers";
-    			add_location(button0, file$b, 91, 8, 2480);
-    			add_location(button1, file$b, 92, 8, 2539);
+    			add_location(button0, file$b, 91, 8, 2490);
+    			add_location(button1, file$b, 92, 8, 2549);
     			attr_dev(div, "class", "toolbar");
     			attr_dev(div, "slot", "toolbar");
     			set_style(div, "background", "yellow");
     			set_style(div, "padding", "2em");
-    			add_location(div, file$b, 85, 6, 2328);
+    			add_location(div, file$b, 85, 6, 2338);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -7200,12 +7200,12 @@ var app = (function () {
     			h3.textContent = "OMG, congrats!";
     			t1 = space();
     			img = element("img");
-    			add_location(h3, file$b, 95, 8, 2640);
+    			add_location(h3, file$b, 95, 8, 2650);
     			attr_dev(img, "alt", "celebration");
     			if (img.src !== (img_src_value = "https://media3.giphy.com/media/QpOZPQQ2wbjOM/giphy.gif")) attr_dev(img, "src", img_src_value);
-    			add_location(img, file$b, 96, 8, 2672);
+    			add_location(img, file$b, 96, 8, 2682);
     			attr_dev(div, "slot", "complete");
-    			add_location(div, file$b, 94, 6, 2610);
+    			add_location(div, file$b, 94, 6, 2620);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -7444,7 +7444,7 @@ var app = (function () {
     			h23.textContent = "Simple Customization";
     			t32 = space();
     			p4 = element("p");
-    			p4.textContent = "Custom class name on cells.";
+    			p4.textContent = "Custom class name on clues and cells.";
     			t34 = space();
     			create_component(crossword3.$$.fragment);
     			t35 = space();
@@ -7522,14 +7522,14 @@ var app = (function () {
     			toggle_class(section3, "is-revealed", /*revealedUSA*/ ctx[0]);
     			add_location(section3, file$b, 68, 2, 1843);
     			attr_dev(h24, "class", "svelte-1v4ih91");
-    			add_location(h24, file$b, 81, 6, 2223);
+    			add_location(h24, file$b, 81, 6, 2233);
     			attr_dev(p5, "class", "svelte-1v4ih91");
-    			add_location(p5, file$b, 82, 6, 2261);
+    			add_location(p5, file$b, 82, 6, 2271);
     			attr_dev(div6, "class", "info svelte-1v4ih91");
-    			add_location(div6, file$b, 80, 4, 2198);
+    			add_location(div6, file$b, 80, 4, 2208);
     			attr_dev(section4, "id", "advanced-customization");
     			attr_dev(section4, "class", "svelte-1v4ih91");
-    			add_location(section4, file$b, 79, 2, 2156);
+    			add_location(section4, file$b, 79, 2, 2166);
     			add_location(article, file$b, 12, 0, 337);
     		},
     		l: function claim(nodes) {

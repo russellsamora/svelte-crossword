@@ -69,7 +69,7 @@
   <section id="simple-customization" class:is-revealed="{revealedUSA}">
     <div class="info">
       <h2>Simple Customization</h2>
-      <p>Custom class name on cells.</p>
+      <p>Custom class name on clues and cells.</p>
     </div>
     <Crossword
       data="{dataUSA}"

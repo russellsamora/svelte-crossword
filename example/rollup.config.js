@@ -38,6 +38,7 @@ export default {
 	plugins: [
 		svelte({
 			dev: !production,
+			hydratable: true,
 			css: css => {
 				css.write('bundle.css');
 			}

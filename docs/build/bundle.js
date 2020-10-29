@@ -145,6 +145,39 @@ var app = (function () {
     function children(element) {
         return Array.from(element.childNodes);
     }
+    function claim_element(nodes, name, attributes, svg) {
+        for (let i = 0; i < nodes.length; i += 1) {
+            const node = nodes[i];
+            if (node.nodeName === name) {
+                let j = 0;
+                const remove = [];
+                while (j < node.attributes.length) {
+                    const attribute = node.attributes[j++];
+                    if (!attributes[attribute.name]) {
+                        remove.push(attribute.name);
+                    }
+                }
+                for (let k = 0; k < remove.length; k++) {
+                    node.removeAttribute(remove[k]);
+                }
+                return nodes.splice(i, 1)[0];
+            }
+        }
+        return svg ? svg_element(name) : element(name);
+    }
+    function claim_text(nodes, data) {
+        for (let i = 0; i < nodes.length; i += 1) {
+            const node = nodes[i];
+            if (node.nodeType === 3) {
+                node.data = '' + data;
+                return nodes.splice(i, 1)[0];
+            }
+        }
+        return text(data);
+    }
+    function claim_space(nodes) {
+        return claim_text(nodes, ' ');
+    }
     function set_data(text, data) {
         data = '' + data;
         if (text.wholeText !== data)
@@ -582,6 +615,9 @@ var app = (function () {
     function create_component(block) {
         block && block.c();
     }
+    function claim_component(block, parent_nodes) {
+        block && block.l(parent_nodes);
+    }
     function mount_component(component, target, anchor) {
         const { fragment, on_mount, on_destroy, after_update } = component.$$;
         fragment && fragment.m(target, anchor);
@@ -712,17 +748,29 @@ var app = (function () {
     // (12:33) 
     function create_if_block_1(ctx) {
     	let button;
+    	let t;
     	let mounted;
     	let dispose;
 
     	return {
     		c() {
     			button = element("button");
-    			button.textContent = "Reveal";
+    			t = text("Reveal");
+    			this.h();
+    		},
+    		l(nodes) {
+    			button = claim_element(nodes, "BUTTON", { class: true });
+    			var button_nodes = children(button);
+    			t = claim_text(button_nodes, "Reveal");
+    			button_nodes.forEach(detach);
+    			this.h();
+    		},
+    		h() {
     			attr(button, "class", "svelte-pgtgr0");
     		},
     		m(target, anchor) {
     			insert(target, button, anchor);
+    			append(button, t);
 
     			if (!mounted) {
     				dispose = listen(button, "click", /*click_handler_1*/ ctx[3]);
@@ -741,17 +789,29 @@ var app = (function () {
     // (10:4) {#if action == 'clear'}
     function create_if_block(ctx) {
     	let button;
+    	let t;
     	let mounted;
     	let dispose;
 
     	return {
     		c() {
     			button = element("button");
-    			button.textContent = "Clear";
+    			t = text("Clear");
+    			this.h();
+    		},
+    		l(nodes) {
+    			button = claim_element(nodes, "BUTTON", { class: true });
+    			var button_nodes = children(button);
+    			t = claim_text(button_nodes, "Clear");
+    			button_nodes.forEach(detach);
+    			this.h();
+    		},
+    		h() {
     			attr(button, "class", "svelte-pgtgr0");
     		},
     		m(target, anchor) {
     			insert(target, button, anchor);
+    			append(button, t);
 
     			if (!mounted) {
     				dispose = listen(button, "click", /*click_handler*/ ctx[2]);
@@ -782,6 +842,10 @@ var app = (function () {
     	return {
     		c() {
     			if (if_block) if_block.c();
+    			if_block_anchor = empty();
+    		},
+    		l(nodes) {
+    			if (if_block) if_block.l(nodes);
     			if_block_anchor = empty();
     		},
     		m(target, anchor) {
@@ -828,6 +892,20 @@ var app = (function () {
     				each_blocks[i].c();
     			}
 
+    			this.h();
+    		},
+    		l(nodes) {
+    			div = claim_element(nodes, "DIV", { class: true });
+    			var div_nodes = children(div);
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].l(div_nodes);
+    			}
+
+    			div_nodes.forEach(detach);
+    			this.h();
+    		},
+    		h() {
     			attr(div, "class", "toolbar svelte-pgtgr0");
     		},
     		m(target, anchor) {
@@ -1000,6 +1078,9 @@ var app = (function () {
     		c() {
     			t = text(t_value);
     		},
+    		l(nodes) {
+    			t = claim_text(nodes, t_value);
+    		},
     		m(target, anchor) {
     			insert(target, t, anchor);
     		},
@@ -1021,6 +1102,13 @@ var app = (function () {
     	return {
     		c() {
     			html_anchor = empty();
+    			this.h();
+    		},
+    		l(nodes) {
+    			html_anchor = empty();
+    			this.h();
+    		},
+    		h() {
     			html_tag = new HtmlTag(html_anchor);
     		},
     		m(target, anchor) {
@@ -1063,7 +1151,16 @@ var app = (function () {
     		c() {
     			button = element("button");
     			if_block.c();
-
+    			this.h();
+    		},
+    		l(nodes) {
+    			button = claim_element(nodes, "BUTTON", { style: true, class: true });
+    			var button_nodes = children(button);
+    			if_block.l(button_nodes);
+    			button_nodes.forEach(detach);
+    			this.h();
+    		},
+    		h() {
     			set_style(button, "width", /*value*/ ctx[14].length === 1
     			? /*percentWidth*/ ctx[1]
     			: "auto");
@@ -1138,6 +1235,21 @@ var app = (function () {
     			}
 
     			t = space();
+    			this.h();
+    		},
+    		l(nodes) {
+    			div = claim_element(nodes, "DIV", { class: true });
+    			var div_nodes = children(div);
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].l(div_nodes);
+    			}
+
+    			t = claim_space(div_nodes);
+    			div_nodes.forEach(detach);
+    			this.h();
+    		},
+    		h() {
     			attr(div, "class", "row svelte-1bx8glz");
     		},
     		m(target, anchor) {
@@ -1197,6 +1309,20 @@ var app = (function () {
     				each_blocks[i].c();
     			}
 
+    			this.h();
+    		},
+    		l(nodes) {
+    			div = claim_element(nodes, "DIV", { class: true });
+    			var div_nodes = children(div);
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].l(div_nodes);
+    			}
+
+    			div_nodes.forEach(detach);
+    			this.h();
+    		},
+    		h() {
     			attr(div, "class", "keyboard");
     		},
     		m(target, anchor) {
@@ -1392,6 +1518,28 @@ var app = (function () {
     		c() {
     			text_1 = svg_element("text");
     			t = text(/*value*/ ctx[2]);
+    			this.h();
+    		},
+    		l(nodes) {
+    			text_1 = claim_element(
+    				nodes,
+    				"text",
+    				{
+    					class: true,
+    					x: true,
+    					y: true,
+    					"dominant-baseline": true,
+    					"text-anchor": true
+    				},
+    				1
+    			);
+
+    			var text_1_nodes = children(text_1);
+    			t = claim_text(text_1_nodes, /*value*/ ctx[2]);
+    			text_1_nodes.forEach(detach);
+    			this.h();
+    		},
+    		h() {
     			attr(text_1, "class", "value svelte-wk9yyo");
     			attr(text_1, "x", "0.5");
     			attr(text_1, "y", "0.9");
@@ -1469,6 +1617,46 @@ var app = (function () {
     			if (if_block) if_block.c();
     			text_1 = svg_element("text");
     			t = text(/*number*/ ctx[3]);
+    			this.h();
+    		},
+    		l(nodes) {
+    			g = claim_element(
+    				nodes,
+    				"g",
+    				{
+    					class: true,
+    					transform: true,
+    					id: true,
+    					tabIndex: true
+    				},
+    				1
+    			);
+
+    			var g_nodes = children(g);
+    			rect = claim_element(g_nodes, "rect", { width: true, height: true, class: true }, 1);
+    			children(rect).forEach(detach);
+    			if (if_block) if_block.l(g_nodes);
+
+    			text_1 = claim_element(
+    				g_nodes,
+    				"text",
+    				{
+    					class: true,
+    					x: true,
+    					y: true,
+    					"dominant-baseline": true,
+    					"text-anchor": true
+    				},
+    				1
+    			);
+
+    			var text_1_nodes = children(text_1);
+    			t = claim_text(text_1_nodes, /*number*/ ctx[3]);
+    			text_1_nodes.forEach(detach);
+    			g_nodes.forEach(detach);
+    			this.h();
+    		},
+    		h() {
     			attr(rect, "width", "1");
     			attr(rect, "height", "1");
     			attr(rect, "class", "svelte-wk9yyo");
@@ -1798,6 +1986,9 @@ var app = (function () {
     		c() {
     			create_component(cell.$$.fragment);
     		},
+    		l(nodes) {
+    			claim_component(cell.$$.fragment, nodes);
+    		},
     		m(target, anchor) {
     			mount_component(cell, target, anchor);
     			current = true;
@@ -1847,6 +2038,16 @@ var app = (function () {
     		c() {
     			div = element("div");
     			create_component(keyboard.$$.fragment);
+    			this.h();
+    		},
+    		l(nodes) {
+    			div = claim_element(nodes, "DIV", { class: true });
+    			var div_nodes = children(div);
+    			claim_component(keyboard.$$.fragment, div_nodes);
+    			div_nodes.forEach(detach);
+    			this.h();
+    		},
+    		h() {
     			attr(div, "class", "keyboard svelte-1olsp4l");
     		},
     		m(target, anchor) {
@@ -1903,6 +2104,26 @@ var app = (function () {
     			t = text("\n\n'");
     			if (if_block) if_block.c();
     			if_block_anchor = empty();
+    			this.h();
+    		},
+    		l(nodes) {
+    			section = claim_element(nodes, "SECTION", { class: true });
+    			var section_nodes = children(section);
+    			svg = claim_element(section_nodes, "svg", { viewBox: true, class: true }, 1);
+    			var svg_nodes = children(svg);
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].l(svg_nodes);
+    			}
+
+    			svg_nodes.forEach(detach);
+    			section_nodes.forEach(detach);
+    			t = claim_text(nodes, "\n\n'");
+    			if (if_block) if_block.l(nodes);
+    			if_block_anchor = empty();
+    			this.h();
+    		},
+    		h() {
     			attr(svg, "viewBox", svg_viewBox_value = "0 0 " + /*w*/ ctx[7] + " " + /*h*/ ctx[8]);
     			attr(svg, "class", "svelte-1olsp4l");
     			attr(section, "class", "puzzle svelte-1olsp4l");
@@ -2254,6 +2475,21 @@ var app = (function () {
     			t0 = text(/*number*/ ctx[0]);
     			t1 = text(".\n    ");
     			t2 = text(/*clue*/ ctx[1]);
+    			this.h();
+    		},
+    		l(nodes) {
+    			li = claim_element(nodes, "LI", {});
+    			var li_nodes = children(li);
+    			button = claim_element(li_nodes, "BUTTON", { class: true });
+    			var button_nodes = children(button);
+    			t0 = claim_text(button_nodes, /*number*/ ctx[0]);
+    			t1 = claim_text(button_nodes, ".\n    ");
+    			t2 = claim_text(button_nodes, /*clue*/ ctx[1]);
+    			button_nodes.forEach(detach);
+    			li_nodes.forEach(detach);
+    			this.h();
+    		},
+    		h() {
     			attr(button, "class", button_class_value = "clue " + /*custom*/ ctx[2] + " svelte-15h9c89");
     			toggle_class(button, "is-number-focused", /*isNumberFocused*/ ctx[4]);
     			toggle_class(button, "is-direction-focused", /*isDirectionFocused*/ ctx[5]);
@@ -2414,6 +2650,9 @@ var app = (function () {
     		c() {
     			create_component(clue.$$.fragment);
     		},
+    		l(nodes) {
+    			claim_component(clue.$$.fragment, nodes);
+    		},
     		m(target, anchor) {
     			mount_component(clue, target, anchor);
     			current = true;
@@ -2475,6 +2714,28 @@ var app = (function () {
     				each_blocks[i].c();
     			}
 
+    			this.h();
+    		},
+    		l(nodes) {
+    			p = claim_element(nodes, "P", { class: true });
+    			var p_nodes = children(p);
+    			t0 = claim_text(p_nodes, /*direction*/ ctx[0]);
+    			p_nodes.forEach(detach);
+    			t1 = claim_space(nodes);
+    			div = claim_element(nodes, "DIV", { class: true });
+    			var div_nodes = children(div);
+    			ul = claim_element(div_nodes, "UL", { class: true });
+    			var ul_nodes = children(ul);
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].l(ul_nodes);
+    			}
+
+    			ul_nodes.forEach(detach);
+    			div_nodes.forEach(detach);
+    			this.h();
+    		},
+    		h() {
     			attr(p, "class", "svelte-un0u0a");
     			attr(ul, "class", "svelte-un0u0a");
     			attr(div, "class", "list svelte-un0u0a");
@@ -2587,11 +2848,15 @@ var app = (function () {
     function create_fragment$6(ctx) {
     	let div;
     	let button0;
+    	let svg0;
+    	let polyline0;
     	let t0;
     	let p;
     	let t1;
     	let t2;
     	let button1;
+    	let svg1;
+    	let polyline1;
     	let div_class_value;
     	let mounted;
     	let dispose;
@@ -2600,26 +2865,117 @@ var app = (function () {
     		c() {
     			div = element("div");
     			button0 = element("button");
-    			button0.innerHTML = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-left"><polyline points="15 18 9 12 15 6"></polyline></svg>`;
+    			svg0 = svg_element("svg");
+    			polyline0 = svg_element("polyline");
     			t0 = space();
     			p = element("p");
     			t1 = text(/*clue*/ ctx[1]);
     			t2 = space();
     			button1 = element("button");
-    			button1.innerHTML = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>`;
+    			svg1 = svg_element("svg");
+    			polyline1 = svg_element("polyline");
+    			this.h();
+    		},
+    		l(nodes) {
+    			div = claim_element(nodes, "DIV", { class: true });
+    			var div_nodes = children(div);
+    			button0 = claim_element(div_nodes, "BUTTON", { class: true });
+    			var button0_nodes = children(button0);
+
+    			svg0 = claim_element(
+    				button0_nodes,
+    				"svg",
+    				{
+    					width: true,
+    					height: true,
+    					viewBox: true,
+    					fill: true,
+    					stroke: true,
+    					"stroke-width": true,
+    					"stroke-linecap": true,
+    					"stroke-linejoin": true,
+    					class: true
+    				},
+    				1
+    			);
+
+    			var svg0_nodes = children(svg0);
+    			polyline0 = claim_element(svg0_nodes, "polyline", { points: true }, 1);
+    			children(polyline0).forEach(detach);
+    			svg0_nodes.forEach(detach);
+    			button0_nodes.forEach(detach);
+    			t0 = claim_space(div_nodes);
+    			p = claim_element(div_nodes, "P", { class: true });
+    			var p_nodes = children(p);
+    			t1 = claim_text(p_nodes, /*clue*/ ctx[1]);
+    			p_nodes.forEach(detach);
+    			t2 = claim_space(div_nodes);
+    			button1 = claim_element(div_nodes, "BUTTON", { class: true });
+    			var button1_nodes = children(button1);
+
+    			svg1 = claim_element(
+    				button1_nodes,
+    				"svg",
+    				{
+    					width: true,
+    					height: true,
+    					viewBox: true,
+    					fill: true,
+    					stroke: true,
+    					"stroke-width": true,
+    					"stroke-linecap": true,
+    					"stroke-linejoin": true,
+    					class: true
+    				},
+    				1
+    			);
+
+    			var svg1_nodes = children(svg1);
+    			polyline1 = claim_element(svg1_nodes, "polyline", { points: true }, 1);
+    			children(polyline1).forEach(detach);
+    			svg1_nodes.forEach(detach);
+    			button1_nodes.forEach(detach);
+    			div_nodes.forEach(detach);
+    			this.h();
+    		},
+    		h() {
+    			attr(polyline0, "points", "15 18 9 12 15 6");
+    			attr(svg0, "width", "24");
+    			attr(svg0, "height", "24");
+    			attr(svg0, "viewBox", "0 0 24 24");
+    			attr(svg0, "fill", "none");
+    			attr(svg0, "stroke", "currentColor");
+    			attr(svg0, "stroke-width", "2");
+    			attr(svg0, "stroke-linecap", "round");
+    			attr(svg0, "stroke-linejoin", "round");
+    			attr(svg0, "class", "feather feather-chevron-left");
     			attr(button0, "class", "svelte-1vk7esv");
     			attr(p, "class", "svelte-1vk7esv");
+    			attr(polyline1, "points", "9 18 15 12 9 6");
+    			attr(svg1, "width", "24");
+    			attr(svg1, "height", "24");
+    			attr(svg1, "viewBox", "0 0 24 24");
+    			attr(svg1, "fill", "none");
+    			attr(svg1, "stroke", "currentColor");
+    			attr(svg1, "stroke-width", "2");
+    			attr(svg1, "stroke-linecap", "round");
+    			attr(svg1, "stroke-linejoin", "round");
+    			attr(svg1, "class", "feather feather-chevron-right");
     			attr(button1, "class", "svelte-1vk7esv");
     			attr(div, "class", div_class_value = "bar " + /*custom*/ ctx[2] + " svelte-1vk7esv");
     		},
     		m(target, anchor) {
     			insert(target, div, anchor);
     			append(div, button0);
+    			append(button0, svg0);
+    			append(svg0, polyline0);
     			append(div, t0);
     			append(div, p);
     			append(p, t1);
     			append(div, t2);
     			append(div, button1);
+    			append(button1, svg1);
+    			append(svg1, polyline1);
 
     			if (!mounted) {
     				dispose = [
@@ -2711,6 +3067,20 @@ var app = (function () {
     				each_blocks[i].c();
     			}
 
+    			this.h();
+    		},
+    		l(nodes) {
+    			div = claim_element(nodes, "DIV", { class: true });
+    			var div_nodes = children(div);
+
+    			for (let i = 0; i < 2; i += 1) {
+    				each_blocks[i].l(div_nodes);
+    			}
+
+    			div_nodes.forEach(detach);
+    			this.h();
+    		},
+    		h() {
     			attr(div, "class", "clues--list");
     		},
     		m(target, anchor) {
@@ -2791,6 +3161,16 @@ var app = (function () {
     		c() {
     			div = element("div");
     			create_component(cluebar.$$.fragment);
+    			this.h();
+    		},
+    		l(nodes) {
+    			div = claim_element(nodes, "DIV", { class: true });
+    			var div_nodes = children(div);
+    			claim_component(cluebar.$$.fragment, div_nodes);
+    			div_nodes.forEach(detach);
+    			this.h();
+    		},
+    		h() {
     			attr(div, "class", "clues--stacked svelte-1iflft1");
     		},
     		m(target, anchor) {
@@ -2842,6 +3222,9 @@ var app = (function () {
     		c() {
     			create_component(cluelist.$$.fragment);
     		},
+    		l(nodes) {
+    			claim_component(cluelist.$$.fragment, nodes);
+    		},
     		m(target, anchor) {
     			mount_component(cluelist, target, anchor);
     			current = true;
@@ -2889,6 +3272,16 @@ var app = (function () {
     		c() {
     			section = element("section");
     			if_block.c();
+    			this.h();
+    		},
+    		l(nodes) {
+    			section = claim_element(nodes, "SECTION", { class: true });
+    			var section_nodes = children(section);
+    			if_block.l(section_nodes);
+    			section_nodes.forEach(detach);
+    			this.h();
+    		},
+    		h() {
     			attr(section, "class", "clues svelte-1iflft1");
     			toggle_class(section, "stacked", /*stacked*/ ctx[2]);
     		},
@@ -3053,6 +3446,18 @@ var app = (function () {
     		c() {
     			g1 = svg_element("g");
     			g0 = svg_element("g");
+    			this.h();
+    		},
+    		l(nodes) {
+    			g1 = claim_element(nodes, "g", { style: true, class: true }, 1);
+    			var g1_nodes = children(g1);
+    			g0 = claim_element(g1_nodes, "g", { fill: true, style: true, class: true }, 1);
+    			var g0_nodes = children(g0);
+    			g0_nodes.forEach(detach);
+    			g1_nodes.forEach(detach);
+    			this.h();
+    		},
+    		h() {
     			attr(g0, "fill", g0_fill_value = /*color*/ ctx[9]);
 
     			attr(g0, "style", g0_style_value = [
@@ -3102,6 +3507,20 @@ var app = (function () {
     				each_blocks[i].c();
     			}
 
+    			this.h();
+    		},
+    		l(nodes) {
+    			svg = claim_element(nodes, "svg", { class: true, viewBox: true }, 1);
+    			var svg_nodes = children(svg);
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].l(svg_nodes);
+    			}
+
+    			svg_nodes.forEach(detach);
+    			this.h();
+    		},
+    		h() {
     			attr(svg, "class", "confetti svelte-15wt7c8");
     			attr(svg, "viewBox", "-10 -10 10 10");
     		},
@@ -3210,6 +3629,7 @@ var app = (function () {
     	let div0;
     	let t0;
     	let button;
+    	let t1;
     	let t2;
     	let div2_transition;
     	let t3;
@@ -3231,11 +3651,37 @@ var app = (function () {
     			if (message_slot_or_fallback) message_slot_or_fallback.c();
     			t0 = space();
     			button = element("button");
-    			button.textContent = "View puzzle";
+    			t1 = text("View puzzle");
     			t2 = space();
     			if (if_block) if_block.c();
     			t3 = space();
     			div3 = element("div");
+    			this.h();
+    		},
+    		l(nodes) {
+    			div2 = claim_element(nodes, "DIV", { class: true });
+    			var div2_nodes = children(div2);
+    			div1 = claim_element(div2_nodes, "DIV", { class: true });
+    			var div1_nodes = children(div1);
+    			div0 = claim_element(div1_nodes, "DIV", { class: true });
+    			var div0_nodes = children(div0);
+    			if (message_slot_or_fallback) message_slot_or_fallback.l(div0_nodes);
+    			div0_nodes.forEach(detach);
+    			t0 = claim_space(div1_nodes);
+    			button = claim_element(div1_nodes, "BUTTON", { class: true });
+    			var button_nodes = children(button);
+    			t1 = claim_text(button_nodes, "View puzzle");
+    			button_nodes.forEach(detach);
+    			div1_nodes.forEach(detach);
+    			t2 = claim_space(div2_nodes);
+    			if (if_block) if_block.l(div2_nodes);
+    			div2_nodes.forEach(detach);
+    			t3 = claim_space(nodes);
+    			div3 = claim_element(nodes, "DIV", { class: true });
+    			children(div3).forEach(detach);
+    			this.h();
+    		},
+    		h() {
     			attr(div0, "class", "message svelte-9a7qrw");
     			attr(button, "class", "svelte-9a7qrw");
     			attr(div1, "class", "content svelte-9a7qrw");
@@ -3253,6 +3699,7 @@ var app = (function () {
 
     			append(div1, t0);
     			append(div1, button);
+    			append(button, t1);
     			append(div2, t2);
     			if (if_block) if_block.m(div2, null);
     			insert(target, t3, anchor);
@@ -3339,15 +3786,27 @@ var app = (function () {
     // (14:29)            
     function fallback_block(ctx) {
     	let h3;
+    	let t;
 
     	return {
     		c() {
     			h3 = element("h3");
-    			h3.textContent = "You solved it!";
+    			t = text("You solved it!");
+    			this.h();
+    		},
+    		l(nodes) {
+    			h3 = claim_element(nodes, "H3", { class: true });
+    			var h3_nodes = children(h3);
+    			t = claim_text(h3_nodes, "You solved it!");
+    			h3_nodes.forEach(detach);
+    			this.h();
+    		},
+    		h() {
     			attr(h3, "class", "svelte-9a7qrw");
     		},
     		m(target, anchor) {
     			insert(target, h3, anchor);
+    			append(h3, t);
     		},
     		d(detaching) {
     			if (detaching) detach(h3);
@@ -3366,6 +3825,16 @@ var app = (function () {
     		c() {
     			div = element("div");
     			create_component(confetti.$$.fragment);
+    			this.h();
+    		},
+    		l(nodes) {
+    			div = claim_element(nodes, "DIV", { class: true });
+    			var div_nodes = children(div);
+    			claim_component(confetti.$$.fragment, div_nodes);
+    			div_nodes.forEach(detach);
+    			this.h();
+    		},
+    		h() {
     			attr(div, "class", "confetti svelte-9a7qrw");
     		},
     		m(target, anchor) {
@@ -3397,6 +3866,10 @@ var app = (function () {
     	return {
     		c() {
     			if (if_block) if_block.c();
+    			if_block_anchor = empty();
+    		},
+    		l(nodes) {
+    			if (if_block) if_block.l(nodes);
     			if_block_anchor = empty();
     		},
     		m(target, anchor) {
@@ -3889,6 +4362,25 @@ var app = (function () {
     			create_component(puzzle.$$.fragment);
     			t2 = space();
     			if (if_block) if_block.c();
+    			this.h();
+    		},
+    		l(nodes) {
+    			article = claim_element(nodes, "ARTICLE", { class: true, style: true });
+    			var article_nodes = children(article);
+    			if (toolbar_slot_or_fallback) toolbar_slot_or_fallback.l(article_nodes);
+    			t0 = claim_space(article_nodes);
+    			div = claim_element(article_nodes, "DIV", { class: true });
+    			var div_nodes = children(div);
+    			claim_component(clues_1.$$.fragment, div_nodes);
+    			t1 = claim_space(div_nodes);
+    			claim_component(puzzle.$$.fragment, div_nodes);
+    			div_nodes.forEach(detach);
+    			t2 = claim_space(article_nodes);
+    			if (if_block) if_block.l(article_nodes);
+    			article_nodes.forEach(detach);
+    			this.h();
+    		},
+    		h() {
     			attr(div, "class", "play svelte-1ic29sn");
     			toggle_class(div, "stacked", /*stacked*/ ctx[16]);
     			attr(article, "class", "crossword svelte-1ic29sn");
@@ -4044,6 +4536,9 @@ var app = (function () {
     		c() {
     			create_component(toolbar.$$.fragment);
     		},
+    		l(nodes) {
+    			claim_component(toolbar.$$.fragment, nodes);
+    		},
     		m(target, anchor) {
     			mount_component(toolbar, target, anchor);
     			current = true;
@@ -4085,6 +4580,9 @@ var app = (function () {
     		c() {
     			create_component(completedmessage.$$.fragment);
     		},
+    		l(nodes) {
+    			claim_component(completedmessage.$$.fragment, nodes);
+    		},
     		m(target, anchor) {
     			mount_component(completedmessage, target, anchor);
     			current = true;
@@ -4124,6 +4622,9 @@ var app = (function () {
     		c() {
     			if (complete_slot) complete_slot.c();
     		},
+    		l(nodes) {
+    			if (complete_slot) complete_slot.l(nodes);
+    		},
     		m(target, anchor) {
     			if (complete_slot) {
     				complete_slot.m(target, anchor);
@@ -4161,6 +4662,10 @@ var app = (function () {
     	return {
     		c() {
     			if (if_block) if_block.c();
+    			if_block_anchor = empty();
+    		},
+    		l(nodes) {
+    			if (if_block) if_block.l(nodes);
     			if_block_anchor = empty();
     		},
     		m(target, anchor) {
@@ -5300,8 +5805,10 @@ var app = (function () {
     function create_toolbar_slot(ctx) {
     	let div;
     	let button0;
+    	let t0;
     	let t1;
     	let button1;
+    	let t2;
     	let mounted;
     	let dispose;
 
@@ -5309,10 +5816,28 @@ var app = (function () {
     		c() {
     			div = element("div");
     			button0 = element("button");
-    			button0.textContent = "clear puzzle";
+    			t0 = text("clear puzzle");
     			t1 = space();
     			button1 = element("button");
-    			button1.textContent = "show answers";
+    			t2 = text("show answers");
+    			this.h();
+    		},
+    		l(nodes) {
+    			div = claim_element(nodes, "DIV", { class: true, slot: true, style: true });
+    			var div_nodes = children(div);
+    			button0 = claim_element(div_nodes, "BUTTON", {});
+    			var button0_nodes = children(button0);
+    			t0 = claim_text(button0_nodes, "clear puzzle");
+    			button0_nodes.forEach(detach);
+    			t1 = claim_space(div_nodes);
+    			button1 = claim_element(div_nodes, "BUTTON", {});
+    			var button1_nodes = children(button1);
+    			t2 = claim_text(button1_nodes, "show answers");
+    			button1_nodes.forEach(detach);
+    			div_nodes.forEach(detach);
+    			this.h();
+    		},
+    		h() {
     			attr(div, "class", "toolbar");
     			attr(div, "slot", "toolbar");
     			set_style(div, "background", "yellow");
@@ -5321,8 +5846,10 @@ var app = (function () {
     		m(target, anchor) {
     			insert(target, div, anchor);
     			append(div, button0);
+    			append(button0, t0);
     			append(div, t1);
     			append(div, button1);
+    			append(button1, t2);
 
     			if (!mounted) {
     				dispose = [
@@ -5351,18 +5878,44 @@ var app = (function () {
     // (95:6) <div slot="complete">
     function create_complete_slot(ctx) {
     	let div;
+    	let h3;
+    	let t0;
+    	let t1;
+    	let img;
+    	let img_src_value;
 
     	return {
     		c() {
     			div = element("div");
-
-    			div.innerHTML = `<h3>OMG, congrats!</h3> 
-        <img alt="celebration" src="https://media3.giphy.com/media/QpOZPQQ2wbjOM/giphy.gif"/>`;
-
+    			h3 = element("h3");
+    			t0 = text("OMG, congrats!");
+    			t1 = space();
+    			img = element("img");
+    			this.h();
+    		},
+    		l(nodes) {
+    			div = claim_element(nodes, "DIV", { slot: true });
+    			var div_nodes = children(div);
+    			h3 = claim_element(div_nodes, "H3", {});
+    			var h3_nodes = children(h3);
+    			t0 = claim_text(h3_nodes, "OMG, congrats!");
+    			h3_nodes.forEach(detach);
+    			t1 = claim_space(div_nodes);
+    			img = claim_element(div_nodes, "IMG", { alt: true, src: true });
+    			div_nodes.forEach(detach);
+    			this.h();
+    		},
+    		h() {
+    			attr(img, "alt", "celebration");
+    			if (img.src !== (img_src_value = "https://media3.giphy.com/media/QpOZPQQ2wbjOM/giphy.gif")) attr(img, "src", img_src_value);
     			attr(div, "slot", "complete");
     		},
     		m(target, anchor) {
     			insert(target, div, anchor);
+    			append(div, h3);
+    			append(h3, t0);
+    			append(div, t1);
+    			append(div, img);
     		},
     		d(detaching) {
     			if (detaching) detach(div);
@@ -5378,6 +5931,9 @@ var app = (function () {
     		c() {
     			t = space();
     		},
+    		l(nodes) {
+    			t = claim_space(nodes);
+    		},
     		m(target, anchor) {
     			insert(target, t, anchor);
     		},
@@ -5391,39 +5947,81 @@ var app = (function () {
     function create_fragment$b(ctx) {
     	let article;
     	let div0;
+    	let h1;
+    	let t0;
+    	let t1;
+    	let p0;
+    	let t2;
+    	let a0;
+    	let t3;
+    	let t4;
+    	let a1;
+    	let t5;
+    	let t6;
     	let t7;
     	let section0;
     	let div1;
+    	let h20;
+    	let t8;
+    	let t9;
+    	let p1;
+    	let t10;
+    	let a2;
+    	let t11;
+    	let t12;
     	let t13;
     	let crossword0;
     	let t14;
     	let section1;
     	let div2;
+    	let h21;
+    	let t15;
+    	let t16;
+    	let p2;
+    	let t17;
+    	let a3;
+    	let t18;
+    	let t19;
     	let t20;
     	let crossword1;
     	let t21;
     	let section2;
     	let div3;
     	let h22;
+    	let t22;
     	let t23;
     	let p3;
+    	let t24;
     	let t25;
     	let select;
     	let option0;
+    	let t26;
     	let option1;
+    	let t27;
     	let option2;
+    	let t28;
     	let t29;
     	let div4;
     	let crossword2;
     	let t30;
     	let section3;
     	let div5;
+    	let h23;
+    	let t31;
+    	let t32;
+    	let p4;
+    	let t33;
     	let t34;
     	let crossword3;
     	let updating_revealed;
     	let t35;
     	let section4;
     	let div6;
+    	let h24;
+    	let t36;
+    	let t37;
+    	let p5;
+    	let t38;
     	let t39;
     	let crossword4;
     	let current;
@@ -5479,77 +6077,246 @@ var app = (function () {
     		c() {
     			article = element("article");
     			div0 = element("div");
-
-    			div0.innerHTML = `<h1 class="svelte-1v4ih91">Svelte Crossword</h1> 
-    <p class="svelte-1v4ih91">A crossword component for
-      <a href="https://svelte.dev">Svelte</a>. Read the docs on
-      <a href="https://github.com/russellgoldenberg/svelte-crossword#svelte-crossword">Github</a>.</p>`;
-
+    			h1 = element("h1");
+    			t0 = text("Svelte Crossword");
+    			t1 = space();
+    			p0 = element("p");
+    			t2 = text("A crossword component for\n      ");
+    			a0 = element("a");
+    			t3 = text("Svelte");
+    			t4 = text(". Read the docs on\n      ");
+    			a1 = element("a");
+    			t5 = text("Github");
+    			t6 = text(".");
     			t7 = space();
     			section0 = element("section");
     			div1 = element("div");
-
-    			div1.innerHTML = `<h2 class="svelte-1v4ih91">Default</h2> 
-      <p class="svelte-1v4ih91">A
-        <a href="https://www.nytimes.com/crosswords/game/daily/2020/10/21">NYT
-          daily</a>
-        puzzle with all default settings.</p>`;
-
+    			h20 = element("h2");
+    			t8 = text("Default");
+    			t9 = space();
+    			p1 = element("p");
+    			t10 = text("A\n        ");
+    			a2 = element("a");
+    			t11 = text("NYT\n          daily");
+    			t12 = text("\n        puzzle with all default settings.");
     			t13 = space();
     			create_component(crossword0.$$.fragment);
     			t14 = space();
     			section1 = element("section");
     			div2 = element("div");
-
-    			div2.innerHTML = `<h2 class="svelte-1v4ih91">Mobile</h2> 
-      <p class="svelte-1v4ih91">A
-        <a href="https://www.nytimes.com/crosswords/game/mini/2020/10/21">NYT
-          mini</a>
-        puzzle with all default settings and forced mobile view.</p>`;
-
+    			h21 = element("h2");
+    			t15 = text("Mobile");
+    			t16 = space();
+    			p2 = element("p");
+    			t17 = text("A\n        ");
+    			a3 = element("a");
+    			t18 = text("NYT\n          mini");
+    			t19 = text("\n        puzzle with all default settings and forced mobile view.");
     			t20 = space();
     			create_component(crossword1.$$.fragment);
     			t21 = space();
     			section2 = element("section");
     			div3 = element("div");
     			h22 = element("h2");
-    			h22.textContent = "Themes";
+    			t22 = text("Themes");
     			t23 = space();
     			p3 = element("p");
-    			p3.textContent = "A library of preset style themes to choose from.";
+    			t24 = text("A library of preset style themes to choose from.");
     			t25 = space();
     			select = element("select");
     			option0 = element("option");
-    			option0.textContent = "Classic";
+    			t26 = text("Classic");
     			option1 = element("option");
-    			option1.textContent = "Dark";
+    			t27 = text("Dark");
     			option2 = element("option");
-    			option2.textContent = "Citrus";
+    			t28 = text("Citrus");
     			t29 = space();
     			div4 = element("div");
     			create_component(crossword2.$$.fragment);
     			t30 = space();
     			section3 = element("section");
     			div5 = element("div");
-
-    			div5.innerHTML = `<h2 class="svelte-1v4ih91">Simple Customization</h2> 
-      <p class="svelte-1v4ih91">Custom class name on clues and cells.</p>`;
-
+    			h23 = element("h2");
+    			t31 = text("Simple Customization");
+    			t32 = space();
+    			p4 = element("p");
+    			t33 = text("Custom class name on clues and cells.");
     			t34 = space();
     			create_component(crossword3.$$.fragment);
     			t35 = space();
     			section4 = element("section");
     			div6 = element("div");
-
-    			div6.innerHTML = `<h2 class="svelte-1v4ih91">Advanced Customization</h2> 
-      <p class="svelte-1v4ih91">TBD.</p>`;
-
+    			h24 = element("h2");
+    			t36 = text("Advanced Customization");
+    			t37 = space();
+    			p5 = element("p");
+    			t38 = text("TBD.");
     			t39 = space();
     			create_component(crossword4.$$.fragment);
+    			this.h();
+    		},
+    		l(nodes) {
+    			article = claim_element(nodes, "ARTICLE", {});
+    			var article_nodes = children(article);
+    			div0 = claim_element(article_nodes, "DIV", { class: true });
+    			var div0_nodes = children(div0);
+    			h1 = claim_element(div0_nodes, "H1", { class: true });
+    			var h1_nodes = children(h1);
+    			t0 = claim_text(h1_nodes, "Svelte Crossword");
+    			h1_nodes.forEach(detach);
+    			t1 = claim_space(div0_nodes);
+    			p0 = claim_element(div0_nodes, "P", { class: true });
+    			var p0_nodes = children(p0);
+    			t2 = claim_text(p0_nodes, "A crossword component for\n      ");
+    			a0 = claim_element(p0_nodes, "A", { href: true });
+    			var a0_nodes = children(a0);
+    			t3 = claim_text(a0_nodes, "Svelte");
+    			a0_nodes.forEach(detach);
+    			t4 = claim_text(p0_nodes, ". Read the docs on\n      ");
+    			a1 = claim_element(p0_nodes, "A", { href: true });
+    			var a1_nodes = children(a1);
+    			t5 = claim_text(a1_nodes, "Github");
+    			a1_nodes.forEach(detach);
+    			t6 = claim_text(p0_nodes, ".");
+    			p0_nodes.forEach(detach);
+    			div0_nodes.forEach(detach);
+    			t7 = claim_space(article_nodes);
+    			section0 = claim_element(article_nodes, "SECTION", { id: true, class: true });
+    			var section0_nodes = children(section0);
+    			div1 = claim_element(section0_nodes, "DIV", { class: true });
+    			var div1_nodes = children(div1);
+    			h20 = claim_element(div1_nodes, "H2", { class: true });
+    			var h20_nodes = children(h20);
+    			t8 = claim_text(h20_nodes, "Default");
+    			h20_nodes.forEach(detach);
+    			t9 = claim_space(div1_nodes);
+    			p1 = claim_element(div1_nodes, "P", { class: true });
+    			var p1_nodes = children(p1);
+    			t10 = claim_text(p1_nodes, "A\n        ");
+    			a2 = claim_element(p1_nodes, "A", { href: true });
+    			var a2_nodes = children(a2);
+    			t11 = claim_text(a2_nodes, "NYT\n          daily");
+    			a2_nodes.forEach(detach);
+    			t12 = claim_text(p1_nodes, "\n        puzzle with all default settings.");
+    			p1_nodes.forEach(detach);
+    			div1_nodes.forEach(detach);
+    			t13 = claim_space(section0_nodes);
+    			claim_component(crossword0.$$.fragment, section0_nodes);
+    			section0_nodes.forEach(detach);
+    			t14 = claim_space(article_nodes);
+    			section1 = claim_element(article_nodes, "SECTION", { id: true, style: true, class: true });
+    			var section1_nodes = children(section1);
+    			div2 = claim_element(section1_nodes, "DIV", { class: true });
+    			var div2_nodes = children(div2);
+    			h21 = claim_element(div2_nodes, "H2", { class: true });
+    			var h21_nodes = children(h21);
+    			t15 = claim_text(h21_nodes, "Mobile");
+    			h21_nodes.forEach(detach);
+    			t16 = claim_space(div2_nodes);
+    			p2 = claim_element(div2_nodes, "P", { class: true });
+    			var p2_nodes = children(p2);
+    			t17 = claim_text(p2_nodes, "A\n        ");
+    			a3 = claim_element(p2_nodes, "A", { href: true });
+    			var a3_nodes = children(a3);
+    			t18 = claim_text(a3_nodes, "NYT\n          mini");
+    			a3_nodes.forEach(detach);
+    			t19 = claim_text(p2_nodes, "\n        puzzle with all default settings and forced mobile view.");
+    			p2_nodes.forEach(detach);
+    			div2_nodes.forEach(detach);
+    			t20 = claim_space(section1_nodes);
+    			claim_component(crossword1.$$.fragment, section1_nodes);
+    			section1_nodes.forEach(detach);
+    			t21 = claim_space(article_nodes);
+    			section2 = claim_element(article_nodes, "SECTION", { id: true, class: true });
+    			var section2_nodes = children(section2);
+    			div3 = claim_element(section2_nodes, "DIV", { class: true });
+    			var div3_nodes = children(div3);
+    			h22 = claim_element(div3_nodes, "H2", { class: true });
+    			var h22_nodes = children(h22);
+    			t22 = claim_text(h22_nodes, "Themes");
+    			h22_nodes.forEach(detach);
+    			t23 = claim_space(div3_nodes);
+    			p3 = claim_element(div3_nodes, "P", { class: true });
+    			var p3_nodes = children(p3);
+    			t24 = claim_text(p3_nodes, "A library of preset style themes to choose from.");
+    			p3_nodes.forEach(detach);
+    			t25 = claim_space(div3_nodes);
+    			select = claim_element(div3_nodes, "SELECT", {});
+    			var select_nodes = children(select);
+    			option0 = claim_element(select_nodes, "OPTION", { value: true });
+    			var option0_nodes = children(option0);
+    			t26 = claim_text(option0_nodes, "Classic");
+    			option0_nodes.forEach(detach);
+    			option1 = claim_element(select_nodes, "OPTION", { value: true });
+    			var option1_nodes = children(option1);
+    			t27 = claim_text(option1_nodes, "Dark");
+    			option1_nodes.forEach(detach);
+    			option2 = claim_element(select_nodes, "OPTION", { value: true });
+    			var option2_nodes = children(option2);
+    			t28 = claim_text(option2_nodes, "Citrus");
+    			option2_nodes.forEach(detach);
+    			select_nodes.forEach(detach);
+    			div3_nodes.forEach(detach);
+    			t29 = claim_space(section2_nodes);
+    			div4 = claim_element(section2_nodes, "DIV", {});
+    			var div4_nodes = children(div4);
+    			claim_component(crossword2.$$.fragment, div4_nodes);
+    			div4_nodes.forEach(detach);
+    			section2_nodes.forEach(detach);
+    			t30 = claim_space(article_nodes);
+    			section3 = claim_element(article_nodes, "SECTION", { id: true, class: true });
+    			var section3_nodes = children(section3);
+    			div5 = claim_element(section3_nodes, "DIV", { class: true });
+    			var div5_nodes = children(div5);
+    			h23 = claim_element(div5_nodes, "H2", { class: true });
+    			var h23_nodes = children(h23);
+    			t31 = claim_text(h23_nodes, "Simple Customization");
+    			h23_nodes.forEach(detach);
+    			t32 = claim_space(div5_nodes);
+    			p4 = claim_element(div5_nodes, "P", { class: true });
+    			var p4_nodes = children(p4);
+    			t33 = claim_text(p4_nodes, "Custom class name on clues and cells.");
+    			p4_nodes.forEach(detach);
+    			div5_nodes.forEach(detach);
+    			t34 = claim_space(section3_nodes);
+    			claim_component(crossword3.$$.fragment, section3_nodes);
+    			section3_nodes.forEach(detach);
+    			t35 = claim_space(article_nodes);
+    			section4 = claim_element(article_nodes, "SECTION", { id: true, class: true });
+    			var section4_nodes = children(section4);
+    			div6 = claim_element(section4_nodes, "DIV", { class: true });
+    			var div6_nodes = children(div6);
+    			h24 = claim_element(div6_nodes, "H2", { class: true });
+    			var h24_nodes = children(h24);
+    			t36 = claim_text(h24_nodes, "Advanced Customization");
+    			h24_nodes.forEach(detach);
+    			t37 = claim_space(div6_nodes);
+    			p5 = claim_element(div6_nodes, "P", { class: true });
+    			var p5_nodes = children(p5);
+    			t38 = claim_text(p5_nodes, "TBD.");
+    			p5_nodes.forEach(detach);
+    			div6_nodes.forEach(detach);
+    			t39 = claim_space(section4_nodes);
+    			claim_component(crossword4.$$.fragment, section4_nodes);
+    			section4_nodes.forEach(detach);
+    			article_nodes.forEach(detach);
+    			this.h();
+    		},
+    		h() {
+    			attr(h1, "class", "svelte-1v4ih91");
+    			attr(a0, "href", "https://svelte.dev");
+    			attr(a1, "href", "https://github.com/russellgoldenberg/svelte-crossword#svelte-crossword");
+    			attr(p0, "class", "svelte-1v4ih91");
     			attr(div0, "class", "intro svelte-1v4ih91");
+    			attr(h20, "class", "svelte-1v4ih91");
+    			attr(a2, "href", "https://www.nytimes.com/crosswords/game/daily/2020/10/21");
+    			attr(p1, "class", "svelte-1v4ih91");
     			attr(div1, "class", "info svelte-1v4ih91");
     			attr(section0, "id", "default");
     			attr(section0, "class", "svelte-1v4ih91");
+    			attr(h21, "class", "svelte-1v4ih91");
+    			attr(a3, "href", "https://www.nytimes.com/crosswords/game/mini/2020/10/21");
+    			attr(p2, "class", "svelte-1v4ih91");
     			attr(div2, "class", "info svelte-1v4ih91");
     			attr(section1, "id", "mini");
     			set_style(section1, "max-width", "480px");
@@ -5566,10 +6333,14 @@ var app = (function () {
     			attr(div3, "class", "info svelte-1v4ih91");
     			attr(section2, "id", "themes");
     			attr(section2, "class", "svelte-1v4ih91");
+    			attr(h23, "class", "svelte-1v4ih91");
+    			attr(p4, "class", "svelte-1v4ih91");
     			attr(div5, "class", "info svelte-1v4ih91");
     			attr(section3, "id", "simple-customization");
     			attr(section3, "class", "svelte-1v4ih91");
     			toggle_class(section3, "is-revealed", /*revealedUSA*/ ctx[0]);
+    			attr(h24, "class", "svelte-1v4ih91");
+    			attr(p5, "class", "svelte-1v4ih91");
     			attr(div6, "class", "info svelte-1v4ih91");
     			attr(section4, "id", "advanced-customization");
     			attr(section4, "class", "svelte-1v4ih91");
@@ -5577,27 +6348,59 @@ var app = (function () {
     		m(target, anchor) {
     			insert(target, article, anchor);
     			append(article, div0);
+    			append(div0, h1);
+    			append(h1, t0);
+    			append(div0, t1);
+    			append(div0, p0);
+    			append(p0, t2);
+    			append(p0, a0);
+    			append(a0, t3);
+    			append(p0, t4);
+    			append(p0, a1);
+    			append(a1, t5);
+    			append(p0, t6);
     			append(article, t7);
     			append(article, section0);
     			append(section0, div1);
+    			append(div1, h20);
+    			append(h20, t8);
+    			append(div1, t9);
+    			append(div1, p1);
+    			append(p1, t10);
+    			append(p1, a2);
+    			append(a2, t11);
+    			append(p1, t12);
     			append(section0, t13);
     			mount_component(crossword0, section0, null);
     			append(article, t14);
     			append(article, section1);
     			append(section1, div2);
+    			append(div2, h21);
+    			append(h21, t15);
+    			append(div2, t16);
+    			append(div2, p2);
+    			append(p2, t17);
+    			append(p2, a3);
+    			append(a3, t18);
+    			append(p2, t19);
     			append(section1, t20);
     			mount_component(crossword1, section1, null);
     			append(article, t21);
     			append(article, section2);
     			append(section2, div3);
     			append(div3, h22);
+    			append(h22, t22);
     			append(div3, t23);
     			append(div3, p3);
+    			append(p3, t24);
     			append(div3, t25);
     			append(div3, select);
     			append(select, option0);
+    			append(option0, t26);
     			append(select, option1);
+    			append(option1, t27);
     			append(select, option2);
+    			append(option2, t28);
     			select_option(select, /*theme*/ ctx[1]);
     			append(section2, t29);
     			append(section2, div4);
@@ -5605,11 +6408,21 @@ var app = (function () {
     			append(article, t30);
     			append(article, section3);
     			append(section3, div5);
+    			append(div5, h23);
+    			append(h23, t31);
+    			append(div5, t32);
+    			append(div5, p4);
+    			append(p4, t33);
     			append(section3, t34);
     			mount_component(crossword3, section3, null);
     			append(article, t35);
     			append(article, section4);
     			append(section4, div6);
+    			append(div6, h24);
+    			append(h24, t36);
+    			append(div6, t37);
+    			append(div6, p5);
+    			append(p5, t38);
     			append(section4, t39);
     			mount_component(crossword4, section4, null);
     			current = true;
@@ -5705,7 +6518,8 @@ var app = (function () {
     }
 
     const app = new App({
-    	target: document.querySelector("main")
+    	target: document.querySelector("main"),
+    	hydrate: true
     });
 
     return app;

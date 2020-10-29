@@ -54,7 +54,7 @@
       <select bind:value="{theme}">
         <option value="classic">Classic</option>
         <option value="dark">Dark</option>
-        <option value="amelia">Amelia</option>
+        <!-- <option value="amelia">Amelia</option> -->
         <option value="citrus">Citrus</option>
       </select>
     </div>

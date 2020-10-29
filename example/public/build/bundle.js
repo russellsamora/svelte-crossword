@@ -5210,7 +5210,52 @@ var app = (function () {
     	"message-button-text-weight": "400",
     };
 
-    const themes = { classic, dark };
+    var citrus = {
+    	"text-font": "sans-serif",
+    	"bg": "transparent",
+    	"highlight-color": "#ff957d",
+    	"secondary-color": "#ffdfd5",
+    	"order": "row",
+    	"clue-width": "16em",
+    	"clue-text-font": "var(--text-font, sans-serif)",
+    	"clue-text-color": "#184444",
+    	"clue-scrollbar-bg": "#ebf3f3",
+    	"clue-scrollbar-fg": "#c9d8d8",
+    	"puzzle-border-color": "#184444",
+    	"cell-bg-color": "#fff",
+    	"cell-border-color": "#184444",
+    	"cell-void-color": "#266b6b",
+    	"cell-border-width": "0.01",
+    	"cell-text-font": "var(--text-font, sans-serif)",
+    	"cell-text-color": "#184444",
+    	"cell-text-size": "0.7em",
+    	"cell-text-weight": "700",
+    	"number-text-size": "0.3em",
+    	"number-text-weight": "400",
+    	"number-text-color": "#266b6b",
+    	"toolbar-text-font": "var(--text-font, sans-serif)",
+    	"toolbar-text-size": "0.85em",
+    	"toolbar-bg": "transparent",
+    	"toolbar-button-bg": "#efefef",
+    	"toolbar-button-bg-hover": "#cdcdcd",
+    	"toolbar-button-padding": "0.75em",
+    	"toolbar-button-border": "none",
+    	"toolbar-button-border-radius": "4px",
+    	"toolbar-button-text-color": "#6a6a6a",
+    	"toolbar-button-text-weight": "400",
+    	"message-text-font": "sans-serif",
+    	"message-text-size": "0.85em",
+    	"message-bg": "transparent",
+    	"message-button-bg": "#efefef",
+    	"message-button-bg-hover": "#cdcdcd",
+    	"message-button-padding": "0.75em",
+    	"message-button-border": "none",
+    	"message-button-border-radius": "4px",
+    	"message-button-text-color": "#6a6a6a",
+    	"message-button-text-weight": "400",
+    };
+
+    const themes = { classic, dark, citrus };
 
     Object.keys(themes).forEach((t) => {
     	themes[t] = Object.keys(themes[t])
@@ -7040,13 +7085,13 @@ var app = (function () {
     			t1 = space();
     			button1 = element("button");
     			button1.textContent = "show answers";
-    			add_location(button0, file$b, 91, 8, 2471);
-    			add_location(button1, file$b, 92, 8, 2530);
+    			add_location(button0, file$b, 91, 8, 2480);
+    			add_location(button1, file$b, 92, 8, 2539);
     			attr_dev(div, "class", "toolbar");
     			attr_dev(div, "slot", "toolbar");
     			set_style(div, "background", "yellow");
     			set_style(div, "padding", "2em");
-    			add_location(div, file$b, 85, 6, 2319);
+    			add_location(div, file$b, 85, 6, 2328);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -7117,12 +7162,12 @@ var app = (function () {
     			h3.textContent = "OMG, congrats!";
     			t1 = space();
     			img = element("img");
-    			add_location(h3, file$b, 95, 8, 2631);
+    			add_location(h3, file$b, 95, 8, 2640);
     			attr_dev(img, "alt", "celebration");
     			if (img.src !== (img_src_value = "https://media3.giphy.com/media/QpOZPQQ2wbjOM/giphy.gif")) attr_dev(img, "src", img_src_value);
-    			add_location(img, file$b, 96, 8, 2663);
+    			add_location(img, file$b, 96, 8, 2672);
     			attr_dev(div, "slot", "complete");
-    			add_location(div, file$b, 94, 6, 2601);
+    			add_location(div, file$b, 94, 6, 2610);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -7218,26 +7263,25 @@ var app = (function () {
     	let option0;
     	let option1;
     	let option2;
-    	let option3;
-    	let t30;
+    	let t29;
     	let div4;
     	let crossword2;
-    	let t31;
+    	let t30;
     	let section3;
     	let div5;
     	let h23;
-    	let t33;
+    	let t32;
     	let p4;
-    	let t35;
+    	let t34;
     	let crossword3;
     	let updating_revealed;
-    	let t36;
+    	let t35;
     	let section4;
     	let div6;
     	let h24;
-    	let t38;
+    	let t37;
     	let p5;
-    	let t40;
+    	let t39;
     	let crossword4;
     	let current;
     	let mounted;
@@ -7351,31 +7395,29 @@ var app = (function () {
     			option1 = element("option");
     			option1.textContent = "Dark";
     			option2 = element("option");
-    			option2.textContent = "Amelia";
-    			option3 = element("option");
-    			option3.textContent = "Citrus";
-    			t30 = space();
+    			option2.textContent = "Citrus";
+    			t29 = space();
     			div4 = element("div");
     			create_component(crossword2.$$.fragment);
-    			t31 = space();
+    			t30 = space();
     			section3 = element("section");
     			div5 = element("div");
     			h23 = element("h2");
     			h23.textContent = "Simple Customization";
-    			t33 = space();
+    			t32 = space();
     			p4 = element("p");
     			p4.textContent = "Custom class name on cells.";
-    			t35 = space();
+    			t34 = space();
     			create_component(crossword3.$$.fragment);
-    			t36 = space();
+    			t35 = space();
     			section4 = element("section");
     			div6 = element("div");
     			h24 = element("h2");
     			h24.textContent = "Advanced Customization";
-    			t38 = space();
+    			t37 = space();
     			p5 = element("p");
     			p5.textContent = "TBD.";
-    			t40 = space();
+    			t39 = space();
     			create_component(crossword4.$$.fragment);
     			attr_dev(h1, "class", "svelte-1v4ih91");
     			add_location(h1, file$b, 14, 4, 373);
@@ -7420,39 +7462,36 @@ var app = (function () {
     			option1.__value = "dark";
     			option1.value = option1.__value;
     			add_location(option1, file$b, 55, 8, 1533);
-    			option2.__value = "amelia";
+    			option2.__value = "citrus";
     			option2.value = option2.__value;
-    			add_location(option2, file$b, 56, 8, 1576);
-    			option3.__value = "citrus";
-    			option3.value = option3.__value;
-    			add_location(option3, file$b, 57, 8, 1623);
+    			add_location(option2, file$b, 57, 8, 1632);
     			if (/*theme*/ ctx[1] === void 0) add_render_callback(() => /*select_change_handler*/ ctx[2].call(select));
     			add_location(select, file$b, 53, 6, 1446);
     			attr_dev(div3, "class", "info svelte-1v4ih91");
     			add_location(div3, file$b, 50, 4, 1337);
-    			add_location(div4, file$b, 60, 4, 1693);
+    			add_location(div4, file$b, 60, 4, 1702);
     			attr_dev(section2, "id", "themes");
     			attr_dev(section2, "class", "svelte-1v4ih91");
     			add_location(section2, file$b, 49, 2, 1311);
     			attr_dev(h23, "class", "svelte-1v4ih91");
-    			add_location(h23, file$b, 70, 6, 1933);
+    			add_location(h23, file$b, 70, 6, 1942);
     			attr_dev(p4, "class", "svelte-1v4ih91");
-    			add_location(p4, file$b, 71, 6, 1969);
+    			add_location(p4, file$b, 71, 6, 1978);
     			attr_dev(div5, "class", "info svelte-1v4ih91");
-    			add_location(div5, file$b, 69, 4, 1908);
+    			add_location(div5, file$b, 69, 4, 1917);
     			attr_dev(section3, "id", "simple-customization");
     			attr_dev(section3, "class", "svelte-1v4ih91");
     			toggle_class(section3, "is-revealed", /*revealedUSA*/ ctx[0]);
-    			add_location(section3, file$b, 68, 2, 1834);
+    			add_location(section3, file$b, 68, 2, 1843);
     			attr_dev(h24, "class", "svelte-1v4ih91");
-    			add_location(h24, file$b, 81, 6, 2214);
+    			add_location(h24, file$b, 81, 6, 2223);
     			attr_dev(p5, "class", "svelte-1v4ih91");
-    			add_location(p5, file$b, 82, 6, 2252);
+    			add_location(p5, file$b, 82, 6, 2261);
     			attr_dev(div6, "class", "info svelte-1v4ih91");
-    			add_location(div6, file$b, 80, 4, 2189);
+    			add_location(div6, file$b, 80, 4, 2198);
     			attr_dev(section4, "id", "advanced-customization");
     			attr_dev(section4, "class", "svelte-1v4ih91");
-    			add_location(section4, file$b, 79, 2, 2147);
+    			add_location(section4, file$b, 79, 2, 2156);
     			add_location(article, file$b, 12, 0, 337);
     		},
     		l: function claim(nodes) {
@@ -7502,26 +7541,25 @@ var app = (function () {
     			append_dev(select, option0);
     			append_dev(select, option1);
     			append_dev(select, option2);
-    			append_dev(select, option3);
     			select_option(select, /*theme*/ ctx[1]);
-    			append_dev(section2, t30);
+    			append_dev(section2, t29);
     			append_dev(section2, div4);
     			mount_component(crossword2, div4, null);
-    			append_dev(article, t31);
+    			append_dev(article, t30);
     			append_dev(article, section3);
     			append_dev(section3, div5);
     			append_dev(div5, h23);
-    			append_dev(div5, t33);
+    			append_dev(div5, t32);
     			append_dev(div5, p4);
-    			append_dev(section3, t35);
+    			append_dev(section3, t34);
     			mount_component(crossword3, section3, null);
-    			append_dev(article, t36);
+    			append_dev(article, t35);
     			append_dev(article, section4);
     			append_dev(section4, div6);
     			append_dev(div6, h24);
-    			append_dev(div6, t38);
+    			append_dev(div6, t37);
     			append_dev(div6, p5);
-    			append_dev(section4, t40);
+    			append_dev(section4, t39);
     			mount_component(crossword4, section4, null);
     			current = true;
 

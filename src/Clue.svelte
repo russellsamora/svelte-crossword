@@ -3,6 +3,7 @@
 
   export let number;
   export let clue;
+  export let custom;
   export let isFilled;
   export let isNumberFocused = false;
   export let isDirectionFocused = false;
@@ -15,7 +16,7 @@
 
 <li bind:this="{element}" use:scrollTo="{isFocused}">
   <button
-    class="clue"
+    class="clue {custom}"
     class:is-number-focused="{isNumberFocused}"
     class:is-direction-focused="{isDirectionFocused}"
     class:is-filled="{isFilled}"

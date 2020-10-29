@@ -15,6 +15,7 @@
       <Clue
         clue="{clue.clue}"
         number="{clue.number}"
+        custom="{clue.custom}"
         isFilled="{clue.isFilled}"
         isNumberFocused="{focusedClueNumbers[direction] === clue.number}"
         isDirectionFocused="{isDirectionFocused}"

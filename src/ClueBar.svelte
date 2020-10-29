@@ -4,9 +4,10 @@
 
   export let currentClue;
   $: clue = currentClue["clue"];
+  $: custom = currentClue["custom"];
 </script>
 
-<div class="bar">
+<div class="bar {custom}">
   <button on:click="{() => dispatch('nextClue', currentClue.index - 1)}">
     <svg
       width="24"

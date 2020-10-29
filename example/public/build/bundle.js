@@ -3035,6 +3035,7 @@ var app = (function () {
     	let t0;
     	let t1;
     	let t2;
+    	let button_class_value;
     	let scrollTo_action;
     	let mounted;
     	let dispose;
@@ -3046,12 +3047,12 @@ var app = (function () {
     			t0 = text(/*number*/ ctx[0]);
     			t1 = text(".\n    ");
     			t2 = text(/*clue*/ ctx[1]);
-    			attr_dev(button, "class", "clue svelte-15h9c89");
-    			toggle_class(button, "is-number-focused", /*isNumberFocused*/ ctx[3]);
-    			toggle_class(button, "is-direction-focused", /*isDirectionFocused*/ ctx[4]);
-    			toggle_class(button, "is-filled", /*isFilled*/ ctx[2]);
-    			add_location(button, file$4, 16, 2, 351);
-    			add_location(li, file$4, 15, 0, 295);
+    			attr_dev(button, "class", button_class_value = "clue " + /*custom*/ ctx[2] + " svelte-15h9c89");
+    			toggle_class(button, "is-number-focused", /*isNumberFocused*/ ctx[4]);
+    			toggle_class(button, "is-direction-focused", /*isDirectionFocused*/ ctx[5]);
+    			toggle_class(button, "is-filled", /*isFilled*/ ctx[3]);
+    			add_location(button, file$4, 17, 2, 372);
+    			add_location(li, file$4, 16, 0, 316);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -3062,7 +3063,7 @@ var app = (function () {
     			append_dev(button, t0);
     			append_dev(button, t1);
     			append_dev(button, t2);
-    			/*li_binding*/ ctx[8](li);
+    			/*li_binding*/ ctx[9](li);
 
     			if (!mounted) {
     				dispose = [
@@ -3070,13 +3071,13 @@ var app = (function () {
     						button,
     						"click",
     						function () {
-    							if (is_function(/*onFocus*/ ctx[5])) /*onFocus*/ ctx[5].apply(this, arguments);
+    							if (is_function(/*onFocus*/ ctx[6])) /*onFocus*/ ctx[6].apply(this, arguments);
     						},
     						false,
     						false,
     						false
     					),
-    					action_destroyer(scrollTo_action = scrollTO.call(null, li, /*isFocused*/ ctx[7]))
+    					action_destroyer(scrollTo_action = scrollTO.call(null, li, /*isFocused*/ ctx[8]))
     				];
 
     				mounted = true;
@@ -3087,25 +3088,29 @@ var app = (function () {
     			if (dirty & /*number*/ 1) set_data_dev(t0, /*number*/ ctx[0]);
     			if (dirty & /*clue*/ 2) set_data_dev(t2, /*clue*/ ctx[1]);
 
-    			if (dirty & /*isNumberFocused*/ 8) {
-    				toggle_class(button, "is-number-focused", /*isNumberFocused*/ ctx[3]);
+    			if (dirty & /*custom*/ 4 && button_class_value !== (button_class_value = "clue " + /*custom*/ ctx[2] + " svelte-15h9c89")) {
+    				attr_dev(button, "class", button_class_value);
     			}
 
-    			if (dirty & /*isDirectionFocused*/ 16) {
-    				toggle_class(button, "is-direction-focused", /*isDirectionFocused*/ ctx[4]);
+    			if (dirty & /*custom, isNumberFocused*/ 20) {
+    				toggle_class(button, "is-number-focused", /*isNumberFocused*/ ctx[4]);
     			}
 
-    			if (dirty & /*isFilled*/ 4) {
-    				toggle_class(button, "is-filled", /*isFilled*/ ctx[2]);
+    			if (dirty & /*custom, isDirectionFocused*/ 36) {
+    				toggle_class(button, "is-direction-focused", /*isDirectionFocused*/ ctx[5]);
     			}
 
-    			if (scrollTo_action && is_function(scrollTo_action.update) && dirty & /*isFocused*/ 128) scrollTo_action.update.call(null, /*isFocused*/ ctx[7]);
+    			if (dirty & /*custom, isFilled*/ 12) {
+    				toggle_class(button, "is-filled", /*isFilled*/ ctx[3]);
+    			}
+
+    			if (scrollTo_action && is_function(scrollTo_action.update) && dirty & /*isFocused*/ 256) scrollTo_action.update.call(null, /*isFocused*/ ctx[8]);
     		},
     		i: noop,
     		o: noop,
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(li);
-    			/*li_binding*/ ctx[8](null);
+    			/*li_binding*/ ctx[9](null);
     			mounted = false;
     			run_all(dispose);
     		}
@@ -3127,6 +3132,7 @@ var app = (function () {
     	validate_slots("Clue", slots, []);
     	let { number } = $$props;
     	let { clue } = $$props;
+    	let { custom } = $$props;
     	let { isFilled } = $$props;
     	let { isNumberFocused = false } = $$props;
     	let { isDirectionFocused = false } = $$props;
@@ -3140,6 +3146,7 @@ var app = (function () {
     	const writable_props = [
     		"number",
     		"clue",
+    		"custom",
     		"isFilled",
     		"isNumberFocused",
     		"isDirectionFocused",
@@ -3153,23 +3160,25 @@ var app = (function () {
     	function li_binding($$value) {
     		binding_callbacks[$$value ? "unshift" : "push"](() => {
     			element = $$value;
-    			$$invalidate(6, element);
+    			$$invalidate(7, element);
     		});
     	}
 
     	$$self.$$set = $$props => {
     		if ("number" in $$props) $$invalidate(0, number = $$props.number);
     		if ("clue" in $$props) $$invalidate(1, clue = $$props.clue);
-    		if ("isFilled" in $$props) $$invalidate(2, isFilled = $$props.isFilled);
-    		if ("isNumberFocused" in $$props) $$invalidate(3, isNumberFocused = $$props.isNumberFocused);
-    		if ("isDirectionFocused" in $$props) $$invalidate(4, isDirectionFocused = $$props.isDirectionFocused);
-    		if ("onFocus" in $$props) $$invalidate(5, onFocus = $$props.onFocus);
+    		if ("custom" in $$props) $$invalidate(2, custom = $$props.custom);
+    		if ("isFilled" in $$props) $$invalidate(3, isFilled = $$props.isFilled);
+    		if ("isNumberFocused" in $$props) $$invalidate(4, isNumberFocused = $$props.isNumberFocused);
+    		if ("isDirectionFocused" in $$props) $$invalidate(5, isDirectionFocused = $$props.isDirectionFocused);
+    		if ("onFocus" in $$props) $$invalidate(6, onFocus = $$props.onFocus);
     	};
 
     	$$self.$capture_state = () => ({
     		scrollTo: scrollTO,
     		number,
     		clue,
+    		custom,
     		isFilled,
     		isNumberFocused,
     		isDirectionFocused,
@@ -3181,12 +3190,13 @@ var app = (function () {
     	$$self.$inject_state = $$props => {
     		if ("number" in $$props) $$invalidate(0, number = $$props.number);
     		if ("clue" in $$props) $$invalidate(1, clue = $$props.clue);
-    		if ("isFilled" in $$props) $$invalidate(2, isFilled = $$props.isFilled);
-    		if ("isNumberFocused" in $$props) $$invalidate(3, isNumberFocused = $$props.isNumberFocused);
-    		if ("isDirectionFocused" in $$props) $$invalidate(4, isDirectionFocused = $$props.isDirectionFocused);
-    		if ("onFocus" in $$props) $$invalidate(5, onFocus = $$props.onFocus);
-    		if ("element" in $$props) $$invalidate(6, element = $$props.element);
-    		if ("isFocused" in $$props) $$invalidate(7, isFocused = $$props.isFocused);
+    		if ("custom" in $$props) $$invalidate(2, custom = $$props.custom);
+    		if ("isFilled" in $$props) $$invalidate(3, isFilled = $$props.isFilled);
+    		if ("isNumberFocused" in $$props) $$invalidate(4, isNumberFocused = $$props.isNumberFocused);
+    		if ("isDirectionFocused" in $$props) $$invalidate(5, isDirectionFocused = $$props.isDirectionFocused);
+    		if ("onFocus" in $$props) $$invalidate(6, onFocus = $$props.onFocus);
+    		if ("element" in $$props) $$invalidate(7, element = $$props.element);
+    		if ("isFocused" in $$props) $$invalidate(8, isFocused = $$props.isFocused);
     	};
 
     	let isFocused;
@@ -3196,14 +3206,15 @@ var app = (function () {
     	}
 
     	$$self.$$.update = () => {
-    		if ($$self.$$.dirty & /*isNumberFocused*/ 8) {
-    			 $$invalidate(7, isFocused = isNumberFocused);
+    		if ($$self.$$.dirty & /*isNumberFocused*/ 16) {
+    			 $$invalidate(8, isFocused = isNumberFocused);
     		}
     	};
 
     	return [
     		number,
     		clue,
+    		custom,
     		isFilled,
     		isNumberFocused,
     		isDirectionFocused,
@@ -3221,10 +3232,11 @@ var app = (function () {
     		init(this, options, instance$4, create_fragment$4, safe_not_equal, {
     			number: 0,
     			clue: 1,
-    			isFilled: 2,
-    			isNumberFocused: 3,
-    			isDirectionFocused: 4,
-    			onFocus: 5
+    			custom: 2,
+    			isFilled: 3,
+    			isNumberFocused: 4,
+    			isDirectionFocused: 5,
+    			onFocus: 6
     		});
 
     		dispatch_dev("SvelteRegisterComponent", {
@@ -3245,7 +3257,11 @@ var app = (function () {
     			console.warn("<Clue> was created without expected prop 'clue'");
     		}
 
-    		if (/*isFilled*/ ctx[2] === undefined && !("isFilled" in props)) {
+    		if (/*custom*/ ctx[2] === undefined && !("custom" in props)) {
+    			console.warn("<Clue> was created without expected prop 'custom'");
+    		}
+
+    		if (/*isFilled*/ ctx[3] === undefined && !("isFilled" in props)) {
     			console.warn("<Clue> was created without expected prop 'isFilled'");
     		}
     	}
@@ -3263,6 +3279,14 @@ var app = (function () {
     	}
 
     	set clue(value) {
+    		throw new Error("<Clue>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get custom() {
+    		throw new Error("<Clue>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set custom(value) {
     		throw new Error("<Clue>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
 
@@ -3321,6 +3345,7 @@ var app = (function () {
     			props: {
     				clue: /*clue*/ ctx[6].clue,
     				number: /*clue*/ ctx[6].number,
+    				custom: /*clue*/ ctx[6].custom,
     				isFilled: /*clue*/ ctx[6].isFilled,
     				isNumberFocused: /*focusedClueNumbers*/ ctx[2][/*direction*/ ctx[0]] === /*clue*/ ctx[6].number,
     				isDirectionFocused: /*isDirectionFocused*/ ctx[3],
@@ -3342,6 +3367,7 @@ var app = (function () {
     			const clue_changes = {};
     			if (dirty & /*clues*/ 2) clue_changes.clue = /*clue*/ ctx[6].clue;
     			if (dirty & /*clues*/ 2) clue_changes.number = /*clue*/ ctx[6].number;
+    			if (dirty & /*clues*/ 2) clue_changes.custom = /*clue*/ ctx[6].custom;
     			if (dirty & /*clues*/ 2) clue_changes.isFilled = /*clue*/ ctx[6].isFilled;
     			if (dirty & /*focusedClueNumbers, direction, clues*/ 7) clue_changes.isNumberFocused = /*focusedClueNumbers*/ ctx[2][/*direction*/ ctx[0]] === /*clue*/ ctx[6].number;
     			if (dirty & /*isDirectionFocused*/ 8) clue_changes.isDirectionFocused = /*isDirectionFocused*/ ctx[3];
@@ -3649,6 +3675,7 @@ var app = (function () {
     	let button1;
     	let svg1;
     	let polyline1;
+    	let div_class_value;
     	let mounted;
     	let dispose;
 
@@ -3666,7 +3693,7 @@ var app = (function () {
     			svg1 = svg_element("svg");
     			polyline1 = svg_element("polyline");
     			attr_dev(polyline0, "points", "15 18 9 12 15 6");
-    			add_location(polyline0, file$6, 19, 43, 507);
+    			add_location(polyline0, file$6, 20, 43, 553);
     			attr_dev(svg0, "width", "24");
     			attr_dev(svg0, "height", "24");
     			attr_dev(svg0, "viewBox", "0 0 24 24");
@@ -3676,13 +3703,13 @@ var app = (function () {
     			attr_dev(svg0, "stroke-linecap", "round");
     			attr_dev(svg0, "stroke-linejoin", "round");
     			attr_dev(svg0, "class", "feather feather-chevron-left");
-    			add_location(svg0, file$6, 10, 4, 270);
+    			add_location(svg0, file$6, 11, 4, 316);
     			attr_dev(button0, "class", "svelte-1vk7esv");
-    			add_location(button0, file$6, 9, 2, 194);
+    			add_location(button0, file$6, 10, 2, 240);
     			attr_dev(p, "class", "svelte-1vk7esv");
-    			add_location(p, file$6, 22, 2, 582);
+    			add_location(p, file$6, 23, 2, 628);
     			attr_dev(polyline1, "points", "9 18 15 12 9 6");
-    			add_location(polyline1, file$6, 33, 44, 912);
+    			add_location(polyline1, file$6, 34, 44, 958);
     			attr_dev(svg1, "width", "24");
     			attr_dev(svg1, "height", "24");
     			attr_dev(svg1, "viewBox", "0 0 24 24");
@@ -3692,11 +3719,11 @@ var app = (function () {
     			attr_dev(svg1, "stroke-linecap", "round");
     			attr_dev(svg1, "stroke-linejoin", "round");
     			attr_dev(svg1, "class", "feather feather-chevron-right");
-    			add_location(svg1, file$6, 24, 4, 674);
+    			add_location(svg1, file$6, 25, 4, 720);
     			attr_dev(button1, "class", "svelte-1vk7esv");
-    			add_location(button1, file$6, 23, 2, 598);
-    			attr_dev(div, "class", "bar svelte-1vk7esv");
-    			add_location(div, file$6, 8, 0, 174);
+    			add_location(button1, file$6, 24, 2, 644);
+    			attr_dev(div, "class", div_class_value = "bar " + /*custom*/ ctx[2] + " svelte-1vk7esv");
+    			add_location(div, file$6, 9, 0, 211);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -3716,8 +3743,8 @@ var app = (function () {
 
     			if (!mounted) {
     				dispose = [
-    					listen_dev(button0, "click", /*click_handler*/ ctx[3], false, false, false),
-    					listen_dev(button1, "click", /*click_handler_1*/ ctx[4], false, false, false)
+    					listen_dev(button0, "click", /*click_handler*/ ctx[4], false, false, false),
+    					listen_dev(button1, "click", /*click_handler_1*/ ctx[5], false, false, false)
     				];
 
     				mounted = true;
@@ -3725,6 +3752,10 @@ var app = (function () {
     		},
     		p: function update(ctx, [dirty]) {
     			if (dirty & /*clue*/ 2) set_data_dev(t1, /*clue*/ ctx[1]);
+
+    			if (dirty & /*custom*/ 4 && div_class_value !== (div_class_value = "bar " + /*custom*/ ctx[2] + " svelte-1vk7esv")) {
+    				attr_dev(div, "class", div_class_value);
+    			}
     		},
     		i: noop,
     		o: noop,
@@ -3768,15 +3799,18 @@ var app = (function () {
     		createEventDispatcher,
     		dispatch,
     		currentClue,
-    		clue
+    		clue,
+    		custom
     	});
 
     	$$self.$inject_state = $$props => {
     		if ("currentClue" in $$props) $$invalidate(0, currentClue = $$props.currentClue);
     		if ("clue" in $$props) $$invalidate(1, clue = $$props.clue);
+    		if ("custom" in $$props) $$invalidate(2, custom = $$props.custom);
     	};
 
     	let clue;
+    	let custom;
 
     	if ($$props && "$$inject" in $$props) {
     		$$self.$inject_state($$props.$$inject);
@@ -3786,9 +3820,13 @@ var app = (function () {
     		if ($$self.$$.dirty & /*currentClue*/ 1) {
     			 $$invalidate(1, clue = currentClue["clue"]);
     		}
+
+    		if ($$self.$$.dirty & /*currentClue*/ 1) {
+    			 $$invalidate(2, custom = currentClue["custom"]);
+    		}
     	};
 
-    	return [currentClue, clue, dispatch, click_handler, click_handler_1];
+    	return [currentClue, clue, custom, dispatch, click_handler, click_handler_1];
     }
 
     class ClueBar extends SvelteComponentDev {

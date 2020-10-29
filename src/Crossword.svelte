@@ -124,6 +124,7 @@
         clues="{clues}"
         cellIndexMap="{cellIndexMap}"
         stacked="{stacked}"
+        isDisableHighlight="{isDisableHighlight}"
         bind:focusedCellIndex
         bind:focusedCell
         bind:focusedDirection />

@@ -8,6 +8,7 @@
   export let focusedCellIndex;
   export let focusedCell;
   export let stacked;
+  export let isDisableHighlight;
 
   $: focusedClueNumbers = focusedCell.clueNumbers || {};
   $: currentClue = clues.find(
@@ -43,6 +44,7 @@
           focusedClueNumbers="{focusedClueNumbers}"
           clues="{clues.filter((d) => d.direction === direction)}"
           isDirectionFocused="{focusedDirection === direction}"
+          isDisableHighlight="{isDisableHighlight}"
           onClueFocus="{onClueFocus}" />
       {/each}
     </div>

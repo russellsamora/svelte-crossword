@@ -7,6 +7,7 @@
   export let isFilled;
   export let isNumberFocused = false;
   export let isDirectionFocused = false;
+  export let isDisableHighlight = false;
   export let onFocus = () => {};
 
   let element;
@@ -17,6 +18,7 @@
 <li bind:this="{element}" use:scrollTo="{isFocused}">
   <button
     class="clue {custom}"
+    class:is-disable-highlight="{isDisableHighlight}"
     class:is-number-focused="{isNumberFocused}"
     class:is-direction-focused="{isDirectionFocused}"
     class:is-filled="{isFilled}"
@@ -44,16 +46,16 @@
     font-size: 1em;
     cursor: pointer;
   }
-  .clue:focus {
+  .clue:focus:not(.is-disable-highlight) {
     border-color: var(--secondary-color);
   }
-  .is-number-focused {
+  .is-number-focused:not(.is-disable-highlight) {
     border-left-color: var(--secondary-color);
   }
-  .is-number-focused.is-direction-focused {
+  .is-number-focused.is-direction-focused:not(.is-disable-highlight) {
     background: var(--secondary-color);
   }
   .is-filled {
-    opacity: 0.33;
+    opacity: 0.5;
   }
 </style>

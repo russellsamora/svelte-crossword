@@ -42,6 +42,7 @@
     display: flex;
     justify-content: space-between;
     background-color: #efefef;
+    align-items: center;
   }
 
   p {

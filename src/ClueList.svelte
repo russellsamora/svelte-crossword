@@ -32,8 +32,8 @@
   }
 
   p {
-    font-family: var(--clue-font, -apple-system, Helvetica, sans-serif);
-    color: var(--clue-text-color, #1a1a1a);
+    font-family: var(--clue-text-font);
+    color: var(--clue-text-color);
     font-weight: 700;
     text-transform: uppercase;
     padding-left: calc(0.5em + 6px);
@@ -58,24 +58,24 @@
   ::-moz-scrollbar-track {
     box-shadow: none;
     border-radius: 10px;
-    background: var(--clue-scrollbar-bg, #efefef);
+    background: var(--clue-scrollbar-bg);
   }
   ::-webkit-scrollbar-track {
     box-shadow: none;
     border-radius: 10px;
-    background: var(--clue-scrollbar-bg, #efefef);
+    background: var(--clue-scrollbar-bg);
   }
   ::scrollbar-thumb {
     border-radius: 10px;
-    background: var(--clue-scrollbar-fg, #cdcdcd);
+    background: var(--clue-scrollbar-fg);
     box-shadow: none;
   }
   ::-moz-scrollbar-thumb {
-    background: var(--clue-scrollbar-fg, #cdcdcd);
+    background: var(--clue-scrollbar-fg);
     border-radius: 6px;
   }
   ::-webkit-scrollbar-thumb {
-    background: var(--clue-scrollbar-fg, #cdcdcd);
+    background: var(--clue-scrollbar-fg);
     border-radius: 6px;
   }
 </style>

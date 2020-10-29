@@ -38,19 +38,19 @@
     padding: 0.5em;
     cursor: pointer;
     line-height: 1.325;
-    color: var(--clue-text-color, #1a1a1a);
-    font-family: var(--clue-font, -apple-system, Helvetica, sans-serif);
+    color: var(--clue-text-color);
+    font-family: var(--clue-text-font);
     font-size: 1em;
     cursor: pointer;
   }
   .clue:focus {
-    border-color: var(--cell-highlight-color, #ffec99);
+    border-color: var(--secondary-color);
   }
   .is-number-focused {
-    border-left-color: var(--cell-highlight-color, #ffec99);
+    border-left-color: var(--secondary-color);
   }
   .is-number-focused.is-direction-focused {
-    background: var(--cell-highlight-color, #ffec99);
+    background: var(--secondary-color);
   }
   .is-filled {
     opacity: 0.33;

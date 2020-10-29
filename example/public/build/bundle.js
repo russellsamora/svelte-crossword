@@ -797,7 +797,7 @@ var app = (function () {
     		c: function create() {
     			button = element("button");
     			button.textContent = "Reveal";
-    			attr_dev(button, "class", "svelte-1d4ytnk");
+    			attr_dev(button, "class", "svelte-pgtgr0");
     			add_location(button, file, 12, 6, 352);
     		},
     		m: function mount(target, anchor) {
@@ -837,7 +837,7 @@ var app = (function () {
     		c: function create() {
     			button = element("button");
     			button.textContent = "Clear";
-    			attr_dev(button, "class", "svelte-1d4ytnk");
+    			attr_dev(button, "class", "svelte-pgtgr0");
     			add_location(button, file, 10, 6, 243);
     		},
     		m: function mount(target, anchor) {
@@ -939,7 +939,7 @@ var app = (function () {
     				each_blocks[i].c();
     			}
 
-    			attr_dev(div, "class", "toolbar svelte-1d4ytnk");
+    			attr_dev(div, "class", "toolbar svelte-pgtgr0");
     			add_location(div, file, 7, 0, 159);
     		},
     		l: function claim(nodes) {
@@ -1668,7 +1668,7 @@ var app = (function () {
     		c: function create() {
     			text_1 = svg_element("text");
     			t = text(/*value*/ ctx[2]);
-    			attr_dev(text_1, "class", "value svelte-1fqxzxj");
+    			attr_dev(text_1, "class", "value svelte-wk9yyo");
     			attr_dev(text_1, "x", "0.5");
     			attr_dev(text_1, "y", "0.9");
     			attr_dev(text_1, "dominant-baseline", "auto");
@@ -1758,15 +1758,15 @@ var app = (function () {
     			t = text(/*number*/ ctx[3]);
     			attr_dev(rect, "width", "1");
     			attr_dev(rect, "height", "1");
-    			attr_dev(rect, "class", "svelte-1fqxzxj");
+    			attr_dev(rect, "class", "svelte-wk9yyo");
     			add_location(rect, file$2, 102, 2, 2225);
-    			attr_dev(text_1, "class", "number svelte-1fqxzxj");
+    			attr_dev(text_1, "class", "number svelte-wk9yyo");
     			attr_dev(text_1, "x", "0.1");
     			attr_dev(text_1, "y", "0.1");
     			attr_dev(text_1, "dominant-baseline", "hanging");
     			attr_dev(text_1, "text-anchor", "start");
     			add_location(text_1, file$2, 114, 2, 2514);
-    			attr_dev(g, "class", g_class_value = "cell " + /*custom*/ ctx[4] + " svelte-1fqxzxj");
+    			attr_dev(g, "class", g_class_value = "cell " + /*custom*/ ctx[4] + " svelte-wk9yyo");
     			attr_dev(g, "transform", g_transform_value = `translate(${/*x*/ ctx[0]}, ${/*y*/ ctx[1]})`);
     			attr_dev(g, "id", g_id_value = "cell-" + /*x*/ ctx[0] + "-" + /*y*/ ctx[1]);
     			attr_dev(g, "tabindex", "0");
@@ -1821,7 +1821,7 @@ var app = (function () {
 
     			if (!current || dirty & /*number*/ 8) set_data_dev(t, /*number*/ ctx[3]);
 
-    			if (!current || dirty & /*custom*/ 16 && g_class_value !== (g_class_value = "cell " + /*custom*/ ctx[4] + " svelte-1fqxzxj")) {
+    			if (!current || dirty & /*custom*/ 16 && g_class_value !== (g_class_value = "cell " + /*custom*/ ctx[4] + " svelte-wk9yyo")) {
     				attr_dev(g, "class", g_class_value);
     			}
 
@@ -2397,7 +2397,7 @@ var app = (function () {
     		c: function create() {
     			div = element("div");
     			create_component(keyboard.$$.fragment);
-    			attr_dev(div, "class", "keyboard svelte-1yaebvb");
+    			attr_dev(div, "class", "keyboard svelte-1olsp4l");
     			add_location(div, file$3, 178, 2, 5468);
     		},
     		m: function mount(target, anchor) {
@@ -2466,9 +2466,9 @@ var app = (function () {
     			if (if_block) if_block.c();
     			if_block_anchor = empty();
     			attr_dev(svg, "viewBox", svg_viewBox_value = "0 0 " + /*w*/ ctx[7] + " " + /*h*/ ctx[8]);
-    			attr_dev(svg, "class", "svelte-1yaebvb");
+    			attr_dev(svg, "class", "svelte-1olsp4l");
     			add_location(svg, file$3, 154, 2, 4642);
-    			attr_dev(section, "class", "puzzle svelte-1yaebvb");
+    			attr_dev(section, "class", "puzzle svelte-1olsp4l");
     			toggle_class(section, "stacked", /*stacked*/ ctx[4]);
     			add_location(section, file$3, 153, 0, 4601);
     		},
@@ -3046,7 +3046,7 @@ var app = (function () {
     			t0 = text(/*number*/ ctx[0]);
     			t1 = text(".\n    ");
     			t2 = text(/*clue*/ ctx[1]);
-    			attr_dev(button, "class", "clue svelte-1i661i1");
+    			attr_dev(button, "class", "clue svelte-15h9c89");
     			toggle_class(button, "is-number-focused", /*isNumberFocused*/ ctx[3]);
     			toggle_class(button, "is-direction-focused", /*isDirectionFocused*/ ctx[4]);
     			toggle_class(button, "is-filled", /*isFilled*/ ctx[2]);
@@ -3404,11 +3404,11 @@ var app = (function () {
     				each_blocks[i].c();
     			}
 
-    			attr_dev(p, "class", "svelte-1k6v3oi");
+    			attr_dev(p, "class", "svelte-un0u0a");
     			add_location(p, file$5, 10, 0, 193);
-    			attr_dev(ul, "class", "svelte-1k6v3oi");
+    			attr_dev(ul, "class", "svelte-un0u0a");
     			add_location(ul, file$5, 12, 2, 233);
-    			attr_dev(div, "class", "list svelte-1k6v3oi");
+    			attr_dev(div, "class", "list svelte-un0u0a");
     			add_location(div, file$5, 11, 0, 212);
     		},
     		l: function claim(nodes) {
@@ -3677,9 +3677,9 @@ var app = (function () {
     			attr_dev(svg0, "stroke-linejoin", "round");
     			attr_dev(svg0, "class", "feather feather-chevron-left");
     			add_location(svg0, file$6, 10, 4, 270);
-    			attr_dev(button0, "class", "svelte-1k30qnz");
+    			attr_dev(button0, "class", "svelte-1vk7esv");
     			add_location(button0, file$6, 9, 2, 194);
-    			attr_dev(p, "class", "svelte-1k30qnz");
+    			attr_dev(p, "class", "svelte-1vk7esv");
     			add_location(p, file$6, 22, 2, 582);
     			attr_dev(polyline1, "points", "9 18 15 12 9 6");
     			add_location(polyline1, file$6, 33, 44, 912);
@@ -3693,9 +3693,9 @@ var app = (function () {
     			attr_dev(svg1, "stroke-linejoin", "round");
     			attr_dev(svg1, "class", "feather feather-chevron-right");
     			add_location(svg1, file$6, 24, 4, 674);
-    			attr_dev(button1, "class", "svelte-1k30qnz");
+    			attr_dev(button1, "class", "svelte-1vk7esv");
     			add_location(button1, file$6, 23, 2, 598);
-    			attr_dev(div, "class", "bar svelte-1k30qnz");
+    			attr_dev(div, "class", "bar svelte-1vk7esv");
     			add_location(div, file$6, 8, 0, 174);
     		},
     		l: function claim(nodes) {
@@ -3946,7 +3946,7 @@ var app = (function () {
     		c: function create() {
     			div = element("div");
     			create_component(cluebar.$$.fragment);
-    			attr_dev(div, "class", "clues--stacked svelte-16o7lzd");
+    			attr_dev(div, "class", "clues--stacked svelte-1iflft1");
     			add_location(div, file$7, 34, 4, 888);
     		},
     		m: function mount(target, anchor) {
@@ -4066,7 +4066,7 @@ var app = (function () {
     		c: function create() {
     			section = element("section");
     			if_block.c();
-    			attr_dev(section, "class", "clues svelte-16o7lzd");
+    			attr_dev(section, "class", "clues svelte-1iflft1");
     			toggle_class(section, "stacked", /*stacked*/ ctx[2]);
     			add_location(section, file$7, 32, 0, 830);
     		},
@@ -5120,6 +5120,104 @@ var app = (function () {
       return res;
     }
 
+    var classic = {
+    	"text-font": "sans-serif",
+    	"bg": "transparent",
+    	"highlight-color": "#ffcc00",
+    	"secondary-color": "#ffec99",
+    	"order": "row",
+    	"clue-width": "16em",
+    	"clue-text-font": "var(--text-font, sans-serif)",
+    	"clue-text-color": "#1a1a1a",
+    	"clue-scrollbar-bg": "#efefef",
+    	"clue-scrollbar-fg": "#cdcdcd",
+    	"puzzle-border-color": "#1a1a1a",
+    	"cell-bg-color": "#fff",
+    	"cell-border-color": "#1a1a1a",
+    	"cell-void-color": "#1a1a1a",
+    	"cell-border-width": "0.01",
+    	"cell-text-font": "var(--text-font, sans-serif)",
+    	"cell-text-color": "#1a1a1a",
+    	"cell-text-size": "0.7em",
+    	"cell-text-weight": "700",
+    	"number-text-size": "0.3em",
+    	"number-text-weight": "400",
+    	"number-text-color": "#6a6a6a",
+    	"toolbar-text-font": "var(--text-font, sans-serif)",
+    	"toolbar-text-size": "0.85em",
+    	"toolbar-bg": "transparent",
+    	"toolbar-button-bg": "#efefef",
+    	"toolbar-button-bg-hover": "#cdcdcd",
+    	"toolbar-button-padding": "0.75em",
+    	"toolbar-button-border": "none",
+    	"toolbar-button-border-radius": "4px",
+    	"toolbar-button-text-color": "#6a6a6a",
+    	"toolbar-button-text-weight": "400",
+    	"message-text-font": "sans-serif",
+    	"message-text-size": "0.85em",
+    	"message-bg": "transparent",
+    	"message-button-bg": "#efefef",
+    	"message-button-bg-hover": "#cdcdcd",
+    	"message-button-padding": "0.75em",
+    	"message-button-border": "none",
+    	"message-button-border-radius": "4px",
+    	"message-button-text-color": "#6a6a6a",
+    	"message-button-text-weight": "400",
+    };
+
+    var dark = {
+    	"text-font": "sans-serif",
+    	"bg": "#1a1a1a",
+    	"highlight-color": "#066",
+    	"secondary-color": "#003d3d",
+    	"order": "row",
+    	"clue-width": "16em",
+    	"clue-text-font": "var(--text-font, sans-serif)",
+    	"clue-text-color": "#fff",
+    	"clue-scrollbar-bg": "#5a5a5a",
+    	"clue-scrollbar-fg": "#efefef",
+    	"puzzle-border-color": "#6a6a6a",
+    	"cell-bg-color": "#1a1a1a",
+    	"cell-border-color": "#6a6a6a",
+    	"cell-void-color": "#3a3a3a",
+    	"cell-border-width": "0.01",
+    	"cell-text-font": "var(--text-font, sans-serif)",
+    	"cell-text-color": "#fff",
+    	"cell-text-size": "0.7em",
+    	"cell-text-weight": "700",
+    	"number-text-size": "0.3em",
+    	"number-text-weight": "400",
+    	"number-text-color": "#cdcdcd",
+    	"toolbar-text-font": "var(--text-font, sans-serif)",
+    	"toolbar-text-size": "0.85em",
+    	"toolbar-bg": "transparent",
+    	"toolbar-button-bg": "#efefef",
+    	"toolbar-button-bg-hover": "#cdcdcd",
+    	"toolbar-button-padding": "0.75em",
+    	"toolbar-button-border": "none",
+    	"toolbar-button-border-radius": "4px",
+    	"toolbar-button-text-color": "#6a6a6a",
+    	"toolbar-button-text-weight": "400",
+    	"message-text-font": "sans-serif",
+    	"message-text-size": "0.85em",
+    	"message-bg": "transparent",
+    	"message-button-bg": "#efefef",
+    	"message-button-bg-hover": "#cdcdcd",
+    	"message-button-padding": "0.75em",
+    	"message-button-border": "none",
+    	"message-button-border-radius": "4px",
+    	"message-button-text-color": "#6a6a6a",
+    	"message-button-text-weight": "400",
+    };
+
+    const themes = { classic, dark };
+
+    Object.keys(themes).forEach((t) => {
+    	themes[t] = Object.keys(themes[t])
+    		.map((d) => `--${d}: var(--xd-${d}, ${themes[t][d]})`)
+    		.join(";");
+    });
+
     /* Users/russell/Documents/svelte-crossword/src/Crossword.svelte generated by Svelte v3.29.0 */
     const file$a = "Users/russell/Documents/svelte-crossword/src/Crossword.svelte";
     const get_complete_slot_changes = dirty => ({});
@@ -5131,7 +5229,7 @@ var app = (function () {
     	onReveal: /*onReveal*/ ctx[19]
     });
 
-    // (115:0) {#if validated}
+    // (116:0) {#if validated}
     function create_if_block$6(ctx) {
     	let article;
     	let t0;
@@ -5146,7 +5244,6 @@ var app = (function () {
     	let updating_focusedCellIndex_1;
     	let updating_focusedDirection_1;
     	let t2;
-    	let article_class_value;
     	let article_resize_listener;
     	let current;
     	const toolbar_slot_template = /*#slots*/ ctx[26].toolbar;
@@ -5168,7 +5265,7 @@ var app = (function () {
     	let clues_1_props = {
     		clues: /*clues*/ ctx[10],
     		cellIndexMap: /*cellIndexMap*/ ctx[13],
-    		stacked: /*stacked*/ ctx[17]
+    		stacked: /*stacked*/ ctx[16]
     	};
 
     	if (/*focusedCellIndex*/ ctx[7] !== void 0) {
@@ -5204,10 +5301,10 @@ var app = (function () {
     		clues: /*clues*/ ctx[10],
     		focusedCell: /*focusedCell*/ ctx[12],
     		isRevealing: /*isRevealing*/ ctx[8],
-    		isDisableHighlight: /*isDisableHighlight*/ ctx[16],
+    		isDisableHighlight: /*isDisableHighlight*/ ctx[15],
     		revealDuration: /*revealDuration*/ ctx[1],
     		showKeyboard: /*showKeyboard*/ ctx[4],
-    		stacked: /*stacked*/ ctx[17]
+    		stacked: /*stacked*/ ctx[16]
     	};
 
     	if (/*cells*/ ctx[11] !== void 0) {
@@ -5239,12 +5336,13 @@ var app = (function () {
     			create_component(puzzle.$$.fragment);
     			t2 = space();
     			if (if_block) if_block.c();
-    			attr_dev(div, "class", "play svelte-1ein5he");
-    			toggle_class(div, "stacked", /*stacked*/ ctx[17]);
-    			add_location(div, file$a, 120, 4, 3362);
-    			attr_dev(article, "class", article_class_value = "crossword " + /*themeClass*/ ctx[15] + " svelte-1ein5he");
+    			attr_dev(div, "class", "play svelte-1ic29sn");
+    			toggle_class(div, "stacked", /*stacked*/ ctx[16]);
+    			add_location(div, file$a, 121, 4, 3417);
+    			attr_dev(article, "class", "crossword svelte-1ic29sn");
+    			attr_dev(article, "style", /*inlineStyles*/ ctx[17]);
     			add_render_callback(() => /*article_elementresize_handler*/ ctx[33].call(article));
-    			add_location(article, file$a, 115, 2, 3143);
+    			add_location(article, file$a, 116, 2, 3188);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, article, anchor);
@@ -5277,7 +5375,7 @@ var app = (function () {
     			const clues_1_changes = {};
     			if (dirty[0] & /*clues*/ 1024) clues_1_changes.clues = /*clues*/ ctx[10];
     			if (dirty[0] & /*cellIndexMap*/ 8192) clues_1_changes.cellIndexMap = /*cellIndexMap*/ ctx[13];
-    			if (dirty[0] & /*stacked*/ 131072) clues_1_changes.stacked = /*stacked*/ ctx[17];
+    			if (dirty[0] & /*stacked*/ 65536) clues_1_changes.stacked = /*stacked*/ ctx[16];
 
     			if (!updating_focusedCellIndex && dirty[0] & /*focusedCellIndex*/ 128) {
     				updating_focusedCellIndex = true;
@@ -5302,10 +5400,10 @@ var app = (function () {
     			if (dirty[0] & /*clues*/ 1024) puzzle_changes.clues = /*clues*/ ctx[10];
     			if (dirty[0] & /*focusedCell*/ 4096) puzzle_changes.focusedCell = /*focusedCell*/ ctx[12];
     			if (dirty[0] & /*isRevealing*/ 256) puzzle_changes.isRevealing = /*isRevealing*/ ctx[8];
-    			if (dirty[0] & /*isDisableHighlight*/ 65536) puzzle_changes.isDisableHighlight = /*isDisableHighlight*/ ctx[16];
+    			if (dirty[0] & /*isDisableHighlight*/ 32768) puzzle_changes.isDisableHighlight = /*isDisableHighlight*/ ctx[15];
     			if (dirty[0] & /*revealDuration*/ 2) puzzle_changes.revealDuration = /*revealDuration*/ ctx[1];
     			if (dirty[0] & /*showKeyboard*/ 16) puzzle_changes.showKeyboard = /*showKeyboard*/ ctx[4];
-    			if (dirty[0] & /*stacked*/ 131072) puzzle_changes.stacked = /*stacked*/ ctx[17];
+    			if (dirty[0] & /*stacked*/ 65536) puzzle_changes.stacked = /*stacked*/ ctx[16];
 
     			if (!updating_cells && dirty[0] & /*cells*/ 2048) {
     				updating_cells = true;
@@ -5327,8 +5425,8 @@ var app = (function () {
 
     			puzzle.$set(puzzle_changes);
 
-    			if (dirty[0] & /*stacked*/ 131072) {
-    				toggle_class(div, "stacked", /*stacked*/ ctx[17]);
+    			if (dirty[0] & /*stacked*/ 65536) {
+    				toggle_class(div, "stacked", /*stacked*/ ctx[16]);
     			}
 
     			if (/*isComplete*/ ctx[14] && !/*isRevealing*/ ctx[8] && /*showCompleteMessage*/ ctx[2]) {
@@ -5354,8 +5452,8 @@ var app = (function () {
     				check_outros();
     			}
 
-    			if (!current || dirty[0] & /*themeClass*/ 32768 && article_class_value !== (article_class_value = "crossword " + /*themeClass*/ ctx[15] + " svelte-1ein5he")) {
-    				attr_dev(article, "class", article_class_value);
+    			if (!current || dirty[0] & /*inlineStyles*/ 131072) {
+    				attr_dev(article, "style", /*inlineStyles*/ ctx[17]);
     			}
     		},
     		i: function intro(local) {
@@ -5387,14 +5485,14 @@ var app = (function () {
     		block,
     		id: create_if_block$6.name,
     		type: "if",
-    		source: "(115:0) {#if validated}",
+    		source: "(116:0) {#if validated}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (117:67)        
+    // (118:67)        
     function fallback_block$1(ctx) {
     	let toolbar;
     	let current;
@@ -5437,14 +5535,14 @@ var app = (function () {
     		block,
     		id: fallback_block$1.name,
     		type: "fallback",
-    		source: "(117:67)        ",
+    		source: "(118:67)        ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (142:4) {#if isComplete && !isRevealing && showCompleteMessage}
+    // (143:4) {#if isComplete && !isRevealing && showCompleteMessage}
     function create_if_block_1$2(ctx) {
     	let completedmessage;
     	let current;
@@ -5494,14 +5592,14 @@ var app = (function () {
     		block,
     		id: create_if_block_1$2.name,
     		type: "if",
-    		source: "(142:4) {#if isComplete && !isRevealing && showCompleteMessage}",
+    		source: "(143:4) {#if isComplete && !isRevealing && showCompleteMessage}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (143:6) <CompletedMessage showConfetti="{showConfetti}">
+    // (144:6) <CompletedMessage showConfetti="{showConfetti}">
     function create_default_slot(ctx) {
     	let current;
     	const complete_slot_template = /*#slots*/ ctx[26].complete;
@@ -5543,7 +5641,7 @@ var app = (function () {
     		block,
     		id: create_default_slot.name,
     		type: "slot",
-    		source: "(143:6) <CompletedMessage showConfetti=\\\"{showConfetti}\\\">",
+    		source: "(144:6) <CompletedMessage showConfetti=\\\"{showConfetti}\\\">",
     		ctx
     	});
 
@@ -5779,6 +5877,7 @@ var app = (function () {
     		createCells,
     		validateClues,
     		fromPairs,
+    		themeStyles: themes,
     		data,
     		actions,
     		theme,
@@ -5810,9 +5909,9 @@ var app = (function () {
     		cellIndexMap,
     		percentCorrect,
     		isComplete,
-    		themeClass,
     		isDisableHighlight,
-    		stacked
+    		stacked,
+    		inlineStyles
     	});
 
     	$$self.$inject_state = $$props => {
@@ -5840,18 +5939,18 @@ var app = (function () {
     		if ("cellIndexMap" in $$props) $$invalidate(13, cellIndexMap = $$props.cellIndexMap);
     		if ("percentCorrect" in $$props) $$invalidate(37, percentCorrect = $$props.percentCorrect);
     		if ("isComplete" in $$props) $$invalidate(14, isComplete = $$props.isComplete);
-    		if ("themeClass" in $$props) $$invalidate(15, themeClass = $$props.themeClass);
-    		if ("isDisableHighlight" in $$props) $$invalidate(16, isDisableHighlight = $$props.isDisableHighlight);
-    		if ("stacked" in $$props) $$invalidate(17, stacked = $$props.stacked);
+    		if ("isDisableHighlight" in $$props) $$invalidate(15, isDisableHighlight = $$props.isDisableHighlight);
+    		if ("stacked" in $$props) $$invalidate(16, stacked = $$props.stacked);
+    		if ("inlineStyles" in $$props) $$invalidate(17, inlineStyles = $$props.inlineStyles);
     	};
 
     	let focusedCell;
     	let cellIndexMap;
     	let percentCorrect;
     	let isComplete;
-    	let themeClass;
     	let isDisableHighlight;
     	let stacked;
+    	let inlineStyles;
 
     	if ($$props && "$$inject" in $$props) {
     		$$self.$inject_state($$props.$$inject);
@@ -5878,12 +5977,8 @@ var app = (function () {
     			 $$invalidate(14, isComplete = percentCorrect == 1);
     		}
 
-    		if ($$self.$$.dirty[0] & /*theme*/ 8388608) {
-    			 $$invalidate(15, themeClass = theme ? `theme-${theme}` : "");
-    		}
-
     		if ($$self.$$.dirty[0] & /*isComplete, disableHighlight*/ 33570816) {
-    			 $$invalidate(16, isDisableHighlight = isComplete && disableHighlight);
+    			 $$invalidate(15, isDisableHighlight = isComplete && disableHighlight);
     		}
 
     		if ($$self.$$.dirty[0] & /*cells*/ 2048) {
@@ -5891,7 +5986,11 @@ var app = (function () {
     		}
 
     		if ($$self.$$.dirty[0] & /*width, breakpoint*/ 16777248) {
-    			 $$invalidate(17, stacked = width < breakpoint);
+    			 $$invalidate(16, stacked = width < breakpoint);
+    		}
+
+    		if ($$self.$$.dirty[0] & /*theme*/ 8388608) {
+    			 $$invalidate(17, inlineStyles = themes[theme]);
     		}
     	};
 
@@ -5911,9 +6010,9 @@ var app = (function () {
     		focusedCell,
     		cellIndexMap,
     		isComplete,
-    		themeClass,
     		isDisableHighlight,
     		stacked,
+    		inlineStyles,
     		onClear,
     		onReveal,
     		onToolbarEvent,
@@ -7278,42 +7377,42 @@ var app = (function () {
     			p5.textContent = "TBD.";
     			t40 = space();
     			create_component(crossword4.$$.fragment);
-    			attr_dev(h1, "class", "svelte-powwth");
+    			attr_dev(h1, "class", "svelte-1v4ih91");
     			add_location(h1, file$b, 14, 4, 373);
     			attr_dev(a0, "href", "https://svelte.dev");
     			add_location(a0, file$b, 17, 6, 445);
     			attr_dev(a1, "href", "https://github.com/russellgoldenberg/svelte-crossword#svelte-crossword");
     			add_location(a1, file$b, 18, 6, 509);
-    			attr_dev(p0, "class", "svelte-powwth");
+    			attr_dev(p0, "class", "svelte-1v4ih91");
     			add_location(p0, file$b, 15, 4, 403);
-    			attr_dev(div0, "class", "intro svelte-powwth");
+    			attr_dev(div0, "class", "intro svelte-1v4ih91");
     			add_location(div0, file$b, 13, 2, 349);
-    			attr_dev(h20, "class", "svelte-powwth");
+    			attr_dev(h20, "class", "svelte-1v4ih91");
     			add_location(h20, file$b, 25, 6, 683);
     			attr_dev(a2, "href", "https://www.nytimes.com/crosswords/game/daily/2020/10/21");
     			add_location(a2, file$b, 28, 8, 728);
-    			attr_dev(p1, "class", "svelte-powwth");
+    			attr_dev(p1, "class", "svelte-1v4ih91");
     			add_location(p1, file$b, 26, 6, 706);
-    			attr_dev(div1, "class", "info svelte-powwth");
+    			attr_dev(div1, "class", "info svelte-1v4ih91");
     			add_location(div1, file$b, 24, 4, 658);
     			attr_dev(section0, "id", "default");
-    			attr_dev(section0, "class", "svelte-powwth");
+    			attr_dev(section0, "class", "svelte-1v4ih91");
     			add_location(section0, file$b, 23, 2, 631);
-    			attr_dev(h21, "class", "svelte-powwth");
+    			attr_dev(h21, "class", "svelte-1v4ih91");
     			add_location(h21, file$b, 38, 6, 1014);
     			attr_dev(a3, "href", "https://www.nytimes.com/crosswords/game/mini/2020/10/21");
     			add_location(a3, file$b, 41, 8, 1058);
-    			attr_dev(p2, "class", "svelte-powwth");
+    			attr_dev(p2, "class", "svelte-1v4ih91");
     			add_location(p2, file$b, 39, 6, 1036);
-    			attr_dev(div2, "class", "info svelte-powwth");
+    			attr_dev(div2, "class", "info svelte-1v4ih91");
     			add_location(div2, file$b, 37, 4, 989);
     			attr_dev(section1, "id", "mini");
     			set_style(section1, "max-width", "480px");
-    			attr_dev(section1, "class", "svelte-powwth");
+    			attr_dev(section1, "class", "svelte-1v4ih91");
     			add_location(section1, file$b, 36, 2, 939);
-    			attr_dev(h22, "class", "svelte-powwth");
+    			attr_dev(h22, "class", "svelte-1v4ih91");
     			add_location(h22, file$b, 51, 6, 1362);
-    			attr_dev(p3, "class", "svelte-powwth");
+    			attr_dev(p3, "class", "svelte-1v4ih91");
     			add_location(p3, file$b, 52, 6, 1384);
     			option0.__value = "classic";
     			option0.value = option0.__value;
@@ -7329,32 +7428,31 @@ var app = (function () {
     			add_location(option3, file$b, 57, 8, 1623);
     			if (/*theme*/ ctx[1] === void 0) add_render_callback(() => /*select_change_handler*/ ctx[2].call(select));
     			add_location(select, file$b, 53, 6, 1446);
-    			attr_dev(div3, "class", "info svelte-powwth");
+    			attr_dev(div3, "class", "info svelte-1v4ih91");
     			add_location(div3, file$b, 50, 4, 1337);
     			add_location(div4, file$b, 60, 4, 1693);
     			attr_dev(section2, "id", "themes");
-    			attr_dev(section2, "class", "svelte-powwth");
+    			attr_dev(section2, "class", "svelte-1v4ih91");
     			add_location(section2, file$b, 49, 2, 1311);
-    			attr_dev(h23, "class", "svelte-powwth");
+    			attr_dev(h23, "class", "svelte-1v4ih91");
     			add_location(h23, file$b, 70, 6, 1933);
-    			attr_dev(p4, "class", "svelte-powwth");
+    			attr_dev(p4, "class", "svelte-1v4ih91");
     			add_location(p4, file$b, 71, 6, 1969);
-    			attr_dev(div5, "class", "info svelte-powwth");
+    			attr_dev(div5, "class", "info svelte-1v4ih91");
     			add_location(div5, file$b, 69, 4, 1908);
     			attr_dev(section3, "id", "simple-customization");
-    			attr_dev(section3, "class", "svelte-powwth");
+    			attr_dev(section3, "class", "svelte-1v4ih91");
     			toggle_class(section3, "is-revealed", /*revealedUSA*/ ctx[0]);
     			add_location(section3, file$b, 68, 2, 1834);
-    			attr_dev(h24, "class", "svelte-powwth");
+    			attr_dev(h24, "class", "svelte-1v4ih91");
     			add_location(h24, file$b, 81, 6, 2214);
-    			attr_dev(p5, "class", "svelte-powwth");
+    			attr_dev(p5, "class", "svelte-1v4ih91");
     			add_location(p5, file$b, 82, 6, 2252);
-    			attr_dev(div6, "class", "info svelte-powwth");
+    			attr_dev(div6, "class", "info svelte-1v4ih91");
     			add_location(div6, file$b, 80, 4, 2189);
     			attr_dev(section4, "id", "advanced-customization");
-    			attr_dev(section4, "class", "svelte-powwth");
+    			attr_dev(section4, "class", "svelte-1v4ih91");
     			add_location(section4, file$b, 79, 2, 2147);
-    			attr_dev(article, "class", "svelte-powwth");
     			add_location(article, file$b, 12, 0, 337);
     		},
     		l: function claim(nodes) {

@@ -21,23 +21,23 @@
     padding: 1em 0;
     display: flex;
     justify-content: flex-end;
-    font-family: var(--toolbar-font, -apple-system, Helvetica, sans-serif);
-    font-size: var(--toolbar-font-size, 0.85em);
-    background-color: var(--toolbar-bg, transparent);
+    font-family: var(--toolbar-text-font);
+    font-size: var(--toolbar-text-size);
+    background-color: var(--toolbar-bg);
   }
   button {
     cursor: pointer;
     margin-left: 1em;
     font-size: 1em;
-    background-color: var(--toolbar-button-bg, #efefef);
-    border-radius: var(--toolbar-button-border-radius, 4px);
-    color: var(--toolbar-button-color, #6a6a6a);
-    padding: var(--toolbar-button-padding, 0.75em);
-    border: var(--toolbar-button-border, none);
-    font-weight: var(--toolbar-button-font-weight, 400);
+    background-color: var(--toolbar-button-bg);
+    border-radius: var(--toolbar-button-border-radius);
+    color: var(--toolbar-button-color);
+    padding: var(--toolbar-button-padding);
+    border: var(--toolbar-button-border);
+    font-weight: var(--toolbar-button-text-weight);
     transition: background-color 150ms;
   }
   button:hover {
-    background-color: var(--toolbar-button-bg-hover, #cdcdcd);
+    background-color: var(--toolbar-button-bg-hover);
   }
 </style>

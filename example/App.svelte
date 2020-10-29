@@ -103,9 +103,6 @@
 </article>
 
 <style>
-  article {
-    font-family: sans-serif;
-  }
   .intro {
     text-align: center;
     max-width: 640px;

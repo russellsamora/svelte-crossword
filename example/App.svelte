@@ -61,10 +61,7 @@
       </select>
     </div>
     <div>
-      <Crossword
-        data="{dataOreo}"
-        theme="{theme}"
-        showCompleteMessage="{false}" />
+      <Crossword data="{dataOreo}" theme="{theme}" />
     </div>
   </section>
 

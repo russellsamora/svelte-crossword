@@ -5,5 +5,6 @@ export default {
 	"main-color": "#1a1a1a",
 	"bg-color": "#fff",
 	"accent-color": "#efefef",
+	"scrollbar-color": "#cdcdcd",
 	"order": "row"
 };

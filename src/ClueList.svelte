@@ -52,10 +52,10 @@
   }
 
   ::-moz-scrollbar {
-    width: 8px;
+    width: 9px;
   }
   ::-webkit-scrollbar {
-    width: 8px;
+    width: 9px;
   }
 
   ::-moz-scrollbar-track {
@@ -70,15 +70,15 @@
   }
   ::scrollbar-thumb {
     border-radius: 8px;
-    background-color: var(--main-color);
+    background-color: var(--scrollbar-color);
     box-shadow: none;
   }
   ::-moz-scrollbar-thumb {
-    background-color: var(--main-color);
+    background-color: var(--scrollbar-color);
     border-radius: 6px;
   }
   ::-webkit-scrollbar-thumb {
-    background-color: var(--main-color);
+    background-color: var(--scrollbar-color);
     border-radius: 6px;
   }
 </style>

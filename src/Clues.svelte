@@ -12,11 +12,12 @@
   export let isLoaded;
 
   $: focusedClueNumbers = focusedCell.clueNumbers || {};
-  $: currentClue = clues.find(
-    (c) =>
-      c.direction === focusedDirection &&
-      c.number === focusedClueNumbers[focusedDirection]
-  );
+  $: currentClue =
+    clues.find(
+      c =>
+        c.direction === focusedDirection &&
+        c.number === focusedClueNumbers[focusedDirection]
+    ) || {};
 
   function onClueFocus({ direction, id }) {
     focusedDirection = direction;
@@ -34,18 +35,18 @@
 
 <section class="clues" class:stacked class:is-loaded="{isLoaded}">
   <div class="clues--stacked">
-    <ClueBar currentClue="{currentClue}" on:nextClue="{onNextClue}" />
+    <ClueBar {currentClue} on:nextClue="{onNextClue}" />
   </div>
 
   <div class="clues--list">
     {#each ['across', 'down'] as direction}
       <ClueList
-        direction="{direction}"
-        focusedClueNumbers="{focusedClueNumbers}"
-        clues="{clues.filter((d) => d.direction === direction)}"
+        {direction}
+        {focusedClueNumbers}
+        clues="{clues.filter(d => d.direction === direction)}"
         isDirectionFocused="{focusedDirection === direction}"
-        isDisableHighlight="{isDisableHighlight}"
-        onClueFocus="{onClueFocus}" />
+        {isDisableHighlight}
+        {onClueFocus} />
     {/each}
   </div>
 </section>

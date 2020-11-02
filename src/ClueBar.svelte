@@ -3,6 +3,7 @@
   const dispatch = createEventDispatcher();
 
   export let currentClue = {};
+  $: console.log(currentClue);
   $: clue = currentClue["clue"];
   $: custom = currentClue["custom"] || "";
 </script>

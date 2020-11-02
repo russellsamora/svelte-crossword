@@ -122,7 +122,6 @@
 
   function onFocusClueDiff(diff = 1) {
     const currentNumber = focusedCell.clueNumbers[focusedDirection];
-    console.log(clues, sortedCellsInDirection);
     let nextCluesInDirection = clues.filter(
       clue =>
         !clue.isFilled &&

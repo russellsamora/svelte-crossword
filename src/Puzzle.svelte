@@ -19,12 +19,14 @@
   export let showKeyboard;
   export let isLoaded;
 
+  let element;
   let cellsHistoryIndex = 0;
   let cellsHistory = [];
   let focusedCellIndexHistoryIndex = 0;
   let focusedCellIndexHistory = [];
   let secondarilyFocusedCells = [];
   let isMobile = false;
+  let isPuzzleFocused = false;
 
   const numberOfStatesInHistory = 10;
   $: w = Math.max(...cells.map(d => d.x)) + 1;
@@ -93,7 +95,7 @@
   }
 
   function onFocusCell(index) {
-    if (index == focusedCellIndex) {
+    if (isPuzzleFocused && index == focusedCellIndex) {
       onFlipDirection();
     } else {
       focusedCellIndex = index;
@@ -173,9 +175,20 @@
     const value = detail === "delete" ? "" : detail;
     onCellUpdate(focusedCellIndex, value, diff);
   }
+
+  function onClick() {
+    isPuzzleFocused = element.contains(document.activeElement);
+    console.log(isPuzzleFocused, document.activeElement);
+  }
 </script>
 
-<section class="puzzle" class:stacked class:is-loaded="{isLoaded}">
+<svelte:window on:click="{onClick}" />
+
+<section
+  class="puzzle"
+  class:stacked
+  class:is-loaded="{isLoaded}"
+  bind:this="{element}">
   <svg viewBox="0 0 {w} {h}">
     {#each cells as { x, y, value, index, number, custom }}
       <Cell

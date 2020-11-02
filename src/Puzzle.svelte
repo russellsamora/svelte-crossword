@@ -27,8 +27,8 @@
   let isMobile = false;
 
   const numberOfStatesInHistory = 10;
-  $: w = Math.max(...cells.map((d) => d.x)) + 1;
-  $: h = Math.max(...cells.map((d) => d.y)) + 1;
+  $: w = Math.max(...cells.map(d => d.x)) + 1;
+  $: h = Math.max(...cells.map(d => d.y)) + 1;
   $: keyboardVisible =
     typeof showKeyboard === "boolean" ? showKeyboard : isMobile;
 
@@ -45,16 +45,30 @@
     secondarilyFocusedCells = getSecondarilyFocusedCells({
       cells,
       focusedDirection,
-      focusedCell,
+      focusedCell
     });
   }
 
   function onCellUpdate(index, newValue, diff = 1) {
     const doReplaceFilledCells = !!cells[index].value;
+
+    const dimension = focusedDirection == "across" ? "x" : "y";
+    const clueIndex = cells[index].clueNumbers[focusedDirection];
+    const cellsInClue = cells.filter(
+      cell =>
+        cell.clueNumbers[focusedDirection] == clueIndex &&
+        (doReplaceFilledCells || !cell.value)
+    );
+    const cellsInCluePositions = cellsInClue
+      .map(cell => cell[dimension])
+      .filter(Number.isFinite);
+    const isAtEndOfClue =
+      cells[index][dimension] == Math.max(...cellsInCluePositions);
+
     const newCells = [
       ...cells.slice(0, index),
       { ...cells[index], value: newValue },
-      ...cells.slice(index + 1),
+      ...cells.slice(index + 1)
     ];
     cellsHistory = [newCells, ...cellsHistory.slice(cellsHistoryIndex)].slice(
       0,
@@ -63,7 +77,11 @@
     cellsHistoryIndex = 0;
     cells = newCells;
 
-    onFocusCellDiff(diff, doReplaceFilledCells);
+    if (isAtEndOfClue) {
+      onFocusClueDiff(diff);
+    } else {
+      onFocusCellDiff(diff, doReplaceFilledCells);
+    }
   }
 
   function onHistoricalChange(diff) {
@@ -81,18 +99,18 @@
       focusedCellIndex = index;
       focusedCellIndexHistory = [
         index,
-        ...focusedCellIndexHistory.slice(0, numberOfStatesInHistory),
+        ...focusedCellIndexHistory.slice(0, numberOfStatesInHistory)
       ];
       focusedCellIndexHistoryIndex = 0;
     }
   }
 
   function onFocusCellDiff(diff, doReplaceFilledCells = true) {
-    const sortedCellsInDirectionFiltered = sortedCellsInDirection.filter((d) =>
+    const sortedCellsInDirectionFiltered = sortedCellsInDirection.filter(d =>
       doReplaceFilledCells ? true : !d.value
     );
     const currentCellIndex = sortedCellsInDirectionFiltered.findIndex(
-      (d) => d.index == focusedCellIndex
+      d => d.index == focusedCellIndex
     );
     const nextCellIndex = (
       sortedCellsInDirectionFiltered[currentCellIndex + diff] || {}
@@ -104,11 +122,14 @@
 
   function onFocusClueDiff(diff = 1) {
     const currentNumber = focusedCell.clueNumbers[focusedDirection];
+    console.log(clues, sortedCellsInDirection);
     let nextCluesInDirection = clues.filter(
-      (clue) =>
+      clue =>
+        !clue.isFilled &&
         (diff > 0
           ? clue.number > currentNumber
-          : clue.number < currentNumber) && clue.direction == focusedDirection
+          : clue.number < currentNumber) &&
+        clue.direction == focusedDirection
     );
     if (diff < 0) {
       nextCluesInDirection = nextCluesInDirection.reverse();
@@ -116,11 +137,14 @@
     let nextClue = nextCluesInDirection[Math.abs(diff) - 1];
     if (!nextClue) {
       onFlipDirection();
-      nextClue = clues.filter((clue) => clue.direction == focusedDirection)[0];
+      nextClue = clues.filter(clue => clue.direction == focusedDirection)[0];
     }
-    focusedCellIndex = cells.findIndex(
-      (cell) => cell.x == nextClue.x && cell.y == nextClue.y
-    );
+    const nextFocusedCell =
+      sortedCellsInDirection.find(
+        cell =>
+          !cell.value && cell.clueNumbers[focusedDirection] == nextClue.number
+      ) || {};
+    focusedCellIndex = nextFocusedCell.index || 0;
   }
 
   function onMoveFocus(direction, diff) {
@@ -132,7 +156,7 @@
         diff,
         cells,
         direction,
-        focusedCell,
+        focusedCell
       });
       if (!nextCell) return;
       onFocusCell(nextCell.index);
@@ -156,27 +180,27 @@
   <svg viewBox="0 0 {w} {h}">
     {#each cells as { x, y, value, index, number, custom }}
       <Cell
-        x="{x}"
-        y="{y}"
-        index="{index}"
-        value="{value}"
-        number="{number}"
-        custom="{custom}"
+        {x}
+        {y}
+        {index}
+        {value}
+        {number}
+        {custom}
         changeDelay="{isRevealing ? (revealDuration / cells.length) * index : 0}"
-        isRevealing="{isRevealing}"
+        {isRevealing}
         isFocused="{focusedCellIndex == index && !isDisableHighlight}"
         isSecondarilyFocused="{secondarilyFocusedCells.includes(index) && !isDisableHighlight}"
-        onFocusCell="{onFocusCell}"
-        onCellUpdate="{onCellUpdate}"
-        onFocusClueDiff="{onFocusClueDiff}"
-        onMoveFocus="{onMoveFocus}"
-        onFlipDirection="{onFlipDirection}"
-        onHistoricalChange="{onHistoricalChange}" />
+        {onFocusCell}
+        {onCellUpdate}
+        {onFocusClueDiff}
+        {onMoveFocus}
+        {onFlipDirection}
+        {onHistoricalChange} />
     {/each}
   </svg>
 </section>
-
-'{#if keyboardVisible}
+'
+{#if keyboardVisible}
   <div class="keyboard">
     <Keyboard on:keydown="{onKeydown}" />
   </div>

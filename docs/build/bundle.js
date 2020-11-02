@@ -766,7 +766,7 @@ var app = (function () {
     			this.h();
     		},
     		h() {
-    			attr(button, "class", "svelte-pgtgr0");
+    			attr(button, "class", "svelte-e4q29q");
     		},
     		m(target, anchor) {
     			insert(target, button, anchor);
@@ -807,7 +807,7 @@ var app = (function () {
     			this.h();
     		},
     		h() {
-    			attr(button, "class", "svelte-pgtgr0");
+    			attr(button, "class", "svelte-e4q29q");
     		},
     		m(target, anchor) {
     			insert(target, button, anchor);
@@ -906,7 +906,7 @@ var app = (function () {
     			this.h();
     		},
     		h() {
-    			attr(div, "class", "toolbar svelte-pgtgr0");
+    			attr(div, "class", "toolbar svelte-e4q29q");
     		},
     		m(target, anchor) {
     			insert(target, div, anchor);
@@ -1540,7 +1540,7 @@ var app = (function () {
     			this.h();
     		},
     		h() {
-    			attr(text_1, "class", "value svelte-wk9yyo");
+    			attr(text_1, "class", "value svelte-nsveje");
     			attr(text_1, "x", "0.5");
     			attr(text_1, "y", "0.9");
     			attr(text_1, "dominant-baseline", "auto");
@@ -1657,13 +1657,13 @@ var app = (function () {
     		h() {
     			attr(rect, "width", "1");
     			attr(rect, "height", "1");
-    			attr(rect, "class", "svelte-wk9yyo");
-    			attr(text_1, "class", "number svelte-wk9yyo");
+    			attr(rect, "class", "svelte-nsveje");
+    			attr(text_1, "class", "number svelte-nsveje");
     			attr(text_1, "x", "0.1");
     			attr(text_1, "y", "0.1");
     			attr(text_1, "dominant-baseline", "hanging");
     			attr(text_1, "text-anchor", "start");
-    			attr(g, "class", g_class_value = "cell " + /*custom*/ ctx[4] + " cell-" + /*x*/ ctx[0] + "-" + /*y*/ ctx[1] + " svelte-wk9yyo");
+    			attr(g, "class", g_class_value = "cell " + /*custom*/ ctx[4] + " cell-" + /*x*/ ctx[0] + "-" + /*y*/ ctx[1] + " svelte-nsveje");
     			attr(g, "transform", g_transform_value = `translate(${/*x*/ ctx[0]}, ${/*y*/ ctx[1]})`);
     			attr(g, "tabindex", "0");
     			toggle_class(g, "is-focused", /*isFocused*/ ctx[7]);
@@ -1713,7 +1713,7 @@ var app = (function () {
 
     			if (!current || dirty & /*number*/ 8) set_data(t, /*number*/ ctx[3]);
 
-    			if (!current || dirty & /*custom, x, y*/ 19 && g_class_value !== (g_class_value = "cell " + /*custom*/ ctx[4] + " cell-" + /*x*/ ctx[0] + "-" + /*y*/ ctx[1] + " svelte-wk9yyo")) {
+    			if (!current || dirty & /*custom, x, y*/ 19 && g_class_value !== (g_class_value = "cell " + /*custom*/ ctx[4] + " cell-" + /*x*/ ctx[0] + "-" + /*y*/ ctx[1] + " svelte-nsveje")) {
     				attr(g, "class", g_class_value);
     			}
 
@@ -2041,7 +2041,7 @@ var app = (function () {
     			this.h();
     		},
     		h() {
-    			attr(div, "class", "keyboard svelte-dz5ltn");
+    			attr(div, "class", "keyboard svelte-15vltml");
     		},
     		m(target, anchor) {
     			insert(target, div, anchor);
@@ -2118,8 +2118,8 @@ var app = (function () {
     		},
     		h() {
     			attr(svg, "viewBox", svg_viewBox_value = "0 0 " + /*w*/ ctx[8] + " " + /*h*/ ctx[9]);
-    			attr(svg, "class", "svelte-dz5ltn");
-    			attr(section, "class", "puzzle svelte-dz5ltn");
+    			attr(svg, "class", "svelte-15vltml");
+    			attr(section, "class", "puzzle svelte-15vltml");
     			toggle_class(section, "stacked", /*stacked*/ ctx[4]);
     			toggle_class(section, "is-loaded", /*isLoaded*/ ctx[6]);
     		},
@@ -2492,7 +2492,7 @@ var app = (function () {
     			this.h();
     		},
     		h() {
-    			attr(button, "class", button_class_value = "clue " + /*custom*/ ctx[2] + " svelte-18jb96c");
+    			attr(button, "class", button_class_value = "clue " + /*custom*/ ctx[2] + " svelte-1bqaeqz");
     			toggle_class(button, "is-disable-highlight", /*isDisableHighlight*/ ctx[6]);
     			toggle_class(button, "is-number-focused", /*isNumberFocused*/ ctx[4]);
     			toggle_class(button, "is-direction-focused", /*isDirectionFocused*/ ctx[5]);
@@ -2522,7 +2522,7 @@ var app = (function () {
     			if (dirty & /*number*/ 1) set_data(t0, /*number*/ ctx[0]);
     			if (dirty & /*clue*/ 2) set_data(t2, /*clue*/ ctx[1]);
 
-    			if (dirty & /*custom*/ 4 && button_class_value !== (button_class_value = "clue " + /*custom*/ ctx[2] + " svelte-18jb96c")) {
+    			if (dirty & /*custom*/ 4 && button_class_value !== (button_class_value = "clue " + /*custom*/ ctx[2] + " svelte-1bqaeqz")) {
     				attr(button, "class", button_class_value);
     			}
 
@@ -2749,9 +2749,9 @@ var app = (function () {
     			this.h();
     		},
     		h() {
-    			attr(p, "class", "svelte-un0u0a");
-    			attr(ul, "class", "svelte-un0u0a");
-    			attr(div, "class", "list svelte-un0u0a");
+    			attr(p, "class", "svelte-1eoups6");
+    			attr(ul, "class", "svelte-1eoups6");
+    			attr(div, "class", "list svelte-1eoups6");
     		},
     		m(target, anchor) {
     			insert(target, p, anchor);
@@ -2973,8 +2973,8 @@ var app = (function () {
     			attr(svg0, "stroke-linecap", "round");
     			attr(svg0, "stroke-linejoin", "round");
     			attr(svg0, "class", "feather feather-chevron-left");
-    			attr(button0, "class", "svelte-1vk7esv");
-    			attr(p, "class", "svelte-1vk7esv");
+    			attr(button0, "class", "svelte-1rm1yc6");
+    			attr(p, "class", "svelte-1rm1yc6");
     			attr(polyline1, "points", "9 18 15 12 9 6");
     			attr(svg1, "width", "24");
     			attr(svg1, "height", "24");
@@ -2985,8 +2985,8 @@ var app = (function () {
     			attr(svg1, "stroke-linecap", "round");
     			attr(svg1, "stroke-linejoin", "round");
     			attr(svg1, "class", "feather feather-chevron-right");
-    			attr(button1, "class", "svelte-1vk7esv");
-    			attr(div, "class", div_class_value = "bar " + /*custom*/ ctx[2] + " svelte-1vk7esv");
+    			attr(button1, "class", "svelte-1rm1yc6");
+    			attr(div, "class", div_class_value = "bar " + /*custom*/ ctx[2] + " svelte-1rm1yc6");
     		},
     		m(target, anchor) {
     			insert(target, div, anchor);
@@ -3013,7 +3013,7 @@ var app = (function () {
     		p(ctx, [dirty]) {
     			if (dirty & /*clue*/ 2) set_data(t1, /*clue*/ ctx[1]);
 
-    			if (dirty & /*custom*/ 4 && div_class_value !== (div_class_value = "bar " + /*custom*/ ctx[2] + " svelte-1vk7esv")) {
+    			if (dirty & /*custom*/ 4 && div_class_value !== (div_class_value = "bar " + /*custom*/ ctx[2] + " svelte-1rm1yc6")) {
     				attr(div, "class", div_class_value);
     			}
     		},
@@ -3046,7 +3046,7 @@ var app = (function () {
     		}
 
     		if ($$self.$$.dirty & /*currentClue*/ 1) {
-    			 $$invalidate(2, custom = currentClue["custom"]);
+    			 $$invalidate(2, custom = currentClue["custom"] || "");
     		}
     	};
 
@@ -3181,9 +3181,9 @@ var app = (function () {
     			this.h();
     		},
     		h() {
-    			attr(div0, "class", "clues--stacked svelte-1q4aw8e");
-    			attr(div1, "class", "clues--list svelte-1q4aw8e");
-    			attr(section, "class", "clues svelte-1q4aw8e");
+    			attr(div0, "class", "clues--stacked svelte-fisq29");
+    			attr(div1, "class", "clues--list svelte-fisq29");
+    			attr(section, "class", "clues svelte-fisq29");
     			toggle_class(section, "stacked", /*stacked*/ ctx[2]);
     			toggle_class(section, "is-loaded", /*isLoaded*/ ctx[4]);
     		},
@@ -3623,11 +3623,11 @@ var app = (function () {
     			this.h();
     		},
     		h() {
-    			attr(div0, "class", "message svelte-9a7qrw");
-    			attr(button, "class", "svelte-9a7qrw");
-    			attr(div1, "class", "content svelte-9a7qrw");
-    			attr(div2, "class", "completed svelte-9a7qrw");
-    			attr(div3, "class", "curtain svelte-9a7qrw");
+    			attr(div0, "class", "message svelte-1u461hl");
+    			attr(button, "class", "svelte-1u461hl");
+    			attr(div1, "class", "content svelte-1u461hl");
+    			attr(div2, "class", "completed svelte-1u461hl");
+    			attr(div3, "class", "curtain svelte-1u461hl");
     		},
     		m(target, anchor) {
     			insert(target, div2, anchor);
@@ -3743,7 +3743,7 @@ var app = (function () {
     			this.h();
     		},
     		h() {
-    			attr(h3, "class", "svelte-9a7qrw");
+    			attr(h3, "class", "svelte-1u461hl");
     		},
     		m(target, anchor) {
     			insert(target, h3, anchor);
@@ -3776,7 +3776,7 @@ var app = (function () {
     			this.h();
     		},
     		h() {
-    			attr(div, "class", "confetti svelte-9a7qrw");
+    			attr(div, "class", "confetti svelte-1u461hl");
     		},
     		m(target, anchor) {
     			insert(target, div, anchor);
@@ -4044,145 +4044,36 @@ var app = (function () {
     }
 
     var classic = {
-    	"text-font": "sans-serif",
-    	"bg": "transparent",
-    	"highlight-color": "#ffcc00",
-    	"secondary-color": "#ffec99",
-    	"order": "row",
-    	"clue-width": "16em",
-    	"clue-text-font": "var(--text-font, sans-serif)",
-    	"clue-text-color": "#1a1a1a",
-    	"clue-scrollbar-bg": "#efefef",
-    	"clue-scrollbar-fg": "#cdcdcd",
-    	"puzzle-border-color": "#1a1a1a",
-    	"cell-bg-color": "#fff",
-    	"cell-border-color": "#1a1a1a",
-    	"cell-void-color": "#1a1a1a",
-    	"cell-border-width": "0.01",
-    	"cell-text-font": "var(--text-font, sans-serif)",
-    	"cell-text-color": "#1a1a1a",
-    	"cell-text-size": "0.7em",
-    	"cell-text-weight": "700",
-    	"number-text-size": "0.3em",
-    	"number-text-weight": "400",
-    	"number-text-color": "#6a6a6a",
-    	"toolbar-text-font": "var(--text-font, sans-serif)",
-    	"toolbar-text-size": "0.85em",
-    	"toolbar-bg": "transparent",
-    	"toolbar-button-bg": "#efefef",
-    	"toolbar-button-bg-hover": "#cdcdcd",
-    	"toolbar-button-padding": "0.75em",
-    	"toolbar-button-border": "none",
-    	"toolbar-button-border-radius": "4px",
-    	"toolbar-button-text-color": "#6a6a6a",
-    	"toolbar-button-text-weight": "400",
-    	"message-text-font": "sans-serif",
-    	"message-text-size": "0.85em",
-    	"message-bg": "transparent",
-    	"message-button-bg": "#efefef",
-    	"message-button-bg-hover": "#cdcdcd",
-    	"message-button-padding": "0.75em",
-    	"message-button-border": "none",
-    	"message-button-border-radius": "4px",
-    	"message-button-text-color": "#6a6a6a",
-    	"message-button-text-weight": "400",
+    	"font": "sans-serif",
+    	"primary-highlight-color": "#ffcc00",
+    	"secondary-highlight-color": "#ffec99",
+    	"main-color": "#1a1a1a",
+    	"bg-color": "#fff",
+    	"accent-color": "#efefef",
+    	"order": "row"
     };
 
     var dark = {
-    	"text-font": "sans-serif",
-    	"bg": "#1a1a1a",
-    	"highlight-color": "#066",
-    	"secondary-color": "#003d3d",
-    	"order": "row",
-    	"clue-width": "16em",
-    	"clue-text-font": "var(--text-font, sans-serif)",
-    	"clue-text-color": "#fff",
-    	"clue-scrollbar-bg": "#5a5a5a",
-    	"clue-scrollbar-fg": "#efefef",
-    	"puzzle-border-color": "#6a6a6a",
-    	"cell-bg-color": "#1a1a1a",
-    	"cell-border-color": "#6a6a6a",
-    	"cell-void-color": "#3a3a3a",
-    	"cell-border-width": "0.01",
-    	"cell-text-font": "var(--text-font, sans-serif)",
-    	"cell-text-color": "#fff",
-    	"cell-text-size": "0.7em",
-    	"cell-text-weight": "700",
-    	"number-text-size": "0.3em",
-    	"number-text-weight": "400",
-    	"number-text-color": "#cdcdcd",
-    	"toolbar-text-font": "var(--text-font, sans-serif)",
-    	"toolbar-text-size": "0.85em",
-    	"toolbar-bg": "transparent",
-    	"toolbar-button-bg": "#efefef",
-    	"toolbar-button-bg-hover": "#cdcdcd",
-    	"toolbar-button-padding": "0.75em",
-    	"toolbar-button-border": "none",
-    	"toolbar-button-border-radius": "4px",
-    	"toolbar-button-text-color": "#6a6a6a",
-    	"toolbar-button-text-weight": "400",
-    	"message-text-font": "sans-serif",
-    	"message-text-size": "0.85em",
-    	"message-bg": "transparent",
-    	"message-button-bg": "#efefef",
-    	"message-button-bg-hover": "#cdcdcd",
-    	"message-button-padding": "0.75em",
-    	"message-button-border": "none",
-    	"message-button-border-radius": "4px",
-    	"message-button-text-color": "#6a6a6a",
-    	"message-button-text-weight": "400",
+    	"primary-highlight-color": "#066",
+    	"secondary-highlight-color": "#003d3d",
+    	"main-color": "#efefef",
+    	"bg-color": "#1a1a1a",
+    	"accent-color": "#3a3a3a"
     };
 
     var citrus = {
-    	"text-font": "sans-serif",
-    	"bg": "transparent",
-    	"highlight-color": "#ff957d",
-    	"secondary-color": "#ffdfd5",
-    	"order": "row",
-    	"clue-width": "16em",
-    	"clue-text-font": "var(--text-font, sans-serif)",
-    	"clue-text-color": "#184444",
-    	"clue-scrollbar-bg": "#ebf3f3",
-    	"clue-scrollbar-fg": "#c9d8d8",
-    	"puzzle-border-color": "#184444",
-    	"cell-bg-color": "#fff",
-    	"cell-border-color": "#184444",
-    	"cell-void-color": "#266b6b",
-    	"cell-border-width": "0.01",
-    	"cell-text-font": "var(--text-font, sans-serif)",
-    	"cell-text-color": "#184444",
-    	"cell-text-size": "0.7em",
-    	"cell-text-weight": "700",
-    	"number-text-size": "0.3em",
-    	"number-text-weight": "400",
-    	"number-text-color": "#266b6b",
-    	"toolbar-text-font": "var(--text-font, sans-serif)",
-    	"toolbar-text-size": "0.85em",
-    	"toolbar-bg": "transparent",
-    	"toolbar-button-bg": "#efefef",
-    	"toolbar-button-bg-hover": "#cdcdcd",
-    	"toolbar-button-padding": "0.75em",
-    	"toolbar-button-border": "none",
-    	"toolbar-button-border-radius": "4px",
-    	"toolbar-button-text-color": "#6a6a6a",
-    	"toolbar-button-text-weight": "400",
-    	"message-text-font": "sans-serif",
-    	"message-text-size": "0.85em",
-    	"message-bg": "transparent",
-    	"message-button-bg": "#efefef",
-    	"message-button-bg-hover": "#cdcdcd",
-    	"message-button-padding": "0.75em",
-    	"message-button-border": "none",
-    	"message-button-border-radius": "4px",
-    	"message-button-text-color": "#6a6a6a",
-    	"message-button-text-weight": "400",
+    	"primary-highlight-color": "#ff957d",
+    	"secondary-highlight-color": "#ffdfd5",
+    	"main-color": "#184444",
+    	"accent-color": "#ebf3f3"
     };
 
     const themes = { classic, dark, citrus };
+    const defaultTheme = themes["classic"];
 
     Object.keys(themes).forEach((t) => {
-    	themes[t] = Object.keys(themes[t])
-    		.map((d) => `--${d}: var(--xd-${d}, ${themes[t][d]})`)
+    	themes[t] = Object.keys(defaultTheme)
+    		.map((d) => `--${d}: var(--xd-${d}, ${themes[t][d] || defaultTheme[d]})`)
     		.join(";");
     });
 
@@ -4325,10 +4216,10 @@ var app = (function () {
     			this.h();
     		},
     		h() {
-    			attr(div, "class", "play svelte-cr6yej");
+    			attr(div, "class", "play svelte-7zvqow");
     			toggle_class(div, "stacked", /*stacked*/ ctx[17]);
     			toggle_class(div, "is-loaded", /*isLoaded*/ ctx[9]);
-    			attr(article, "class", "crossword svelte-cr6yej");
+    			attr(article, "class", "crossword svelte-7zvqow");
     			attr(article, "style", /*inlineStyles*/ ctx[18]);
     			add_render_callback(() => /*article_elementresize_handler*/ ctx[34].call(article));
     		},
@@ -5833,7 +5724,7 @@ var app = (function () {
     	};
     }
 
-    // (95:6) <div slot="complete">
+    // (97:6) <div slot="complete">
     function create_complete_slot(ctx) {
     	let div;
     	let h3;
@@ -5881,7 +5772,7 @@ var app = (function () {
     	};
     }
 
-    // (85:4) <Crossword data="{dataNYTDaily}">
+    // (87:4) <Crossword data="{dataNYTDaily}">
     function create_default_slot$1(ctx) {
     	let t;
 
@@ -6185,7 +6076,7 @@ var app = (function () {
     			claim_component(crossword1.$$.fragment, section1_nodes);
     			section1_nodes.forEach(detach);
     			t21 = claim_space(article_nodes);
-    			section2 = claim_element(article_nodes, "SECTION", { id: true, class: true });
+    			section2 = claim_element(article_nodes, "SECTION", { id: true, style: true, class: true });
     			var section2_nodes = children(section2);
     			div3 = claim_element(section2_nodes, "DIV", { class: true });
     			var div3_nodes = children(div3);
@@ -6290,6 +6181,7 @@ var app = (function () {
     			if (/*theme*/ ctx[1] === void 0) add_render_callback(() => /*select_change_handler*/ ctx[2].call(select));
     			attr(div3, "class", "info svelte-1v4ih91");
     			attr(section2, "id", "themes");
+    			set_style(section2, "background", /*theme*/ ctx[1] === "dark" ? "#1a1a1a" : "transparent");
     			attr(section2, "class", "svelte-1v4ih91");
     			attr(h23, "class", "svelte-1v4ih91");
     			attr(p4, "class", "svelte-1v4ih91");
@@ -6398,6 +6290,11 @@ var app = (function () {
     			const crossword2_changes = {};
     			if (dirty & /*theme*/ 2) crossword2_changes.theme = /*theme*/ ctx[1];
     			crossword2.$set(crossword2_changes);
+
+    			if (!current || dirty & /*theme*/ 2) {
+    				set_style(section2, "background", /*theme*/ ctx[1] === "dark" ? "#1a1a1a" : "transparent");
+    			}
+
     			const crossword3_changes = {};
     			if (dirty & /*revealedUSA*/ 1) crossword3_changes.disableHighlight = /*revealedUSA*/ ctx[0];
 

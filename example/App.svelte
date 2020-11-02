@@ -21,7 +21,7 @@
     </p>
   </div>
 
-  <section id="default" style="background-color: #000;">
+  <section id="default">
     <div class="info">
       <h2>Default</h2>
       <p>
@@ -31,7 +31,7 @@
         puzzle with all default settings.
       </p>
     </div>
-    <Crossword data="{dataNYTDaily}" theme="dark" />
+    <Crossword data="{dataNYTDaily}" />
   </section>
 
   <section id="mini" style="max-width: 480px;">
@@ -47,7 +47,9 @@
     <Crossword data="{dataNYTMini}" showKeyboard="{true}" />
   </section>
 
-  <section id="themes">
+  <section
+    id="themes"
+    style="background: {theme === 'dark' ? '#1a1a1a' : 'transparent'}">
     <div class="info">
       <h2>Themes</h2>
       <p>A library of preset style themes to choose from.</p>

@@ -198,7 +198,7 @@
     {/each}
   </svg>
 </section>
-'
+
 {#if keyboardVisible}
   <div class="keyboard">
     <Keyboard on:keydown="{onKeydown}" />
@@ -226,6 +226,7 @@
     font-size: 1px;
     background: var(--main-color);
     border: 4px solid var(--main-color);
+    box-sizing: border-box;
   }
 
   .keyboard {

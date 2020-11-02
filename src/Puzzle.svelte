@@ -201,8 +201,8 @@
   svg {
     display: block;
     font-size: 1px;
-    background: var(--cell-void-color);
-    border: 4px solid var(--puzzle-border-color);
+    background: var(--main-color);
+    border: 4px solid var(--main-color);
   }
 
   .keyboard {

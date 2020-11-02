@@ -3,10 +3,11 @@ import dark from "../themes/dark.js";
 import citrus from "../themes/citrus.js";
 
 const themes = { classic, dark, citrus };
+const defaultTheme = themes["classic"];
 
 Object.keys(themes).forEach((t) => {
-	themes[t] = Object.keys(themes[t])
-		.map((d) => `--${d}: var(--xd-${d}, ${themes[t][d]})`)
+	themes[t] = Object.keys(defaultTheme)
+		.map((d) => `--${d}: var(--xd-${d}, ${themes[t][d] || defaultTheme[d]})`)
 		.join(";");
 });
 

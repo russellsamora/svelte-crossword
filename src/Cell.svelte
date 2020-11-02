@@ -130,11 +130,11 @@
   }
 
   g.is-secondarily-focused rect {
-    fill: var(--secondary-color);
+    fill: var(--secondary-highlight-color);
   }
 
   g.is-focused rect {
-    fill: var(--highlight-color);
+    fill: var(--primary-highlight-color);
   }
 
   rect {
@@ -144,24 +144,25 @@
   text {
     pointer-events: none;
     line-height: 1;
-    font-family: var(--cell-text-font);
-    fill: var(--cell-text-color);
+    font-family: var(--font);
+    fill: var(--main-color);
   }
 
   .value {
-    font-size: var(--cell-text-size);
-    font-weight: var(--cell-text-weight);
+    font-size: 0.7em;
+    font-weight: 700;
   }
 
   .number {
-    font-size: var(--number-text-size);
-    font-weight: var(--number-text-weight);
-    fill: var(--number-text-color);
+    font-size: 0.3em;
+    font-weight: 400;
+    fill: var(--main-color);
+    opacity: 0.5;
   }
 
   rect {
-    fill: var(--cell-bg-color);
-    stroke: var(--cell-border-color);
-    stroke-width: var(--cell-border-width);
+    fill: var(--bg-color);
+    stroke: var(--main-color);
+    stroke-width: 0.01em;
   }
 </style>

@@ -4,7 +4,7 @@
 
   export let currentClue;
   $: clue = currentClue["clue"];
-  $: custom = currentClue["custom"];
+  $: custom = currentClue["custom"] || "";
 </script>
 
 <div class="bar {custom}">
@@ -42,13 +42,14 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
-    background-color: #efefef;
+    background-color: var(--accent-color);
     align-items: center;
   }
 
   p {
     padding: 0 1em;
     line-height: 1.325;
+    font-family: var(--font);
   }
 
   button {
@@ -56,5 +57,6 @@
     font-size: 1em;
     border: none;
     line-height: 1;
+    color: var(--main-color);
   }
 </style>

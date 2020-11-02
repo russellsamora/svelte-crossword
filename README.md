@@ -60,7 +60,15 @@ You can set your own global CSS variables to override theme defaults or roll-you
 
 ```css
 :root {
-	--xd-highlight-color: #f00;
+	--xd-primary-highlight-color: #f00;
+```
+
+For more detailed customization, simply do a more targeted CSS selection. For example...
+
+```
+	.crossword .cell text.number {
+		font-size: 0.5em;
+	}
 ```
 
 ## Features

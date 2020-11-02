@@ -160,7 +160,7 @@
 <style>
   article {
     position: relative;
-    background-color: var(--bg);
+    background-color: transparent;
     font-size: 16px;
   }
 

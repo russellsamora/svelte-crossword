@@ -35,8 +35,8 @@
   }
 
   p {
-    font-family: var(--clue-text-font);
-    color: var(--clue-text-color);
+    font-family: var(--font);
+    color: var(--main-color);
     font-weight: 700;
     text-transform: uppercase;
     padding-left: calc(0.5em + 6px);
@@ -52,33 +52,33 @@
   }
 
   ::-moz-scrollbar {
-    width: 9px;
+    width: 8px;
   }
   ::-webkit-scrollbar {
-    width: 9px;
+    width: 8px;
   }
 
   ::-moz-scrollbar-track {
     box-shadow: none;
-    border-radius: 10px;
-    background: var(--clue-scrollbar-bg);
+    border-radius: 8px;
+    background-color: var(--accent-color);
   }
   ::-webkit-scrollbar-track {
     box-shadow: none;
-    border-radius: 10px;
-    background: var(--clue-scrollbar-bg);
+    border-radius: 8px;
+    background-color: var(--accent-color);
   }
   ::scrollbar-thumb {
-    border-radius: 10px;
-    background: var(--clue-scrollbar-fg);
+    border-radius: 8px;
+    background-color: var(--main-color);
     box-shadow: none;
   }
   ::-moz-scrollbar-thumb {
-    background: var(--clue-scrollbar-fg);
+    background-color: var(--main-color);
     border-radius: 6px;
   }
   ::-webkit-scrollbar-thumb {
-    background: var(--clue-scrollbar-fg);
+    background-color: var(--main-color);
     border-radius: 6px;
   }
 </style>

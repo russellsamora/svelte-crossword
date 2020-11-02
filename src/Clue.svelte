@@ -41,19 +41,19 @@
     padding: 0.5em;
     cursor: pointer;
     line-height: 1.325;
-    color: var(--clue-text-color);
-    font-family: var(--clue-text-font);
+    color: var(--main-color);
+    font-family: var(--font);
     font-size: 1em;
     cursor: pointer;
   }
   .clue:focus:not(.is-disable-highlight) {
-    border-color: var(--secondary-color);
+    border-color: var(--secondary-highlight-color);
   }
   .is-number-focused:not(.is-disable-highlight) {
-    border-left-color: var(--secondary-color);
+    border-left-color: var(--secondary-highlight-color);
   }
   .is-number-focused.is-direction-focused:not(.is-disable-highlight) {
-    background: var(--secondary-color);
+    background: var(--secondary-highlight-color);
   }
   .is-filled {
     opacity: 0.5;

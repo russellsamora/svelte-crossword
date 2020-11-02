@@ -54,7 +54,7 @@
   section {
     position: sticky;
     top: 1em;
-    flex: 0 1 var(--clue-width);
+    flex: 0 1 16em;
     height: fit-content;
     margin: 0;
     margin-right: 1em;

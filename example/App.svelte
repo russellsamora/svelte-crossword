@@ -21,7 +21,7 @@
     </p>
   </div>
 
-  <section id="default">
+  <section id="default" style="background-color: #000;">
     <div class="info">
       <h2>Default</h2>
       <p>
@@ -31,7 +31,7 @@
         puzzle with all default settings.
       </p>
     </div>
-    <Crossword data="{dataNYTDaily}" />
+    <Crossword data="{dataNYTDaily}" theme="dark" />
   </section>
 
   <section id="mini" style="max-width: 480px;">

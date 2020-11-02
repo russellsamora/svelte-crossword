@@ -17,6 +17,7 @@
   export let stacked;
   export let revealDuration = 0;
   export let showKeyboard;
+  export let isLoaded;
 
   let cellsHistoryIndex = 0;
   let cellsHistory = [];
@@ -151,7 +152,7 @@
   }
 </script>
 
-<section class="puzzle" class:stacked>
+<section class="puzzle" class:stacked class:is-loaded="{isLoaded}">
   <svg viewBox="0 0 {w} {h}">
     {#each cells as { x, y, value, index, number, custom }}
       <Cell
@@ -190,7 +191,7 @@
     height: fit-content;
   }
 
-  section.stacked {
+  section.is-loaded.stacked {
     position: relative;
     top: auto;
     height: auto;
@@ -206,5 +207,14 @@
 
   .keyboard {
     order: 3;
+  }
+
+  @media only screen and (max-width: 720px) {
+    section:not(.is-loaded) {
+      position: relative;
+      top: auto;
+      height: auto;
+      order: -1;
+    }
   }
 </style>

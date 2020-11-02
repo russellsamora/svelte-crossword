@@ -88,14 +88,11 @@
   }
 </script>
 
-<!-- <svelte:window on:keydown={onKeydown} /> -->
-
 <g
-  class="cell {custom}"
+  class="cell {custom} cell-{x}-{y}"
   class:is-focused="{isFocused}"
   class:is-secondarily-focused="{isSecondarilyFocused}"
   transform="{`translate(${x}, ${y})`}"
-  id="cell-{x}-{y}"
   tabIndex="0"
   on:click="{onClick}"
   on:keydown="{onKeydown}"

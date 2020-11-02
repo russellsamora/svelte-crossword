@@ -1,4 +1,5 @@
 <script>
+  import { onMount } from "svelte";
   import Toolbar from "./Toolbar.svelte";
   import Puzzle from "./Puzzle.svelte";
   import Clues from "./Clues.svelte";
@@ -26,6 +27,7 @@
   let isRevealing = false;
   let revealTimeout;
   let clueCompletion;
+  let isLoaded = false;
 
   let originalClues = [];
   let validated = [];
@@ -50,6 +52,10 @@
   $: cells, (clues = checkClues());
   $: stacked = width < breakpoint;
   $: inlineStyles = themeStyles[theme];
+
+  onMount(() => {
+    isLoaded = true;
+  });
 
   function checkClues() {
     return clues.map((d) => {
@@ -119,12 +125,13 @@
       <Toolbar actions="{actions}" on:event="{onToolbarEvent}" />
     </slot>
 
-    <div class="play" class:stacked>
+    <div class="play" class:stacked class:is-loaded="{isLoaded}">
       <Clues
         clues="{clues}"
         cellIndexMap="{cellIndexMap}"
         stacked="{stacked}"
         isDisableHighlight="{isDisableHighlight}"
+        isLoaded="{isLoaded}"
         bind:focusedCellIndex
         bind:focusedCell
         bind:focusedDirection />
@@ -136,6 +143,7 @@
         revealDuration="{revealDuration}"
         showKeyboard="{showKeyboard}"
         stacked="{stacked}"
+        isLoaded="{isLoaded}"
         bind:cells
         bind:focusedCellIndex
         bind:focusedDirection />
@@ -161,7 +169,13 @@
     flex-direction: var(--order, row);
   }
 
-  .play.stacked {
+  .play.is-loaded.stacked {
     flex-direction: column;
+  }
+
+  @media only screen and (max-width: 720px) {
+    .play:not(.is-loaded) {
+      flex-direction: column;
+    }
   }
 </style>

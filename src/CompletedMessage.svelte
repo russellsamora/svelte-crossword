@@ -47,7 +47,7 @@
   .curtain {
     position: absolute;
     top: 0;
-    right: 0;
+    right: -2px;
     bottom: 0;
     left: 0;
     background: #fff;

@@ -234,6 +234,7 @@
   }
 
   svg {
+    width: 100%;
     display: block;
     font-size: 1px;
     background: var(--main-color);

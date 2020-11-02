@@ -178,7 +178,6 @@
 
   function onClick() {
     isPuzzleFocused = element.contains(document.activeElement);
-    console.log(isPuzzleFocused, document.activeElement);
   }
 </script>
 

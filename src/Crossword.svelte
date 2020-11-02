@@ -37,19 +37,20 @@
   const onDataUpdate = () => {
     originalClues = createClues(data);
     validated = validateClues(originalClues);
-    clues = originalClues.map((d) => ({ ...d }));
+    clues = originalClues.map(d => ({ ...d }));
     cells = createCells(originalClues);
     reset();
   };
 
   $: data, onDataUpdate();
   $: focusedCell = cells[focusedCellIndex] || {};
-  $: cellIndexMap = fromPairs(cells.map((cell) => [cell.id, cell.index]));
+  $: cellIndexMap = fromPairs(cells.map(cell => [cell.id, cell.index]));
   $: percentCorrect =
-    cells.filter((d) => d.answer === d.value).length / cells.length;
+    cells.filter(d => d.answer === d.value).length / cells.length;
   $: isComplete = percentCorrect == 1;
   $: isDisableHighlight = isComplete && disableHighlight;
   $: cells, (clues = checkClues());
+  $: cells, (revealed = !clues.filter(d => !d.isCorrect).length);
   $: stacked = width < breakpoint;
   $: inlineStyles = themeStyles[theme];
 
@@ -58,22 +59,22 @@
   });
 
   function checkClues() {
-    return clues.map((d) => {
+    return clues.map(d => {
       const index = d.index;
-      const cellChecks = d.cells.map((c) => {
-        const { value } = cells.find((e) => e.id === c.id);
+      const cellChecks = d.cells.map(c => {
+        const { value } = cells.find(e => e.id === c.id);
         const hasValue = !!value;
         const hasCorrect = value === c.answer;
         return { hasValue, hasCorrect };
       });
       const isCorrect =
-        cellChecks.filter((c) => c.hasCorrect).length === d.answer.length;
+        cellChecks.filter(c => c.hasCorrect).length === d.answer.length;
       const isFilled =
-        cellChecks.filter((c) => c.hasValue).length === d.answer.length;
+        cellChecks.filter(c => c.hasValue).length === d.answer.length;
       return {
         ...d,
         isCorrect,
-        isFilled,
+        isFilled
       };
     });
   }
@@ -87,21 +88,19 @@
   function onClear() {
     reset();
     if (revealTimeout) clearTimeout(revealTimeout);
-    cells = cells.map((cell) => ({
+    cells = cells.map(cell => ({
       ...cell,
-      value: "",
+      value: ""
     }));
-    revealed = false;
   }
 
   function onReveal() {
     if (revealed) return true;
     reset();
-    cells = cells.map((cell) => ({
+    cells = cells.map(cell => ({
       ...cell,
-      value: cell.answer,
+      value: cell.answer
     }));
-    revealed = true;
     startReveal();
   }
 
@@ -121,36 +120,36 @@
 
 {#if validated}
   <article class="crossword" bind:offsetWidth="{width}" style="{inlineStyles}">
-    <slot name="toolbar" onClear="{onClear}" onReveal="{onReveal}">
-      <Toolbar actions="{actions}" on:event="{onToolbarEvent}" />
+    <slot name="toolbar" {onClear} {onReveal}>
+      <Toolbar {actions} on:event="{onToolbarEvent}" />
     </slot>
 
     <div class="play" class:stacked class:is-loaded="{isLoaded}">
       <Clues
-        clues="{clues}"
-        cellIndexMap="{cellIndexMap}"
-        stacked="{stacked}"
-        isDisableHighlight="{isDisableHighlight}"
-        isLoaded="{isLoaded}"
+        {clues}
+        {cellIndexMap}
+        {stacked}
+        {isDisableHighlight}
+        {isLoaded}
         bind:focusedCellIndex
         bind:focusedCell
         bind:focusedDirection />
       <Puzzle
-        clues="{clues}"
-        focusedCell="{focusedCell}"
-        isRevealing="{isRevealing}"
-        isDisableHighlight="{isDisableHighlight}"
-        revealDuration="{revealDuration}"
-        showKeyboard="{showKeyboard}"
-        stacked="{stacked}"
-        isLoaded="{isLoaded}"
+        {clues}
+        {focusedCell}
+        {isRevealing}
+        {isDisableHighlight}
+        {revealDuration}
+        {showKeyboard}
+        {stacked}
+        {isLoaded}
         bind:cells
         bind:focusedCellIndex
         bind:focusedDirection />
     </div>
 
     {#if isComplete && !isRevealing && showCompleteMessage}
-      <CompletedMessage showConfetti="{showConfetti}">
+      <CompletedMessage {showConfetti}>
         <slot name="complete" />
       </CompletedMessage>
     {/if}

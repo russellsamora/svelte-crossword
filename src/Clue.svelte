@@ -23,14 +23,14 @@
     class:is-direction-focused="{isDirectionFocused}"
     class:is-filled="{isFilled}"
     on:click="{onFocus}">
-    {number}.
+    <strong>{number}</strong>
     {clue}
   </button>
 </li>
 
 <style>
   button {
-    display: block;
+    display: flex;
     width: 100%;
     background: none;
     text-align: left;
@@ -46,6 +46,14 @@
     font-size: 1em;
     cursor: pointer;
   }
+
+  strong {
+    min-width: 1.25em;
+    display: inline-block;
+    text-align: right;
+    margin-right: 0.5em;
+  }
+
   .clue:focus:not(.is-disable-highlight) {
     border-color: var(--secondary-highlight-color);
   }

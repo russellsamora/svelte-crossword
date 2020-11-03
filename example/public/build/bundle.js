@@ -2468,40 +2468,40 @@ var app = (function () {
 
     function get_each_context$2(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[30] = list[i].x;
-    	child_ctx[31] = list[i].y;
-    	child_ctx[32] = list[i].value;
-    	child_ctx[33] = list[i].index;
-    	child_ctx[34] = list[i].number;
-    	child_ctx[35] = list[i].custom;
+    	child_ctx[34] = list[i].x;
+    	child_ctx[35] = list[i].y;
+    	child_ctx[36] = list[i].value;
+    	child_ctx[37] = list[i].index;
+    	child_ctx[38] = list[i].number;
+    	child_ctx[39] = list[i].custom;
     	return child_ctx;
     }
 
-    // (157:4) {#each cells as { x, y, value, index, number, custom }}
+    // (192:4) {#each cells as { x, y, value, index, number, custom }}
     function create_each_block$2(ctx) {
     	let cell;
     	let current;
 
     	cell = new Cell({
     			props: {
-    				x: /*x*/ ctx[30],
-    				y: /*y*/ ctx[31],
-    				index: /*index*/ ctx[33],
-    				value: /*value*/ ctx[32],
-    				number: /*number*/ ctx[34],
-    				custom: /*custom*/ ctx[35],
+    				x: /*x*/ ctx[34],
+    				y: /*y*/ ctx[35],
+    				index: /*index*/ ctx[37],
+    				value: /*value*/ ctx[36],
+    				number: /*number*/ ctx[38],
+    				custom: /*custom*/ ctx[39],
     				changeDelay: /*isRevealing*/ ctx[2]
-    				? /*revealDuration*/ ctx[5] / /*cells*/ ctx[0].length * /*index*/ ctx[33]
+    				? /*revealDuration*/ ctx[5] / /*cells*/ ctx[0].length * /*index*/ ctx[37]
     				: 0,
     				isRevealing: /*isRevealing*/ ctx[2],
-    				isFocused: /*focusedCellIndex*/ ctx[1] == /*index*/ ctx[33] && !/*isDisableHighlight*/ ctx[3],
-    				isSecondarilyFocused: /*secondarilyFocusedCells*/ ctx[7].includes(/*index*/ ctx[33]) && !/*isDisableHighlight*/ ctx[3],
-    				onFocusCell: /*onFocusCell*/ ctx[13],
-    				onCellUpdate: /*onCellUpdate*/ ctx[11],
-    				onFocusClueDiff: /*onFocusClueDiff*/ ctx[14],
-    				onMoveFocus: /*onMoveFocus*/ ctx[15],
-    				onFlipDirection: /*onFlipDirection*/ ctx[16],
-    				onHistoricalChange: /*onHistoricalChange*/ ctx[12]
+    				isFocused: /*focusedCellIndex*/ ctx[1] == /*index*/ ctx[37] && !/*isDisableHighlight*/ ctx[3],
+    				isSecondarilyFocused: /*secondarilyFocusedCells*/ ctx[8].includes(/*index*/ ctx[37]) && !/*isDisableHighlight*/ ctx[3],
+    				onFocusCell: /*onFocusCell*/ ctx[14],
+    				onCellUpdate: /*onCellUpdate*/ ctx[12],
+    				onFocusClueDiff: /*onFocusClueDiff*/ ctx[15],
+    				onMoveFocus: /*onMoveFocus*/ ctx[16],
+    				onFlipDirection: /*onFlipDirection*/ ctx[17],
+    				onHistoricalChange: /*onHistoricalChange*/ ctx[13]
     			},
     			$$inline: true
     		});
@@ -2519,20 +2519,20 @@ var app = (function () {
     		},
     		p: function update(ctx, dirty) {
     			const cell_changes = {};
-    			if (dirty[0] & /*cells*/ 1) cell_changes.x = /*x*/ ctx[30];
-    			if (dirty[0] & /*cells*/ 1) cell_changes.y = /*y*/ ctx[31];
-    			if (dirty[0] & /*cells*/ 1) cell_changes.index = /*index*/ ctx[33];
-    			if (dirty[0] & /*cells*/ 1) cell_changes.value = /*value*/ ctx[32];
-    			if (dirty[0] & /*cells*/ 1) cell_changes.number = /*number*/ ctx[34];
-    			if (dirty[0] & /*cells*/ 1) cell_changes.custom = /*custom*/ ctx[35];
+    			if (dirty[0] & /*cells*/ 1) cell_changes.x = /*x*/ ctx[34];
+    			if (dirty[0] & /*cells*/ 1) cell_changes.y = /*y*/ ctx[35];
+    			if (dirty[0] & /*cells*/ 1) cell_changes.index = /*index*/ ctx[37];
+    			if (dirty[0] & /*cells*/ 1) cell_changes.value = /*value*/ ctx[36];
+    			if (dirty[0] & /*cells*/ 1) cell_changes.number = /*number*/ ctx[38];
+    			if (dirty[0] & /*cells*/ 1) cell_changes.custom = /*custom*/ ctx[39];
 
     			if (dirty[0] & /*isRevealing, revealDuration, cells*/ 37) cell_changes.changeDelay = /*isRevealing*/ ctx[2]
-    			? /*revealDuration*/ ctx[5] / /*cells*/ ctx[0].length * /*index*/ ctx[33]
+    			? /*revealDuration*/ ctx[5] / /*cells*/ ctx[0].length * /*index*/ ctx[37]
     			: 0;
 
     			if (dirty[0] & /*isRevealing*/ 4) cell_changes.isRevealing = /*isRevealing*/ ctx[2];
-    			if (dirty[0] & /*focusedCellIndex, cells, isDisableHighlight*/ 11) cell_changes.isFocused = /*focusedCellIndex*/ ctx[1] == /*index*/ ctx[33] && !/*isDisableHighlight*/ ctx[3];
-    			if (dirty[0] & /*secondarilyFocusedCells, cells, isDisableHighlight*/ 137) cell_changes.isSecondarilyFocused = /*secondarilyFocusedCells*/ ctx[7].includes(/*index*/ ctx[33]) && !/*isDisableHighlight*/ ctx[3];
+    			if (dirty[0] & /*focusedCellIndex, cells, isDisableHighlight*/ 11) cell_changes.isFocused = /*focusedCellIndex*/ ctx[1] == /*index*/ ctx[37] && !/*isDisableHighlight*/ ctx[3];
+    			if (dirty[0] & /*secondarilyFocusedCells, cells, isDisableHighlight*/ 265) cell_changes.isSecondarilyFocused = /*secondarilyFocusedCells*/ ctx[8].includes(/*index*/ ctx[37]) && !/*isDisableHighlight*/ ctx[3];
     			cell.$set(cell_changes);
     		},
     		i: function intro(local) {
@@ -2553,20 +2553,20 @@ var app = (function () {
     		block,
     		id: create_each_block$2.name,
     		type: "each",
-    		source: "(157:4) {#each cells as { x, y, value, index, number, custom }}",
+    		source: "(192:4) {#each cells as { x, y, value, index, number, custom }}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (179:1) {#if keyboardVisible}
+    // (214:0) {#if keyboardVisible}
     function create_if_block$3(ctx) {
     	let div;
     	let keyboard;
     	let current;
     	keyboard = new Keyboard({ $$inline: true });
-    	keyboard.$on("keydown", /*onKeydown*/ ctx[17]);
+    	keyboard.$on("keydown", /*onKeydown*/ ctx[18]);
 
     	const block = {
     		c: function create() {
@@ -2582,8 +2582,8 @@ var app = (function () {
     			this.h();
     		},
     		h: function hydrate() {
-    			attr_dev(div, "class", "keyboard svelte-15vltml");
-    			add_location(div, file$3, 179, 2, 5520);
+    			attr_dev(div, "class", "keyboard svelte-ce6hth");
+    			add_location(div, file$3, 214, 2, 6302);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -2610,7 +2610,7 @@ var app = (function () {
     		block,
     		id: create_if_block$3.name,
     		type: "if",
-    		source: "(179:1) {#if keyboardVisible}",
+    		source: "(214:0) {#if keyboardVisible}",
     		ctx
     	});
 
@@ -2624,6 +2624,8 @@ var app = (function () {
     	let t;
     	let if_block_anchor;
     	let current;
+    	let mounted;
+    	let dispose;
     	let each_value = /*cells*/ ctx[0];
     	validate_each_argument(each_value);
     	let each_blocks = [];
@@ -2636,7 +2638,7 @@ var app = (function () {
     		each_blocks[i] = null;
     	});
 
-    	let if_block = /*keyboardVisible*/ ctx[10] && create_if_block$3(ctx);
+    	let if_block = /*keyboardVisible*/ ctx[11] && create_if_block$3(ctx);
 
     	const block = {
     		c: function create() {
@@ -2647,7 +2649,7 @@ var app = (function () {
     				each_blocks[i].c();
     			}
 
-    			t = text("\n\n'");
+    			t = space();
     			if (if_block) if_block.c();
     			if_block_anchor = empty();
     			this.h();
@@ -2664,19 +2666,19 @@ var app = (function () {
 
     			svg_nodes.forEach(detach_dev);
     			section_nodes.forEach(detach_dev);
-    			t = claim_text(nodes, "\n\n'");
+    			t = claim_space(nodes);
     			if (if_block) if_block.l(nodes);
     			if_block_anchor = empty();
     			this.h();
     		},
     		h: function hydrate() {
-    			attr_dev(svg, "viewBox", svg_viewBox_value = "0 0 " + /*w*/ ctx[8] + " " + /*h*/ ctx[9]);
-    			attr_dev(svg, "class", "svelte-15vltml");
-    			add_location(svg, file$3, 155, 2, 4694);
-    			attr_dev(section, "class", "puzzle svelte-15vltml");
+    			attr_dev(svg, "viewBox", svg_viewBox_value = "0 0 " + /*w*/ ctx[9] + " " + /*h*/ ctx[10]);
+    			attr_dev(svg, "class", "svelte-ce6hth");
+    			add_location(svg, file$3, 190, 2, 5633);
+    			attr_dev(section, "class", "puzzle svelte-ce6hth");
     			toggle_class(section, "stacked", /*stacked*/ ctx[4]);
     			toggle_class(section, "is-loaded", /*isLoaded*/ ctx[6]);
-    			add_location(section, file$3, 154, 0, 4624);
+    			add_location(section, file$3, 185, 0, 5533);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, section, anchor);
@@ -2686,13 +2688,19 @@ var app = (function () {
     				each_blocks[i].m(svg, null);
     			}
 
+    			/*section_binding*/ ctx[24](section);
     			insert_dev(target, t, anchor);
     			if (if_block) if_block.m(target, anchor);
     			insert_dev(target, if_block_anchor, anchor);
     			current = true;
+
+    			if (!mounted) {
+    				dispose = listen_dev(window, "click", /*onClick*/ ctx[19], false, false, false);
+    				mounted = true;
+    			}
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty[0] & /*cells, isRevealing, revealDuration, focusedCellIndex, isDisableHighlight, secondarilyFocusedCells, onFocusCell, onCellUpdate, onFocusClueDiff, onMoveFocus, onFlipDirection, onHistoricalChange*/ 129199) {
+    			if (dirty[0] & /*cells, isRevealing, revealDuration, focusedCellIndex, isDisableHighlight, secondarilyFocusedCells, onFocusCell, onCellUpdate, onFocusClueDiff, onMoveFocus, onFlipDirection, onHistoricalChange*/ 258351) {
     				each_value = /*cells*/ ctx[0];
     				validate_each_argument(each_value);
     				let i;
@@ -2720,7 +2728,7 @@ var app = (function () {
     				check_outros();
     			}
 
-    			if (!current || dirty[0] & /*w, h*/ 768 && svg_viewBox_value !== (svg_viewBox_value = "0 0 " + /*w*/ ctx[8] + " " + /*h*/ ctx[9])) {
+    			if (!current || dirty[0] & /*w, h*/ 1536 && svg_viewBox_value !== (svg_viewBox_value = "0 0 " + /*w*/ ctx[9] + " " + /*h*/ ctx[10])) {
     				attr_dev(svg, "viewBox", svg_viewBox_value);
     			}
 
@@ -2732,11 +2740,11 @@ var app = (function () {
     				toggle_class(section, "is-loaded", /*isLoaded*/ ctx[6]);
     			}
 
-    			if (/*keyboardVisible*/ ctx[10]) {
+    			if (/*keyboardVisible*/ ctx[11]) {
     				if (if_block) {
     					if_block.p(ctx, dirty);
 
-    					if (dirty[0] & /*keyboardVisible*/ 1024) {
+    					if (dirty[0] & /*keyboardVisible*/ 2048) {
     						transition_in(if_block, 1);
     					}
     				} else {
@@ -2778,9 +2786,12 @@ var app = (function () {
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(section);
     			destroy_each(each_blocks, detaching);
+    			/*section_binding*/ ctx[24](null);
     			if (detaching) detach_dev(t);
     			if (if_block) if_block.d(detaching);
     			if (detaching) detach_dev(if_block_anchor);
+    			mounted = false;
+    			dispose();
     		}
     	};
 
@@ -2811,23 +2822,30 @@ var app = (function () {
     	let { revealDuration = 0 } = $$props;
     	let { showKeyboard } = $$props;
     	let { isLoaded } = $$props;
+    	let element;
     	let cellsHistoryIndex = 0;
     	let cellsHistory = [];
     	let focusedCellIndexHistoryIndex = 0;
     	let focusedCellIndexHistory = [];
     	let secondarilyFocusedCells = [];
     	let isMobile = false;
+    	let isPuzzleFocused = false;
 
     	onMount(() => {
-    		$$invalidate(26, isMobile = checkMobile());
+    		$$invalidate(29, isMobile = checkMobile());
     	});
 
     	function updateSecondarilyFocusedCells() {
-    		$$invalidate(7, secondarilyFocusedCells = getSecondarilyFocusedCells({ cells, focusedDirection, focusedCell }));
+    		$$invalidate(8, secondarilyFocusedCells = getSecondarilyFocusedCells({ cells, focusedDirection, focusedCell }));
     	}
 
     	function onCellUpdate(index, newValue, diff = 1) {
     		const doReplaceFilledCells = !!cells[index].value;
+    		const dimension = focusedDirection == "across" ? "x" : "y";
+    		const clueIndex = cells[index].clueNumbers[focusedDirection];
+    		const cellsInClue = cells.filter(cell => cell.clueNumbers[focusedDirection] == clueIndex && (doReplaceFilledCells || !cell.value));
+    		const cellsInCluePositions = cellsInClue.map(cell => cell[dimension]).filter(Number.isFinite);
+    		const isAtEndOfClue = cells[index][dimension] == Math.max(...cellsInCluePositions);
 
     		const newCells = [
     			...cells.slice(0, index),
@@ -2838,7 +2856,12 @@ var app = (function () {
     		cellsHistory = [newCells, ...cellsHistory.slice(cellsHistoryIndex)].slice(0, numberOfStatesInHistory);
     		cellsHistoryIndex = 0;
     		$$invalidate(0, cells = newCells);
-    		onFocusCellDiff(diff, doReplaceFilledCells);
+
+    		if (isAtEndOfClue) {
+    			onFocusClueDiff(diff);
+    		} else {
+    			onFocusCellDiff(diff, doReplaceFilledCells);
+    		}
     	}
 
     	function onHistoricalChange(diff) {
@@ -2849,7 +2872,7 @@ var app = (function () {
     	}
 
     	function onFocusCell(index) {
-    		if (index == focusedCellIndex) {
+    		if (isPuzzleFocused && index == focusedCellIndex) {
     			onFlipDirection();
     		} else {
     			$$invalidate(1, focusedCellIndex = index);
@@ -2870,7 +2893,7 @@ var app = (function () {
     	function onFocusClueDiff(diff = 1) {
     		const currentNumber = focusedCell.clueNumbers[focusedDirection];
 
-    		let nextCluesInDirection = clues.filter(clue => (diff > 0
+    		let nextCluesInDirection = clues.filter(clue => !clue.isFilled && (diff > 0
     		? clue.number > currentNumber
     		: clue.number < currentNumber) && clue.direction == focusedDirection);
 
@@ -2885,12 +2908,13 @@ var app = (function () {
     			nextClue = clues.filter(clue => clue.direction == focusedDirection)[0];
     		}
 
-    		$$invalidate(1, focusedCellIndex = cells.findIndex(cell => cell.x == nextClue.x && cell.y == nextClue.y));
+    		const nextFocusedCell = sortedCellsInDirection.find(cell => !cell.value && cell.clueNumbers[focusedDirection] == nextClue.number) || {};
+    		$$invalidate(1, focusedCellIndex = nextFocusedCell.index || 0);
     	}
 
     	function onMoveFocus(direction, diff) {
     		if (focusedDirection != direction) {
-    			$$invalidate(18, focusedDirection = direction);
+    			$$invalidate(20, focusedDirection = direction);
     		} else {
     			const nextCell = getCellAfterDiff({ diff, cells, direction, focusedCell });
     			if (!nextCell) return;
@@ -2901,13 +2925,17 @@ var app = (function () {
     	function onFlipDirection() {
     		const newDirection = focusedDirection === "across" ? "down" : "across";
     		const hasClueInNewDirection = !!focusedCell["clueNumbers"][newDirection];
-    		if (hasClueInNewDirection) $$invalidate(18, focusedDirection = newDirection);
+    		if (hasClueInNewDirection) $$invalidate(20, focusedDirection = newDirection);
     	}
 
     	function onKeydown({ detail }) {
     		const diff = detail === "delete" ? -1 : 1;
     		const value = detail === "delete" ? "" : detail;
     		onCellUpdate(focusedCellIndex, value, diff);
+    	}
+
+    	function onClick() {
+    		isPuzzleFocused = element.contains(document.activeElement);
     	}
 
     	const writable_props = [
@@ -2928,17 +2956,24 @@ var app = (function () {
     		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn(`<Puzzle> was created with unknown prop '${key}'`);
     	});
 
+    	function section_binding($$value) {
+    		binding_callbacks[$$value ? "unshift" : "push"](() => {
+    			element = $$value;
+    			$$invalidate(7, element);
+    		});
+    	}
+
     	$$self.$$set = $$props => {
-    		if ("clues" in $$props) $$invalidate(19, clues = $$props.clues);
+    		if ("clues" in $$props) $$invalidate(21, clues = $$props.clues);
     		if ("cells" in $$props) $$invalidate(0, cells = $$props.cells);
-    		if ("focusedDirection" in $$props) $$invalidate(18, focusedDirection = $$props.focusedDirection);
+    		if ("focusedDirection" in $$props) $$invalidate(20, focusedDirection = $$props.focusedDirection);
     		if ("focusedCellIndex" in $$props) $$invalidate(1, focusedCellIndex = $$props.focusedCellIndex);
-    		if ("focusedCell" in $$props) $$invalidate(20, focusedCell = $$props.focusedCell);
+    		if ("focusedCell" in $$props) $$invalidate(22, focusedCell = $$props.focusedCell);
     		if ("isRevealing" in $$props) $$invalidate(2, isRevealing = $$props.isRevealing);
     		if ("isDisableHighlight" in $$props) $$invalidate(3, isDisableHighlight = $$props.isDisableHighlight);
     		if ("stacked" in $$props) $$invalidate(4, stacked = $$props.stacked);
     		if ("revealDuration" in $$props) $$invalidate(5, revealDuration = $$props.revealDuration);
-    		if ("showKeyboard" in $$props) $$invalidate(21, showKeyboard = $$props.showKeyboard);
+    		if ("showKeyboard" in $$props) $$invalidate(23, showKeyboard = $$props.showKeyboard);
     		if ("isLoaded" in $$props) $$invalidate(6, isLoaded = $$props.isLoaded);
     	};
 
@@ -2960,12 +2995,14 @@ var app = (function () {
     		revealDuration,
     		showKeyboard,
     		isLoaded,
+    		element,
     		cellsHistoryIndex,
     		cellsHistory,
     		focusedCellIndexHistoryIndex,
     		focusedCellIndexHistory,
     		secondarilyFocusedCells,
     		isMobile,
+    		isPuzzleFocused,
     		numberOfStatesInHistory,
     		updateSecondarilyFocusedCells,
     		onCellUpdate,
@@ -2976,6 +3013,7 @@ var app = (function () {
     		onMoveFocus,
     		onFlipDirection,
     		onKeydown,
+    		onClick,
     		w,
     		h,
     		keyboardVisible,
@@ -2983,26 +3021,28 @@ var app = (function () {
     	});
 
     	$$self.$inject_state = $$props => {
-    		if ("clues" in $$props) $$invalidate(19, clues = $$props.clues);
+    		if ("clues" in $$props) $$invalidate(21, clues = $$props.clues);
     		if ("cells" in $$props) $$invalidate(0, cells = $$props.cells);
-    		if ("focusedDirection" in $$props) $$invalidate(18, focusedDirection = $$props.focusedDirection);
+    		if ("focusedDirection" in $$props) $$invalidate(20, focusedDirection = $$props.focusedDirection);
     		if ("focusedCellIndex" in $$props) $$invalidate(1, focusedCellIndex = $$props.focusedCellIndex);
-    		if ("focusedCell" in $$props) $$invalidate(20, focusedCell = $$props.focusedCell);
+    		if ("focusedCell" in $$props) $$invalidate(22, focusedCell = $$props.focusedCell);
     		if ("isRevealing" in $$props) $$invalidate(2, isRevealing = $$props.isRevealing);
     		if ("isDisableHighlight" in $$props) $$invalidate(3, isDisableHighlight = $$props.isDisableHighlight);
     		if ("stacked" in $$props) $$invalidate(4, stacked = $$props.stacked);
     		if ("revealDuration" in $$props) $$invalidate(5, revealDuration = $$props.revealDuration);
-    		if ("showKeyboard" in $$props) $$invalidate(21, showKeyboard = $$props.showKeyboard);
+    		if ("showKeyboard" in $$props) $$invalidate(23, showKeyboard = $$props.showKeyboard);
     		if ("isLoaded" in $$props) $$invalidate(6, isLoaded = $$props.isLoaded);
+    		if ("element" in $$props) $$invalidate(7, element = $$props.element);
     		if ("cellsHistoryIndex" in $$props) cellsHistoryIndex = $$props.cellsHistoryIndex;
     		if ("cellsHistory" in $$props) cellsHistory = $$props.cellsHistory;
     		if ("focusedCellIndexHistoryIndex" in $$props) focusedCellIndexHistoryIndex = $$props.focusedCellIndexHistoryIndex;
     		if ("focusedCellIndexHistory" in $$props) focusedCellIndexHistory = $$props.focusedCellIndexHistory;
-    		if ("secondarilyFocusedCells" in $$props) $$invalidate(7, secondarilyFocusedCells = $$props.secondarilyFocusedCells);
-    		if ("isMobile" in $$props) $$invalidate(26, isMobile = $$props.isMobile);
-    		if ("w" in $$props) $$invalidate(8, w = $$props.w);
-    		if ("h" in $$props) $$invalidate(9, h = $$props.h);
-    		if ("keyboardVisible" in $$props) $$invalidate(10, keyboardVisible = $$props.keyboardVisible);
+    		if ("secondarilyFocusedCells" in $$props) $$invalidate(8, secondarilyFocusedCells = $$props.secondarilyFocusedCells);
+    		if ("isMobile" in $$props) $$invalidate(29, isMobile = $$props.isMobile);
+    		if ("isPuzzleFocused" in $$props) isPuzzleFocused = $$props.isPuzzleFocused;
+    		if ("w" in $$props) $$invalidate(9, w = $$props.w);
+    		if ("h" in $$props) $$invalidate(10, h = $$props.h);
+    		if ("keyboardVisible" in $$props) $$invalidate(11, keyboardVisible = $$props.keyboardVisible);
     		if ("sortedCellsInDirection" in $$props) sortedCellsInDirection = $$props.sortedCellsInDirection;
     	};
 
@@ -3017,24 +3057,24 @@ var app = (function () {
 
     	$$self.$$.update = () => {
     		if ($$self.$$.dirty[0] & /*cells*/ 1) {
-    			 $$invalidate(8, w = Math.max(...cells.map(d => d.x)) + 1);
+    			 $$invalidate(9, w = Math.max(...cells.map(d => d.x)) + 1);
     		}
 
     		if ($$self.$$.dirty[0] & /*cells*/ 1) {
-    			 $$invalidate(9, h = Math.max(...cells.map(d => d.y)) + 1);
+    			 $$invalidate(10, h = Math.max(...cells.map(d => d.y)) + 1);
     		}
 
-    		if ($$self.$$.dirty[0] & /*showKeyboard, isMobile*/ 69206016) {
-    			 $$invalidate(10, keyboardVisible = typeof showKeyboard === "boolean"
+    		if ($$self.$$.dirty[0] & /*showKeyboard, isMobile*/ 545259520) {
+    			 $$invalidate(11, keyboardVisible = typeof showKeyboard === "boolean"
     			? showKeyboard
     			: isMobile);
     		}
 
-    		if ($$self.$$.dirty[0] & /*cells, focusedCellIndex, focusedDirection*/ 262147) {
+    		if ($$self.$$.dirty[0] & /*cells, focusedCellIndex, focusedDirection*/ 1048579) {
     			 (updateSecondarilyFocusedCells());
     		}
 
-    		if ($$self.$$.dirty[0] & /*cells, focusedDirection*/ 262145) {
+    		if ($$self.$$.dirty[0] & /*cells, focusedDirection*/ 1048577) {
     			 sortedCellsInDirection = [...cells].sort((a, b) => focusedDirection == "down"
     			? a.x - b.x || a.y - b.y
     			: a.y - b.y || a.x - b.x);
@@ -3049,6 +3089,7 @@ var app = (function () {
     		stacked,
     		revealDuration,
     		isLoaded,
+    		element,
     		secondarilyFocusedCells,
     		w,
     		h,
@@ -3060,10 +3101,12 @@ var app = (function () {
     		onMoveFocus,
     		onFlipDirection,
     		onKeydown,
+    		onClick,
     		focusedDirection,
     		clues,
     		focusedCell,
-    		showKeyboard
+    		showKeyboard,
+    		section_binding
     	];
     }
 
@@ -3078,16 +3121,16 @@ var app = (function () {
     			create_fragment$3,
     			safe_not_equal,
     			{
-    				clues: 19,
+    				clues: 21,
     				cells: 0,
-    				focusedDirection: 18,
+    				focusedDirection: 20,
     				focusedCellIndex: 1,
-    				focusedCell: 20,
+    				focusedCell: 22,
     				isRevealing: 2,
     				isDisableHighlight: 3,
     				stacked: 4,
     				revealDuration: 5,
-    				showKeyboard: 21,
+    				showKeyboard: 23,
     				isLoaded: 6
     			},
     			[-1, -1]
@@ -3103,7 +3146,7 @@ var app = (function () {
     		const { ctx } = this.$$;
     		const props = options.props || {};
 
-    		if (/*clues*/ ctx[19] === undefined && !("clues" in props)) {
+    		if (/*clues*/ ctx[21] === undefined && !("clues" in props)) {
     			console.warn("<Puzzle> was created without expected prop 'clues'");
     		}
 
@@ -3111,7 +3154,7 @@ var app = (function () {
     			console.warn("<Puzzle> was created without expected prop 'cells'");
     		}
 
-    		if (/*focusedDirection*/ ctx[18] === undefined && !("focusedDirection" in props)) {
+    		if (/*focusedDirection*/ ctx[20] === undefined && !("focusedDirection" in props)) {
     			console.warn("<Puzzle> was created without expected prop 'focusedDirection'");
     		}
 
@@ -3119,7 +3162,7 @@ var app = (function () {
     			console.warn("<Puzzle> was created without expected prop 'focusedCellIndex'");
     		}
 
-    		if (/*focusedCell*/ ctx[20] === undefined && !("focusedCell" in props)) {
+    		if (/*focusedCell*/ ctx[22] === undefined && !("focusedCell" in props)) {
     			console.warn("<Puzzle> was created without expected prop 'focusedCell'");
     		}
 
@@ -3135,7 +3178,7 @@ var app = (function () {
     			console.warn("<Puzzle> was created without expected prop 'stacked'");
     		}
 
-    		if (/*showKeyboard*/ ctx[21] === undefined && !("showKeyboard" in props)) {
+    		if (/*showKeyboard*/ ctx[23] === undefined && !("showKeyboard" in props)) {
     			console.warn("<Puzzle> was created without expected prop 'showKeyboard'");
     		}
 
@@ -3258,6 +3301,7 @@ var app = (function () {
     function create_fragment$4(ctx) {
     	let li;
     	let button;
+    	let strong;
     	let t0;
     	let t1;
     	let t2;
@@ -3270,8 +3314,9 @@ var app = (function () {
     		c: function create() {
     			li = element("li");
     			button = element("button");
+    			strong = element("strong");
     			t0 = text(/*number*/ ctx[0]);
-    			t1 = text(".\n    ");
+    			t1 = space();
     			t2 = text(/*clue*/ ctx[1]);
     			this.h();
     		},
@@ -3280,15 +3325,20 @@ var app = (function () {
     			var li_nodes = children(li);
     			button = claim_element(li_nodes, "BUTTON", { class: true });
     			var button_nodes = children(button);
-    			t0 = claim_text(button_nodes, /*number*/ ctx[0]);
-    			t1 = claim_text(button_nodes, ".\n    ");
+    			strong = claim_element(button_nodes, "STRONG", { class: true });
+    			var strong_nodes = children(strong);
+    			t0 = claim_text(strong_nodes, /*number*/ ctx[0]);
+    			strong_nodes.forEach(detach_dev);
+    			t1 = claim_space(button_nodes);
     			t2 = claim_text(button_nodes, /*clue*/ ctx[1]);
     			button_nodes.forEach(detach_dev);
     			li_nodes.forEach(detach_dev);
     			this.h();
     		},
     		h: function hydrate() {
-    			attr_dev(button, "class", button_class_value = "clue " + /*custom*/ ctx[2] + " svelte-1bqaeqz");
+    			attr_dev(strong, "class", "svelte-hozmon");
+    			add_location(strong, file$4, 25, 4, 666);
+    			attr_dev(button, "class", button_class_value = "clue " + /*custom*/ ctx[2] + " svelte-hozmon");
     			toggle_class(button, "is-disable-highlight", /*isDisableHighlight*/ ctx[6]);
     			toggle_class(button, "is-number-focused", /*isNumberFocused*/ ctx[4]);
     			toggle_class(button, "is-direction-focused", /*isDirectionFocused*/ ctx[5]);
@@ -3299,7 +3349,8 @@ var app = (function () {
     		m: function mount(target, anchor) {
     			insert_dev(target, li, anchor);
     			append_dev(li, button);
-    			append_dev(button, t0);
+    			append_dev(button, strong);
+    			append_dev(strong, t0);
     			append_dev(button, t1);
     			append_dev(button, t2);
     			/*li_binding*/ ctx[10](li);
@@ -3327,7 +3378,7 @@ var app = (function () {
     			if (dirty & /*number*/ 1) set_data_dev(t0, /*number*/ ctx[0]);
     			if (dirty & /*clue*/ 2) set_data_dev(t2, /*clue*/ ctx[1]);
 
-    			if (dirty & /*custom*/ 4 && button_class_value !== (button_class_value = "clue " + /*custom*/ ctx[2] + " svelte-1bqaeqz")) {
+    			if (dirty & /*custom*/ 4 && button_class_value !== (button_class_value = "clue " + /*custom*/ ctx[2] + " svelte-hozmon")) {
     				attr_dev(button, "class", button_class_value);
     			}
 
@@ -4066,7 +4117,7 @@ var app = (function () {
     		},
     		h: function hydrate() {
     			attr_dev(polyline0, "points", "15 18 9 12 15 6");
-    			add_location(polyline0, file$6, 20, 43, 559);
+    			add_location(polyline0, file$6, 21, 6, 571);
     			attr_dev(svg0, "width", "24");
     			attr_dev(svg0, "height", "24");
     			attr_dev(svg0, "viewBox", "0 0 24 24");
@@ -4076,13 +4127,13 @@ var app = (function () {
     			attr_dev(svg0, "stroke-linecap", "round");
     			attr_dev(svg0, "stroke-linejoin", "round");
     			attr_dev(svg0, "class", "feather feather-chevron-left");
-    			add_location(svg0, file$6, 11, 4, 322);
+    			add_location(svg0, file$6, 11, 4, 327);
     			attr_dev(button0, "class", "svelte-1rm1yc6");
-    			add_location(button0, file$6, 10, 2, 246);
+    			add_location(button0, file$6, 10, 2, 251);
     			attr_dev(p, "class", "svelte-1rm1yc6");
-    			add_location(p, file$6, 23, 2, 634);
+    			add_location(p, file$6, 24, 2, 643);
     			attr_dev(polyline1, "points", "9 18 15 12 9 6");
-    			add_location(polyline1, file$6, 34, 44, 964);
+    			add_location(polyline1, file$6, 36, 6, 980);
     			attr_dev(svg1, "width", "24");
     			attr_dev(svg1, "height", "24");
     			attr_dev(svg1, "viewBox", "0 0 24 24");
@@ -4092,11 +4143,11 @@ var app = (function () {
     			attr_dev(svg1, "stroke-linecap", "round");
     			attr_dev(svg1, "stroke-linejoin", "round");
     			attr_dev(svg1, "class", "feather feather-chevron-right");
-    			add_location(svg1, file$6, 25, 4, 726);
+    			add_location(svg1, file$6, 26, 4, 735);
     			attr_dev(button1, "class", "svelte-1rm1yc6");
-    			add_location(button1, file$6, 24, 2, 650);
+    			add_location(button1, file$6, 25, 2, 659);
     			attr_dev(div, "class", div_class_value = "bar " + /*custom*/ ctx[2] + " svelte-1rm1yc6");
-    			add_location(div, file$6, 9, 0, 217);
+    			add_location(div, file$6, 9, 0, 222);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -4151,7 +4202,7 @@ var app = (function () {
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots("ClueBar", slots, []);
     	const dispatch = createEventDispatcher();
-    	let { currentClue } = $$props;
+    	let { currentClue = {} } = $$props;
     	const writable_props = ["currentClue"];
 
     	Object.keys($$props).forEach(key => {
@@ -4210,13 +4261,6 @@ var app = (function () {
     			options,
     			id: create_fragment$6.name
     		});
-
-    		const { ctx } = this.$$;
-    		const props = options.props || {};
-
-    		if (/*currentClue*/ ctx[0] === undefined && !("currentClue" in props)) {
-    			console.warn("<ClueBar> was created without expected prop 'currentClue'");
-    		}
     	}
 
     	get currentClue() {
@@ -4237,7 +4281,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (41:4) {#each ['across', 'down'] as direction}
+    // (42:4) {#each ['across', 'down'] as direction}
     function create_each_block$4(ctx) {
     	let cluelist;
     	let current;
@@ -4296,7 +4340,7 @@ var app = (function () {
     		block,
     		id: create_each_block$4.name,
     		type: "each",
-    		source: "(41:4) {#each ['across', 'down'] as direction}",
+    		source: "(42:4) {#each ['across', 'down'] as direction}",
     		ctx
     	});
 
@@ -4364,13 +4408,13 @@ var app = (function () {
     		},
     		h: function hydrate() {
     			attr_dev(div0, "class", "clues--stacked svelte-fisq29");
-    			add_location(div0, file$7, 35, 2, 955);
+    			add_location(div0, file$7, 36, 2, 971);
     			attr_dev(div1, "class", "clues--list svelte-fisq29");
-    			add_location(div1, file$7, 39, 2, 1067);
+    			add_location(div1, file$7, 40, 2, 1069);
     			attr_dev(section, "class", "clues svelte-fisq29");
     			toggle_class(section, "stacked", /*stacked*/ ctx[2]);
     			toggle_class(section, "is-loaded", /*isLoaded*/ ctx[4]);
-    			add_location(section, file$7, 34, 0, 886);
+    			add_location(section, file$7, 35, 0, 902);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, section, anchor);
@@ -4559,7 +4603,7 @@ var app = (function () {
     		}
 
     		if ($$self.$$.dirty & /*clues, focusedDirection, focusedClueNumbers*/ 35) {
-    			 $$invalidate(6, currentClue = clues.find(c => c.direction === focusedDirection && c.number === focusedClueNumbers[focusedDirection]));
+    			 $$invalidate(6, currentClue = clues.find(c => c.direction === focusedDirection && c.number === focusedClueNumbers[focusedDirection]) || {});
     		}
     	};
 
@@ -5063,15 +5107,15 @@ var app = (function () {
     			this.h();
     		},
     		h: function hydrate() {
-    			attr_dev(div0, "class", "message svelte-94yn35");
+    			attr_dev(div0, "class", "message svelte-1nnnjrc");
     			add_location(div0, file$9, 12, 6, 266);
-    			attr_dev(button, "class", "svelte-94yn35");
+    			attr_dev(button, "class", "svelte-1nnnjrc");
     			add_location(button, file$9, 18, 6, 388);
-    			attr_dev(div1, "class", "content svelte-94yn35");
+    			attr_dev(div1, "class", "content svelte-1nnnjrc");
     			add_location(div1, file$9, 11, 4, 238);
-    			attr_dev(div2, "class", "completed svelte-94yn35");
+    			attr_dev(div2, "class", "completed svelte-1nnnjrc");
     			add_location(div2, file$9, 10, 2, 180);
-    			attr_dev(div3, "class", "curtain svelte-94yn35");
+    			attr_dev(div3, "class", "curtain svelte-1nnnjrc");
     			add_location(div3, file$9, 27, 2, 572);
     		},
     		m: function mount(target, anchor) {
@@ -5198,7 +5242,7 @@ var app = (function () {
     			this.h();
     		},
     		h: function hydrate() {
-    			attr_dev(h3, "class", "svelte-94yn35");
+    			attr_dev(h3, "class", "svelte-1nnnjrc");
     			add_location(h3, file$9, 14, 10, 328);
     		},
     		m: function mount(target, anchor) {
@@ -5242,7 +5286,7 @@ var app = (function () {
     			this.h();
     		},
     		h: function hydrate() {
-    			attr_dev(div, "class", "confetti svelte-94yn35");
+    			attr_dev(div, "class", "confetti svelte-1nnnjrc");
     			add_location(div, file$9, 22, 6, 494);
     		},
     		m: function mount(target, anchor) {
@@ -5609,7 +5653,7 @@ var app = (function () {
     	onReveal: /*onReveal*/ ctx[20]
     });
 
-    // (122:0) {#if validated}
+    // (121:0) {#if validated}
     function create_if_block$5(ctx) {
     	let article;
     	let t0;
@@ -5741,11 +5785,11 @@ var app = (function () {
     			attr_dev(div, "class", "play svelte-7zvqow");
     			toggle_class(div, "stacked", /*stacked*/ ctx[17]);
     			toggle_class(div, "is-loaded", /*isLoaded*/ ctx[9]);
-    			add_location(div, file$a, 127, 4, 3523);
+    			add_location(div, file$a, 126, 4, 3492);
     			attr_dev(article, "class", "crossword svelte-7zvqow");
     			attr_dev(article, "style", /*inlineStyles*/ ctx[18]);
     			add_render_callback(() => /*article_elementresize_handler*/ ctx[34].call(article));
-    			add_location(article, file$a, 122, 2, 3294);
+    			add_location(article, file$a, 121, 2, 3294);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, article, anchor);
@@ -5895,14 +5939,14 @@ var app = (function () {
     		block,
     		id: create_if_block$5.name,
     		type: "if",
-    		source: "(122:0) {#if validated}",
+    		source: "(121:0) {#if validated}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (124:67)        
+    // (123:46)        
     function fallback_block$1(ctx) {
     	let toolbar;
     	let current;
@@ -5948,14 +5992,14 @@ var app = (function () {
     		block,
     		id: fallback_block$1.name,
     		type: "fallback",
-    		source: "(124:67)        ",
+    		source: "(123:46)        ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (152:4) {#if isComplete && !isRevealing && showCompleteMessage}
+    // (151:4) {#if isComplete && !isRevealing && showCompleteMessage}
     function create_if_block_1$2(ctx) {
     	let completedmessage;
     	let current;
@@ -6008,14 +6052,14 @@ var app = (function () {
     		block,
     		id: create_if_block_1$2.name,
     		type: "if",
-    		source: "(152:4) {#if isComplete && !isRevealing && showCompleteMessage}",
+    		source: "(151:4) {#if isComplete && !isRevealing && showCompleteMessage}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (153:6) <CompletedMessage showConfetti="{showConfetti}">
+    // (152:6) <CompletedMessage {showConfetti}>
     function create_default_slot(ctx) {
     	let current;
     	const complete_slot_template = /*#slots*/ ctx[27].complete;
@@ -6060,7 +6104,7 @@ var app = (function () {
     		block,
     		id: create_default_slot.name,
     		type: "slot",
-    		source: "(153:6) <CompletedMessage showConfetti=\\\"{showConfetti}\\\">",
+    		source: "(152:6) <CompletedMessage {showConfetti}>",
     		ctx
     	});
 
@@ -6200,14 +6244,12 @@ var app = (function () {
     		reset();
     		if (revealTimeout) clearTimeout(revealTimeout);
     		$$invalidate(12, cells = cells.map(cell => ({ ...cell, value: "" })));
-    		$$invalidate(22, revealed = false);
     	}
 
     	function onReveal() {
     		if (revealed) return true;
     		reset();
     		$$invalidate(12, cells = cells.map(cell => ({ ...cell, value: cell.answer })));
-    		$$invalidate(22, revealed = true);
     		startReveal();
     	}
 
@@ -6411,6 +6453,10 @@ var app = (function () {
 
     		if ($$self.$$.dirty[0] & /*cells*/ 4096) {
     			 ($$invalidate(11, clues = checkClues()));
+    		}
+
+    		if ($$self.$$.dirty[0] & /*cells, clues*/ 6144) {
+    			 ($$invalidate(22, revealed = !clues.filter(d => !d.isCorrect).length));
     		}
 
     		if ($$self.$$.dirty[0] & /*width, breakpoint*/ 33554464) {

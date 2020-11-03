@@ -36,7 +36,7 @@
     position: absolute;
     top: min(50%, 15em);
     left: 50%;
-    background: white;
+    background-color: var(--bg-color);
     transform: translate(-50%, -50%);
     border-radius: 4px;
     z-index: 100;
@@ -50,7 +50,7 @@
     right: -2px;
     bottom: 0;
     left: 0;
-    background: #fff;
+    background-color: var(--bg-color);
     opacity: 0.9;
     cursor: pointer;
     z-index: 1;

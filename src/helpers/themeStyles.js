@@ -1,8 +1,9 @@
 import classic from "../themes/classic.js";
 import dark from "../themes/dark.js";
 import citrus from "../themes/citrus.js";
+import amelia from "../themes/amelia.js";
 
-const themes = { classic, dark, citrus };
+const themes = { classic, dark, citrus, amelia };
 const defaultTheme = themes["classic"];
 
 Object.keys(themes).forEach((t) => {

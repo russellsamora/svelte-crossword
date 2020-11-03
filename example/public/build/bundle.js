@@ -4387,7 +4387,17 @@ var app = (function () {
     	"accent-color": "#ebf3f3"
     };
 
-    const themes = { classic, dark, citrus };
+    var amelia = {
+    	"font": "sans-serif",
+    	"primary-highlight-color": "#d7cefd",
+    	"secondary-highlight-color": "#9980fa",
+    	"main-color": "#353b48",
+    	"bg-color": "#fff",
+    	"accent-color": "#efefef",
+    	"scrollbar-color": "#9980fa",
+    };
+
+    const themes = { classic, dark, citrus, amelia };
     const defaultTheme = themes["classic"];
 
     Object.keys(themes).forEach((t) => {
@@ -6009,14 +6019,14 @@ var app = (function () {
     		},
     		h() {
     			set_style(button0, "font-size", "1.5em");
-    			set_style(button0, "background-color", "red");
+    			set_style(button0, "background-color", "#888");
     			attr(button0, "class", "svelte-18on4kq");
     			set_style(button1, "font-size", "1.5em");
-    			set_style(button1, "background-color", "red");
+    			set_style(button1, "background-color", "#888");
     			attr(button1, "class", "svelte-18on4kq");
     			attr(div, "class", "toolbar");
     			attr(div, "slot", "toolbar");
-    			set_style(div, "background", "tan");
+    			set_style(div, "background", "#333");
     			set_style(div, "padding", "1em");
     			set_style(div, "margin", "1em 0");
     		},
@@ -6052,7 +6062,7 @@ var app = (function () {
     	};
     }
 
-    // (106:6) <div slot="message">
+    // (105:6) <div slot="message">
     function create_message_slot(ctx) {
     	let div;
     	let h3;
@@ -6100,7 +6110,7 @@ var app = (function () {
     	};
     }
 
-    // (92:4) <Crossword data="{dataNYTDaily}">
+    // (91:4) <Crossword data="{dataNYTDaily}">
     function create_default_slot$1(ctx) {
     	let t;
 
@@ -6186,38 +6196,40 @@ var app = (function () {
     	let t31;
     	let option2;
     	let t32;
+    	let option3;
     	let t33;
+    	let t34;
     	let div4;
     	let crossword2;
     	let section2_class_value;
-    	let t34;
+    	let t35;
     	let section3;
     	let div5;
     	let h23;
     	let a9;
-    	let t35;
     	let t36;
-    	let p4;
     	let t37;
-    	let code0;
+    	let p4;
     	let t38;
+    	let code0;
     	let t39;
-    	let code1;
     	let t40;
+    	let code1;
     	let t41;
     	let t42;
+    	let t43;
     	let crossword3;
     	let updating_revealed;
-    	let t43;
+    	let t44;
     	let section4;
     	let div6;
     	let h24;
     	let a10;
-    	let t44;
     	let t45;
-    	let p5;
     	let t46;
+    	let p5;
     	let t47;
+    	let t48;
     	let crossword4;
     	let current;
     	let mounted;
@@ -6330,36 +6342,38 @@ var app = (function () {
     			t31 = text("Dark");
     			option2 = element("option");
     			t32 = text("Citrus");
-    			t33 = space();
+    			option3 = element("option");
+    			t33 = text("Amelia");
+    			t34 = space();
     			div4 = element("div");
     			create_component(crossword2.$$.fragment);
-    			t34 = space();
+    			t35 = space();
     			section3 = element("section");
     			div5 = element("div");
     			h23 = element("h2");
     			a9 = element("a");
-    			t35 = text("Simple Customization");
-    			t36 = space();
+    			t36 = text("Simple Customization");
+    			t37 = space();
     			p4 = element("p");
-    			t37 = text("A few customizations: custom class names on clues/cells,\n        ");
+    			t38 = text("A few customizations: custom class names on clues/cells,\n        ");
     			code0 = element("code");
-    			t38 = text("revealed");
-    			t39 = text("\n        binding (apply custom style), and\n        ");
+    			t39 = text("revealed");
+    			t40 = text("\n        binding (apply custom style), and\n        ");
     			code1 = element("code");
-    			t40 = text("disableHighlight");
-    			t41 = text("\n        parameter.");
-    			t42 = space();
-    			create_component(crossword3.$$.fragment);
+    			t41 = text("disableHighlight");
+    			t42 = text("\n        parameter.");
     			t43 = space();
+    			create_component(crossword3.$$.fragment);
+    			t44 = space();
     			section4 = element("section");
     			div6 = element("div");
     			h24 = element("h2");
     			a10 = element("a");
-    			t44 = text("Slots");
-    			t45 = space();
+    			t45 = text("Slots");
+    			t46 = space();
     			p5 = element("p");
-    			t46 = text("Custom slots for the toolbar and completion message.");
-    			t47 = space();
+    			t47 = text("Custom slots for the toolbar and completion message.");
+    			t48 = space();
     			create_component(crossword4.$$.fragment);
     			this.h();
     		},
@@ -6482,15 +6496,19 @@ var app = (function () {
     			var option2_nodes = children(option2);
     			t32 = claim_text(option2_nodes, "Citrus");
     			option2_nodes.forEach(detach);
+    			option3 = claim_element(select_nodes, "OPTION", { value: true });
+    			var option3_nodes = children(option3);
+    			t33 = claim_text(option3_nodes, "Amelia");
+    			option3_nodes.forEach(detach);
     			select_nodes.forEach(detach);
     			div3_nodes.forEach(detach);
-    			t33 = claim_space(section2_nodes);
+    			t34 = claim_space(section2_nodes);
     			div4 = claim_element(section2_nodes, "DIV", {});
     			var div4_nodes = children(div4);
     			claim_component(crossword2.$$.fragment, div4_nodes);
     			div4_nodes.forEach(detach);
     			section2_nodes.forEach(detach);
-    			t34 = claim_space(article_nodes);
+    			t35 = claim_space(article_nodes);
     			section3 = claim_element(article_nodes, "SECTION", { id: true, class: true });
     			var section3_nodes = children(section3);
     			div5 = claim_element(section3_nodes, "DIV", { class: true });
@@ -6499,29 +6517,29 @@ var app = (function () {
     			var h23_nodes = children(h23);
     			a9 = claim_element(h23_nodes, "A", { href: true, class: true });
     			var a9_nodes = children(a9);
-    			t35 = claim_text(a9_nodes, "Simple Customization");
+    			t36 = claim_text(a9_nodes, "Simple Customization");
     			a9_nodes.forEach(detach);
     			h23_nodes.forEach(detach);
-    			t36 = claim_space(div5_nodes);
+    			t37 = claim_space(div5_nodes);
     			p4 = claim_element(div5_nodes, "P", { class: true });
     			var p4_nodes = children(p4);
-    			t37 = claim_text(p4_nodes, "A few customizations: custom class names on clues/cells,\n        ");
+    			t38 = claim_text(p4_nodes, "A few customizations: custom class names on clues/cells,\n        ");
     			code0 = claim_element(p4_nodes, "CODE", { class: true });
     			var code0_nodes = children(code0);
-    			t38 = claim_text(code0_nodes, "revealed");
+    			t39 = claim_text(code0_nodes, "revealed");
     			code0_nodes.forEach(detach);
-    			t39 = claim_text(p4_nodes, "\n        binding (apply custom style), and\n        ");
+    			t40 = claim_text(p4_nodes, "\n        binding (apply custom style), and\n        ");
     			code1 = claim_element(p4_nodes, "CODE", { class: true });
     			var code1_nodes = children(code1);
-    			t40 = claim_text(code1_nodes, "disableHighlight");
+    			t41 = claim_text(code1_nodes, "disableHighlight");
     			code1_nodes.forEach(detach);
-    			t41 = claim_text(p4_nodes, "\n        parameter.");
+    			t42 = claim_text(p4_nodes, "\n        parameter.");
     			p4_nodes.forEach(detach);
     			div5_nodes.forEach(detach);
-    			t42 = claim_space(section3_nodes);
+    			t43 = claim_space(section3_nodes);
     			claim_component(crossword3.$$.fragment, section3_nodes);
     			section3_nodes.forEach(detach);
-    			t43 = claim_space(article_nodes);
+    			t44 = claim_space(article_nodes);
     			section4 = claim_element(article_nodes, "SECTION", { id: true, class: true });
     			var section4_nodes = children(section4);
     			div6 = claim_element(section4_nodes, "DIV", { class: true });
@@ -6530,16 +6548,16 @@ var app = (function () {
     			var h24_nodes = children(h24);
     			a10 = claim_element(h24_nodes, "A", { href: true, class: true });
     			var a10_nodes = children(a10);
-    			t44 = claim_text(a10_nodes, "Slots");
+    			t45 = claim_text(a10_nodes, "Slots");
     			a10_nodes.forEach(detach);
     			h24_nodes.forEach(detach);
-    			t45 = claim_space(div6_nodes);
+    			t46 = claim_space(div6_nodes);
     			p5 = claim_element(div6_nodes, "P", { class: true });
     			var p5_nodes = children(p5);
-    			t46 = claim_text(p5_nodes, "Custom slots for the toolbar and completion message.");
+    			t47 = claim_text(p5_nodes, "Custom slots for the toolbar and completion message.");
     			p5_nodes.forEach(detach);
     			div6_nodes.forEach(detach);
-    			t47 = claim_space(section4_nodes);
+    			t48 = claim_space(section4_nodes);
     			claim_component(crossword4.$$.fragment, section4_nodes);
     			section4_nodes.forEach(detach);
     			article_nodes.forEach(detach);
@@ -6582,6 +6600,8 @@ var app = (function () {
     			option1.value = option1.__value;
     			option2.__value = "citrus";
     			option2.value = option2.__value;
+    			option3.__value = "amelia";
+    			option3.value = option3.__value;
     			if (/*theme*/ ctx[1] === void 0) add_render_callback(() => /*select_change_handler*/ ctx[2].call(select));
     			attr(div3, "class", "info svelte-18on4kq");
     			attr(section2, "id", "themes");
@@ -6671,37 +6691,39 @@ var app = (function () {
     			append(option1, t31);
     			append(select, option2);
     			append(option2, t32);
+    			append(select, option3);
+    			append(option3, t33);
     			select_option(select, /*theme*/ ctx[1]);
-    			append(section2, t33);
+    			append(section2, t34);
     			append(section2, div4);
     			mount_component(crossword2, div4, null);
-    			append(article, t34);
+    			append(article, t35);
     			append(article, section3);
     			append(section3, div5);
     			append(div5, h23);
     			append(h23, a9);
-    			append(a9, t35);
-    			append(div5, t36);
+    			append(a9, t36);
+    			append(div5, t37);
     			append(div5, p4);
-    			append(p4, t37);
+    			append(p4, t38);
     			append(p4, code0);
-    			append(code0, t38);
-    			append(p4, t39);
+    			append(code0, t39);
+    			append(p4, t40);
     			append(p4, code1);
-    			append(code1, t40);
-    			append(p4, t41);
-    			append(section3, t42);
+    			append(code1, t41);
+    			append(p4, t42);
+    			append(section3, t43);
     			mount_component(crossword3, section3, null);
-    			append(article, t43);
+    			append(article, t44);
     			append(article, section4);
     			append(section4, div6);
     			append(div6, h24);
     			append(h24, a10);
-    			append(a10, t44);
-    			append(div6, t45);
+    			append(a10, t45);
+    			append(div6, t46);
     			append(div6, p5);
-    			append(p5, t46);
-    			append(section4, t47);
+    			append(p5, t47);
+    			append(section4, t48);
     			mount_component(crossword4, section4, null);
     			current = true;
 

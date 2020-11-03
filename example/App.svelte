@@ -3,7 +3,6 @@
   import dataNYTMini from "./data/nyt-mini.json";
   import dataNYTDaily from "./data/nyt-daily.json";
   import dataOreo from "./data/oreo.json";
-  import dataAmelia from "./data/amelia.json";
   import dataUSA from "./data/usa.json";
 
   let revealedUSA;
@@ -58,8 +57,8 @@
       <select bind:value="{theme}">
         <option value="classic">Classic</option>
         <option value="dark">Dark</option>
-        <!-- <option value="amelia">Amelia</option> -->
         <option value="citrus">Citrus</option>
+        <option value="amelia">Amelia</option>
       </select>
     </div>
     <div>
@@ -95,12 +94,12 @@
         slot="toolbar"
         let:onClear
         let:onReveal
-        style="background: tan; padding: 1em; margin: 1em 0;">
+        style="background: #333; padding: 1em; margin: 1em 0;">
         <button
-          style="font-size: 1.5em; background-color: red;"
+          style="font-size: 1.5em; background-color: #888;"
           on:click="{onClear}">clear puzzle</button>
         <button
-          style="font-size: 1.5em; background-color: red;"
+          style="font-size: 1.5em; background-color: #888;"
           on:click="{onReveal}">show answers</button>
       </div>
       <div slot="message">

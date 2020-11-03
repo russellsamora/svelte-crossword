@@ -32,14 +32,19 @@ By [Amelia Wattenberger](https://twitter.com/wattenberger) and [Russell Goldenbe
 
 ## Parameters
 
-#### Parameters
+| parameter             | default               | type    | description                                              |
+| --------------------- | --------------------- | ------- | -------------------------------------------------------- |
+| `data`                | _required_            | Array   | crossword clue/answer data                               |
+| `theme`               | `classic`             | String  | preset theme to use                                      |
+| `actions`             | `["clear", "reveal"]` | Array   | toolbar actions                                          |
+| `revealDuration`      | `1000`                | Number  | reveal transition duration in ms                         |
+| `breakpoint`          | `720`                 | Number  | when to switch to stacked layout                         |
+| `disableHighlight`    | `false`               | Boolean | turn off puzzle highlight                                |
+| `showCompleteMessage` | `true`                | Boolean | show message overlay after completion                    |
+| `showConfetti`        | `true`                | Boolean | show confetti during completion message                  |
+| `showKeyboard`        | `false`               | Boolean | force on-screen keyboard display (overriding auto-check) |
 
-| parameter | default    | description                         |
-| --------- | ---------- | ----------------------------------- |
-| `data`    | _required_ | Array of crossword clue/answer data |
-| `theme`   | `classic`  | String of preset theme to use       |
-
-#### Bindings
+## Bindings
 
 | binding    | type    | description                                 |
 | ---------- | ------- | ------------------------------------------- |
@@ -56,11 +61,26 @@ Available themes:
 - `dark`
 - `citrus`
 
-You can set your own global CSS variables to override theme defaults or roll-your-own. A list of properites can be found [here](https://github.com/russellgoldenberg/svelte-crossword/blob/main/src/themes/classic.js). Simply create new a CSS variable prefixed with `xd-` to override the defaults. For example...
+You can set your own global CSS variables to override theme defaults or roll-your-own. Simply create new a CSS variable prefixed with `xd-` to override the defaults. For example...
 
 ```css
 :root {
 	--xd-primary-highlight-color: #f00;
+```
+
+#### Properties (with defaults)
+
+```css
+:root {
+  --xd-font: sans-serif; /* font-family for whole puzzle */
+  --xd-primary-highlight-color: #ffcc00; /* color for focused cell */
+  --xd-secondary-highlight-color: #ffec99; /* color for other cells in current clue */
+  --xd-main-color: #1a1a1a; /* color for text, gridlines, void cells */
+  --xd-bg-color: #fff; /* color for puzzle background */
+  --xd-accent-color: #efefef; /* color for buttons */
+  --xd-scrollbar-color: #cdcdcd; /* color for scrollbar handle */
+  --xd-order: row; /* row = clues on left, row-reverse = clues on right  */
+}
 ```
 
 For more detailed customization, simply do a more targeted CSS selection. For example...

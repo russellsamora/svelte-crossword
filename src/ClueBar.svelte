@@ -44,7 +44,7 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
-    background-color: var(--accent-color);
+    background-color: var(--secondary-highlight-color);
     align-items: center;
   }
 
@@ -60,5 +60,6 @@
     border: none;
     line-height: 1;
     color: var(--main-color);
+    background-color: transparent;
   }
 </style>

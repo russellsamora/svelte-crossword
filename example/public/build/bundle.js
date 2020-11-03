@@ -1810,7 +1810,7 @@ var app = (function () {
     			this.h();
     		},
     		h: function hydrate() {
-    			attr_dev(text_1, "class", "value svelte-nsveje");
+    			attr_dev(text_1, "class", "value svelte-4lvw5v");
     			attr_dev(text_1, "x", "0.5");
     			attr_dev(text_1, "y", "0.9");
     			attr_dev(text_1, "dominant-baseline", "auto");
@@ -1938,15 +1938,15 @@ var app = (function () {
     		h: function hydrate() {
     			attr_dev(rect, "width", "1");
     			attr_dev(rect, "height", "1");
-    			attr_dev(rect, "class", "svelte-nsveje");
+    			attr_dev(rect, "class", "svelte-4lvw5v");
     			add_location(rect, file$2, 99, 2, 2167);
-    			attr_dev(text_1, "class", "number svelte-nsveje");
+    			attr_dev(text_1, "class", "number svelte-4lvw5v");
     			attr_dev(text_1, "x", "0.1");
     			attr_dev(text_1, "y", "0.1");
     			attr_dev(text_1, "dominant-baseline", "hanging");
     			attr_dev(text_1, "text-anchor", "start");
     			add_location(text_1, file$2, 111, 2, 2456);
-    			attr_dev(g, "class", g_class_value = "cell " + /*custom*/ ctx[4] + " cell-" + /*x*/ ctx[0] + "-" + /*y*/ ctx[1] + " svelte-nsveje");
+    			attr_dev(g, "class", g_class_value = "cell " + /*custom*/ ctx[4] + " cell-" + /*x*/ ctx[0] + "-" + /*y*/ ctx[1] + " svelte-4lvw5v");
     			attr_dev(g, "transform", g_transform_value = `translate(${/*x*/ ctx[0]}, ${/*y*/ ctx[1]})`);
     			attr_dev(g, "tabindex", "0");
     			toggle_class(g, "is-focused", /*isFocused*/ ctx[7]);
@@ -1997,7 +1997,7 @@ var app = (function () {
 
     			if (!current || dirty & /*number*/ 8) set_data_dev(t, /*number*/ ctx[3]);
 
-    			if (!current || dirty & /*custom, x, y*/ 19 && g_class_value !== (g_class_value = "cell " + /*custom*/ ctx[4] + " cell-" + /*x*/ ctx[0] + "-" + /*y*/ ctx[1] + " svelte-nsveje")) {
+    			if (!current || dirty & /*custom, x, y*/ 19 && g_class_value !== (g_class_value = "cell " + /*custom*/ ctx[4] + " cell-" + /*x*/ ctx[0] + "-" + /*y*/ ctx[1] + " svelte-4lvw5v")) {
     				attr_dev(g, "class", g_class_value);
     			}
 
@@ -3766,11 +3766,11 @@ var app = (function () {
     			this.h();
     		},
     		h: function hydrate() {
-    			attr_dev(p, "class", "svelte-1shlm8l");
+    			attr_dev(p, "class", "svelte-16s2wyn");
     			add_location(p, file$5, 11, 0, 226);
-    			attr_dev(ul, "class", "svelte-1shlm8l");
+    			attr_dev(ul, "class", "svelte-16s2wyn");
     			add_location(ul, file$5, 13, 2, 266);
-    			attr_dev(div, "class", "list svelte-1shlm8l");
+    			attr_dev(div, "class", "list svelte-16s2wyn");
     			add_location(div, file$5, 12, 0, 245);
     		},
     		m: function mount(target, anchor) {
@@ -4128,9 +4128,9 @@ var app = (function () {
     			attr_dev(svg0, "stroke-linejoin", "round");
     			attr_dev(svg0, "class", "feather feather-chevron-left");
     			add_location(svg0, file$6, 11, 4, 327);
-    			attr_dev(button0, "class", "svelte-1rm1yc6");
+    			attr_dev(button0, "class", "svelte-irjjhy");
     			add_location(button0, file$6, 10, 2, 251);
-    			attr_dev(p, "class", "svelte-1rm1yc6");
+    			attr_dev(p, "class", "svelte-irjjhy");
     			add_location(p, file$6, 24, 2, 643);
     			attr_dev(polyline1, "points", "9 18 15 12 9 6");
     			add_location(polyline1, file$6, 36, 6, 980);
@@ -4144,9 +4144,9 @@ var app = (function () {
     			attr_dev(svg1, "stroke-linejoin", "round");
     			attr_dev(svg1, "class", "feather feather-chevron-right");
     			add_location(svg1, file$6, 26, 4, 735);
-    			attr_dev(button1, "class", "svelte-1rm1yc6");
+    			attr_dev(button1, "class", "svelte-irjjhy");
     			add_location(button1, file$6, 25, 2, 659);
-    			attr_dev(div, "class", div_class_value = "bar " + /*custom*/ ctx[2] + " svelte-1rm1yc6");
+    			attr_dev(div, "class", div_class_value = "bar " + /*custom*/ ctx[2] + " svelte-irjjhy");
     			add_location(div, file$6, 9, 0, 222);
     		},
     		m: function mount(target, anchor) {
@@ -4174,7 +4174,7 @@ var app = (function () {
     		p: function update(ctx, [dirty]) {
     			if (dirty & /*clue*/ 2) set_data_dev(t1, /*clue*/ ctx[1]);
 
-    			if (dirty & /*custom*/ 4 && div_class_value !== (div_class_value = "bar " + /*custom*/ ctx[2] + " svelte-1rm1yc6")) {
+    			if (dirty & /*custom*/ 4 && div_class_value !== (div_class_value = "bar " + /*custom*/ ctx[2] + " svelte-irjjhy")) {
     				attr_dev(div, "class", div_class_value);
     			}
     		},

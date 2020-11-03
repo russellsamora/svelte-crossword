@@ -150,7 +150,7 @@
 
   .value {
     font-size: 0.7em;
-    font-weight: 700;
+    font-weight: 400;
   }
 
   .number {

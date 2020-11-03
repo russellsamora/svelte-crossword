@@ -153,7 +153,7 @@
 
     {#if isComplete && !isRevealing && showCompleteMessage}
       <CompletedMessage showConfetti="{showConfetti}">
-        <slot name="complete" />
+        <slot name="message" />
       </CompletedMessage>
     {/if}
   </article>

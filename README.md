@@ -118,10 +118,42 @@ You can set your own global CSS variables to override theme defaults or roll-you
 
 For more detailed customization, simply do a more targeted CSS selection. For example...
 
-```
+```css
 .svelte-crossword .cell text.number {
-	font-size: 0.5em;
+  font-size: 0.5em;
 }
+```
+
+## Custom Slots
+
+You can provide more fine-grained control over the toolbar and completion message with custom slots.
+
+#### Toolbar
+
+```svelte
+<Crossword>
+	<div
+		class="toolbar"
+		slot="toolbar"
+		let:onClear
+		let:onReveal >
+		<button on:click="{onClear}">clear puzzle</button>
+		<button on:click="{onReveal}">show answers</button>
+	</div>
+<Crossword>
+```
+
+#### Completion Message
+
+```svelte
+<Crossword>
+	<div slot="complete">
+		<h3>OMG, congrats!</h3>
+		<img
+			alt="celebration"
+			src="https://media3.giphy.com/media/QpOZPQQ2wbjOM/giphy.gif" />
+	</div>
+</Crossword>
 ```
 
 ## Development

@@ -66,6 +66,8 @@ An array of objects with the following required properties:
 ]
 ```
 
+Note: X and Y coordinates can be zero or one based, it will detect automatically.
+
 ## Parameters
 
 | parameter             | default               | type    | description                                              |

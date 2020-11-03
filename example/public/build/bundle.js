@@ -5785,11 +5785,11 @@ var app = (function () {
     			attr_dev(div, "class", "play svelte-7zvqow");
     			toggle_class(div, "stacked", /*stacked*/ ctx[17]);
     			toggle_class(div, "is-loaded", /*isLoaded*/ ctx[9]);
-    			add_location(div, file$a, 126, 4, 3492);
-    			attr_dev(article, "class", "crossword svelte-7zvqow");
+    			add_location(div, file$a, 129, 4, 3567);
+    			attr_dev(article, "class", "svelte-crossword svelte-7zvqow");
     			attr_dev(article, "style", /*inlineStyles*/ ctx[18]);
     			add_render_callback(() => /*article_elementresize_handler*/ ctx[34].call(article));
-    			add_location(article, file$a, 121, 2, 3294);
+    			add_location(article, file$a, 121, 2, 3319);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, article, anchor);
@@ -5946,7 +5946,7 @@ var app = (function () {
     	return block;
     }
 
-    // (123:46)        
+    // (126:67)        
     function fallback_block$1(ctx) {
     	let toolbar;
     	let current;
@@ -5992,14 +5992,14 @@ var app = (function () {
     		block,
     		id: fallback_block$1.name,
     		type: "fallback",
-    		source: "(123:46)        ",
+    		source: "(126:67)        ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (151:4) {#if isComplete && !isRevealing && showCompleteMessage}
+    // (154:4) {#if isComplete && !isRevealing && showCompleteMessage}
     function create_if_block_1$2(ctx) {
     	let completedmessage;
     	let current;
@@ -6052,14 +6052,14 @@ var app = (function () {
     		block,
     		id: create_if_block_1$2.name,
     		type: "if",
-    		source: "(151:4) {#if isComplete && !isRevealing && showCompleteMessage}",
+    		source: "(154:4) {#if isComplete && !isRevealing && showCompleteMessage}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (152:6) <CompletedMessage {showConfetti}>
+    // (155:6) <CompletedMessage showConfetti="{showConfetti}">
     function create_default_slot(ctx) {
     	let current;
     	const complete_slot_template = /*#slots*/ ctx[27].complete;
@@ -6104,7 +6104,7 @@ var app = (function () {
     		block,
     		id: create_default_slot.name,
     		type: "slot",
-    		source: "(152:6) <CompletedMessage {showConfetti}>",
+    		source: "(155:6) <CompletedMessage showConfetti=\\\"{showConfetti}\\\">",
     		ctx
     	});
 

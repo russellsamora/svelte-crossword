@@ -61,17 +61,12 @@ Available themes:
 - `dark`
 - `citrus`
 
-You can set your own global CSS variables to override theme defaults or roll-your-own. Simply create new a CSS variable prefixed with `xd-` to override the defaults. For example...
+You can set your own global CSS variables to override theme defaults or roll-your-own. Simply create new a CSS variable prefixed with `xd-` to override the defaults. A `Crossword` component has a top-level class of `.svelte-crossword`.
+
+### Properties (with defaults)
 
 ```css
-:root {
-	--xd-primary-highlight-color: #f00;
-```
-
-#### Properties (with defaults)
-
-```css
-:root {
+.svelte-crossword {
   --xd-font: sans-serif; /* font-family for whole puzzle */
   --xd-primary-highlight-color: #ffcc00; /* color for focused cell */
   --xd-secondary-highlight-color: #ffec99; /* color for other cells in current clue */
@@ -86,7 +81,7 @@ You can set your own global CSS variables to override theme defaults or roll-you
 For more detailed customization, simply do a more targeted CSS selection. For example...
 
 ```
-	.crossword .cell text.number {
+	.svelte-crossword .cell text.number {
 		font-size: 0.5em;
 	}
 ```

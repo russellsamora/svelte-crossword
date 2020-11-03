@@ -27,7 +27,7 @@
 
   <section id="default">
     <div class="info">
-      <h2>Default</h2>
+      <h2><a href="#default">Default Example</a></h2>
       <p>
         A
         <a href="https://www.nytimes.com/crosswords/game/daily/2020/10/21">NYT
@@ -38,9 +38,9 @@
     <Crossword data="{dataNYTDaily}" />
   </section>
 
-  <section id="mini" style="max-width: 500px;">
+  <section id="mobile" style="max-width: 500px;">
     <div class="info">
-      <h2>Mobile</h2>
+      <h2><a href="#mobile">Mobile</a></h2>
       <p>
         A
         <a href="https://www.nytimes.com/crosswords/game/mini/2020/10/21">NYT
@@ -53,7 +53,7 @@
 
   <section id="themes" class="{theme}" style="max-width: 760px;">
     <div class="info">
-      <h2>Themes</h2>
+      <h2><a href="#themes">Themes</a></h2>
       <p>A library of preset style themes to choose from.</p>
       <select bind:value="{theme}">
         <option value="classic">Classic</option>
@@ -69,9 +69,9 @@
 
   <section id="simple-customization" class:is-revealed="{revealedUSA}">
     <div class="info">
-      <h2>Simple Customization</h2>
+      <h2><a href="#simple">Simple Customization</a></h2>
       <p>
-        A few customizations: custom class names on clues and cells,
+        A few customizations: custom class names on clues/cells,
         <code>revealed</code>
         binding (apply custom style), and
         <code>disableHighlight</code>
@@ -86,7 +86,7 @@
 
   <section id="slots">
     <div class="info">
-      <h2>Slots</h2>
+      <h2><a href="#slots">Slots</a></h2>
       <p>Custom slots for the toolbar and completion message.</p>
     </div>
     <Crossword data="{dataNYTDaily}">
@@ -118,10 +118,11 @@
     max-width: 960px;
     margin: 0 auto;
     padding: 1em;
+    font-family: sans-serif;
   }
   .intro {
     text-align: left;
-    max-width: 720px;
+    max-width: 760px;
     font-size: 1.5em;
   }
   section {
@@ -133,12 +134,17 @@
     max-width: 640px;
     margin: 1em 0;
     text-align: left;
+    font-size: 1.125em;
+  }
+  .info a {
+    margin-right: 0.25em;
   }
   h1 {
     font-size: 1.5em;
   }
   h2 {
-    font-size: 1.625em;
+    font-size: 1.5em;
+    padding-top: 1em;
   }
   p {
     margin: 1em auto;

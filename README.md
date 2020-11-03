@@ -6,6 +6,16 @@ By [Amelia Wattenberger](https://twitter.com/wattenberger) and [Russell Goldenbe
 
 [Example page](https://russellgoldenberg.github.io/svelte-crossword)
 
+## Features
+
+- Generate puzzle from simple JSON format
+- Slottable toolbar that can tap into crossword methods
+- Fully responsive
+- Optimized for mobile with on-screen keyboard
+- Preset style themes with customization
+- Puzzle validation
+- Custom class names for cells and clues
+
 ## Installation
 
 `npm install svelte-crossword`
@@ -28,6 +38,32 @@ By [Amelia Wattenberger](https://twitter.com/wattenberger) and [Russell Goldenbe
 </script>
 
 <Crossword data="{data}" />
+```
+
+## Data format
+
+An array of objects with the following required properties:
+
+| property    | type   | description                           |
+| ----------- | ------ | ------------------------------------- |
+| `clue`      | String | Clue text                             |
+| `answer`    | String | Answer text (auto-capitalizes)        |
+| `direction` | String | "across" or "down"                    |
+| `x`         | Number | starting x position (column) of clue  |
+| `y`         | Number | starting y position (row) of clue     |
+| `custom`    | String | _optional_ custom class name to apply |
+
+```json
+[
+  {
+    "clue": "Clue text",
+    "answer": "ANSWER",
+    "direction": "across",
+    "x": 0,
+    "y": 0,
+    "custom": "class-name"
+  }
+]
 ```
 
 ## Parameters
@@ -81,18 +117,10 @@ You can set your own global CSS variables to override theme defaults or roll-you
 For more detailed customization, simply do a more targeted CSS selection. For example...
 
 ```
-	.svelte-crossword .cell text.number {
-		font-size: 0.5em;
-	}
+.svelte-crossword .cell text.number {
+	font-size: 0.5em;
+}
 ```
-
-## Features
-
-- Generate puzzle from just clue/answer/positions data
-- Toolbar options (reveal, clear)
-- Fully responsive
-- Optimized for mobile
-- Preset style themes and fully customizable
 
 ## Development
 

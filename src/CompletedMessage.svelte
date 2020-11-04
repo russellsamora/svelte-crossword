@@ -11,7 +11,7 @@
   <div class="completed" transition:fade="{{ y: 20 }}">
     <div class="content">
       <div class="message">
-        <slot name="message">
+        <slot>
           <h3>You solved it!</h3>
         </slot>
       </div>

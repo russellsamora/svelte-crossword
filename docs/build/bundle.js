@@ -4896,7 +4896,7 @@ var app = (function () {
     	let { disableHighlight = false } = $$props;
     	let { showCompleteMessage = true } = $$props;
     	let { showConfetti = true } = $$props;
-    	let { showKeyboard = false } = $$props;
+    	let { showKeyboard } = $$props;
     	let width = 0;
     	let focusedDirection = "across";
     	let focusedCellIndex = 0;

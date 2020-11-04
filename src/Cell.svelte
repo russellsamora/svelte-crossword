@@ -48,7 +48,7 @@
     }
 
     if (["Delete", "Backspace"].includes(e.key)) {
-      onCellUpdate(index, "", -1);
+      onCellUpdate(index, "", -1, true);
       return;
     }
 

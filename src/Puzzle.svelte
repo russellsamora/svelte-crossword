@@ -51,8 +51,8 @@
     });
   }
 
-  function onCellUpdate(index, newValue, diff = 1) {
-    const doReplaceFilledCells = !!cells[index].value;
+  function onCellUpdate(index, newValue, diff = 1, doReplaceFilledCells) {
+    doReplaceFilledCells = doReplaceFilledCells || !!cells[index].value;
 
     const dimension = focusedDirection == "across" ? "x" : "y";
     const clueIndex = cells[index].clueNumbers[focusedDirection];
@@ -79,7 +79,7 @@
     cellsHistoryIndex = 0;
     cells = newCells;
 
-    if (isAtEndOfClue) {
+    if (isAtEndOfClue && diff > 0) {
       onFocusClueDiff(diff);
     } else {
       onFocusCellDiff(diff, doReplaceFilledCells);

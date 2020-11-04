@@ -19,7 +19,7 @@
   export let disableHighlight = false;
   export let showCompleteMessage = true;
   export let showConfetti = true;
-  export let showKeyboard = false;
+  export let showKeyboard;
 
   let width = 0;
   let focusedDirection = "across";

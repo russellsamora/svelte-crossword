@@ -971,7 +971,268 @@ var app = (function () {
     	}
     }
 
-    var keyboardData = [{
+    var standard = [{
+    	"row": 0,
+    	"value": "q"
+    }, {
+    	"row": 0,
+    	"value": "w"
+    }, {
+    	"row": 0,
+    	"value": "e"
+    }, {
+    	"row": 0,
+    	"value": "r"
+    }, {
+    	"row": 0,
+    	"value": "t"
+    }, {
+    	"row": 0,
+    	"value": "y"
+    }, {
+    	"row": 0,
+    	"value": "u"
+    },  {
+    	"row": 0,
+    	"value": "i"
+    },  {
+    	"row": 0,
+    	"value": "o"
+    },  {
+    	"row": 0,
+    	"value": "p"
+    }, {
+    	"row": 1,
+    	"value": "a"
+    }, {
+    	"row": 1,
+    	"value": "s"
+    }, {
+    	"row": 1,
+    	"value": "d"
+    }, {
+    	"row": 1,
+    	"value": "f"
+    }, {
+    	"row": 1,
+    	"value": "g"
+    }, {
+    	"row": 1,
+    	"value": "h"
+    }, {
+    	"row": 1,
+    	"value": "j"
+    }, {
+    	"row": 1,
+    	"value": "k"
+    }, {
+    	"row": 1,
+    	"value": "l"
+    }, {
+    	"row": 2,
+    	"value": "Shift",
+    }, {
+    	"row": 2,
+    	"value": "z"
+    }, {
+    	"row": 2,
+    	"value": "x"
+    }, {
+    	"row": 2,
+    	"value": "c"
+    }, {
+    	"row": 2,
+    	"value": "v"
+    }, {
+    	"row": 2,
+    	"value": "b"
+    }, {
+    	"row": 2,
+    	"value": "n"
+    }, {
+    	"row": 2,
+    	"value": "m"
+    }, {
+    	"row": 2,
+    	"value": "Backspace"
+    }, {
+    	"row": 3,
+    	"value": "Page1",
+    },  {
+    	"row": 3,
+    	"value": ",",
+    },  {
+    	"row": 3,
+    	"value": "Space",
+    },  {
+    	"row": 3,
+    	"value": ".",
+    },  {
+    	"row": 3,
+    	"value": "Enter",
+    }, {
+    	"row": 0,
+    	"value": "1",
+    	"page": 1
+    }, {
+    	"row": 0,
+    	"value": "2",
+    	"page": 1
+    }, {
+    	"row": 0,
+    	"value": "3",
+    	"page": 1
+    }, {
+    	"row": 0,
+    	"value": "4",
+    	"page": 1
+    }, {
+    	"row": 0,
+    	"value": "5",
+    	"page": 1
+    }, {
+    	"row": 0,
+    	"value": "6",
+    	"page": 1
+    }, {
+    	"row": 0,
+    	"value": "7",
+    	"page": 1
+    }, {
+    	"row": 0,
+    	"value": "8",
+    	"page": 1
+    }, {
+    	"row": 0,
+    	"value": "9",
+    	"page": 1
+    }, {
+    	"row": 0,
+    	"value": "0",
+    	"page": 1
+    }, {
+    	"row": 1,
+    	"value": "!",
+    	"page": 1
+    }, {
+    	"row": 1,
+    	"value": "@",
+    	"page": 1
+    }, {
+    	"row": 1,
+    	"value": "#",
+    	"page": 1
+    }, {
+    	"row": 1,
+    	"value": "$",
+    	"page": 1
+    }, {
+    	"row": 1,
+    	"value": "%",
+    	"page": 1
+    }, {
+    	"row": 1,
+    	"value": "^",
+    	"page": 1
+    }, {
+    	"row": 1,
+    	"value": "&",
+    	"page": 1
+    }, {
+    	"row": 1,
+    	"value": "*",
+    	"page": 1
+    }, {
+    	"row": 1,
+    	"value": "(",
+    	"page": 1
+    }, {
+    	"row": 1,
+    	"value": ")",
+    	"page": 1
+    }, {
+    	"row": 2,
+    	"value": "-",
+    	"page": 1
+    }, {
+    	"row": 2,
+    	"value": "_",
+    	"page": 1
+    }, {
+    	"row": 2,
+    	"value": "=",
+    	"page": 1
+    }, {
+    	"row": 2,
+    	"value": "+",
+    	"page": 1
+    }, {
+    	"row": 2,
+    	"value": ";",
+    	"page": 1
+    }, {
+    	"row": 2,
+    	"value": ":",
+    	"page": 1
+    }, {
+    	"row": 2,
+    	"value": "'",
+    	"page": 1
+    }, {
+    	"row": 2,
+    	"value": "\"",
+    	"page": 1
+    }, {
+    	"row": 2,
+    	"value": "<",
+    	"page": 1
+    }, {
+    	"row": 2,
+    	"value": ">",
+    	"page": 1
+    }, {
+    	"row": 3,
+    	"value": "Page0",
+    	"page": 1
+    }, {
+    	"row": 3,
+    	"value": "/",
+    	"page": 1
+    }, {
+    	"row": 3,
+    	"value": "?",
+    	"page": 1
+    }, {
+    	"row": 3,
+    	"value": "[",
+    	"page": 1
+    }, {
+    	"row": 3,
+    	"value": "]",
+    	"page": 1
+    }, {
+    	"row": 3,
+    	"value": "{",
+    	"page": 1
+    }, {
+    	"row": 3,
+    	"value": "}",
+    	"page": 1
+    }, {
+    	"row": 3,
+    	"value": "|",
+    	"page": 1
+    }, {
+    	"row": 3,
+    	"value": "\\",
+    	"page": 1
+    }, {
+    	"row": 3,
+    	"value": "~",
+    	"page": 1
+    }];
+
+    var crossword = [{
     	"row": 0,
     	"value": "Q"
     }, {
@@ -1030,9 +1291,6 @@ var app = (function () {
     	"value": "L"
     }, {
     	"row": 2,
-    	"value": "page1",
-    }, {
-    	"row": 2,
     	"value": "Z"
     }, {
     	"row": 2,
@@ -1054,127 +1312,38 @@ var app = (function () {
     	"value": "M"
     }, {
     	"row": 2,
-    	"value": "delete"
-    }, {
-    	"row": 0,
-    	"value": "1",
-    	"page": 1
-    }, {
-    	"row": 0,
-    	"value": "2",
-    	"page": 1
-    }, {
-    	"row": 0,
-    	"value": "3",
-    	"page": 1
-    }, {
-    	"row": 0,
-    	"value": "4",
-    	"page": 1
-    }, {
-    	"row": 0,
-    	"value": "5",
-    	"page": 1
-    }, {
-    	"row": 0,
-    	"value": "6",
-    	"page": 1
-    }, {
-    	"row": 0,
-    	"value": "7",
-    	"page": 1
-    }, {
-    	"row": 0,
-    	"value": "8",
-    	"page": 1
-    }, {
-    	"row": 0,
-    	"value": "9",
-    	"page": 1
-    }, {
-    	"row": 0,
-    	"value": "0",
-    	"page": 1
-    }, {
-    	"row": 1,
-    	"value": "@",
-    	"page": 1
-    }, {
-    	"row": 1,
-    	"value": "#",
-    	"page": 1
-    }, {
-    	"row": 1,
-    	"value": "$",
-    	"page": 1
-    }, {
-    	"row": 1,
-    	"value": "*",
-    	"page": 1
-    }, {
-    	"row": 1,
-    	"value": "-",
-    	"page": 1
-    }, {
-    	"row": 1,
-    	"value": "+",
-    	"page": 1
-    }, {
-    	"row": 1,
-    	"value": "=",
-    	"page": 1
-    }, {
-    	"row": 2,
-    	"value": "page0",
-    	"page": 1
-    }, {
-    	"row": 2,
-    	"value": ",",
-    	"page": 1
-    }, {
-    	"row": 2,
-    	"value": ".",
-    	"page": 1
-    }, {
-    	"row": 2,
-    	"value": ":",
-    	"page": 1
-    }, {
-    	"row": 2,
-    	"value": "/",
-    	"page": 1
-    }, {
-    	"row": 2,
-    	"value": "delete",
-    	"page": 1
-    }
-     ];
+    	"value": "Backspace"
+    }];
+
+    var backspaceSVG = `<svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-delete"><path d="M21 4H8l-7 8 7 8h13a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"></path><line x1="18" y1="9" x2="12" y2="15"></line><line x1="12" y1="9" x2="18" y2="15"></line></svg>`;
+
+    var enterSVG = `<svg width="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-corner-down-left"><polyline points="9 10 4 15 9 20"></polyline><path d="M20 4v7a4 4 0 0 1-4 4H4"></path></svg>`;
 
     /* Users/russell/Documents/svelte-crossword/node_modules/svelte-keyboard/src/Keyboard.svelte generated by Svelte v3.29.0 */
 
     function get_each_context_2(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[26] = list[i].value;
-    	child_ctx[27] = list[i].display;
+    	child_ctx[31] = list[i].value;
+    	child_ctx[32] = list[i].display;
     	return child_ctx;
     }
 
     function get_each_context_1(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[23] = list[i];
+    	child_ctx[28] = list[i];
     	return child_ctx;
     }
 
     function get_each_context$1(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[20] = list[i];
-    	child_ctx[22] = i;
+    	child_ctx[25] = list[i];
+    	child_ctx[27] = i;
     	return child_ctx;
     }
 
-    // (61:14) {:else}
+    // (93:14) {:else}
     function create_else_block(ctx) {
-    	let t_value = /*value*/ ctx[26] + "";
+    	let t_value = /*display*/ ctx[32] + "";
     	let t;
 
     	return {
@@ -1188,7 +1357,7 @@ var app = (function () {
     			insert(target, t, anchor);
     		},
     		p(ctx, dirty) {
-    			if (dirty & /*rowData*/ 4 && t_value !== (t_value = /*value*/ ctx[26] + "")) set_data(t, t_value);
+    			if (dirty[0] & /*rowData*/ 4 && t_value !== (t_value = /*display*/ ctx[32] + "")) set_data(t, t_value);
     		},
     		d(detaching) {
     			if (detaching) detach(t);
@@ -1196,10 +1365,10 @@ var app = (function () {
     	};
     }
 
-    // (59:37) 
-    function create_if_block_1$1(ctx) {
+    // (91:14) {#if display.includes('<svg')}
+    function create_if_block$1(ctx) {
     	let html_tag;
-    	let raw_value = /*swaps*/ ctx[4][/*value*/ ctx[26]] + "";
+    	let raw_value = /*display*/ ctx[32] + "";
     	let html_anchor;
 
     	return {
@@ -1219,7 +1388,7 @@ var app = (function () {
     			insert(target, html_anchor, anchor);
     		},
     		p(ctx, dirty) {
-    			if (dirty & /*rowData*/ 4 && raw_value !== (raw_value = /*swaps*/ ctx[4][/*value*/ ctx[26]] + "")) html_tag.p(raw_value);
+    			if (dirty[0] & /*rowData*/ 4 && raw_value !== (raw_value = /*display*/ ctx[32] + "")) html_tag.p(raw_value);
     		},
     		d(detaching) {
     			if (detaching) detach(html_anchor);
@@ -1228,52 +1397,29 @@ var app = (function () {
     	};
     }
 
-    // (57:14) {#if display}
-    function create_if_block$1(ctx) {
-    	let t_value = /*display*/ ctx[27] + "";
-    	let t;
-
-    	return {
-    		c() {
-    			t = text(t_value);
-    		},
-    		l(nodes) {
-    			t = claim_text(nodes, t_value);
-    		},
-    		m(target, anchor) {
-    			insert(target, t, anchor);
-    		},
-    		p(ctx, dirty) {
-    			if (dirty & /*rowData*/ 4 && t_value !== (t_value = /*display*/ ctx[27] + "")) set_data(t, t_value);
-    		},
-    		d(detaching) {
-    			if (detaching) detach(t);
-    		}
-    	};
-    }
-
-    // (50:10) {#each keys as { value, display }}
+    // (84:10) {#each keys as { value, display }}
     function create_each_block_2(ctx) {
     	let button;
+    	let show_if;
     	let button_class_value;
     	let mounted;
     	let dispose;
 
     	function select_block_type(ctx, dirty) {
-    		if (/*display*/ ctx[27]) return create_if_block$1;
-    		if (/*swaps*/ ctx[4][/*value*/ ctx[26]]) return create_if_block_1$1;
+    		if (show_if == null || dirty[0] & /*rowData*/ 4) show_if = !!/*display*/ ctx[32].includes("<svg");
+    		if (show_if) return create_if_block$1;
     		return create_else_block;
     	}
 
-    	let current_block_type = select_block_type(ctx);
+    	let current_block_type = select_block_type(ctx, [-1]);
     	let if_block = current_block_type(ctx);
 
     	function touchstart_handler(...args) {
-    		return /*touchstart_handler*/ ctx[7](/*value*/ ctx[26], ...args);
+    		return /*touchstart_handler*/ ctx[7](/*value*/ ctx[31], ...args);
     	}
 
-    	function click_handler(...args) {
-    		return /*click_handler*/ ctx[8](/*value*/ ctx[26], ...args);
+    	function mousedown_handler(...args) {
+    		return /*mousedown_handler*/ ctx[8](/*value*/ ctx[31], ...args);
     	}
 
     	return {
@@ -1290,12 +1436,9 @@ var app = (function () {
     			this.h();
     		},
     		h() {
-    			set_style(button, "width", /*value*/ ctx[26].length === 1
-    			? /*percentWidth*/ ctx[3]
-    			: "auto");
-
-    			attr(button, "class", button_class_value = "" + (null_to_empty(/*style*/ ctx[0]) + " svelte-zc71md"));
-    			toggle_class(button, "single", /*value*/ ctx[26].length === 1);
+    			set_style(button, "--w", /*percentWidth*/ ctx[3]);
+    			attr(button, "class", button_class_value = "" + (/*style*/ ctx[0] + " key--" + /*value*/ ctx[31] + " svelte-n3ouos"));
+    			toggle_class(button, "single", /*value*/ ctx[31].length === 1);
     		},
     		m(target, anchor) {
     			insert(target, button, anchor);
@@ -1303,8 +1446,8 @@ var app = (function () {
 
     			if (!mounted) {
     				dispose = [
-    					listen(button, "touchstart", touchstart_handler, { passive: true }),
-    					listen(button, "click", click_handler)
+    					listen(button, "touchstart", touchstart_handler),
+    					listen(button, "mousedown", mousedown_handler)
     				];
 
     				mounted = true;
@@ -1313,7 +1456,7 @@ var app = (function () {
     		p(new_ctx, dirty) {
     			ctx = new_ctx;
 
-    			if (current_block_type === (current_block_type = select_block_type(ctx)) && if_block) {
+    			if (current_block_type === (current_block_type = select_block_type(ctx, dirty)) && if_block) {
     				if_block.p(ctx, dirty);
     			} else {
     				if_block.d(1);
@@ -1325,18 +1468,16 @@ var app = (function () {
     				}
     			}
 
-    			if (dirty & /*rowData, percentWidth*/ 12) {
-    				set_style(button, "width", /*value*/ ctx[26].length === 1
-    				? /*percentWidth*/ ctx[3]
-    				: "auto");
+    			if (dirty[0] & /*percentWidth*/ 8) {
+    				set_style(button, "--w", /*percentWidth*/ ctx[3]);
     			}
 
-    			if (dirty & /*style*/ 1 && button_class_value !== (button_class_value = "" + (null_to_empty(/*style*/ ctx[0]) + " svelte-zc71md"))) {
+    			if (dirty[0] & /*style, rowData*/ 5 && button_class_value !== (button_class_value = "" + (/*style*/ ctx[0] + " key--" + /*value*/ ctx[31] + " svelte-n3ouos"))) {
     				attr(button, "class", button_class_value);
     			}
 
-    			if (dirty & /*style, rowData*/ 5) {
-    				toggle_class(button, "single", /*value*/ ctx[26].length === 1);
+    			if (dirty[0] & /*style, rowData, rowData*/ 5) {
+    				toggle_class(button, "single", /*value*/ ctx[31].length === 1);
     			}
     		},
     		d(detaching) {
@@ -1348,11 +1489,11 @@ var app = (function () {
     	};
     }
 
-    // (48:6) {#each row as keys}
+    // (82:6) {#each row as keys}
     function create_each_block_1(ctx) {
     	let div;
     	let div_class_value;
-    	let each_value_2 = /*keys*/ ctx[23];
+    	let each_value_2 = /*keys*/ ctx[28];
     	let each_blocks = [];
 
     	for (let i = 0; i < each_value_2.length; i += 1) {
@@ -1381,7 +1522,7 @@ var app = (function () {
     			this.h();
     		},
     		h() {
-    			attr(div, "class", div_class_value = "row row--" + /*i*/ ctx[22] + " svelte-zc71md");
+    			attr(div, "class", div_class_value = "row row--" + /*i*/ ctx[27] + " svelte-n3ouos");
     		},
     		m(target, anchor) {
     			insert(target, div, anchor);
@@ -1391,8 +1532,8 @@ var app = (function () {
     			}
     		},
     		p(ctx, dirty) {
-    			if (dirty & /*rowData, percentWidth, style, onKey, swaps*/ 61) {
-    				each_value_2 = /*keys*/ ctx[23];
+    			if (dirty[0] & /*percentWidth, style, rowData, onKey*/ 29) {
+    				each_value_2 = /*keys*/ ctx[28];
     				let i;
 
     				for (i = 0; i < each_value_2.length; i += 1) {
@@ -1421,11 +1562,11 @@ var app = (function () {
     	};
     }
 
-    // (46:2) {#each rowData as row, i}
+    // (80:2) {#each rowData as row, i}
     function create_each_block$1(ctx) {
     	let div;
     	let t;
-    	let each_value_1 = /*row*/ ctx[20];
+    	let each_value_1 = /*row*/ ctx[25];
     	let each_blocks = [];
 
     	for (let i = 0; i < each_value_1.length; i += 1) {
@@ -1456,8 +1597,8 @@ var app = (function () {
     			this.h();
     		},
     		h() {
-    			attr(div, "class", "page svelte-zc71md");
-    			toggle_class(div, "visible", /*i*/ ctx[22] === /*page*/ ctx[1]);
+    			attr(div, "class", "page svelte-n3ouos");
+    			toggle_class(div, "visible", /*i*/ ctx[27] === /*page*/ ctx[1]);
     		},
     		m(target, anchor) {
     			insert(target, div, anchor);
@@ -1469,8 +1610,8 @@ var app = (function () {
     			append(div, t);
     		},
     		p(ctx, dirty) {
-    			if (dirty & /*rowData, percentWidth, style, onKey, swaps*/ 61) {
-    				each_value_1 = /*row*/ ctx[20];
+    			if (dirty[0] & /*rowData, percentWidth, style, onKey*/ 29) {
+    				each_value_1 = /*row*/ ctx[25];
     				let i;
 
     				for (i = 0; i < each_value_1.length; i += 1) {
@@ -1492,8 +1633,8 @@ var app = (function () {
     				each_blocks.length = each_value_1.length;
     			}
 
-    			if (dirty & /*page*/ 2) {
-    				toggle_class(div, "visible", /*i*/ ctx[22] === /*page*/ ctx[1]);
+    			if (dirty[0] & /*page*/ 2) {
+    				toggle_class(div, "visible", /*i*/ ctx[27] === /*page*/ ctx[1]);
     			}
     		},
     		d(detaching) {
@@ -1543,8 +1684,8 @@ var app = (function () {
     				each_blocks[i].m(div, null);
     			}
     		},
-    		p(ctx, [dirty]) {
-    			if (dirty & /*page, rowData, percentWidth, style, onKey, swaps*/ 63) {
+    		p(ctx, dirty) {
+    			if (dirty[0] & /*page, rowData, percentWidth, style, onKey*/ 31) {
     				each_value = /*rowData*/ ctx[2];
     				let i;
 
@@ -1576,36 +1717,57 @@ var app = (function () {
     	};
     }
 
+    const alphabet = "abcdefghijklmnopqrstuvwxyz";
+
     function instance$1($$self, $$props, $$invalidate) {
     	const dispatch = createEventDispatcher();
-    	let { data = keyboardData } = $$props;
+    	let { custom } = $$props;
     	let { style = "" } = $$props;
+    	let { layout = "standard" } = $$props;
     	let page = 0;
-    	const unique = arr => [...new Set(arr)];
+    	let shifted = false;
+    	const layouts = { standard, crossword };
 
     	const swaps = {
-    		page0: "abc",
-    		page1: "123",
-    		delete: "<svg width=\"1em\" height=\"1em\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"feather feather-delete\"><path d=\"M21 4H8l-7 8 7 8h13a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z\"></path><line x1=\"18\" y1=\"9\" x2=\"12\" y2=\"15\"></line><line x1=\"12\" y1=\"9\" x2=\"18\" y2=\"15\"></line></svg>"
+    		Page0: "abc",
+    		Page1: "?123",
+    		Space: " ",
+    		Shift: "abc",
+    		Enter: enterSVG,
+    		Backspace: backspaceSVG
     	};
 
-    	function onKey(value) {
-    		if (value.includes("page")) {
+    	const unique = arr => [...new Set(arr)];
+
+    	function onKey(value, event) {
+    		event.preventDefault();
+
+    		if (value.includes("Page")) {
     			$$invalidate(1, page = +value.substr(-1));
-    			return false;
+    		} else if (value === "Shift") {
+    			$$invalidate(9, shifted = !shifted);
+    		} else {
+    			let output = value;
+    			if (shifted && alphabet.includes(value)) output = value.toUpperCase();
+    			if (value === "Space") output = " ";
+    			dispatch("keydown", output);
     		}
 
-    		dispatch("keydown", value);
+    		event.stopPropagation();
+    		return false;
     	}
 
-    	const touchstart_handler = value => onKey(value);
-    	const click_handler = value => onKey(value);
+    	const touchstart_handler = (value, e) => onKey(value, e);
+    	const mousedown_handler = (value, e) => onKey(value, e);
 
     	$$self.$$set = $$props => {
-    		if ("data" in $$props) $$invalidate(6, data = $$props.data);
+    		if ("custom" in $$props) $$invalidate(5, custom = $$props.custom);
     		if ("style" in $$props) $$invalidate(0, style = $$props.style);
+    		if ("layout" in $$props) $$invalidate(6, layout = $$props.layout);
     	};
 
+    	let rawData;
+    	let data;
     	let page0;
     	let page1;
     	let rows0;
@@ -1619,55 +1781,69 @@ var app = (function () {
     	let percentWidth;
 
     	$$self.$$.update = () => {
-    		if ($$self.$$.dirty & /*data*/ 64) {
-    			 $$invalidate(9, page0 = data.filter(d => !d.page));
+    		if ($$self.$$.dirty[0] & /*custom, layout*/ 96) {
+    			 $$invalidate(10, rawData = custom || layouts[layout]);
     		}
 
-    		if ($$self.$$.dirty & /*data*/ 64) {
-    			 $$invalidate(10, page1 = data.filter(d => d.page));
+    		if ($$self.$$.dirty[0] & /*rawData, shifted*/ 1536) {
+    			 $$invalidate(11, data = rawData.map(d => {
+    				let display = d.display;
+    				if (swaps[d.value]) display = swaps[d.value];
+    				if (!display) display = shifted ? d.value.toUpperCase() : d.value;
+    				if (d.value === "Shift") display = shifted ? swaps[d.value] : swaps[d.value].toUpperCase();
+    				return { ...d, display };
+    			}));
     		}
 
-    		if ($$self.$$.dirty & /*page0*/ 512) {
-    			 $$invalidate(11, rows0 = unique(page0.map(d => d.row)));
+    		if ($$self.$$.dirty[0] & /*data*/ 2048) {
+    			 $$invalidate(12, page0 = data.filter(d => !d.page));
     		}
 
-    		if ($$self.$$.dirty & /*rows0*/ 2048) {
+    		if ($$self.$$.dirty[0] & /*data*/ 2048) {
+    			 $$invalidate(13, page1 = data.filter(d => d.page));
+    		}
+
+    		if ($$self.$$.dirty[0] & /*page0*/ 4096) {
+    			 $$invalidate(14, rows0 = unique(page0.map(d => d.row)));
+    		}
+
+    		if ($$self.$$.dirty[0] & /*rows0*/ 16384) {
     			 (rows0.sort((a, b) => a - b));
     		}
 
-    		if ($$self.$$.dirty & /*page1*/ 1024) {
-    			 $$invalidate(12, rows1 = unique(page1.map(d => d.row)));
+    		if ($$self.$$.dirty[0] & /*page1*/ 8192) {
+    			 $$invalidate(15, rows1 = unique(page1.map(d => d.row)));
     		}
 
-    		if ($$self.$$.dirty & /*rows1*/ 4096) {
+    		if ($$self.$$.dirty[0] & /*rows1*/ 32768) {
     			 (rows1.sort((a, b) => a - b));
     		}
 
-    		if ($$self.$$.dirty & /*rows0, page0*/ 2560) {
-    			 $$invalidate(13, rowData0 = rows0.map(r => page0.filter(k => k.row === r)));
+    		if ($$self.$$.dirty[0] & /*rows0, page0*/ 20480) {
+    			 $$invalidate(16, rowData0 = rows0.map(r => page0.filter(k => k.row === r)));
     		}
 
-    		if ($$self.$$.dirty & /*rows0, page1*/ 3072) {
-    			 $$invalidate(14, rowData1 = rows0.map(r => page1.filter(k => k.row === r)));
+    		if ($$self.$$.dirty[0] & /*rows0, page1*/ 24576) {
+    			 $$invalidate(17, rowData1 = rows0.map(r => page1.filter(k => k.row === r)));
     		}
 
-    		if ($$self.$$.dirty & /*rowData0, rowData1*/ 24576) {
+    		if ($$self.$$.dirty[0] & /*rowData0, rowData1*/ 196608) {
     			 $$invalidate(2, rowData = [rowData0, rowData1]);
     		}
 
-    		if ($$self.$$.dirty & /*rowData0*/ 8192) {
-    			 $$invalidate(15, maxInRow0 = Math.max(...rowData0.map(r => r.length)));
+    		if ($$self.$$.dirty[0] & /*rowData0*/ 65536) {
+    			 $$invalidate(18, maxInRow0 = Math.max(...rowData0.map(r => r.length)));
     		}
 
-    		if ($$self.$$.dirty & /*rowData1*/ 16384) {
-    			 $$invalidate(16, maxInRow1 = Math.max(...rowData1.map(r => r.length)));
+    		if ($$self.$$.dirty[0] & /*rowData1*/ 131072) {
+    			 $$invalidate(19, maxInRow1 = Math.max(...rowData1.map(r => r.length)));
     		}
 
-    		if ($$self.$$.dirty & /*maxInRow0, maxInRow1*/ 98304) {
-    			 $$invalidate(17, maxInRow = Math.max(maxInRow0, maxInRow1));
+    		if ($$self.$$.dirty[0] & /*maxInRow0, maxInRow1*/ 786432) {
+    			 $$invalidate(20, maxInRow = Math.max(maxInRow0, maxInRow1));
     		}
 
-    		if ($$self.$$.dirty & /*maxInRow*/ 131072) {
+    		if ($$self.$$.dirty[0] & /*maxInRow*/ 1048576) {
     			 $$invalidate(3, percentWidth = `${1 / maxInRow * 100}%`);
     		}
     	};
@@ -1677,18 +1853,18 @@ var app = (function () {
     		page,
     		rowData,
     		percentWidth,
-    		swaps,
     		onKey,
-    		data,
+    		custom,
+    		layout,
     		touchstart_handler,
-    		click_handler
+    		mousedown_handler
     	];
     }
 
     class Keyboard extends SvelteComponent {
     	constructor(options) {
     		super();
-    		init(this, options, instance$1, create_fragment$1, safe_not_equal, { data: 6, style: 0 });
+    		init(this, options, instance$1, create_fragment$1, safe_not_equal, { custom: 5, style: 0, layout: 6 }, [-1, -1]);
     	}
     }
 
@@ -2096,7 +2272,7 @@ var app = (function () {
     		}
 
     		if (["Delete", "Backspace"].includes(e.key)) {
-    			onCellUpdate(index, "", -1);
+    			onCellUpdate(index, "", -1, true);
     			return;
     		}
 
@@ -2211,40 +2387,40 @@ var app = (function () {
 
     function get_each_context$2(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[34] = list[i].x;
-    	child_ctx[35] = list[i].y;
-    	child_ctx[36] = list[i].value;
-    	child_ctx[37] = list[i].index;
-    	child_ctx[38] = list[i].number;
-    	child_ctx[39] = list[i].custom;
+    	child_ctx[35] = list[i].x;
+    	child_ctx[36] = list[i].y;
+    	child_ctx[37] = list[i].value;
+    	child_ctx[38] = list[i].index;
+    	child_ctx[39] = list[i].number;
+    	child_ctx[40] = list[i].custom;
     	return child_ctx;
     }
 
-    // (192:4) {#each cells as { x, y, value, index, number, custom }}
+    // (193:4) {#each cells as { x, y, value, index, number, custom }}
     function create_each_block$2(ctx) {
     	let cell;
     	let current;
 
     	cell = new Cell({
     			props: {
-    				x: /*x*/ ctx[34],
-    				y: /*y*/ ctx[35],
-    				index: /*index*/ ctx[37],
-    				value: /*value*/ ctx[36],
-    				number: /*number*/ ctx[38],
-    				custom: /*custom*/ ctx[39],
+    				x: /*x*/ ctx[35],
+    				y: /*y*/ ctx[36],
+    				index: /*index*/ ctx[38],
+    				value: /*value*/ ctx[37],
+    				number: /*number*/ ctx[39],
+    				custom: /*custom*/ ctx[40],
     				changeDelay: /*isRevealing*/ ctx[2]
-    				? /*revealDuration*/ ctx[5] / /*cells*/ ctx[0].length * /*index*/ ctx[37]
+    				? /*revealDuration*/ ctx[5] / /*cells*/ ctx[0].length * /*index*/ ctx[38]
     				: 0,
     				isRevealing: /*isRevealing*/ ctx[2],
-    				isFocused: /*focusedCellIndex*/ ctx[1] == /*index*/ ctx[37] && !/*isDisableHighlight*/ ctx[3],
-    				isSecondarilyFocused: /*secondarilyFocusedCells*/ ctx[8].includes(/*index*/ ctx[37]) && !/*isDisableHighlight*/ ctx[3],
-    				onFocusCell: /*onFocusCell*/ ctx[14],
-    				onCellUpdate: /*onCellUpdate*/ ctx[12],
-    				onFocusClueDiff: /*onFocusClueDiff*/ ctx[15],
-    				onMoveFocus: /*onMoveFocus*/ ctx[16],
-    				onFlipDirection: /*onFlipDirection*/ ctx[17],
-    				onHistoricalChange: /*onHistoricalChange*/ ctx[13]
+    				isFocused: /*focusedCellIndex*/ ctx[1] == /*index*/ ctx[38] && !/*isDisableHighlight*/ ctx[3],
+    				isSecondarilyFocused: /*secondarilyFocusedCells*/ ctx[9].includes(/*index*/ ctx[38]) && !/*isDisableHighlight*/ ctx[3],
+    				onFocusCell: /*onFocusCell*/ ctx[15],
+    				onCellUpdate: /*onCellUpdate*/ ctx[13],
+    				onFocusClueDiff: /*onFocusClueDiff*/ ctx[16],
+    				onMoveFocus: /*onMoveFocus*/ ctx[17],
+    				onFlipDirection: /*onFlipDirection*/ ctx[18],
+    				onHistoricalChange: /*onHistoricalChange*/ ctx[14]
     			}
     		});
 
@@ -2261,20 +2437,20 @@ var app = (function () {
     		},
     		p(ctx, dirty) {
     			const cell_changes = {};
-    			if (dirty[0] & /*cells*/ 1) cell_changes.x = /*x*/ ctx[34];
-    			if (dirty[0] & /*cells*/ 1) cell_changes.y = /*y*/ ctx[35];
-    			if (dirty[0] & /*cells*/ 1) cell_changes.index = /*index*/ ctx[37];
-    			if (dirty[0] & /*cells*/ 1) cell_changes.value = /*value*/ ctx[36];
-    			if (dirty[0] & /*cells*/ 1) cell_changes.number = /*number*/ ctx[38];
-    			if (dirty[0] & /*cells*/ 1) cell_changes.custom = /*custom*/ ctx[39];
+    			if (dirty[0] & /*cells*/ 1) cell_changes.x = /*x*/ ctx[35];
+    			if (dirty[0] & /*cells*/ 1) cell_changes.y = /*y*/ ctx[36];
+    			if (dirty[0] & /*cells*/ 1) cell_changes.index = /*index*/ ctx[38];
+    			if (dirty[0] & /*cells*/ 1) cell_changes.value = /*value*/ ctx[37];
+    			if (dirty[0] & /*cells*/ 1) cell_changes.number = /*number*/ ctx[39];
+    			if (dirty[0] & /*cells*/ 1) cell_changes.custom = /*custom*/ ctx[40];
 
     			if (dirty[0] & /*isRevealing, revealDuration, cells*/ 37) cell_changes.changeDelay = /*isRevealing*/ ctx[2]
-    			? /*revealDuration*/ ctx[5] / /*cells*/ ctx[0].length * /*index*/ ctx[37]
+    			? /*revealDuration*/ ctx[5] / /*cells*/ ctx[0].length * /*index*/ ctx[38]
     			: 0;
 
     			if (dirty[0] & /*isRevealing*/ 4) cell_changes.isRevealing = /*isRevealing*/ ctx[2];
-    			if (dirty[0] & /*focusedCellIndex, cells, isDisableHighlight*/ 11) cell_changes.isFocused = /*focusedCellIndex*/ ctx[1] == /*index*/ ctx[37] && !/*isDisableHighlight*/ ctx[3];
-    			if (dirty[0] & /*secondarilyFocusedCells, cells, isDisableHighlight*/ 265) cell_changes.isSecondarilyFocused = /*secondarilyFocusedCells*/ ctx[8].includes(/*index*/ ctx[37]) && !/*isDisableHighlight*/ ctx[3];
+    			if (dirty[0] & /*focusedCellIndex, cells, isDisableHighlight*/ 11) cell_changes.isFocused = /*focusedCellIndex*/ ctx[1] == /*index*/ ctx[38] && !/*isDisableHighlight*/ ctx[3];
+    			if (dirty[0] & /*secondarilyFocusedCells, cells, isDisableHighlight*/ 521) cell_changes.isSecondarilyFocused = /*secondarilyFocusedCells*/ ctx[9].includes(/*index*/ ctx[38]) && !/*isDisableHighlight*/ ctx[3];
     			cell.$set(cell_changes);
     		},
     		i(local) {
@@ -2292,13 +2468,20 @@ var app = (function () {
     	};
     }
 
-    // (214:0) {#if keyboardVisible}
+    // (215:0) {#if keyboardVisible}
     function create_if_block$3(ctx) {
     	let div;
     	let keyboard;
     	let current;
-    	keyboard = new Keyboard({});
-    	keyboard.$on("keydown", /*onKeydown*/ ctx[18]);
+
+    	keyboard = new Keyboard({
+    			props: {
+    				layout: "crossword",
+    				style: /*keyboardStyle*/ ctx[7]
+    			}
+    		});
+
+    	keyboard.$on("keydown", /*onKeydown*/ ctx[19]);
 
     	return {
     		c() {
@@ -2321,7 +2504,11 @@ var app = (function () {
     			mount_component(keyboard, div, null);
     			current = true;
     		},
-    		p: noop,
+    		p(ctx, dirty) {
+    			const keyboard_changes = {};
+    			if (dirty[0] & /*keyboardStyle*/ 128) keyboard_changes.style = /*keyboardStyle*/ ctx[7];
+    			keyboard.$set(keyboard_changes);
+    		},
     		i(local) {
     			if (current) return;
     			transition_in(keyboard.$$.fragment, local);
@@ -2358,7 +2545,7 @@ var app = (function () {
     		each_blocks[i] = null;
     	});
 
-    	let if_block = /*keyboardVisible*/ ctx[11] && create_if_block$3(ctx);
+    	let if_block = /*keyboardVisible*/ ctx[12] && create_if_block$3(ctx);
 
     	return {
     		c() {
@@ -2392,7 +2579,7 @@ var app = (function () {
     			this.h();
     		},
     		h() {
-    			attr(svg, "viewBox", svg_viewBox_value = "0 0 " + /*w*/ ctx[9] + " " + /*h*/ ctx[10]);
+    			attr(svg, "viewBox", svg_viewBox_value = "0 0 " + /*w*/ ctx[10] + " " + /*h*/ ctx[11]);
     			attr(svg, "class", "svelte-ce6hth");
     			attr(section, "class", "puzzle svelte-ce6hth");
     			toggle_class(section, "stacked", /*stacked*/ ctx[4]);
@@ -2406,19 +2593,19 @@ var app = (function () {
     				each_blocks[i].m(svg, null);
     			}
 
-    			/*section_binding*/ ctx[24](section);
+    			/*section_binding*/ ctx[25](section);
     			insert(target, t, anchor);
     			if (if_block) if_block.m(target, anchor);
     			insert(target, if_block_anchor, anchor);
     			current = true;
 
     			if (!mounted) {
-    				dispose = listen(window, "click", /*onClick*/ ctx[19]);
+    				dispose = listen(window, "click", /*onClick*/ ctx[20]);
     				mounted = true;
     			}
     		},
     		p(ctx, dirty) {
-    			if (dirty[0] & /*cells, isRevealing, revealDuration, focusedCellIndex, isDisableHighlight, secondarilyFocusedCells, onFocusCell, onCellUpdate, onFocusClueDiff, onMoveFocus, onFlipDirection, onHistoricalChange*/ 258351) {
+    			if (dirty[0] & /*cells, isRevealing, revealDuration, focusedCellIndex, isDisableHighlight, secondarilyFocusedCells, onFocusCell, onCellUpdate, onFocusClueDiff, onMoveFocus, onFlipDirection, onHistoricalChange*/ 516655) {
     				each_value = /*cells*/ ctx[0];
     				let i;
 
@@ -2445,7 +2632,7 @@ var app = (function () {
     				check_outros();
     			}
 
-    			if (!current || dirty[0] & /*w, h*/ 1536 && svg_viewBox_value !== (svg_viewBox_value = "0 0 " + /*w*/ ctx[9] + " " + /*h*/ ctx[10])) {
+    			if (!current || dirty[0] & /*w, h*/ 3072 && svg_viewBox_value !== (svg_viewBox_value = "0 0 " + /*w*/ ctx[10] + " " + /*h*/ ctx[11])) {
     				attr(svg, "viewBox", svg_viewBox_value);
     			}
 
@@ -2457,11 +2644,11 @@ var app = (function () {
     				toggle_class(section, "is-loaded", /*isLoaded*/ ctx[6]);
     			}
 
-    			if (/*keyboardVisible*/ ctx[11]) {
+    			if (/*keyboardVisible*/ ctx[12]) {
     				if (if_block) {
     					if_block.p(ctx, dirty);
 
-    					if (dirty[0] & /*keyboardVisible*/ 2048) {
+    					if (dirty[0] & /*keyboardVisible*/ 4096) {
     						transition_in(if_block, 1);
     					}
     				} else {
@@ -2503,7 +2690,7 @@ var app = (function () {
     		d(detaching) {
     			if (detaching) detach(section);
     			destroy_each(each_blocks, detaching);
-    			/*section_binding*/ ctx[24](null);
+    			/*section_binding*/ ctx[25](null);
     			if (detaching) detach(t);
     			if (if_block) if_block.d(detaching);
     			if (detaching) detach(if_block_anchor);
@@ -2527,6 +2714,7 @@ var app = (function () {
     	let { revealDuration = 0 } = $$props;
     	let { showKeyboard } = $$props;
     	let { isLoaded } = $$props;
+    	let { keyboardStyle } = $$props;
     	let element;
     	let cellsHistoryIndex = 0;
     	let cellsHistory = [];
@@ -2536,15 +2724,15 @@ var app = (function () {
     	let isPuzzleFocused = false;
 
     	onMount(() => {
-    		$$invalidate(29, isMobile = checkMobile());
+    		$$invalidate(30, isMobile = checkMobile());
     	});
 
     	function updateSecondarilyFocusedCells() {
-    		$$invalidate(8, secondarilyFocusedCells = getSecondarilyFocusedCells({ cells, focusedDirection, focusedCell }));
+    		$$invalidate(9, secondarilyFocusedCells = getSecondarilyFocusedCells({ cells, focusedDirection, focusedCell }));
     	}
 
-    	function onCellUpdate(index, newValue, diff = 1) {
-    		const doReplaceFilledCells = !!cells[index].value;
+    	function onCellUpdate(index, newValue, diff = 1, doReplaceFilledCells) {
+    		doReplaceFilledCells = doReplaceFilledCells || !!cells[index].value;
     		const dimension = focusedDirection == "across" ? "x" : "y";
     		const clueIndex = cells[index].clueNumbers[focusedDirection];
     		const cellsInClue = cells.filter(cell => cell.clueNumbers[focusedDirection] == clueIndex && (doReplaceFilledCells || !cell.value));
@@ -2561,7 +2749,7 @@ var app = (function () {
     		cellsHistoryIndex = 0;
     		$$invalidate(0, cells = newCells);
 
-    		if (isAtEndOfClue) {
+    		if (isAtEndOfClue && diff > 0) {
     			onFocusClueDiff(diff);
     		} else {
     			onFocusCellDiff(diff, doReplaceFilledCells);
@@ -2616,7 +2804,7 @@ var app = (function () {
 
     	function onMoveFocus(direction, diff) {
     		if (focusedDirection != direction) {
-    			$$invalidate(20, focusedDirection = direction);
+    			$$invalidate(21, focusedDirection = direction);
     		} else {
     			const nextCell = getCellAfterDiff({ diff, cells, direction, focusedCell });
     			if (!nextCell) return;
@@ -2627,7 +2815,7 @@ var app = (function () {
     	function onFlipDirection() {
     		const newDirection = focusedDirection === "across" ? "down" : "across";
     		const hasClueInNewDirection = !!focusedCell["clueNumbers"][newDirection];
-    		if (hasClueInNewDirection) $$invalidate(20, focusedDirection = newDirection);
+    		if (hasClueInNewDirection) $$invalidate(21, focusedDirection = newDirection);
     	}
 
     	function onKeydown({ detail }) {
@@ -2643,22 +2831,23 @@ var app = (function () {
     	function section_binding($$value) {
     		binding_callbacks[$$value ? "unshift" : "push"](() => {
     			element = $$value;
-    			$$invalidate(7, element);
+    			$$invalidate(8, element);
     		});
     	}
 
     	$$self.$$set = $$props => {
-    		if ("clues" in $$props) $$invalidate(21, clues = $$props.clues);
+    		if ("clues" in $$props) $$invalidate(22, clues = $$props.clues);
     		if ("cells" in $$props) $$invalidate(0, cells = $$props.cells);
-    		if ("focusedDirection" in $$props) $$invalidate(20, focusedDirection = $$props.focusedDirection);
+    		if ("focusedDirection" in $$props) $$invalidate(21, focusedDirection = $$props.focusedDirection);
     		if ("focusedCellIndex" in $$props) $$invalidate(1, focusedCellIndex = $$props.focusedCellIndex);
-    		if ("focusedCell" in $$props) $$invalidate(22, focusedCell = $$props.focusedCell);
+    		if ("focusedCell" in $$props) $$invalidate(23, focusedCell = $$props.focusedCell);
     		if ("isRevealing" in $$props) $$invalidate(2, isRevealing = $$props.isRevealing);
     		if ("isDisableHighlight" in $$props) $$invalidate(3, isDisableHighlight = $$props.isDisableHighlight);
     		if ("stacked" in $$props) $$invalidate(4, stacked = $$props.stacked);
     		if ("revealDuration" in $$props) $$invalidate(5, revealDuration = $$props.revealDuration);
-    		if ("showKeyboard" in $$props) $$invalidate(23, showKeyboard = $$props.showKeyboard);
+    		if ("showKeyboard" in $$props) $$invalidate(24, showKeyboard = $$props.showKeyboard);
     		if ("isLoaded" in $$props) $$invalidate(6, isLoaded = $$props.isLoaded);
+    		if ("keyboardStyle" in $$props) $$invalidate(7, keyboardStyle = $$props.keyboardStyle);
     	};
 
     	let w;
@@ -2668,24 +2857,24 @@ var app = (function () {
 
     	$$self.$$.update = () => {
     		if ($$self.$$.dirty[0] & /*cells*/ 1) {
-    			 $$invalidate(9, w = Math.max(...cells.map(d => d.x)) + 1);
+    			 $$invalidate(10, w = Math.max(...cells.map(d => d.x)) + 1);
     		}
 
     		if ($$self.$$.dirty[0] & /*cells*/ 1) {
-    			 $$invalidate(10, h = Math.max(...cells.map(d => d.y)) + 1);
+    			 $$invalidate(11, h = Math.max(...cells.map(d => d.y)) + 1);
     		}
 
-    		if ($$self.$$.dirty[0] & /*showKeyboard, isMobile*/ 545259520) {
-    			 $$invalidate(11, keyboardVisible = typeof showKeyboard === "boolean"
+    		if ($$self.$$.dirty[0] & /*showKeyboard, isMobile*/ 1090519040) {
+    			 $$invalidate(12, keyboardVisible = typeof showKeyboard === "boolean"
     			? showKeyboard
     			: isMobile);
     		}
 
-    		if ($$self.$$.dirty[0] & /*cells, focusedCellIndex, focusedDirection*/ 1048579) {
+    		if ($$self.$$.dirty[0] & /*cells, focusedCellIndex, focusedDirection*/ 2097155) {
     			 (updateSecondarilyFocusedCells());
     		}
 
-    		if ($$self.$$.dirty[0] & /*cells, focusedDirection*/ 1048577) {
+    		if ($$self.$$.dirty[0] & /*cells, focusedDirection*/ 2097153) {
     			 sortedCellsInDirection = [...cells].sort((a, b) => focusedDirection == "down"
     			? a.x - b.x || a.y - b.y
     			: a.y - b.y || a.x - b.x);
@@ -2700,6 +2889,7 @@ var app = (function () {
     		stacked,
     		revealDuration,
     		isLoaded,
+    		keyboardStyle,
     		element,
     		secondarilyFocusedCells,
     		w,
@@ -2732,17 +2922,18 @@ var app = (function () {
     			create_fragment$3,
     			safe_not_equal,
     			{
-    				clues: 21,
+    				clues: 22,
     				cells: 0,
-    				focusedDirection: 20,
+    				focusedDirection: 21,
     				focusedCellIndex: 1,
-    				focusedCell: 22,
+    				focusedCell: 23,
     				isRevealing: 2,
     				isDisableHighlight: 3,
     				stacked: 4,
     				revealDuration: 5,
-    				showKeyboard: 23,
-    				isLoaded: 6
+    				showKeyboard: 24,
+    				isLoaded: 6,
+    				keyboardStyle: 7
     			},
     			[-1, -1]
     		);
@@ -3897,7 +4088,7 @@ var app = (function () {
     	const default_slot_template = /*#slots*/ ctx[3].default;
     	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[2], null);
     	const default_slot_or_fallback = default_slot || fallback_block();
-    	let if_block = /*showConfetti*/ ctx[0] && create_if_block_1$2();
+    	let if_block = /*showConfetti*/ ctx[0] && create_if_block_1$1();
 
     	return {
     		c() {
@@ -3984,7 +4175,7 @@ var app = (function () {
     						transition_in(if_block, 1);
     					}
     				} else {
-    					if_block = create_if_block_1$2();
+    					if_block = create_if_block_1$1();
     					if_block.c();
     					transition_in(if_block, 1);
     					if_block.m(div2, null);
@@ -4071,7 +4262,7 @@ var app = (function () {
     }
 
     // (22:4) {#if showConfetti}
-    function create_if_block_1$2(ctx) {
+    function create_if_block_1$1(ctx) {
     	let div;
     	let confetti;
     	let current;
@@ -4409,11 +4600,11 @@ var app = (function () {
     const get_toolbar_slot_changes = dirty => ({});
 
     const get_toolbar_slot_context = ctx => ({
-    	onClear: /*onClear*/ ctx[19],
-    	onReveal: /*onReveal*/ ctx[20]
+    	onClear: /*onClear*/ ctx[20],
+    	onReveal: /*onReveal*/ ctx[21]
     });
 
-    // (121:0) {#if validated}
+    // (122:0) {#if validated}
     function create_if_block$5(ctx) {
     	let article;
     	let t0;
@@ -4430,40 +4621,40 @@ var app = (function () {
     	let t2;
     	let article_resize_listener;
     	let current;
-    	const toolbar_slot_template = /*#slots*/ ctx[27].toolbar;
-    	const toolbar_slot = create_slot(toolbar_slot_template, ctx, /*$$scope*/ ctx[35], get_toolbar_slot_context);
+    	const toolbar_slot_template = /*#slots*/ ctx[28].toolbar;
+    	const toolbar_slot = create_slot(toolbar_slot_template, ctx, /*$$scope*/ ctx[36], get_toolbar_slot_context);
     	const toolbar_slot_or_fallback = toolbar_slot || fallback_block$1(ctx);
 
     	function clues_1_focusedCellIndex_binding(value) {
-    		/*clues_1_focusedCellIndex_binding*/ ctx[28].call(null, value);
+    		/*clues_1_focusedCellIndex_binding*/ ctx[29].call(null, value);
     	}
 
     	function clues_1_focusedCell_binding(value) {
-    		/*clues_1_focusedCell_binding*/ ctx[29].call(null, value);
+    		/*clues_1_focusedCell_binding*/ ctx[30].call(null, value);
     	}
 
     	function clues_1_focusedDirection_binding(value) {
-    		/*clues_1_focusedDirection_binding*/ ctx[30].call(null, value);
+    		/*clues_1_focusedDirection_binding*/ ctx[31].call(null, value);
     	}
 
     	let clues_1_props = {
-    		clues: /*clues*/ ctx[11],
-    		cellIndexMap: /*cellIndexMap*/ ctx[14],
-    		stacked: /*stacked*/ ctx[17],
-    		isDisableHighlight: /*isDisableHighlight*/ ctx[16],
-    		isLoaded: /*isLoaded*/ ctx[9]
+    		clues: /*clues*/ ctx[12],
+    		cellIndexMap: /*cellIndexMap*/ ctx[15],
+    		stacked: /*stacked*/ ctx[18],
+    		isDisableHighlight: /*isDisableHighlight*/ ctx[17],
+    		isLoaded: /*isLoaded*/ ctx[10]
     	};
 
-    	if (/*focusedCellIndex*/ ctx[7] !== void 0) {
-    		clues_1_props.focusedCellIndex = /*focusedCellIndex*/ ctx[7];
+    	if (/*focusedCellIndex*/ ctx[8] !== void 0) {
+    		clues_1_props.focusedCellIndex = /*focusedCellIndex*/ ctx[8];
     	}
 
-    	if (/*focusedCell*/ ctx[13] !== void 0) {
-    		clues_1_props.focusedCell = /*focusedCell*/ ctx[13];
+    	if (/*focusedCell*/ ctx[14] !== void 0) {
+    		clues_1_props.focusedCell = /*focusedCell*/ ctx[14];
     	}
 
-    	if (/*focusedDirection*/ ctx[6] !== void 0) {
-    		clues_1_props.focusedDirection = /*focusedDirection*/ ctx[6];
+    	if (/*focusedDirection*/ ctx[7] !== void 0) {
+    		clues_1_props.focusedDirection = /*focusedDirection*/ ctx[7];
     	}
 
     	clues_1 = new Clues({ props: clues_1_props });
@@ -4472,45 +4663,46 @@ var app = (function () {
     	binding_callbacks.push(() => bind(clues_1, "focusedDirection", clues_1_focusedDirection_binding));
 
     	function puzzle_cells_binding(value) {
-    		/*puzzle_cells_binding*/ ctx[31].call(null, value);
+    		/*puzzle_cells_binding*/ ctx[32].call(null, value);
     	}
 
     	function puzzle_focusedCellIndex_binding(value) {
-    		/*puzzle_focusedCellIndex_binding*/ ctx[32].call(null, value);
+    		/*puzzle_focusedCellIndex_binding*/ ctx[33].call(null, value);
     	}
 
     	function puzzle_focusedDirection_binding(value) {
-    		/*puzzle_focusedDirection_binding*/ ctx[33].call(null, value);
+    		/*puzzle_focusedDirection_binding*/ ctx[34].call(null, value);
     	}
 
     	let puzzle_props = {
-    		clues: /*clues*/ ctx[11],
-    		focusedCell: /*focusedCell*/ ctx[13],
-    		isRevealing: /*isRevealing*/ ctx[8],
-    		isDisableHighlight: /*isDisableHighlight*/ ctx[16],
+    		clues: /*clues*/ ctx[12],
+    		focusedCell: /*focusedCell*/ ctx[14],
+    		isRevealing: /*isRevealing*/ ctx[9],
+    		isDisableHighlight: /*isDisableHighlight*/ ctx[17],
     		revealDuration: /*revealDuration*/ ctx[1],
     		showKeyboard: /*showKeyboard*/ ctx[4],
-    		stacked: /*stacked*/ ctx[17],
-    		isLoaded: /*isLoaded*/ ctx[9]
+    		stacked: /*stacked*/ ctx[18],
+    		isLoaded: /*isLoaded*/ ctx[10],
+    		keyboardStyle: /*keyboardStyle*/ ctx[5]
     	};
 
-    	if (/*cells*/ ctx[12] !== void 0) {
-    		puzzle_props.cells = /*cells*/ ctx[12];
+    	if (/*cells*/ ctx[13] !== void 0) {
+    		puzzle_props.cells = /*cells*/ ctx[13];
     	}
 
-    	if (/*focusedCellIndex*/ ctx[7] !== void 0) {
-    		puzzle_props.focusedCellIndex = /*focusedCellIndex*/ ctx[7];
+    	if (/*focusedCellIndex*/ ctx[8] !== void 0) {
+    		puzzle_props.focusedCellIndex = /*focusedCellIndex*/ ctx[8];
     	}
 
-    	if (/*focusedDirection*/ ctx[6] !== void 0) {
-    		puzzle_props.focusedDirection = /*focusedDirection*/ ctx[6];
+    	if (/*focusedDirection*/ ctx[7] !== void 0) {
+    		puzzle_props.focusedDirection = /*focusedDirection*/ ctx[7];
     	}
 
     	puzzle = new Puzzle({ props: puzzle_props });
     	binding_callbacks.push(() => bind(puzzle, "cells", puzzle_cells_binding));
     	binding_callbacks.push(() => bind(puzzle, "focusedCellIndex", puzzle_focusedCellIndex_binding));
     	binding_callbacks.push(() => bind(puzzle, "focusedDirection", puzzle_focusedDirection_binding));
-    	let if_block = /*isComplete*/ ctx[15] && !/*isRevealing*/ ctx[8] && /*showCompleteMessage*/ ctx[2] && create_if_block_1$3(ctx);
+    	let if_block = /*isComplete*/ ctx[16] && !/*isRevealing*/ ctx[9] && /*showCompleteMessage*/ ctx[2] && create_if_block_1$2(ctx);
 
     	return {
     		c() {
@@ -4543,11 +4735,11 @@ var app = (function () {
     		},
     		h() {
     			attr(div, "class", "play svelte-7zvqow");
-    			toggle_class(div, "stacked", /*stacked*/ ctx[17]);
-    			toggle_class(div, "is-loaded", /*isLoaded*/ ctx[9]);
+    			toggle_class(div, "stacked", /*stacked*/ ctx[18]);
+    			toggle_class(div, "is-loaded", /*isLoaded*/ ctx[10]);
     			attr(article, "class", "svelte-crossword svelte-7zvqow");
-    			attr(article, "style", /*inlineStyles*/ ctx[18]);
-    			add_render_callback(() => /*article_elementresize_handler*/ ctx[34].call(article));
+    			attr(article, "style", /*inlineStyles*/ ctx[19]);
+    			add_render_callback(() => /*article_elementresize_handler*/ ctx[35].call(article));
     		},
     		m(target, anchor) {
     			insert(target, article, anchor);
@@ -4563,13 +4755,13 @@ var app = (function () {
     			mount_component(puzzle, div, null);
     			append(article, t2);
     			if (if_block) if_block.m(article, null);
-    			article_resize_listener = add_resize_listener(article, /*article_elementresize_handler*/ ctx[34].bind(article));
+    			article_resize_listener = add_resize_listener(article, /*article_elementresize_handler*/ ctx[35].bind(article));
     			current = true;
     		},
     		p(ctx, dirty) {
     			if (toolbar_slot) {
-    				if (toolbar_slot.p && dirty[1] & /*$$scope*/ 16) {
-    					update_slot(toolbar_slot, toolbar_slot_template, ctx, /*$$scope*/ ctx[35], dirty, get_toolbar_slot_changes, get_toolbar_slot_context);
+    				if (toolbar_slot.p && dirty[1] & /*$$scope*/ 32) {
+    					update_slot(toolbar_slot, toolbar_slot_template, ctx, /*$$scope*/ ctx[36], dirty, get_toolbar_slot_changes, get_toolbar_slot_context);
     				}
     			} else {
     				if (toolbar_slot_or_fallback && toolbar_slot_or_fallback.p && dirty[0] & /*actions*/ 1) {
@@ -4578,78 +4770,79 @@ var app = (function () {
     			}
 
     			const clues_1_changes = {};
-    			if (dirty[0] & /*clues*/ 2048) clues_1_changes.clues = /*clues*/ ctx[11];
-    			if (dirty[0] & /*cellIndexMap*/ 16384) clues_1_changes.cellIndexMap = /*cellIndexMap*/ ctx[14];
-    			if (dirty[0] & /*stacked*/ 131072) clues_1_changes.stacked = /*stacked*/ ctx[17];
-    			if (dirty[0] & /*isDisableHighlight*/ 65536) clues_1_changes.isDisableHighlight = /*isDisableHighlight*/ ctx[16];
-    			if (dirty[0] & /*isLoaded*/ 512) clues_1_changes.isLoaded = /*isLoaded*/ ctx[9];
+    			if (dirty[0] & /*clues*/ 4096) clues_1_changes.clues = /*clues*/ ctx[12];
+    			if (dirty[0] & /*cellIndexMap*/ 32768) clues_1_changes.cellIndexMap = /*cellIndexMap*/ ctx[15];
+    			if (dirty[0] & /*stacked*/ 262144) clues_1_changes.stacked = /*stacked*/ ctx[18];
+    			if (dirty[0] & /*isDisableHighlight*/ 131072) clues_1_changes.isDisableHighlight = /*isDisableHighlight*/ ctx[17];
+    			if (dirty[0] & /*isLoaded*/ 1024) clues_1_changes.isLoaded = /*isLoaded*/ ctx[10];
 
-    			if (!updating_focusedCellIndex && dirty[0] & /*focusedCellIndex*/ 128) {
+    			if (!updating_focusedCellIndex && dirty[0] & /*focusedCellIndex*/ 256) {
     				updating_focusedCellIndex = true;
-    				clues_1_changes.focusedCellIndex = /*focusedCellIndex*/ ctx[7];
+    				clues_1_changes.focusedCellIndex = /*focusedCellIndex*/ ctx[8];
     				add_flush_callback(() => updating_focusedCellIndex = false);
     			}
 
-    			if (!updating_focusedCell && dirty[0] & /*focusedCell*/ 8192) {
+    			if (!updating_focusedCell && dirty[0] & /*focusedCell*/ 16384) {
     				updating_focusedCell = true;
-    				clues_1_changes.focusedCell = /*focusedCell*/ ctx[13];
+    				clues_1_changes.focusedCell = /*focusedCell*/ ctx[14];
     				add_flush_callback(() => updating_focusedCell = false);
     			}
 
-    			if (!updating_focusedDirection && dirty[0] & /*focusedDirection*/ 64) {
+    			if (!updating_focusedDirection && dirty[0] & /*focusedDirection*/ 128) {
     				updating_focusedDirection = true;
-    				clues_1_changes.focusedDirection = /*focusedDirection*/ ctx[6];
+    				clues_1_changes.focusedDirection = /*focusedDirection*/ ctx[7];
     				add_flush_callback(() => updating_focusedDirection = false);
     			}
 
     			clues_1.$set(clues_1_changes);
     			const puzzle_changes = {};
-    			if (dirty[0] & /*clues*/ 2048) puzzle_changes.clues = /*clues*/ ctx[11];
-    			if (dirty[0] & /*focusedCell*/ 8192) puzzle_changes.focusedCell = /*focusedCell*/ ctx[13];
-    			if (dirty[0] & /*isRevealing*/ 256) puzzle_changes.isRevealing = /*isRevealing*/ ctx[8];
-    			if (dirty[0] & /*isDisableHighlight*/ 65536) puzzle_changes.isDisableHighlight = /*isDisableHighlight*/ ctx[16];
+    			if (dirty[0] & /*clues*/ 4096) puzzle_changes.clues = /*clues*/ ctx[12];
+    			if (dirty[0] & /*focusedCell*/ 16384) puzzle_changes.focusedCell = /*focusedCell*/ ctx[14];
+    			if (dirty[0] & /*isRevealing*/ 512) puzzle_changes.isRevealing = /*isRevealing*/ ctx[9];
+    			if (dirty[0] & /*isDisableHighlight*/ 131072) puzzle_changes.isDisableHighlight = /*isDisableHighlight*/ ctx[17];
     			if (dirty[0] & /*revealDuration*/ 2) puzzle_changes.revealDuration = /*revealDuration*/ ctx[1];
     			if (dirty[0] & /*showKeyboard*/ 16) puzzle_changes.showKeyboard = /*showKeyboard*/ ctx[4];
-    			if (dirty[0] & /*stacked*/ 131072) puzzle_changes.stacked = /*stacked*/ ctx[17];
-    			if (dirty[0] & /*isLoaded*/ 512) puzzle_changes.isLoaded = /*isLoaded*/ ctx[9];
+    			if (dirty[0] & /*stacked*/ 262144) puzzle_changes.stacked = /*stacked*/ ctx[18];
+    			if (dirty[0] & /*isLoaded*/ 1024) puzzle_changes.isLoaded = /*isLoaded*/ ctx[10];
+    			if (dirty[0] & /*keyboardStyle*/ 32) puzzle_changes.keyboardStyle = /*keyboardStyle*/ ctx[5];
 
-    			if (!updating_cells && dirty[0] & /*cells*/ 4096) {
+    			if (!updating_cells && dirty[0] & /*cells*/ 8192) {
     				updating_cells = true;
-    				puzzle_changes.cells = /*cells*/ ctx[12];
+    				puzzle_changes.cells = /*cells*/ ctx[13];
     				add_flush_callback(() => updating_cells = false);
     			}
 
-    			if (!updating_focusedCellIndex_1 && dirty[0] & /*focusedCellIndex*/ 128) {
+    			if (!updating_focusedCellIndex_1 && dirty[0] & /*focusedCellIndex*/ 256) {
     				updating_focusedCellIndex_1 = true;
-    				puzzle_changes.focusedCellIndex = /*focusedCellIndex*/ ctx[7];
+    				puzzle_changes.focusedCellIndex = /*focusedCellIndex*/ ctx[8];
     				add_flush_callback(() => updating_focusedCellIndex_1 = false);
     			}
 
-    			if (!updating_focusedDirection_1 && dirty[0] & /*focusedDirection*/ 64) {
+    			if (!updating_focusedDirection_1 && dirty[0] & /*focusedDirection*/ 128) {
     				updating_focusedDirection_1 = true;
-    				puzzle_changes.focusedDirection = /*focusedDirection*/ ctx[6];
+    				puzzle_changes.focusedDirection = /*focusedDirection*/ ctx[7];
     				add_flush_callback(() => updating_focusedDirection_1 = false);
     			}
 
     			puzzle.$set(puzzle_changes);
 
-    			if (dirty[0] & /*stacked*/ 131072) {
-    				toggle_class(div, "stacked", /*stacked*/ ctx[17]);
+    			if (dirty[0] & /*stacked*/ 262144) {
+    				toggle_class(div, "stacked", /*stacked*/ ctx[18]);
     			}
 
-    			if (dirty[0] & /*isLoaded*/ 512) {
-    				toggle_class(div, "is-loaded", /*isLoaded*/ ctx[9]);
+    			if (dirty[0] & /*isLoaded*/ 1024) {
+    				toggle_class(div, "is-loaded", /*isLoaded*/ ctx[10]);
     			}
 
-    			if (/*isComplete*/ ctx[15] && !/*isRevealing*/ ctx[8] && /*showCompleteMessage*/ ctx[2]) {
+    			if (/*isComplete*/ ctx[16] && !/*isRevealing*/ ctx[9] && /*showCompleteMessage*/ ctx[2]) {
     				if (if_block) {
     					if_block.p(ctx, dirty);
 
-    					if (dirty[0] & /*isComplete, isRevealing, showCompleteMessage*/ 33028) {
+    					if (dirty[0] & /*isComplete, isRevealing, showCompleteMessage*/ 66052) {
     						transition_in(if_block, 1);
     					}
     				} else {
-    					if_block = create_if_block_1$3(ctx);
+    					if_block = create_if_block_1$2(ctx);
     					if_block.c();
     					transition_in(if_block, 1);
     					if_block.m(article, null);
@@ -4664,8 +4857,8 @@ var app = (function () {
     				check_outros();
     			}
 
-    			if (!current || dirty[0] & /*inlineStyles*/ 262144) {
-    				attr(article, "style", /*inlineStyles*/ ctx[18]);
+    			if (!current || dirty[0] & /*inlineStyles*/ 524288) {
+    				attr(article, "style", /*inlineStyles*/ ctx[19]);
     			}
     		},
     		i(local) {
@@ -4694,12 +4887,12 @@ var app = (function () {
     	};
     }
 
-    // (126:67)        
+    // (127:67)        
     function fallback_block$1(ctx) {
     	let toolbar;
     	let current;
     	toolbar = new Toolbar({ props: { actions: /*actions*/ ctx[0] } });
-    	toolbar.$on("event", /*onToolbarEvent*/ ctx[21]);
+    	toolbar.$on("event", /*onToolbarEvent*/ ctx[22]);
 
     	return {
     		c() {
@@ -4732,8 +4925,8 @@ var app = (function () {
     	};
     }
 
-    // (154:4) {#if isComplete && !isRevealing && showCompleteMessage}
-    function create_if_block_1$3(ctx) {
+    // (156:4) {#if isComplete && !isRevealing && showCompleteMessage}
+    function create_if_block_1$2(ctx) {
     	let completedmessage;
     	let current;
 
@@ -4760,7 +4953,7 @@ var app = (function () {
     			const completedmessage_changes = {};
     			if (dirty[0] & /*showConfetti*/ 8) completedmessage_changes.showConfetti = /*showConfetti*/ ctx[3];
 
-    			if (dirty[1] & /*$$scope*/ 16) {
+    			if (dirty[1] & /*$$scope*/ 32) {
     				completedmessage_changes.$$scope = { dirty, ctx };
     			}
 
@@ -4781,11 +4974,11 @@ var app = (function () {
     	};
     }
 
-    // (155:6) <CompletedMessage showConfetti="{showConfetti}">
+    // (157:6) <CompletedMessage showConfetti="{showConfetti}">
     function create_default_slot(ctx) {
     	let current;
-    	const message_slot_template = /*#slots*/ ctx[27].message;
-    	const message_slot = create_slot(message_slot_template, ctx, /*$$scope*/ ctx[35], get_message_slot_context);
+    	const message_slot_template = /*#slots*/ ctx[28].message;
+    	const message_slot = create_slot(message_slot_template, ctx, /*$$scope*/ ctx[36], get_message_slot_context);
 
     	return {
     		c() {
@@ -4803,8 +4996,8 @@ var app = (function () {
     		},
     		p(ctx, dirty) {
     			if (message_slot) {
-    				if (message_slot.p && dirty[1] & /*$$scope*/ 16) {
-    					update_slot(message_slot, message_slot_template, ctx, /*$$scope*/ ctx[35], dirty, get_message_slot_changes, get_message_slot_context);
+    				if (message_slot.p && dirty[1] & /*$$scope*/ 32) {
+    					update_slot(message_slot, message_slot_template, ctx, /*$$scope*/ ctx[36], dirty, get_message_slot_changes, get_message_slot_context);
     				}
     			}
     		},
@@ -4826,7 +5019,7 @@ var app = (function () {
     function create_fragment$a(ctx) {
     	let if_block_anchor;
     	let current;
-    	let if_block = /*validated*/ ctx[10] && create_if_block$5(ctx);
+    	let if_block = /*validated*/ ctx[11] && create_if_block$5(ctx);
 
     	return {
     		c() {
@@ -4843,11 +5036,11 @@ var app = (function () {
     			current = true;
     		},
     		p(ctx, dirty) {
-    			if (/*validated*/ ctx[10]) {
+    			if (/*validated*/ ctx[11]) {
     				if (if_block) {
     					if_block.p(ctx, dirty);
 
-    					if (dirty[0] & /*validated*/ 1024) {
+    					if (dirty[0] & /*validated*/ 2048) {
     						transition_in(if_block, 1);
     					}
     				} else {
@@ -4894,6 +5087,7 @@ var app = (function () {
     	let { showCompleteMessage = true } = $$props;
     	let { showConfetti = true } = $$props;
     	let { showKeyboard } = $$props;
+    	let { keyboardStyle = "outline" } = $$props;
     	let width = 0;
     	let focusedDirection = "across";
     	let focusedCellIndex = 0;
@@ -4907,14 +5101,14 @@ var app = (function () {
 
     	const onDataUpdate = () => {
     		originalClues = createClues(data);
-    		$$invalidate(10, validated = validateClues(originalClues));
-    		$$invalidate(11, clues = originalClues.map(d => ({ ...d })));
-    		$$invalidate(12, cells = createCells(originalClues));
+    		$$invalidate(11, validated = validateClues(originalClues));
+    		$$invalidate(12, clues = originalClues.map(d => ({ ...d })));
+    		$$invalidate(13, cells = createCells(originalClues));
     		reset();
     	};
 
     	onMount(() => {
-    		$$invalidate(9, isLoaded = true);
+    		$$invalidate(10, isLoaded = true);
     	});
 
     	function checkClues() {
@@ -4935,31 +5129,31 @@ var app = (function () {
     	}
 
     	function reset() {
-    		$$invalidate(8, isRevealing = false);
-    		$$invalidate(7, focusedCellIndex = 0);
-    		$$invalidate(6, focusedDirection = "across");
+    		$$invalidate(9, isRevealing = false);
+    		$$invalidate(8, focusedCellIndex = 0);
+    		$$invalidate(7, focusedDirection = "across");
     	}
 
     	function onClear() {
     		reset();
     		if (revealTimeout) clearTimeout(revealTimeout);
-    		$$invalidate(12, cells = cells.map(cell => ({ ...cell, value: "" })));
+    		$$invalidate(13, cells = cells.map(cell => ({ ...cell, value: "" })));
     	}
 
     	function onReveal() {
     		if (revealed) return true;
     		reset();
-    		$$invalidate(12, cells = cells.map(cell => ({ ...cell, value: cell.answer })));
+    		$$invalidate(13, cells = cells.map(cell => ({ ...cell, value: cell.answer })));
     		startReveal();
     	}
 
     	function startReveal() {
-    		$$invalidate(8, isRevealing = true);
+    		$$invalidate(9, isRevealing = true);
     		if (revealTimeout) clearTimeout(revealTimeout);
 
     		revealTimeout = setTimeout(
     			() => {
-    				$$invalidate(8, isRevealing = false);
+    				$$invalidate(9, isRevealing = false);
     			},
     			revealDuration + 250
     		);
@@ -4971,51 +5165,52 @@ var app = (function () {
 
     	function clues_1_focusedCellIndex_binding(value) {
     		focusedCellIndex = value;
-    		$$invalidate(7, focusedCellIndex);
+    		$$invalidate(8, focusedCellIndex);
     	}
 
     	function clues_1_focusedCell_binding(value) {
     		focusedCell = value;
-    		(($$invalidate(13, focusedCell), $$invalidate(12, cells)), $$invalidate(7, focusedCellIndex));
+    		(($$invalidate(14, focusedCell), $$invalidate(13, cells)), $$invalidate(8, focusedCellIndex));
     	}
 
     	function clues_1_focusedDirection_binding(value) {
     		focusedDirection = value;
-    		$$invalidate(6, focusedDirection);
+    		$$invalidate(7, focusedDirection);
     	}
 
     	function puzzle_cells_binding(value) {
     		cells = value;
-    		$$invalidate(12, cells);
+    		$$invalidate(13, cells);
     	}
 
     	function puzzle_focusedCellIndex_binding(value) {
     		focusedCellIndex = value;
-    		$$invalidate(7, focusedCellIndex);
+    		$$invalidate(8, focusedCellIndex);
     	}
 
     	function puzzle_focusedDirection_binding(value) {
     		focusedDirection = value;
-    		$$invalidate(6, focusedDirection);
+    		$$invalidate(7, focusedDirection);
     	}
 
     	function article_elementresize_handler() {
     		width = this.offsetWidth;
-    		$$invalidate(5, width);
+    		$$invalidate(6, width);
     	}
 
     	$$self.$$set = $$props => {
-    		if ("data" in $$props) $$invalidate(23, data = $$props.data);
+    		if ("data" in $$props) $$invalidate(24, data = $$props.data);
     		if ("actions" in $$props) $$invalidate(0, actions = $$props.actions);
-    		if ("theme" in $$props) $$invalidate(24, theme = $$props.theme);
+    		if ("theme" in $$props) $$invalidate(25, theme = $$props.theme);
     		if ("revealDuration" in $$props) $$invalidate(1, revealDuration = $$props.revealDuration);
-    		if ("breakpoint" in $$props) $$invalidate(25, breakpoint = $$props.breakpoint);
-    		if ("revealed" in $$props) $$invalidate(22, revealed = $$props.revealed);
-    		if ("disableHighlight" in $$props) $$invalidate(26, disableHighlight = $$props.disableHighlight);
+    		if ("breakpoint" in $$props) $$invalidate(26, breakpoint = $$props.breakpoint);
+    		if ("revealed" in $$props) $$invalidate(23, revealed = $$props.revealed);
+    		if ("disableHighlight" in $$props) $$invalidate(27, disableHighlight = $$props.disableHighlight);
     		if ("showCompleteMessage" in $$props) $$invalidate(2, showCompleteMessage = $$props.showCompleteMessage);
     		if ("showConfetti" in $$props) $$invalidate(3, showConfetti = $$props.showConfetti);
     		if ("showKeyboard" in $$props) $$invalidate(4, showKeyboard = $$props.showKeyboard);
-    		if ("$$scope" in $$props) $$invalidate(35, $$scope = $$props.$$scope);
+    		if ("keyboardStyle" in $$props) $$invalidate(5, keyboardStyle = $$props.keyboardStyle);
+    		if ("$$scope" in $$props) $$invalidate(36, $$scope = $$props.$$scope);
     	};
 
     	let focusedCell;
@@ -5027,44 +5222,44 @@ var app = (function () {
     	let inlineStyles;
 
     	$$self.$$.update = () => {
-    		if ($$self.$$.dirty[0] & /*data*/ 8388608) {
+    		if ($$self.$$.dirty[0] & /*data*/ 16777216) {
     			 (onDataUpdate());
     		}
 
-    		if ($$self.$$.dirty[0] & /*cells, focusedCellIndex*/ 4224) {
-    			 $$invalidate(13, focusedCell = cells[focusedCellIndex] || {});
+    		if ($$self.$$.dirty[0] & /*cells, focusedCellIndex*/ 8448) {
+    			 $$invalidate(14, focusedCell = cells[focusedCellIndex] || {});
     		}
 
-    		if ($$self.$$.dirty[0] & /*cells*/ 4096) {
-    			 $$invalidate(14, cellIndexMap = fromPairs(cells.map(cell => [cell.id, cell.index])));
+    		if ($$self.$$.dirty[0] & /*cells*/ 8192) {
+    			 $$invalidate(15, cellIndexMap = fromPairs(cells.map(cell => [cell.id, cell.index])));
     		}
 
-    		if ($$self.$$.dirty[0] & /*cells*/ 4096) {
-    			 $$invalidate(38, percentCorrect = cells.filter(d => d.answer === d.value).length / cells.length);
+    		if ($$self.$$.dirty[0] & /*cells*/ 8192) {
+    			 $$invalidate(39, percentCorrect = cells.filter(d => d.answer === d.value).length / cells.length);
     		}
 
-    		if ($$self.$$.dirty[1] & /*percentCorrect*/ 128) {
-    			 $$invalidate(15, isComplete = percentCorrect == 1);
+    		if ($$self.$$.dirty[1] & /*percentCorrect*/ 256) {
+    			 $$invalidate(16, isComplete = percentCorrect == 1);
     		}
 
-    		if ($$self.$$.dirty[0] & /*isComplete, disableHighlight*/ 67141632) {
-    			 $$invalidate(16, isDisableHighlight = isComplete && disableHighlight);
+    		if ($$self.$$.dirty[0] & /*isComplete, disableHighlight*/ 134283264) {
+    			 $$invalidate(17, isDisableHighlight = isComplete && disableHighlight);
     		}
 
-    		if ($$self.$$.dirty[0] & /*cells*/ 4096) {
-    			 ($$invalidate(11, clues = checkClues()));
+    		if ($$self.$$.dirty[0] & /*cells*/ 8192) {
+    			 ($$invalidate(12, clues = checkClues()));
     		}
 
-    		if ($$self.$$.dirty[0] & /*cells, clues*/ 6144) {
-    			 ($$invalidate(22, revealed = !clues.filter(d => !d.isCorrect).length));
+    		if ($$self.$$.dirty[0] & /*cells, clues*/ 12288) {
+    			 ($$invalidate(23, revealed = !clues.filter(d => !d.isCorrect).length));
     		}
 
-    		if ($$self.$$.dirty[0] & /*width, breakpoint*/ 33554464) {
-    			 $$invalidate(17, stacked = width < breakpoint);
+    		if ($$self.$$.dirty[0] & /*width, breakpoint*/ 67108928) {
+    			 $$invalidate(18, stacked = width < breakpoint);
     		}
 
-    		if ($$self.$$.dirty[0] & /*theme*/ 16777216) {
-    			 $$invalidate(18, inlineStyles = themes[theme]);
+    		if ($$self.$$.dirty[0] & /*theme*/ 33554432) {
+    			 $$invalidate(19, inlineStyles = themes[theme]);
     		}
     	};
 
@@ -5074,6 +5269,7 @@ var app = (function () {
     		showCompleteMessage,
     		showConfetti,
     		showKeyboard,
+    		keyboardStyle,
     		width,
     		focusedDirection,
     		focusedCellIndex,
@@ -5119,16 +5315,17 @@ var app = (function () {
     			create_fragment$a,
     			safe_not_equal,
     			{
-    				data: 23,
+    				data: 24,
     				actions: 0,
-    				theme: 24,
+    				theme: 25,
     				revealDuration: 1,
-    				breakpoint: 25,
-    				revealed: 22,
-    				disableHighlight: 26,
+    				breakpoint: 26,
+    				revealed: 23,
+    				disableHighlight: 27,
     				showCompleteMessage: 2,
     				showConfetti: 3,
-    				showKeyboard: 4
+    				showKeyboard: 4,
+    				keyboardStyle: 5
     			},
     			[-1, -1]
     		);

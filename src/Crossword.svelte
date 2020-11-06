@@ -20,6 +20,7 @@
   export let showCompleteMessage = true;
   export let showConfetti = true;
   export let showKeyboard;
+  export let keyboardStyle = "outline";
 
   let width = 0;
   let focusedDirection = "across";
@@ -146,6 +147,7 @@
         showKeyboard="{showKeyboard}"
         stacked="{stacked}"
         isLoaded="{isLoaded}"
+        keyboardStyle="{keyboardStyle}"
         bind:cells
         bind:focusedCellIndex
         bind:focusedDirection />

@@ -132,7 +132,268 @@ const Toolbar = create_ssr_component(($$result, $$props, $$bindings, slots) => {
 </div>`;
 });
 
-var keyboardData = [{
+var standard = [{
+	"row": 0,
+	"value": "q"
+}, {
+	"row": 0,
+	"value": "w"
+}, {
+	"row": 0,
+	"value": "e"
+}, {
+	"row": 0,
+	"value": "r"
+}, {
+	"row": 0,
+	"value": "t"
+}, {
+	"row": 0,
+	"value": "y"
+}, {
+	"row": 0,
+	"value": "u"
+},  {
+	"row": 0,
+	"value": "i"
+},  {
+	"row": 0,
+	"value": "o"
+},  {
+	"row": 0,
+	"value": "p"
+}, {
+	"row": 1,
+	"value": "a"
+}, {
+	"row": 1,
+	"value": "s"
+}, {
+	"row": 1,
+	"value": "d"
+}, {
+	"row": 1,
+	"value": "f"
+}, {
+	"row": 1,
+	"value": "g"
+}, {
+	"row": 1,
+	"value": "h"
+}, {
+	"row": 1,
+	"value": "j"
+}, {
+	"row": 1,
+	"value": "k"
+}, {
+	"row": 1,
+	"value": "l"
+}, {
+	"row": 2,
+	"value": "Shift",
+}, {
+	"row": 2,
+	"value": "z"
+}, {
+	"row": 2,
+	"value": "x"
+}, {
+	"row": 2,
+	"value": "c"
+}, {
+	"row": 2,
+	"value": "v"
+}, {
+	"row": 2,
+	"value": "b"
+}, {
+	"row": 2,
+	"value": "n"
+}, {
+	"row": 2,
+	"value": "m"
+}, {
+	"row": 2,
+	"value": "Backspace"
+}, {
+	"row": 3,
+	"value": "Page1",
+},  {
+	"row": 3,
+	"value": ",",
+},  {
+	"row": 3,
+	"value": "Space",
+},  {
+	"row": 3,
+	"value": ".",
+},  {
+	"row": 3,
+	"value": "Enter",
+}, {
+	"row": 0,
+	"value": "1",
+	"page": 1
+}, {
+	"row": 0,
+	"value": "2",
+	"page": 1
+}, {
+	"row": 0,
+	"value": "3",
+	"page": 1
+}, {
+	"row": 0,
+	"value": "4",
+	"page": 1
+}, {
+	"row": 0,
+	"value": "5",
+	"page": 1
+}, {
+	"row": 0,
+	"value": "6",
+	"page": 1
+}, {
+	"row": 0,
+	"value": "7",
+	"page": 1
+}, {
+	"row": 0,
+	"value": "8",
+	"page": 1
+}, {
+	"row": 0,
+	"value": "9",
+	"page": 1
+}, {
+	"row": 0,
+	"value": "0",
+	"page": 1
+}, {
+	"row": 1,
+	"value": "!",
+	"page": 1
+}, {
+	"row": 1,
+	"value": "@",
+	"page": 1
+}, {
+	"row": 1,
+	"value": "#",
+	"page": 1
+}, {
+	"row": 1,
+	"value": "$",
+	"page": 1
+}, {
+	"row": 1,
+	"value": "%",
+	"page": 1
+}, {
+	"row": 1,
+	"value": "^",
+	"page": 1
+}, {
+	"row": 1,
+	"value": "&",
+	"page": 1
+}, {
+	"row": 1,
+	"value": "*",
+	"page": 1
+}, {
+	"row": 1,
+	"value": "(",
+	"page": 1
+}, {
+	"row": 1,
+	"value": ")",
+	"page": 1
+}, {
+	"row": 2,
+	"value": "-",
+	"page": 1
+}, {
+	"row": 2,
+	"value": "_",
+	"page": 1
+}, {
+	"row": 2,
+	"value": "=",
+	"page": 1
+}, {
+	"row": 2,
+	"value": "+",
+	"page": 1
+}, {
+	"row": 2,
+	"value": ";",
+	"page": 1
+}, {
+	"row": 2,
+	"value": ":",
+	"page": 1
+}, {
+	"row": 2,
+	"value": "'",
+	"page": 1
+}, {
+	"row": 2,
+	"value": "\"",
+	"page": 1
+}, {
+	"row": 2,
+	"value": "<",
+	"page": 1
+}, {
+	"row": 2,
+	"value": ">",
+	"page": 1
+}, {
+	"row": 3,
+	"value": "Page0",
+	"page": 1
+}, {
+	"row": 3,
+	"value": "/",
+	"page": 1
+}, {
+	"row": 3,
+	"value": "?",
+	"page": 1
+}, {
+	"row": 3,
+	"value": "[",
+	"page": 1
+}, {
+	"row": 3,
+	"value": "]",
+	"page": 1
+}, {
+	"row": 3,
+	"value": "{",
+	"page": 1
+}, {
+	"row": 3,
+	"value": "}",
+	"page": 1
+}, {
+	"row": 3,
+	"value": "|",
+	"page": 1
+}, {
+	"row": 3,
+	"value": "\\",
+	"page": 1
+}, {
+	"row": 3,
+	"value": "~",
+	"page": 1
+}];
+
+var crossword = [{
 	"row": 0,
 	"value": "Q"
 }, {
@@ -191,9 +452,6 @@ var keyboardData = [{
 	"value": "L"
 }, {
 	"row": 2,
-	"value": "page1",
-}, {
-	"row": 2,
 	"value": "Z"
 }, {
 	"row": 2,
@@ -215,125 +473,45 @@ var keyboardData = [{
 	"value": "M"
 }, {
 	"row": 2,
-	"value": "delete"
-}, {
-	"row": 0,
-	"value": "1",
-	"page": 1
-}, {
-	"row": 0,
-	"value": "2",
-	"page": 1
-}, {
-	"row": 0,
-	"value": "3",
-	"page": 1
-}, {
-	"row": 0,
-	"value": "4",
-	"page": 1
-}, {
-	"row": 0,
-	"value": "5",
-	"page": 1
-}, {
-	"row": 0,
-	"value": "6",
-	"page": 1
-}, {
-	"row": 0,
-	"value": "7",
-	"page": 1
-}, {
-	"row": 0,
-	"value": "8",
-	"page": 1
-}, {
-	"row": 0,
-	"value": "9",
-	"page": 1
-}, {
-	"row": 0,
-	"value": "0",
-	"page": 1
-}, {
-	"row": 1,
-	"value": "@",
-	"page": 1
-}, {
-	"row": 1,
-	"value": "#",
-	"page": 1
-}, {
-	"row": 1,
-	"value": "$",
-	"page": 1
-}, {
-	"row": 1,
-	"value": "*",
-	"page": 1
-}, {
-	"row": 1,
-	"value": "-",
-	"page": 1
-}, {
-	"row": 1,
-	"value": "+",
-	"page": 1
-}, {
-	"row": 1,
-	"value": "=",
-	"page": 1
-}, {
-	"row": 2,
-	"value": "page0",
-	"page": 1
-}, {
-	"row": 2,
-	"value": ",",
-	"page": 1
-}, {
-	"row": 2,
-	"value": ".",
-	"page": 1
-}, {
-	"row": 2,
-	"value": ":",
-	"page": 1
-}, {
-	"row": 2,
-	"value": "/",
-	"page": 1
-}, {
-	"row": 2,
-	"value": "delete",
-	"page": 1
-}
- ];
+	"value": "Backspace"
+}];
+
+var backspaceSVG = `<svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-delete"><path d="M21 4H8l-7 8 7 8h13a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"></path><line x1="18" y1="9" x2="12" y2="15"></line><line x1="12" y1="9" x2="18" y2="15"></line></svg>`;
+
+var enterSVG = `<svg width="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-corner-down-left"><polyline points="9 10 4 15 9 20"></polyline><path d="M20 4v7a4 4 0 0 1-4 4H4"></path></svg>`;
 
 /* Users/russell/Documents/svelte-crossword/node_modules/svelte-keyboard/src/Keyboard.svelte generated by Svelte v3.29.0 */
 
 const css$1 = {
-	code: ".row.svelte-zc71md{display:flex;justify-content:center}button.svelte-zc71md{font-family:sans-serif;font-size:1em;text-align:center;padding:0.5em;margin:0.1em;border-radius:2px;background-color:#efefef;border:none;cursor:pointer;line-height:1;vertical-align:baseline}button.depth.svelte-zc71md{box-shadow:1px 1px 1px 1px rgba(0, 0, 0, 0.25);margin:0.2em}button.outline.svelte-zc71md{border:1px solid rgba(0, 0, 0, 0.25)}button.svelte-zc71md:active{transform:scale(2);background-color:#cdcdcd}button.single.svelte-zc71md{padding:0.5em 0}.page.svelte-zc71md{display:none}.page.visible.svelte-zc71md{display:block}",
-	map: "{\"version\":3,\"file\":\"Keyboard.svelte\",\"sources\":[\"Keyboard.svelte\"],\"sourcesContent\":[\"<script>\\n  import { createEventDispatcher } from \\\"svelte\\\";\\n  import keyboardData from \\\"./data.js\\\";\\n  const dispatch = createEventDispatcher();\\n\\n  export let data = keyboardData;\\n  export let style = \\\"\\\";\\n  let page = 0;\\n\\n  const unique = (arr) => [...new Set(arr)];\\n\\n  $: page0 = data.filter((d) => !d.page);\\n  $: page1 = data.filter((d) => d.page);\\n\\n  $: rows0 = unique(page0.map((d) => d.row));\\n  $: rows0, rows0.sort((a, b) => a - b);\\n\\n  $: rows1 = unique(page1.map((d) => d.row));\\n  $: rows1, rows1.sort((a, b) => a - b);\\n\\n  const swaps = {\\n    page0: \\\"abc\\\",\\n    page1: \\\"123\\\",\\n    delete:\\n      '<svg width=\\\"1em\\\" height=\\\"1em\\\" viewBox=\\\"0 0 24 24\\\" fill=\\\"none\\\" stroke=\\\"currentColor\\\" stroke-width=\\\"2\\\" stroke-linecap=\\\"round\\\" stroke-linejoin=\\\"round\\\" class=\\\"feather feather-delete\\\"><path d=\\\"M21 4H8l-7 8 7 8h13a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z\\\"></path><line x1=\\\"18\\\" y1=\\\"9\\\" x2=\\\"12\\\" y2=\\\"15\\\"></line><line x1=\\\"12\\\" y1=\\\"9\\\" x2=\\\"18\\\" y2=\\\"15\\\"></line></svg>',\\n  };\\n\\n  $: rowData0 = rows0.map((r) => page0.filter((k) => k.row === r));\\n  $: rowData1 = rows0.map((r) => page1.filter((k) => k.row === r));\\n  $: rowData = [rowData0, rowData1];\\n  $: maxInRow0 = Math.max(...rowData0.map((r) => r.length));\\n  $: maxInRow1 = Math.max(...rowData1.map((r) => r.length));\\n  $: maxInRow = Math.max(maxInRow0, maxInRow1);\\n  $: percentWidth = `${(1 / maxInRow) * 100}%`;\\n\\n  function onKey(value) {\\n    if (value.includes(\\\"page\\\")) {\\n      page = +value.substr(-1);\\n      return false;\\n    }\\n    dispatch(\\\"keydown\\\", value);\\n  }\\n</script>\\n\\n<div class=\\\"keyboard\\\">\\n  {#each rowData as row, i}\\n    <div class=\\\"page\\\" class:visible=\\\"{i === page}\\\">\\n      {#each row as keys}\\n        <div class=\\\"row row--{i}\\\">\\n          {#each keys as { value, display }}\\n            <button\\n              style=\\\"width: {value.length === 1 ? percentWidth : 'auto'};\\\"\\n              class=\\\"{style}\\\"\\n              class:single=\\\"{value.length === 1}\\\"\\n              on:touchstart=\\\"{() => onKey(value)}\\\"\\n              on:click=\\\"{() => onKey(value)}\\\">\\n              {#if display}\\n                {display}\\n              {:else if swaps[value]}\\n                {@html swaps[value]}\\n              {:else}{value}{/if}\\n            </button>\\n          {/each}\\n        </div>\\n      {/each}\\n    </div>\\n  {/each}\\n</div>\\n\\n<style>\\n  .row {\\n    display: flex;\\n    justify-content: center;\\n  }\\n\\n  button {\\n    font-family: sans-serif;\\n    font-size: 1em;\\n    text-align: center;\\n    padding: 0.5em;\\n    margin: 0.1em;\\n    border-radius: 2px;\\n    background-color: #efefef;\\n    border: none;\\n    cursor: pointer;\\n    line-height: 1;\\n    vertical-align: baseline;\\n  }\\n\\n  button.depth {\\n    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.25);\\n    margin: 0.2em;\\n  }\\n\\n  button.outline {\\n    border: 1px solid rgba(0, 0, 0, 0.25);\\n  }\\n\\n  button:active {\\n    transform: scale(2);\\n    background-color: #cdcdcd;\\n  }\\n\\n  button.single {\\n    padding: 0.5em 0;\\n  }\\n\\n  .page {\\n    display: none;\\n  }\\n\\n  .page.visible {\\n    display: block;\\n  }\\n</style>\\n\"],\"names\":[],\"mappings\":\"AAsEE,IAAI,cAAC,CAAC,AACJ,OAAO,CAAE,IAAI,CACb,eAAe,CAAE,MAAM,AACzB,CAAC,AAED,MAAM,cAAC,CAAC,AACN,WAAW,CAAE,UAAU,CACvB,SAAS,CAAE,GAAG,CACd,UAAU,CAAE,MAAM,CAClB,OAAO,CAAE,KAAK,CACd,MAAM,CAAE,KAAK,CACb,aAAa,CAAE,GAAG,CAClB,gBAAgB,CAAE,OAAO,CACzB,MAAM,CAAE,IAAI,CACZ,MAAM,CAAE,OAAO,CACf,WAAW,CAAE,CAAC,CACd,cAAc,CAAE,QAAQ,AAC1B,CAAC,AAED,MAAM,MAAM,cAAC,CAAC,AACZ,UAAU,CAAE,GAAG,CAAC,GAAG,CAAC,GAAG,CAAC,GAAG,CAAC,KAAK,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,IAAI,CAAC,CAC/C,MAAM,CAAE,KAAK,AACf,CAAC,AAED,MAAM,QAAQ,cAAC,CAAC,AACd,MAAM,CAAE,GAAG,CAAC,KAAK,CAAC,KAAK,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,IAAI,CAAC,AACvC,CAAC,AAED,oBAAM,OAAO,AAAC,CAAC,AACb,SAAS,CAAE,MAAM,CAAC,CAAC,CACnB,gBAAgB,CAAE,OAAO,AAC3B,CAAC,AAED,MAAM,OAAO,cAAC,CAAC,AACb,OAAO,CAAE,KAAK,CAAC,CAAC,AAClB,CAAC,AAED,KAAK,cAAC,CAAC,AACL,OAAO,CAAE,IAAI,AACf,CAAC,AAED,KAAK,QAAQ,cAAC,CAAC,AACb,OAAO,CAAE,KAAK,AAChB,CAAC\"}"
+	code: ".row.svelte-n3ouos{display:flex;justify-content:center}button.svelte-n3ouos{display:inline-block;font-family:sans-serif;font-size:1em;text-align:center;padding:0.5em;margin:0.1em;border-radius:2px;background-color:#efefef;border:none;cursor:pointer;line-height:1;vertical-align:baseline;width:var(--w)}button.depth.svelte-n3ouos{box-shadow:1px 1px 1px 1px rgba(0, 0, 0, 0.25);margin:0.2em}button.outline.svelte-n3ouos{border:1px solid rgba(0, 0, 0, 0.25)}button.svelte-n3ouos:active{transform:scale(2);background-color:#cdcdcd}button.single.svelte-n3ouos{padding:0.5em 0}.page.svelte-n3ouos{display:none}.page.visible.svelte-n3ouos{display:block}button.key--Space.svelte-n3ouos{width:20%}button.key--Page0.svelte-n3ouos,button.key--Page1.svelte-n3ouos,button.key--Shift.svelte-n3ouos,button.key--Backspace.svelte-n3ouos,button.key--Enter.svelte-n3ouos{width:auto;min-width:var(--w)}",
+	map: "{\"version\":3,\"file\":\"Keyboard.svelte\",\"sources\":[\"Keyboard.svelte\"],\"sourcesContent\":[\"<script>\\n  import { createEventDispatcher } from \\\"svelte\\\";\\n  import standard from \\\"./layouts/standard.js\\\";\\n  import crossword from \\\"./layouts/crossword.js\\\";\\n\\n  import backspaceSVG from \\\"./svg/backspace.js\\\";\\n  import enterSVG from \\\"./svg/enter.js\\\";\\n\\n  const dispatch = createEventDispatcher();\\n\\n  export let custom;\\n  export let style = \\\"\\\";\\n  export let layout = \\\"standard\\\";\\n\\n  let page = 0;\\n  let shifted = false;\\n\\n  const alphabet = \\\"abcdefghijklmnopqrstuvwxyz\\\";\\n  const layouts = { standard, crossword };\\n\\n  const swaps = {\\n    Page0: \\\"abc\\\",\\n    Page1: \\\"?123\\\",\\n    Space: \\\" \\\",\\n    Shift: \\\"abc\\\",\\n    Enter: enterSVG,\\n    Backspace: backspaceSVG,\\n  };\\n\\n  const unique = (arr) => [...new Set(arr)];\\n\\n  $: rawData = custom || layouts[layout];\\n  $: data = rawData.map((d) => {\\n    let display = d.display;\\n    if (swaps[d.value]) display = swaps[d.value];\\n    if (!display) display = shifted ? d.value.toUpperCase() : d.value;\\n    if (d.value === \\\"Shift\\\")\\n      display = shifted ? swaps[d.value] : swaps[d.value].toUpperCase();\\n    return {\\n      ...d,\\n      display,\\n    };\\n  });\\n\\n  $: page0 = data.filter((d) => !d.page);\\n  $: page1 = data.filter((d) => d.page);\\n\\n  $: rows0 = unique(page0.map((d) => d.row));\\n  $: rows0, rows0.sort((a, b) => a - b);\\n\\n  $: rows1 = unique(page1.map((d) => d.row));\\n  $: rows1, rows1.sort((a, b) => a - b);\\n\\n  $: rowData0 = rows0.map((r) => page0.filter((k) => k.row === r));\\n  $: rowData1 = rows0.map((r) => page1.filter((k) => k.row === r));\\n  $: rowData = [rowData0, rowData1];\\n  $: maxInRow0 = Math.max(...rowData0.map((r) => r.length));\\n  $: maxInRow1 = Math.max(...rowData1.map((r) => r.length));\\n  $: maxInRow = Math.max(maxInRow0, maxInRow1);\\n  $: percentWidth = `${(1 / maxInRow) * 100}%`;\\n\\n  function onKey(value, event) {\\n    event.preventDefault();\\n    if (value.includes(\\\"Page\\\")) {\\n      page = +value.substr(-1);\\n    } else if (value === \\\"Shift\\\") {\\n      shifted = !shifted;\\n    } else {\\n      let output = value;\\n      if (shifted && alphabet.includes(value)) output = value.toUpperCase();\\n      if (value === \\\"Space\\\") output = \\\" \\\";\\n      dispatch(\\\"keydown\\\", output);\\n    }\\n    event.stopPropagation();\\n    return false;\\n  }\\n</script>\\n\\n<div class=\\\"keyboard\\\">\\n  {#each rowData as row, i}\\n    <div class=\\\"page\\\" class:visible=\\\"{i === page}\\\">\\n      {#each row as keys}\\n        <div class=\\\"row row--{i}\\\">\\n          {#each keys as { value, display }}\\n            <button\\n              style=\\\"--w: {percentWidth};\\\"\\n              class=\\\"{style} key--{value}\\\"\\n              class:single=\\\"{value.length === 1}\\\"\\n              on:touchstart=\\\"{(e) => onKey(value, e)}\\\"\\n              on:mousedown=\\\"{(e) => onKey(value, e)}\\\">\\n              {#if display.includes('<svg')}\\n                {@html display}\\n              {:else}{display}{/if}\\n            </button>\\n          {/each}\\n        </div>\\n      {/each}\\n    </div>\\n  {/each}\\n</div>\\n\\n<style>\\n  .row {\\n    display: flex;\\n    justify-content: center;\\n  }\\n\\n  button {\\n    display: inline-block;\\n    font-family: sans-serif;\\n    font-size: 1em;\\n    text-align: center;\\n    padding: 0.5em;\\n    margin: 0.1em;\\n    border-radius: 2px;\\n    background-color: #efefef;\\n    border: none;\\n    cursor: pointer;\\n    line-height: 1;\\n    vertical-align: baseline;\\n    width: var(--w);\\n  }\\n\\n  button.depth {\\n    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.25);\\n    margin: 0.2em;\\n  }\\n\\n  button.outline {\\n    border: 1px solid rgba(0, 0, 0, 0.25);\\n  }\\n\\n  button:active {\\n    transform: scale(2);\\n    background-color: #cdcdcd;\\n  }\\n\\n  button.single {\\n    padding: 0.5em 0;\\n  }\\n\\n  .page {\\n    display: none;\\n  }\\n\\n  .page.visible {\\n    display: block;\\n  }\\n\\n  button.key--Space {\\n    width: 20%;\\n  }\\n\\n  button.key--Page0,\\n  button.key--Page1,\\n  button.key--Shift,\\n  button.key--Backspace,\\n  button.key--Enter {\\n    width: auto;\\n    min-width: var(--w);\\n  }\\n</style>\\n\"],\"names\":[],\"mappings\":\"AAsGE,IAAI,cAAC,CAAC,AACJ,OAAO,CAAE,IAAI,CACb,eAAe,CAAE,MAAM,AACzB,CAAC,AAED,MAAM,cAAC,CAAC,AACN,OAAO,CAAE,YAAY,CACrB,WAAW,CAAE,UAAU,CACvB,SAAS,CAAE,GAAG,CACd,UAAU,CAAE,MAAM,CAClB,OAAO,CAAE,KAAK,CACd,MAAM,CAAE,KAAK,CACb,aAAa,CAAE,GAAG,CAClB,gBAAgB,CAAE,OAAO,CACzB,MAAM,CAAE,IAAI,CACZ,MAAM,CAAE,OAAO,CACf,WAAW,CAAE,CAAC,CACd,cAAc,CAAE,QAAQ,CACxB,KAAK,CAAE,IAAI,GAAG,CAAC,AACjB,CAAC,AAED,MAAM,MAAM,cAAC,CAAC,AACZ,UAAU,CAAE,GAAG,CAAC,GAAG,CAAC,GAAG,CAAC,GAAG,CAAC,KAAK,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,IAAI,CAAC,CAC/C,MAAM,CAAE,KAAK,AACf,CAAC,AAED,MAAM,QAAQ,cAAC,CAAC,AACd,MAAM,CAAE,GAAG,CAAC,KAAK,CAAC,KAAK,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,IAAI,CAAC,AACvC,CAAC,AAED,oBAAM,OAAO,AAAC,CAAC,AACb,SAAS,CAAE,MAAM,CAAC,CAAC,CACnB,gBAAgB,CAAE,OAAO,AAC3B,CAAC,AAED,MAAM,OAAO,cAAC,CAAC,AACb,OAAO,CAAE,KAAK,CAAC,CAAC,AAClB,CAAC,AAED,KAAK,cAAC,CAAC,AACL,OAAO,CAAE,IAAI,AACf,CAAC,AAED,KAAK,QAAQ,cAAC,CAAC,AACb,OAAO,CAAE,KAAK,AAChB,CAAC,AAED,MAAM,WAAW,cAAC,CAAC,AACjB,KAAK,CAAE,GAAG,AACZ,CAAC,AAED,MAAM,yBAAW,CACjB,MAAM,yBAAW,CACjB,MAAM,yBAAW,CACjB,MAAM,6BAAe,CACrB,MAAM,WAAW,cAAC,CAAC,AACjB,KAAK,CAAE,IAAI,CACX,SAAS,CAAE,IAAI,GAAG,CAAC,AACrB,CAAC\"}"
 };
 
 const Keyboard = create_ssr_component(($$result, $$props, $$bindings, slots) => {
 	const dispatch = createEventDispatcher();
-	let { data = keyboardData } = $$props;
+	let { custom } = $$props;
 	let { style = "" } = $$props;
+	let { layout = "standard" } = $$props;
 	let page = 0;
-	const unique = arr => [...new Set(arr)];
+	const layouts = { standard, crossword };
 
 	const swaps = {
-		page0: "abc",
-		page1: "123",
-		delete: "<svg width=\"1em\" height=\"1em\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"feather feather-delete\"><path d=\"M21 4H8l-7 8 7 8h13a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z\"></path><line x1=\"18\" y1=\"9\" x2=\"12\" y2=\"15\"></line><line x1=\"12\" y1=\"9\" x2=\"18\" y2=\"15\"></line></svg>"
+		Page0: "abc",
+		Page1: "?123",
+		Space: " ",
+		Shift: "abc",
+		Enter: enterSVG,
+		Backspace: backspaceSVG
 	};
 
-	if ($$props.data === void 0 && $$bindings.data && data !== void 0) $$bindings.data(data);
+	const unique = arr => [...new Set(arr)];
+
+	if ($$props.custom === void 0 && $$bindings.custom && custom !== void 0) $$bindings.custom(custom);
 	if ($$props.style === void 0 && $$bindings.style && style !== void 0) $$bindings.style(style);
+	if ($$props.layout === void 0 && $$bindings.layout && layout !== void 0) $$bindings.layout(layout);
 	$$result.css.add(css$1);
+	let rawData;
+	let data;
 	let page0;
 	let page1;
 	let rows0;
@@ -345,6 +523,16 @@ const Keyboard = create_ssr_component(($$result, $$props, $$bindings, slots) => 
 	let maxInRow1;
 	let maxInRow;
 	let percentWidth;
+	rawData = custom || layouts[layout];
+
+	data = rawData.map(d => {
+		let display = d.display;
+		if (swaps[d.value]) display = swaps[d.value];
+		if (!display) display =  d.value;
+		if (d.value === "Shift") display =  swaps[d.value].toUpperCase();
+		return { ...d, display };
+	});
+
 	page0 = data.filter(d => !d.page);
 	page1 = data.filter(d => d.page);
 	rows0 = unique(page0.map(d => d.row));
@@ -367,12 +555,12 @@ const Keyboard = create_ssr_component(($$result, $$props, $$bindings, slots) => 
 	maxInRow = Math.max(maxInRow0, maxInRow1);
 	percentWidth = `${1 / maxInRow * 100}%`;
 
-	return `<div class="${"keyboard"}">${each(rowData, (row, i) => `<div class="${["page svelte-zc71md", i === page ? "visible" : ""].join(" ").trim()}">${each(row, keys => `<div class="${"row row--" + escape(i) + " svelte-zc71md"}">${each(keys, ({ value, display }) => `<button style="${"width: " + escape(value.length === 1 ? percentWidth : "auto") + ";"}" class="${[
-		escape(null_to_empty(style)) + " svelte-zc71md",
+	return `<div class="${"keyboard"}">${each(rowData, (row, i) => `<div class="${["page svelte-n3ouos", i === page ? "visible" : ""].join(" ").trim()}">${each(row, keys => `<div class="${"row row--" + escape(i) + " svelte-n3ouos"}">${each(keys, ({ value, display }) => `<button style="${"--w: " + escape(percentWidth) + ";"}" class="${[
+		escape(style) + " key--" + escape(value) + " svelte-n3ouos",
 		value.length === 1 ? "single" : ""
-	].join(" ").trim()}">${display
-	? `${escape(display)}`
-	: `${swaps[value] ? `${swaps[value]}` : `${escape(value)}`}`}
+	].join(" ").trim()}">${display.includes("<svg")
+	? `${display}`
+	: `${escape(display)}`}
             </button>`)}
         </div>`)}
     </div>`)}
@@ -470,7 +658,7 @@ function checkMobile() {
 
 const css$2 = {
 	code: "g.svelte-4lvw5v.svelte-4lvw5v{cursor:pointer;user-select:none}g.svelte-4lvw5v.svelte-4lvw5v:focus{outline:none}g.is-secondarily-focused.svelte-4lvw5v rect.svelte-4lvw5v{fill:var(--secondary-highlight-color)}g.is-focused.svelte-4lvw5v rect.svelte-4lvw5v{fill:var(--primary-highlight-color)}rect.svelte-4lvw5v.svelte-4lvw5v{transition:fill 0.1s ease-out}text.svelte-4lvw5v.svelte-4lvw5v{pointer-events:none;line-height:1;font-family:var(--font);fill:var(--main-color)}.value.svelte-4lvw5v.svelte-4lvw5v{font-size:0.7em;font-weight:400}.number.svelte-4lvw5v.svelte-4lvw5v{font-size:0.3em;font-weight:400;fill:var(--main-color);opacity:0.5}rect.svelte-4lvw5v.svelte-4lvw5v{fill:var(--bg-color);stroke:var(--main-color);stroke-width:0.01em}",
-	map: "{\"version\":3,\"file\":\"Cell.svelte\",\"sources\":[\"Cell.svelte\"],\"sourcesContent\":[\"<script>\\n  export let x;\\n  export let y;\\n  export let value;\\n  export let number;\\n  export let index;\\n  export let custom;\\n  export let changeDelay = 0;\\n  export let isRevealing = false;\\n  export let isFocused = false;\\n  export let isSecondarilyFocused = false;\\n  export let onFocusCell = () => {};\\n  export let onCellUpdate = () => {};\\n  export let onFocusClueDiff = () => {};\\n  export let onMoveFocus = () => {};\\n  export let onFlipDirection = () => {};\\n  export let onHistoricalChange = () => {};\\n\\n  let element;\\n\\n  function onFocusSelf() {\\n    if (!element) return;\\n    if (isFocused) element.focus();\\n  }\\n\\n  $: isFocused, onFocusSelf();\\n\\n  function onKeydown(e) {\\n    if (e.ctrlKey && e.key.toLowerCase() == \\\"z\\\") {\\n      onHistoricalChange(e.shiftKey ? 1 : -1);\\n    }\\n\\n    if (e.ctrlKey) return;\\n    if (e.altKey) return;\\n\\n    if (e.key === \\\"Tab\\\") {\\n      onFocusClueDiff(e.shiftKey ? -1 : 1);\\n      e.preventDefault();\\n      e.stopPropagation();\\n      return;\\n    }\\n\\n    if (e.key == \\\" \\\") {\\n      onFlipDirection();\\n      e.preventDefault();\\n      e.stopPropagation();\\n      return;\\n    }\\n\\n    if ([\\\"Delete\\\", \\\"Backspace\\\"].includes(e.key)) {\\n      onCellUpdate(index, \\\"\\\", -1);\\n      return;\\n    }\\n\\n    const isKeyInAlphabet = /^[a-zA-Z()]$/.test(e.key);\\n    if (isKeyInAlphabet) {\\n      onCellUpdate(index, e.key.toUpperCase());\\n      return;\\n    }\\n\\n    const diff = {\\n      ArrowLeft: [\\\"across\\\", -1],\\n      ArrowRight: [\\\"across\\\", 1],\\n      ArrowUp: [\\\"down\\\", -1],\\n      ArrowDown: [\\\"down\\\", 1],\\n    }[e.key];\\n    if (diff) {\\n      onMoveFocus(...diff);\\n      e.preventDefault();\\n      e.stopPropagation();\\n      return;\\n    }\\n  }\\n\\n  function onClick() {\\n    onFocusCell(index);\\n  }\\n\\n  function pop(node, { delay = 0, duration = 250 }) {\\n    return {\\n      delay,\\n      duration,\\n      css: (t) =>\\n        [\\n          `transform: translate(0, ${1 - t}px)`, //\\n        ].join(\\\";\\\"),\\n    };\\n  }\\n</script>\\n\\n<g\\n  class=\\\"cell {custom} cell-{x}-{y}\\\"\\n  class:is-focused=\\\"{isFocused}\\\"\\n  class:is-secondarily-focused=\\\"{isSecondarilyFocused}\\\"\\n  transform=\\\"{`translate(${x}, ${y})`}\\\"\\n  tabIndex=\\\"0\\\"\\n  on:click=\\\"{onClick}\\\"\\n  on:keydown=\\\"{onKeydown}\\\"\\n  bind:this=\\\"{element}\\\">\\n  <rect width=\\\"1\\\" height=\\\"1\\\"></rect>\\n  {#if value}\\n    <text\\n      transition:pop=\\\"{{ y: 5, delay: changeDelay, duration: isRevealing ? 250 : 0 }}\\\"\\n      class=\\\"value\\\"\\n      x=\\\"0.5\\\"\\n      y=\\\"0.9\\\"\\n      dominant-baseline=\\\"auto\\\"\\n      text-anchor=\\\"middle\\\">\\n      {value}\\n    </text>\\n  {/if}\\n  <text\\n    class=\\\"number\\\"\\n    x=\\\"0.1\\\"\\n    y=\\\"0.1\\\"\\n    dominant-baseline=\\\"hanging\\\"\\n    text-anchor=\\\"start\\\">\\n    {number}\\n  </text>\\n</g>\\n\\n<style>\\n  g {\\n    cursor: pointer;\\n    user-select: none;\\n  }\\n\\n  g:focus {\\n    outline: none;\\n  }\\n\\n  g.is-secondarily-focused rect {\\n    fill: var(--secondary-highlight-color);\\n  }\\n\\n  g.is-focused rect {\\n    fill: var(--primary-highlight-color);\\n  }\\n\\n  rect {\\n    transition: fill 0.1s ease-out;\\n  }\\n\\n  text {\\n    pointer-events: none;\\n    line-height: 1;\\n    font-family: var(--font);\\n    fill: var(--main-color);\\n  }\\n\\n  .value {\\n    font-size: 0.7em;\\n    font-weight: 400;\\n  }\\n\\n  .number {\\n    font-size: 0.3em;\\n    font-weight: 400;\\n    fill: var(--main-color);\\n    opacity: 0.5;\\n  }\\n\\n  rect {\\n    fill: var(--bg-color);\\n    stroke: var(--main-color);\\n    stroke-width: 0.01em;\\n  }\\n</style>\\n\"],\"names\":[],\"mappings\":\"AA0HE,CAAC,4BAAC,CAAC,AACD,MAAM,CAAE,OAAO,CACf,WAAW,CAAE,IAAI,AACnB,CAAC,AAED,6BAAC,MAAM,AAAC,CAAC,AACP,OAAO,CAAE,IAAI,AACf,CAAC,AAED,CAAC,qCAAuB,CAAC,IAAI,cAAC,CAAC,AAC7B,IAAI,CAAE,IAAI,2BAA2B,CAAC,AACxC,CAAC,AAED,CAAC,yBAAW,CAAC,IAAI,cAAC,CAAC,AACjB,IAAI,CAAE,IAAI,yBAAyB,CAAC,AACtC,CAAC,AAED,IAAI,4BAAC,CAAC,AACJ,UAAU,CAAE,IAAI,CAAC,IAAI,CAAC,QAAQ,AAChC,CAAC,AAED,IAAI,4BAAC,CAAC,AACJ,cAAc,CAAE,IAAI,CACpB,WAAW,CAAE,CAAC,CACd,WAAW,CAAE,IAAI,MAAM,CAAC,CACxB,IAAI,CAAE,IAAI,YAAY,CAAC,AACzB,CAAC,AAED,MAAM,4BAAC,CAAC,AACN,SAAS,CAAE,KAAK,CAChB,WAAW,CAAE,GAAG,AAClB,CAAC,AAED,OAAO,4BAAC,CAAC,AACP,SAAS,CAAE,KAAK,CAChB,WAAW,CAAE,GAAG,CAChB,IAAI,CAAE,IAAI,YAAY,CAAC,CACvB,OAAO,CAAE,GAAG,AACd,CAAC,AAED,IAAI,4BAAC,CAAC,AACJ,IAAI,CAAE,IAAI,UAAU,CAAC,CACrB,MAAM,CAAE,IAAI,YAAY,CAAC,CACzB,YAAY,CAAE,MAAM,AACtB,CAAC\"}"
+	map: "{\"version\":3,\"file\":\"Cell.svelte\",\"sources\":[\"Cell.svelte\"],\"sourcesContent\":[\"<script>\\n  export let x;\\n  export let y;\\n  export let value;\\n  export let number;\\n  export let index;\\n  export let custom;\\n  export let changeDelay = 0;\\n  export let isRevealing = false;\\n  export let isFocused = false;\\n  export let isSecondarilyFocused = false;\\n  export let onFocusCell = () => {};\\n  export let onCellUpdate = () => {};\\n  export let onFocusClueDiff = () => {};\\n  export let onMoveFocus = () => {};\\n  export let onFlipDirection = () => {};\\n  export let onHistoricalChange = () => {};\\n\\n  let element;\\n\\n  function onFocusSelf() {\\n    if (!element) return;\\n    if (isFocused) element.focus();\\n  }\\n\\n  $: isFocused, onFocusSelf();\\n\\n  function onKeydown(e) {\\n    if (e.ctrlKey && e.key.toLowerCase() == \\\"z\\\") {\\n      onHistoricalChange(e.shiftKey ? 1 : -1);\\n    }\\n\\n    if (e.ctrlKey) return;\\n    if (e.altKey) return;\\n\\n    if (e.key === \\\"Tab\\\") {\\n      onFocusClueDiff(e.shiftKey ? -1 : 1);\\n      e.preventDefault();\\n      e.stopPropagation();\\n      return;\\n    }\\n\\n    if (e.key == \\\" \\\") {\\n      onFlipDirection();\\n      e.preventDefault();\\n      e.stopPropagation();\\n      return;\\n    }\\n\\n    if ([\\\"Delete\\\", \\\"Backspace\\\"].includes(e.key)) {\\n      onCellUpdate(index, \\\"\\\", -1, true);\\n      return;\\n    }\\n\\n    const isKeyInAlphabet = /^[a-zA-Z()]$/.test(e.key);\\n    if (isKeyInAlphabet) {\\n      onCellUpdate(index, e.key.toUpperCase());\\n      return;\\n    }\\n\\n    const diff = {\\n      ArrowLeft: [\\\"across\\\", -1],\\n      ArrowRight: [\\\"across\\\", 1],\\n      ArrowUp: [\\\"down\\\", -1],\\n      ArrowDown: [\\\"down\\\", 1],\\n    }[e.key];\\n    if (diff) {\\n      onMoveFocus(...diff);\\n      e.preventDefault();\\n      e.stopPropagation();\\n      return;\\n    }\\n  }\\n\\n  function onClick() {\\n    onFocusCell(index);\\n  }\\n\\n  function pop(node, { delay = 0, duration = 250 }) {\\n    return {\\n      delay,\\n      duration,\\n      css: (t) =>\\n        [\\n          `transform: translate(0, ${1 - t}px)`, //\\n        ].join(\\\";\\\"),\\n    };\\n  }\\n</script>\\n\\n<g\\n  class=\\\"cell {custom} cell-{x}-{y}\\\"\\n  class:is-focused=\\\"{isFocused}\\\"\\n  class:is-secondarily-focused=\\\"{isSecondarilyFocused}\\\"\\n  transform=\\\"{`translate(${x}, ${y})`}\\\"\\n  tabIndex=\\\"0\\\"\\n  on:click=\\\"{onClick}\\\"\\n  on:keydown=\\\"{onKeydown}\\\"\\n  bind:this=\\\"{element}\\\">\\n  <rect width=\\\"1\\\" height=\\\"1\\\"></rect>\\n  {#if value}\\n    <text\\n      transition:pop=\\\"{{ y: 5, delay: changeDelay, duration: isRevealing ? 250 : 0 }}\\\"\\n      class=\\\"value\\\"\\n      x=\\\"0.5\\\"\\n      y=\\\"0.9\\\"\\n      dominant-baseline=\\\"auto\\\"\\n      text-anchor=\\\"middle\\\">\\n      {value}\\n    </text>\\n  {/if}\\n  <text\\n    class=\\\"number\\\"\\n    x=\\\"0.1\\\"\\n    y=\\\"0.1\\\"\\n    dominant-baseline=\\\"hanging\\\"\\n    text-anchor=\\\"start\\\">\\n    {number}\\n  </text>\\n</g>\\n\\n<style>\\n  g {\\n    cursor: pointer;\\n    user-select: none;\\n  }\\n\\n  g:focus {\\n    outline: none;\\n  }\\n\\n  g.is-secondarily-focused rect {\\n    fill: var(--secondary-highlight-color);\\n  }\\n\\n  g.is-focused rect {\\n    fill: var(--primary-highlight-color);\\n  }\\n\\n  rect {\\n    transition: fill 0.1s ease-out;\\n  }\\n\\n  text {\\n    pointer-events: none;\\n    line-height: 1;\\n    font-family: var(--font);\\n    fill: var(--main-color);\\n  }\\n\\n  .value {\\n    font-size: 0.7em;\\n    font-weight: 400;\\n  }\\n\\n  .number {\\n    font-size: 0.3em;\\n    font-weight: 400;\\n    fill: var(--main-color);\\n    opacity: 0.5;\\n  }\\n\\n  rect {\\n    fill: var(--bg-color);\\n    stroke: var(--main-color);\\n    stroke-width: 0.01em;\\n  }\\n</style>\\n\"],\"names\":[],\"mappings\":\"AA0HE,CAAC,4BAAC,CAAC,AACD,MAAM,CAAE,OAAO,CACf,WAAW,CAAE,IAAI,AACnB,CAAC,AAED,6BAAC,MAAM,AAAC,CAAC,AACP,OAAO,CAAE,IAAI,AACf,CAAC,AAED,CAAC,qCAAuB,CAAC,IAAI,cAAC,CAAC,AAC7B,IAAI,CAAE,IAAI,2BAA2B,CAAC,AACxC,CAAC,AAED,CAAC,yBAAW,CAAC,IAAI,cAAC,CAAC,AACjB,IAAI,CAAE,IAAI,yBAAyB,CAAC,AACtC,CAAC,AAED,IAAI,4BAAC,CAAC,AACJ,UAAU,CAAE,IAAI,CAAC,IAAI,CAAC,QAAQ,AAChC,CAAC,AAED,IAAI,4BAAC,CAAC,AACJ,cAAc,CAAE,IAAI,CACpB,WAAW,CAAE,CAAC,CACd,WAAW,CAAE,IAAI,MAAM,CAAC,CACxB,IAAI,CAAE,IAAI,YAAY,CAAC,AACzB,CAAC,AAED,MAAM,4BAAC,CAAC,AACN,SAAS,CAAE,KAAK,CAChB,WAAW,CAAE,GAAG,AAClB,CAAC,AAED,OAAO,4BAAC,CAAC,AACP,SAAS,CAAE,KAAK,CAChB,WAAW,CAAE,GAAG,CAChB,IAAI,CAAE,IAAI,YAAY,CAAC,CACvB,OAAO,CAAE,GAAG,AACd,CAAC,AAED,IAAI,4BAAC,CAAC,AACJ,IAAI,CAAE,IAAI,UAAU,CAAC,CACrB,MAAM,CAAE,IAAI,YAAY,CAAC,CACzB,YAAY,CAAE,MAAM,AACtB,CAAC\"}"
 };
 
 const Cell = create_ssr_component(($$result, $$props, $$bindings, slots) => {
@@ -541,7 +729,7 @@ const Cell = create_ssr_component(($$result, $$props, $$bindings, slots) => {
 
 const css$3 = {
 	code: "section.svelte-ce6hth{position:sticky;top:1em;order:0;flex:1;height:fit-content}section.is-loaded.stacked.svelte-ce6hth{position:relative;top:auto;height:auto;order:-1}svg.svelte-ce6hth{width:100%;display:block;font-size:1px;background:var(--main-color);border:4px solid var(--main-color);box-sizing:border-box}.keyboard.svelte-ce6hth{order:3}@media only screen and (max-width: 720px){section.svelte-ce6hth:not(.is-loaded){position:relative;top:auto;height:auto;order:-1}}",
-	map: "{\"version\":3,\"file\":\"Puzzle.svelte\",\"sources\":[\"Puzzle.svelte\"],\"sourcesContent\":[\"<script>\\n  import { onMount } from \\\"svelte\\\";\\n  import Keyboard from \\\"svelte-keyboard\\\";\\n  import getSecondarilyFocusedCells from \\\"./helpers/getSecondarilyFocusedCells.js\\\";\\n  import getCellAfterDiff from \\\"./helpers/getCellAfterDiff.js\\\";\\n  import checkMobile from \\\"./helpers/checkMobile.js\\\";\\n\\n  import Cell from \\\"./Cell.svelte\\\";\\n\\n  export let clues;\\n  export let cells;\\n  export let focusedDirection;\\n  export let focusedCellIndex;\\n  export let focusedCell;\\n  export let isRevealing;\\n  export let isDisableHighlight;\\n  export let stacked;\\n  export let revealDuration = 0;\\n  export let showKeyboard;\\n  export let isLoaded;\\n\\n  let element;\\n  let cellsHistoryIndex = 0;\\n  let cellsHistory = [];\\n  let focusedCellIndexHistoryIndex = 0;\\n  let focusedCellIndexHistory = [];\\n  let secondarilyFocusedCells = [];\\n  let isMobile = false;\\n  let isPuzzleFocused = false;\\n\\n  const numberOfStatesInHistory = 10;\\n  $: w = Math.max(...cells.map((d) => d.x)) + 1;\\n  $: h = Math.max(...cells.map((d) => d.y)) + 1;\\n  $: keyboardVisible =\\n    typeof showKeyboard === \\\"boolean\\\" ? showKeyboard : isMobile;\\n\\n  $: cells, focusedCellIndex, focusedDirection, updateSecondarilyFocusedCells();\\n  $: sortedCellsInDirection = [...cells].sort((a, b) =>\\n    focusedDirection == \\\"down\\\" ? a.x - b.x || a.y - b.y : a.y - b.y || a.x - b.x\\n  );\\n\\n  onMount(() => {\\n    isMobile = checkMobile();\\n  });\\n\\n  function updateSecondarilyFocusedCells() {\\n    secondarilyFocusedCells = getSecondarilyFocusedCells({\\n      cells,\\n      focusedDirection,\\n      focusedCell,\\n    });\\n  }\\n\\n  function onCellUpdate(index, newValue, diff = 1) {\\n    const doReplaceFilledCells = !!cells[index].value;\\n\\n    const dimension = focusedDirection == \\\"across\\\" ? \\\"x\\\" : \\\"y\\\";\\n    const clueIndex = cells[index].clueNumbers[focusedDirection];\\n    const cellsInClue = cells.filter(\\n      (cell) =>\\n        cell.clueNumbers[focusedDirection] == clueIndex &&\\n        (doReplaceFilledCells || !cell.value)\\n    );\\n    const cellsInCluePositions = cellsInClue\\n      .map((cell) => cell[dimension])\\n      .filter(Number.isFinite);\\n    const isAtEndOfClue =\\n      cells[index][dimension] == Math.max(...cellsInCluePositions);\\n\\n    const newCells = [\\n      ...cells.slice(0, index),\\n      { ...cells[index], value: newValue },\\n      ...cells.slice(index + 1),\\n    ];\\n    cellsHistory = [newCells, ...cellsHistory.slice(cellsHistoryIndex)].slice(\\n      0,\\n      numberOfStatesInHistory\\n    );\\n    cellsHistoryIndex = 0;\\n    cells = newCells;\\n\\n    if (isAtEndOfClue) {\\n      onFocusClueDiff(diff);\\n    } else {\\n      onFocusCellDiff(diff, doReplaceFilledCells);\\n    }\\n  }\\n\\n  function onHistoricalChange(diff) {\\n    cellsHistoryIndex += -diff;\\n    cells = cellsHistory[cellsHistoryIndex] || cells;\\n    focusedCellIndexHistoryIndex += -diff;\\n    focusedCellIndex =\\n      focusedCellIndexHistory[cellsHistoryIndex] || focusedCellIndex;\\n  }\\n\\n  function onFocusCell(index) {\\n    if (isPuzzleFocused && index == focusedCellIndex) {\\n      onFlipDirection();\\n    } else {\\n      focusedCellIndex = index;\\n      focusedCellIndexHistory = [\\n        index,\\n        ...focusedCellIndexHistory.slice(0, numberOfStatesInHistory),\\n      ];\\n      focusedCellIndexHistoryIndex = 0;\\n    }\\n  }\\n\\n  function onFocusCellDiff(diff, doReplaceFilledCells = true) {\\n    const sortedCellsInDirectionFiltered = sortedCellsInDirection.filter((d) =>\\n      doReplaceFilledCells ? true : !d.value\\n    );\\n    const currentCellIndex = sortedCellsInDirectionFiltered.findIndex(\\n      (d) => d.index == focusedCellIndex\\n    );\\n    const nextCellIndex = (\\n      sortedCellsInDirectionFiltered[currentCellIndex + diff] || {}\\n    ).index;\\n    const nextCell = cells[nextCellIndex];\\n    if (!nextCell) return;\\n    onFocusCell(nextCellIndex);\\n  }\\n\\n  function onFocusClueDiff(diff = 1) {\\n    const currentNumber = focusedCell.clueNumbers[focusedDirection];\\n    let nextCluesInDirection = clues.filter(\\n      (clue) =>\\n        !clue.isFilled &&\\n        (diff > 0\\n          ? clue.number > currentNumber\\n          : clue.number < currentNumber) &&\\n        clue.direction == focusedDirection\\n    );\\n    if (diff < 0) {\\n      nextCluesInDirection = nextCluesInDirection.reverse();\\n    }\\n    let nextClue = nextCluesInDirection[Math.abs(diff) - 1];\\n    if (!nextClue) {\\n      onFlipDirection();\\n      nextClue = clues.filter((clue) => clue.direction == focusedDirection)[0];\\n    }\\n    const nextFocusedCell =\\n      sortedCellsInDirection.find(\\n        (cell) =>\\n          !cell.value && cell.clueNumbers[focusedDirection] == nextClue.number\\n      ) || {};\\n    focusedCellIndex = nextFocusedCell.index || 0;\\n  }\\n\\n  function onMoveFocus(direction, diff) {\\n    if (focusedDirection != direction) {\\n      const dimension = direction == \\\"across\\\" ? \\\"x\\\" : \\\"y\\\";\\n      focusedDirection = direction;\\n    } else {\\n      const nextCell = getCellAfterDiff({\\n        diff,\\n        cells,\\n        direction,\\n        focusedCell,\\n      });\\n      if (!nextCell) return;\\n      onFocusCell(nextCell.index);\\n    }\\n  }\\n\\n  function onFlipDirection() {\\n    const newDirection = focusedDirection === \\\"across\\\" ? \\\"down\\\" : \\\"across\\\";\\n    const hasClueInNewDirection = !!focusedCell[\\\"clueNumbers\\\"][newDirection];\\n    if (hasClueInNewDirection) focusedDirection = newDirection;\\n  }\\n\\n  function onKeydown({ detail }) {\\n    const diff = detail === \\\"delete\\\" ? -1 : 1;\\n    const value = detail === \\\"delete\\\" ? \\\"\\\" : detail;\\n    onCellUpdate(focusedCellIndex, value, diff);\\n  }\\n\\n  function onClick() {\\n    isPuzzleFocused = element.contains(document.activeElement);\\n  }\\n</script>\\n\\n<svelte:window on:click=\\\"{onClick}\\\" />\\n\\n<section\\n  class=\\\"puzzle\\\"\\n  class:stacked\\n  class:is-loaded=\\\"{isLoaded}\\\"\\n  bind:this=\\\"{element}\\\">\\n  <svg viewBox=\\\"0 0 {w} {h}\\\">\\n    {#each cells as { x, y, value, index, number, custom }}\\n      <Cell\\n        x=\\\"{x}\\\"\\n        y=\\\"{y}\\\"\\n        index=\\\"{index}\\\"\\n        value=\\\"{value}\\\"\\n        number=\\\"{number}\\\"\\n        custom=\\\"{custom}\\\"\\n        changeDelay=\\\"{isRevealing ? (revealDuration / cells.length) * index : 0}\\\"\\n        isRevealing=\\\"{isRevealing}\\\"\\n        isFocused=\\\"{focusedCellIndex == index && !isDisableHighlight}\\\"\\n        isSecondarilyFocused=\\\"{secondarilyFocusedCells.includes(index) && !isDisableHighlight}\\\"\\n        onFocusCell=\\\"{onFocusCell}\\\"\\n        onCellUpdate=\\\"{onCellUpdate}\\\"\\n        onFocusClueDiff=\\\"{onFocusClueDiff}\\\"\\n        onMoveFocus=\\\"{onMoveFocus}\\\"\\n        onFlipDirection=\\\"{onFlipDirection}\\\"\\n        onHistoricalChange=\\\"{onHistoricalChange}\\\" />\\n    {/each}\\n  </svg>\\n</section>\\n\\n{#if keyboardVisible}\\n  <div class=\\\"keyboard\\\">\\n    <Keyboard on:keydown=\\\"{onKeydown}\\\" />\\n  </div>\\n{/if}\\n\\n<style>\\n  section {\\n    position: sticky;\\n    top: 1em;\\n    order: 0;\\n    flex: 1;\\n    height: fit-content;\\n  }\\n\\n  section.is-loaded.stacked {\\n    position: relative;\\n    top: auto;\\n    height: auto;\\n    order: -1;\\n  }\\n\\n  svg {\\n    width: 100%;\\n    display: block;\\n    font-size: 1px;\\n    background: var(--main-color);\\n    border: 4px solid var(--main-color);\\n    box-sizing: border-box;\\n  }\\n\\n  .keyboard {\\n    order: 3;\\n  }\\n\\n  @media only screen and (max-width: 720px) {\\n    section:not(.is-loaded) {\\n      position: relative;\\n      top: auto;\\n      height: auto;\\n      order: -1;\\n    }\\n  }\\n</style>\\n\"],\"names\":[],\"mappings\":\"AA4NE,OAAO,cAAC,CAAC,AACP,QAAQ,CAAE,MAAM,CAChB,GAAG,CAAE,GAAG,CACR,KAAK,CAAE,CAAC,CACR,IAAI,CAAE,CAAC,CACP,MAAM,CAAE,WAAW,AACrB,CAAC,AAED,OAAO,UAAU,QAAQ,cAAC,CAAC,AACzB,QAAQ,CAAE,QAAQ,CAClB,GAAG,CAAE,IAAI,CACT,MAAM,CAAE,IAAI,CACZ,KAAK,CAAE,EAAE,AACX,CAAC,AAED,GAAG,cAAC,CAAC,AACH,KAAK,CAAE,IAAI,CACX,OAAO,CAAE,KAAK,CACd,SAAS,CAAE,GAAG,CACd,UAAU,CAAE,IAAI,YAAY,CAAC,CAC7B,MAAM,CAAE,GAAG,CAAC,KAAK,CAAC,IAAI,YAAY,CAAC,CACnC,UAAU,CAAE,UAAU,AACxB,CAAC,AAED,SAAS,cAAC,CAAC,AACT,KAAK,CAAE,CAAC,AACV,CAAC,AAED,OAAO,IAAI,CAAC,MAAM,CAAC,GAAG,CAAC,YAAY,KAAK,CAAC,AAAC,CAAC,AACzC,qBAAO,KAAK,UAAU,CAAC,AAAC,CAAC,AACvB,QAAQ,CAAE,QAAQ,CAClB,GAAG,CAAE,IAAI,CACT,MAAM,CAAE,IAAI,CACZ,KAAK,CAAE,EAAE,AACX,CAAC,AACH,CAAC\"}"
+	map: "{\"version\":3,\"file\":\"Puzzle.svelte\",\"sources\":[\"Puzzle.svelte\"],\"sourcesContent\":[\"<script>\\n  import { onMount } from \\\"svelte\\\";\\n  import Keyboard from \\\"svelte-keyboard\\\";\\n  import getSecondarilyFocusedCells from \\\"./helpers/getSecondarilyFocusedCells.js\\\";\\n  import getCellAfterDiff from \\\"./helpers/getCellAfterDiff.js\\\";\\n  import checkMobile from \\\"./helpers/checkMobile.js\\\";\\n\\n  import Cell from \\\"./Cell.svelte\\\";\\n\\n  export let clues;\\n  export let cells;\\n  export let focusedDirection;\\n  export let focusedCellIndex;\\n  export let focusedCell;\\n  export let isRevealing;\\n  export let isDisableHighlight;\\n  export let stacked;\\n  export let revealDuration = 0;\\n  export let showKeyboard;\\n  export let isLoaded;\\n  export let keyboardStyle;\\n\\n  let element;\\n  let cellsHistoryIndex = 0;\\n  let cellsHistory = [];\\n  let focusedCellIndexHistoryIndex = 0;\\n  let focusedCellIndexHistory = [];\\n  let secondarilyFocusedCells = [];\\n  let isMobile = false;\\n  let isPuzzleFocused = false;\\n\\n  const numberOfStatesInHistory = 10;\\n  $: w = Math.max(...cells.map((d) => d.x)) + 1;\\n  $: h = Math.max(...cells.map((d) => d.y)) + 1;\\n  $: keyboardVisible =\\n    typeof showKeyboard === \\\"boolean\\\" ? showKeyboard : isMobile;\\n\\n  $: cells, focusedCellIndex, focusedDirection, updateSecondarilyFocusedCells();\\n  $: sortedCellsInDirection = [...cells].sort((a, b) =>\\n    focusedDirection == \\\"down\\\" ? a.x - b.x || a.y - b.y : a.y - b.y || a.x - b.x\\n  );\\n\\n  onMount(() => {\\n    isMobile = checkMobile();\\n  });\\n\\n  function updateSecondarilyFocusedCells() {\\n    secondarilyFocusedCells = getSecondarilyFocusedCells({\\n      cells,\\n      focusedDirection,\\n      focusedCell,\\n    });\\n  }\\n\\n  function onCellUpdate(index, newValue, diff = 1, doReplaceFilledCells) {\\n    doReplaceFilledCells = doReplaceFilledCells || !!cells[index].value;\\n\\n    const dimension = focusedDirection == \\\"across\\\" ? \\\"x\\\" : \\\"y\\\";\\n    const clueIndex = cells[index].clueNumbers[focusedDirection];\\n    const cellsInClue = cells.filter(\\n      (cell) =>\\n        cell.clueNumbers[focusedDirection] == clueIndex &&\\n        (doReplaceFilledCells || !cell.value)\\n    );\\n    const cellsInCluePositions = cellsInClue\\n      .map((cell) => cell[dimension])\\n      .filter(Number.isFinite);\\n    const isAtEndOfClue =\\n      cells[index][dimension] == Math.max(...cellsInCluePositions);\\n\\n    const newCells = [\\n      ...cells.slice(0, index),\\n      { ...cells[index], value: newValue },\\n      ...cells.slice(index + 1),\\n    ];\\n    cellsHistory = [newCells, ...cellsHistory.slice(cellsHistoryIndex)].slice(\\n      0,\\n      numberOfStatesInHistory\\n    );\\n    cellsHistoryIndex = 0;\\n    cells = newCells;\\n\\n    if (isAtEndOfClue && diff > 0) {\\n      onFocusClueDiff(diff);\\n    } else {\\n      onFocusCellDiff(diff, doReplaceFilledCells);\\n    }\\n  }\\n\\n  function onHistoricalChange(diff) {\\n    cellsHistoryIndex += -diff;\\n    cells = cellsHistory[cellsHistoryIndex] || cells;\\n    focusedCellIndexHistoryIndex += -diff;\\n    focusedCellIndex =\\n      focusedCellIndexHistory[cellsHistoryIndex] || focusedCellIndex;\\n  }\\n\\n  function onFocusCell(index) {\\n    if (isPuzzleFocused && index == focusedCellIndex) {\\n      onFlipDirection();\\n    } else {\\n      focusedCellIndex = index;\\n      focusedCellIndexHistory = [\\n        index,\\n        ...focusedCellIndexHistory.slice(0, numberOfStatesInHistory),\\n      ];\\n      focusedCellIndexHistoryIndex = 0;\\n    }\\n  }\\n\\n  function onFocusCellDiff(diff, doReplaceFilledCells = true) {\\n    const sortedCellsInDirectionFiltered = sortedCellsInDirection.filter((d) =>\\n      doReplaceFilledCells ? true : !d.value\\n    );\\n    const currentCellIndex = sortedCellsInDirectionFiltered.findIndex(\\n      (d) => d.index == focusedCellIndex\\n    );\\n    const nextCellIndex = (\\n      sortedCellsInDirectionFiltered[currentCellIndex + diff] || {}\\n    ).index;\\n    const nextCell = cells[nextCellIndex];\\n    if (!nextCell) return;\\n    onFocusCell(nextCellIndex);\\n  }\\n\\n  function onFocusClueDiff(diff = 1) {\\n    const currentNumber = focusedCell.clueNumbers[focusedDirection];\\n    let nextCluesInDirection = clues.filter(\\n      (clue) =>\\n        !clue.isFilled &&\\n        (diff > 0\\n          ? clue.number > currentNumber\\n          : clue.number < currentNumber) &&\\n        clue.direction == focusedDirection\\n    );\\n    if (diff < 0) {\\n      nextCluesInDirection = nextCluesInDirection.reverse();\\n    }\\n    let nextClue = nextCluesInDirection[Math.abs(diff) - 1];\\n    if (!nextClue) {\\n      onFlipDirection();\\n      nextClue = clues.filter((clue) => clue.direction == focusedDirection)[0];\\n    }\\n    const nextFocusedCell =\\n      sortedCellsInDirection.find(\\n        (cell) =>\\n          !cell.value && cell.clueNumbers[focusedDirection] == nextClue.number\\n      ) || {};\\n    focusedCellIndex = nextFocusedCell.index || 0;\\n  }\\n\\n  function onMoveFocus(direction, diff) {\\n    if (focusedDirection != direction) {\\n      const dimension = direction == \\\"across\\\" ? \\\"x\\\" : \\\"y\\\";\\n      focusedDirection = direction;\\n    } else {\\n      const nextCell = getCellAfterDiff({\\n        diff,\\n        cells,\\n        direction,\\n        focusedCell,\\n      });\\n      if (!nextCell) return;\\n      onFocusCell(nextCell.index);\\n    }\\n  }\\n\\n  function onFlipDirection() {\\n    const newDirection = focusedDirection === \\\"across\\\" ? \\\"down\\\" : \\\"across\\\";\\n    const hasClueInNewDirection = !!focusedCell[\\\"clueNumbers\\\"][newDirection];\\n    if (hasClueInNewDirection) focusedDirection = newDirection;\\n  }\\n\\n  function onKeydown({ detail }) {\\n    const diff = detail === \\\"delete\\\" ? -1 : 1;\\n    const value = detail === \\\"delete\\\" ? \\\"\\\" : detail;\\n    onCellUpdate(focusedCellIndex, value, diff);\\n  }\\n\\n  function onClick() {\\n    isPuzzleFocused = element.contains(document.activeElement);\\n  }\\n</script>\\n\\n<svelte:window on:click=\\\"{onClick}\\\" />\\n\\n<section\\n  class=\\\"puzzle\\\"\\n  class:stacked\\n  class:is-loaded=\\\"{isLoaded}\\\"\\n  bind:this=\\\"{element}\\\">\\n  <svg viewBox=\\\"0 0 {w} {h}\\\">\\n    {#each cells as { x, y, value, index, number, custom }}\\n      <Cell\\n        x=\\\"{x}\\\"\\n        y=\\\"{y}\\\"\\n        index=\\\"{index}\\\"\\n        value=\\\"{value}\\\"\\n        number=\\\"{number}\\\"\\n        custom=\\\"{custom}\\\"\\n        changeDelay=\\\"{isRevealing ? (revealDuration / cells.length) * index : 0}\\\"\\n        isRevealing=\\\"{isRevealing}\\\"\\n        isFocused=\\\"{focusedCellIndex == index && !isDisableHighlight}\\\"\\n        isSecondarilyFocused=\\\"{secondarilyFocusedCells.includes(index) && !isDisableHighlight}\\\"\\n        onFocusCell=\\\"{onFocusCell}\\\"\\n        onCellUpdate=\\\"{onCellUpdate}\\\"\\n        onFocusClueDiff=\\\"{onFocusClueDiff}\\\"\\n        onMoveFocus=\\\"{onMoveFocus}\\\"\\n        onFlipDirection=\\\"{onFlipDirection}\\\"\\n        onHistoricalChange=\\\"{onHistoricalChange}\\\" />\\n    {/each}\\n  </svg>\\n</section>\\n\\n{#if keyboardVisible}\\n  <div class=\\\"keyboard\\\">\\n    <Keyboard\\n      layout=\\\"crossword\\\"\\n      style=\\\"{keyboardStyle}\\\"\\n      on:keydown=\\\"{onKeydown}\\\" />\\n  </div>\\n{/if}\\n\\n<style>\\n  section {\\n    position: sticky;\\n    top: 1em;\\n    order: 0;\\n    flex: 1;\\n    height: fit-content;\\n  }\\n\\n  section.is-loaded.stacked {\\n    position: relative;\\n    top: auto;\\n    height: auto;\\n    order: -1;\\n  }\\n\\n  svg {\\n    width: 100%;\\n    display: block;\\n    font-size: 1px;\\n    background: var(--main-color);\\n    border: 4px solid var(--main-color);\\n    box-sizing: border-box;\\n  }\\n\\n  .keyboard {\\n    order: 3;\\n  }\\n\\n  @media only screen and (max-width: 720px) {\\n    section:not(.is-loaded) {\\n      position: relative;\\n      top: auto;\\n      height: auto;\\n      order: -1;\\n    }\\n  }\\n</style>\\n\"],\"names\":[],\"mappings\":\"AAgOE,OAAO,cAAC,CAAC,AACP,QAAQ,CAAE,MAAM,CAChB,GAAG,CAAE,GAAG,CACR,KAAK,CAAE,CAAC,CACR,IAAI,CAAE,CAAC,CACP,MAAM,CAAE,WAAW,AACrB,CAAC,AAED,OAAO,UAAU,QAAQ,cAAC,CAAC,AACzB,QAAQ,CAAE,QAAQ,CAClB,GAAG,CAAE,IAAI,CACT,MAAM,CAAE,IAAI,CACZ,KAAK,CAAE,EAAE,AACX,CAAC,AAED,GAAG,cAAC,CAAC,AACH,KAAK,CAAE,IAAI,CACX,OAAO,CAAE,KAAK,CACd,SAAS,CAAE,GAAG,CACd,UAAU,CAAE,IAAI,YAAY,CAAC,CAC7B,MAAM,CAAE,GAAG,CAAC,KAAK,CAAC,IAAI,YAAY,CAAC,CACnC,UAAU,CAAE,UAAU,AACxB,CAAC,AAED,SAAS,cAAC,CAAC,AACT,KAAK,CAAE,CAAC,AACV,CAAC,AAED,OAAO,IAAI,CAAC,MAAM,CAAC,GAAG,CAAC,YAAY,KAAK,CAAC,AAAC,CAAC,AACzC,qBAAO,KAAK,UAAU,CAAC,AAAC,CAAC,AACvB,QAAQ,CAAE,QAAQ,CAClB,GAAG,CAAE,IAAI,CACT,MAAM,CAAE,IAAI,CACZ,KAAK,CAAE,EAAE,AACX,CAAC,AACH,CAAC\"}"
 };
 
 const numberOfStatesInHistory = 10;
@@ -558,6 +746,7 @@ const Puzzle = create_ssr_component(($$result, $$props, $$bindings, slots) => {
 	let { revealDuration = 0 } = $$props;
 	let { showKeyboard } = $$props;
 	let { isLoaded } = $$props;
+	let { keyboardStyle } = $$props;
 	let element;
 	let cellsHistoryIndex = 0;
 	let cellsHistory = [];
@@ -573,8 +762,8 @@ const Puzzle = create_ssr_component(($$result, $$props, $$bindings, slots) => {
 		secondarilyFocusedCells = getSecondarilyFocusedCells({ cells, focusedDirection, focusedCell });
 	}
 
-	function onCellUpdate(index, newValue, diff = 1) {
-		const doReplaceFilledCells = !!cells[index].value;
+	function onCellUpdate(index, newValue, diff = 1, doReplaceFilledCells) {
+		doReplaceFilledCells = doReplaceFilledCells || !!cells[index].value;
 		const dimension = focusedDirection == "across" ? "x" : "y";
 		const clueIndex = cells[index].clueNumbers[focusedDirection];
 		const cellsInClue = cells.filter(cell => cell.clueNumbers[focusedDirection] == clueIndex && (doReplaceFilledCells || !cell.value));
@@ -591,7 +780,7 @@ const Puzzle = create_ssr_component(($$result, $$props, $$bindings, slots) => {
 		cellsHistoryIndex = 0;
 		cells = newCells;
 
-		if (isAtEndOfClue) {
+		if (isAtEndOfClue && diff > 0) {
 			onFocusClueDiff(diff);
 		} else {
 			onFocusCellDiff(diff, doReplaceFilledCells);
@@ -669,6 +858,7 @@ const Puzzle = create_ssr_component(($$result, $$props, $$bindings, slots) => {
 	if ($$props.revealDuration === void 0 && $$bindings.revealDuration && revealDuration !== void 0) $$bindings.revealDuration(revealDuration);
 	if ($$props.showKeyboard === void 0 && $$bindings.showKeyboard && showKeyboard !== void 0) $$bindings.showKeyboard(showKeyboard);
 	if ($$props.isLoaded === void 0 && $$bindings.isLoaded && isLoaded !== void 0) $$bindings.isLoaded(isLoaded);
+	if ($$props.keyboardStyle === void 0 && $$bindings.keyboardStyle && keyboardStyle !== void 0) $$bindings.keyboardStyle(keyboardStyle);
 	$$result.css.add(css$3);
 	let w;
 	let h;
@@ -719,7 +909,15 @@ const Puzzle = create_ssr_component(($$result, $$props, $$bindings, slots) => {
 	)}`)}</svg></section>
 
 ${keyboardVisible
-	? `<div class="${"keyboard svelte-ce6hth"}">${validate_component(Keyboard, "Keyboard").$$render($$result, {}, {}, {})}</div>`
+	? `<div class="${"keyboard svelte-ce6hth"}">${validate_component(Keyboard, "Keyboard").$$render(
+			$$result,
+			{
+				layout: "crossword",
+				style: keyboardStyle
+			},
+			{},
+			{}
+		)}</div>`
 	: ``}`;
 });
 
@@ -1181,7 +1379,7 @@ Object.keys(themes).forEach((t) => {
 
 const css$a = {
 	code: "article.svelte-7zvqow{position:relative;background-color:transparent;font-size:16px}.play.svelte-7zvqow{display:flex;flex-direction:var(--order, row)}.play.is-loaded.stacked.svelte-7zvqow{flex-direction:column}@media only screen and (max-width: 720px){.play.svelte-7zvqow:not(.is-loaded){flex-direction:column}}",
-	map: "{\"version\":3,\"file\":\"Crossword.svelte\",\"sources\":[\"Crossword.svelte\"],\"sourcesContent\":[\"<script>\\n  import { onMount } from \\\"svelte\\\";\\n  import Toolbar from \\\"./Toolbar.svelte\\\";\\n  import Puzzle from \\\"./Puzzle.svelte\\\";\\n  import Clues from \\\"./Clues.svelte\\\";\\n  import CompletedMessage from \\\"./CompletedMessage.svelte\\\";\\n  import createClues from \\\"./helpers/createClues.js\\\";\\n  import createCells from \\\"./helpers/createCells.js\\\";\\n  import validateClues from \\\"./helpers/validateClues.js\\\";\\n  import { fromPairs } from \\\"./helpers/utils.js\\\";\\n  import themeStyles from \\\"./helpers/themeStyles.js\\\";\\n\\n  export let data = [];\\n  export let actions = [\\\"clear\\\", \\\"reveal\\\"];\\n  export let theme = \\\"classic\\\";\\n  export let revealDuration = 1000;\\n  export let breakpoint = 720;\\n  export let revealed = false;\\n  export let disableHighlight = false;\\n  export let showCompleteMessage = true;\\n  export let showConfetti = true;\\n  export let showKeyboard;\\n\\n  let width = 0;\\n  let focusedDirection = \\\"across\\\";\\n  let focusedCellIndex = 0;\\n  let isRevealing = false;\\n  let revealTimeout;\\n  let clueCompletion;\\n  let isLoaded = false;\\n\\n  let originalClues = [];\\n  let validated = [];\\n  let clues = [];\\n  let cells = [];\\n\\n  const onDataUpdate = () => {\\n    originalClues = createClues(data);\\n    validated = validateClues(originalClues);\\n    clues = originalClues.map((d) => ({ ...d }));\\n    cells = createCells(originalClues);\\n    reset();\\n  };\\n\\n  $: data, onDataUpdate();\\n  $: focusedCell = cells[focusedCellIndex] || {};\\n  $: cellIndexMap = fromPairs(cells.map((cell) => [cell.id, cell.index]));\\n  $: percentCorrect =\\n    cells.filter((d) => d.answer === d.value).length / cells.length;\\n  $: isComplete = percentCorrect == 1;\\n  $: isDisableHighlight = isComplete && disableHighlight;\\n  $: cells, (clues = checkClues());\\n  $: cells, (revealed = !clues.filter((d) => !d.isCorrect).length);\\n  $: stacked = width < breakpoint;\\n  $: inlineStyles = themeStyles[theme];\\n\\n  onMount(() => {\\n    isLoaded = true;\\n  });\\n\\n  function checkClues() {\\n    return clues.map((d) => {\\n      const index = d.index;\\n      const cellChecks = d.cells.map((c) => {\\n        const { value } = cells.find((e) => e.id === c.id);\\n        const hasValue = !!value;\\n        const hasCorrect = value === c.answer;\\n        return { hasValue, hasCorrect };\\n      });\\n      const isCorrect =\\n        cellChecks.filter((c) => c.hasCorrect).length === d.answer.length;\\n      const isFilled =\\n        cellChecks.filter((c) => c.hasValue).length === d.answer.length;\\n      return {\\n        ...d,\\n        isCorrect,\\n        isFilled,\\n      };\\n    });\\n  }\\n\\n  function reset() {\\n    isRevealing = false;\\n    focusedCellIndex = 0;\\n    focusedDirection = \\\"across\\\";\\n  }\\n\\n  function onClear() {\\n    reset();\\n    if (revealTimeout) clearTimeout(revealTimeout);\\n    cells = cells.map((cell) => ({\\n      ...cell,\\n      value: \\\"\\\",\\n    }));\\n  }\\n\\n  function onReveal() {\\n    if (revealed) return true;\\n    reset();\\n    cells = cells.map((cell) => ({\\n      ...cell,\\n      value: cell.answer,\\n    }));\\n    startReveal();\\n  }\\n\\n  function startReveal() {\\n    isRevealing = true;\\n    if (revealTimeout) clearTimeout(revealTimeout);\\n    revealTimeout = setTimeout(() => {\\n      isRevealing = false;\\n    }, revealDuration + 250);\\n  }\\n\\n  function onToolbarEvent({ detail }) {\\n    if (detail === \\\"clear\\\") onClear();\\n    else if (detail === \\\"reveal\\\") onReveal();\\n  }\\n</script>\\n\\n{#if validated}\\n  <article\\n    class=\\\"svelte-crossword\\\"\\n    bind:offsetWidth=\\\"{width}\\\"\\n    style=\\\"{inlineStyles}\\\">\\n    <slot name=\\\"toolbar\\\" onClear=\\\"{onClear}\\\" onReveal=\\\"{onReveal}\\\">\\n      <Toolbar actions=\\\"{actions}\\\" on:event=\\\"{onToolbarEvent}\\\" />\\n    </slot>\\n\\n    <div class=\\\"play\\\" class:stacked class:is-loaded=\\\"{isLoaded}\\\">\\n      <Clues\\n        clues=\\\"{clues}\\\"\\n        cellIndexMap=\\\"{cellIndexMap}\\\"\\n        stacked=\\\"{stacked}\\\"\\n        isDisableHighlight=\\\"{isDisableHighlight}\\\"\\n        isLoaded=\\\"{isLoaded}\\\"\\n        bind:focusedCellIndex\\n        bind:focusedCell\\n        bind:focusedDirection />\\n      <Puzzle\\n        clues=\\\"{clues}\\\"\\n        focusedCell=\\\"{focusedCell}\\\"\\n        isRevealing=\\\"{isRevealing}\\\"\\n        isDisableHighlight=\\\"{isDisableHighlight}\\\"\\n        revealDuration=\\\"{revealDuration}\\\"\\n        showKeyboard=\\\"{showKeyboard}\\\"\\n        stacked=\\\"{stacked}\\\"\\n        isLoaded=\\\"{isLoaded}\\\"\\n        bind:cells\\n        bind:focusedCellIndex\\n        bind:focusedDirection />\\n    </div>\\n\\n    {#if isComplete && !isRevealing && showCompleteMessage}\\n      <CompletedMessage showConfetti=\\\"{showConfetti}\\\">\\n        <slot name=\\\"message\\\" />\\n      </CompletedMessage>\\n    {/if}\\n  </article>\\n{/if}\\n\\n<style>\\n  article {\\n    position: relative;\\n    background-color: transparent;\\n    font-size: 16px;\\n  }\\n\\n  .play {\\n    display: flex;\\n    flex-direction: var(--order, row);\\n  }\\n\\n  .play.is-loaded.stacked {\\n    flex-direction: column;\\n  }\\n\\n  @media only screen and (max-width: 720px) {\\n    .play:not(.is-loaded) {\\n      flex-direction: column;\\n    }\\n  }\\n</style>\\n\"],\"names\":[],\"mappings\":\"AAkKE,OAAO,cAAC,CAAC,AACP,QAAQ,CAAE,QAAQ,CAClB,gBAAgB,CAAE,WAAW,CAC7B,SAAS,CAAE,IAAI,AACjB,CAAC,AAED,KAAK,cAAC,CAAC,AACL,OAAO,CAAE,IAAI,CACb,cAAc,CAAE,IAAI,OAAO,CAAC,IAAI,CAAC,AACnC,CAAC,AAED,KAAK,UAAU,QAAQ,cAAC,CAAC,AACvB,cAAc,CAAE,MAAM,AACxB,CAAC,AAED,OAAO,IAAI,CAAC,MAAM,CAAC,GAAG,CAAC,YAAY,KAAK,CAAC,AAAC,CAAC,AACzC,mBAAK,KAAK,UAAU,CAAC,AAAC,CAAC,AACrB,cAAc,CAAE,MAAM,AACxB,CAAC,AACH,CAAC\"}"
+	map: "{\"version\":3,\"file\":\"Crossword.svelte\",\"sources\":[\"Crossword.svelte\"],\"sourcesContent\":[\"<script>\\n  import { onMount } from \\\"svelte\\\";\\n  import Toolbar from \\\"./Toolbar.svelte\\\";\\n  import Puzzle from \\\"./Puzzle.svelte\\\";\\n  import Clues from \\\"./Clues.svelte\\\";\\n  import CompletedMessage from \\\"./CompletedMessage.svelte\\\";\\n  import createClues from \\\"./helpers/createClues.js\\\";\\n  import createCells from \\\"./helpers/createCells.js\\\";\\n  import validateClues from \\\"./helpers/validateClues.js\\\";\\n  import { fromPairs } from \\\"./helpers/utils.js\\\";\\n  import themeStyles from \\\"./helpers/themeStyles.js\\\";\\n\\n  export let data = [];\\n  export let actions = [\\\"clear\\\", \\\"reveal\\\"];\\n  export let theme = \\\"classic\\\";\\n  export let revealDuration = 1000;\\n  export let breakpoint = 720;\\n  export let revealed = false;\\n  export let disableHighlight = false;\\n  export let showCompleteMessage = true;\\n  export let showConfetti = true;\\n  export let showKeyboard;\\n  export let keyboardStyle = \\\"outline\\\";\\n\\n  let width = 0;\\n  let focusedDirection = \\\"across\\\";\\n  let focusedCellIndex = 0;\\n  let isRevealing = false;\\n  let revealTimeout;\\n  let clueCompletion;\\n  let isLoaded = false;\\n\\n  let originalClues = [];\\n  let validated = [];\\n  let clues = [];\\n  let cells = [];\\n\\n  const onDataUpdate = () => {\\n    originalClues = createClues(data);\\n    validated = validateClues(originalClues);\\n    clues = originalClues.map((d) => ({ ...d }));\\n    cells = createCells(originalClues);\\n    reset();\\n  };\\n\\n  $: data, onDataUpdate();\\n  $: focusedCell = cells[focusedCellIndex] || {};\\n  $: cellIndexMap = fromPairs(cells.map((cell) => [cell.id, cell.index]));\\n  $: percentCorrect =\\n    cells.filter((d) => d.answer === d.value).length / cells.length;\\n  $: isComplete = percentCorrect == 1;\\n  $: isDisableHighlight = isComplete && disableHighlight;\\n  $: cells, (clues = checkClues());\\n  $: cells, (revealed = !clues.filter((d) => !d.isCorrect).length);\\n  $: stacked = width < breakpoint;\\n  $: inlineStyles = themeStyles[theme];\\n\\n  onMount(() => {\\n    isLoaded = true;\\n  });\\n\\n  function checkClues() {\\n    return clues.map((d) => {\\n      const index = d.index;\\n      const cellChecks = d.cells.map((c) => {\\n        const { value } = cells.find((e) => e.id === c.id);\\n        const hasValue = !!value;\\n        const hasCorrect = value === c.answer;\\n        return { hasValue, hasCorrect };\\n      });\\n      const isCorrect =\\n        cellChecks.filter((c) => c.hasCorrect).length === d.answer.length;\\n      const isFilled =\\n        cellChecks.filter((c) => c.hasValue).length === d.answer.length;\\n      return {\\n        ...d,\\n        isCorrect,\\n        isFilled,\\n      };\\n    });\\n  }\\n\\n  function reset() {\\n    isRevealing = false;\\n    focusedCellIndex = 0;\\n    focusedDirection = \\\"across\\\";\\n  }\\n\\n  function onClear() {\\n    reset();\\n    if (revealTimeout) clearTimeout(revealTimeout);\\n    cells = cells.map((cell) => ({\\n      ...cell,\\n      value: \\\"\\\",\\n    }));\\n  }\\n\\n  function onReveal() {\\n    if (revealed) return true;\\n    reset();\\n    cells = cells.map((cell) => ({\\n      ...cell,\\n      value: cell.answer,\\n    }));\\n    startReveal();\\n  }\\n\\n  function startReveal() {\\n    isRevealing = true;\\n    if (revealTimeout) clearTimeout(revealTimeout);\\n    revealTimeout = setTimeout(() => {\\n      isRevealing = false;\\n    }, revealDuration + 250);\\n  }\\n\\n  function onToolbarEvent({ detail }) {\\n    if (detail === \\\"clear\\\") onClear();\\n    else if (detail === \\\"reveal\\\") onReveal();\\n  }\\n</script>\\n\\n{#if validated}\\n  <article\\n    class=\\\"svelte-crossword\\\"\\n    bind:offsetWidth=\\\"{width}\\\"\\n    style=\\\"{inlineStyles}\\\">\\n    <slot name=\\\"toolbar\\\" onClear=\\\"{onClear}\\\" onReveal=\\\"{onReveal}\\\">\\n      <Toolbar actions=\\\"{actions}\\\" on:event=\\\"{onToolbarEvent}\\\" />\\n    </slot>\\n\\n    <div class=\\\"play\\\" class:stacked class:is-loaded=\\\"{isLoaded}\\\">\\n      <Clues\\n        clues=\\\"{clues}\\\"\\n        cellIndexMap=\\\"{cellIndexMap}\\\"\\n        stacked=\\\"{stacked}\\\"\\n        isDisableHighlight=\\\"{isDisableHighlight}\\\"\\n        isLoaded=\\\"{isLoaded}\\\"\\n        bind:focusedCellIndex\\n        bind:focusedCell\\n        bind:focusedDirection />\\n      <Puzzle\\n        clues=\\\"{clues}\\\"\\n        focusedCell=\\\"{focusedCell}\\\"\\n        isRevealing=\\\"{isRevealing}\\\"\\n        isDisableHighlight=\\\"{isDisableHighlight}\\\"\\n        revealDuration=\\\"{revealDuration}\\\"\\n        showKeyboard=\\\"{showKeyboard}\\\"\\n        stacked=\\\"{stacked}\\\"\\n        isLoaded=\\\"{isLoaded}\\\"\\n        keyboardStyle=\\\"{keyboardStyle}\\\"\\n        bind:cells\\n        bind:focusedCellIndex\\n        bind:focusedDirection />\\n    </div>\\n\\n    {#if isComplete && !isRevealing && showCompleteMessage}\\n      <CompletedMessage showConfetti=\\\"{showConfetti}\\\">\\n        <slot name=\\\"message\\\" />\\n      </CompletedMessage>\\n    {/if}\\n  </article>\\n{/if}\\n\\n<style>\\n  article {\\n    position: relative;\\n    background-color: transparent;\\n    font-size: 16px;\\n  }\\n\\n  .play {\\n    display: flex;\\n    flex-direction: var(--order, row);\\n  }\\n\\n  .play.is-loaded.stacked {\\n    flex-direction: column;\\n  }\\n\\n  @media only screen and (max-width: 720px) {\\n    .play:not(.is-loaded) {\\n      flex-direction: column;\\n    }\\n  }\\n</style>\\n\"],\"names\":[],\"mappings\":\"AAoKE,OAAO,cAAC,CAAC,AACP,QAAQ,CAAE,QAAQ,CAClB,gBAAgB,CAAE,WAAW,CAC7B,SAAS,CAAE,IAAI,AACjB,CAAC,AAED,KAAK,cAAC,CAAC,AACL,OAAO,CAAE,IAAI,CACb,cAAc,CAAE,IAAI,OAAO,CAAC,IAAI,CAAC,AACnC,CAAC,AAED,KAAK,UAAU,QAAQ,cAAC,CAAC,AACvB,cAAc,CAAE,MAAM,AACxB,CAAC,AAED,OAAO,IAAI,CAAC,MAAM,CAAC,GAAG,CAAC,YAAY,KAAK,CAAC,AAAC,CAAC,AACzC,mBAAK,KAAK,UAAU,CAAC,AAAC,CAAC,AACrB,cAAc,CAAE,MAAM,AACxB,CAAC,AACH,CAAC\"}"
 };
 
 const Crossword = create_ssr_component(($$result, $$props, $$bindings, slots) => {
@@ -1195,6 +1393,7 @@ const Crossword = create_ssr_component(($$result, $$props, $$bindings, slots) =>
 	let { showCompleteMessage = true } = $$props;
 	let { showConfetti = true } = $$props;
 	let { showKeyboard } = $$props;
+	let { keyboardStyle = "outline" } = $$props;
 	let width = 0;
 	let focusedDirection = "across";
 	let focusedCellIndex = 0;
@@ -1276,6 +1475,7 @@ const Crossword = create_ssr_component(($$result, $$props, $$bindings, slots) =>
 	if ($$props.showCompleteMessage === void 0 && $$bindings.showCompleteMessage && showCompleteMessage !== void 0) $$bindings.showCompleteMessage(showCompleteMessage);
 	if ($$props.showConfetti === void 0 && $$bindings.showConfetti && showConfetti !== void 0) $$bindings.showConfetti(showConfetti);
 	if ($$props.showKeyboard === void 0 && $$bindings.showKeyboard && showKeyboard !== void 0) $$bindings.showKeyboard(showKeyboard);
+	if ($$props.keyboardStyle === void 0 && $$bindings.keyboardStyle && keyboardStyle !== void 0) $$bindings.keyboardStyle(keyboardStyle);
 	$$result.css.add(css$a);
 	let $$settled;
 	let $$rendered;
@@ -1360,6 +1560,7 @@ const Crossword = create_ssr_component(($$result, $$props, $$bindings, slots) =>
 					showKeyboard,
 					stacked,
 					isLoaded,
+					keyboardStyle,
 					cells,
 					focusedCellIndex,
 					focusedDirection

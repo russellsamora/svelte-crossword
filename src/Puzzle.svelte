@@ -18,6 +18,7 @@
   export let revealDuration = 0;
   export let showKeyboard;
   export let isLoaded;
+  export let keyboardStyle;
 
   let element;
   let cellsHistoryIndex = 0;
@@ -213,7 +214,10 @@
 
 {#if keyboardVisible}
   <div class="keyboard">
-    <Keyboard on:keydown="{onKeydown}" />
+    <Keyboard
+      layout="crossword"
+      style="{keyboardStyle}"
+      on:keydown="{onKeydown}" />
   </div>
 {/if}
 

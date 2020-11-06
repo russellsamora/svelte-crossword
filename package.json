@@ -22,6 +22,6 @@
     "svelte": "^3.29.0"
   },
   "dependencies": {
-    "svelte-keyboard": "0.1.0"
+    "svelte-keyboard": "0.2.0"
   }
 }

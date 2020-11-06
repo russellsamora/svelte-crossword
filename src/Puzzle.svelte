@@ -172,8 +172,8 @@
   }
 
   function onKeydown({ detail }) {
-    const diff = detail === "delete" ? -1 : 1;
-    const value = detail === "delete" ? "" : detail;
+    const diff = detail === "Backspace" ? -1 : 1;
+    const value = detail === "Backspace" ? "" : detail;
     onCellUpdate(focusedCellIndex, value, diff);
   }
 

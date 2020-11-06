@@ -70,17 +70,18 @@ Note: X and Y coordinates can be zero or one based, it will detect automatically
 
 ## Parameters
 
-| parameter             | default               | type    | description                                              |
-| --------------------- | --------------------- | ------- | -------------------------------------------------------- |
-| `data`                | _required_            | Array   | crossword clue/answer data                               |
-| `theme`               | `classic`             | String  | preset theme to use                                      |
-| `actions`             | `["clear", "reveal"]` | Array   | toolbar actions                                          |
-| `revealDuration`      | `1000`                | Number  | reveal transition duration in ms                         |
-| `breakpoint`          | `720`                 | Number  | when to switch to stacked layout                         |
-| `disableHighlight`    | `false`               | Boolean | turn off puzzle highlight                                |
-| `showCompleteMessage` | `true`                | Boolean | show message overlay after completion                    |
-| `showConfetti`        | `true`                | Boolean | show confetti during completion message                  |
-| `showKeyboard`        | `false`               | Boolean | force on-screen keyboard display (overriding auto-check) |
+| parameter             | default               | type    | description                                                                         |
+| --------------------- | --------------------- | ------- | ----------------------------------------------------------------------------------- |
+| `data`                | _required_            | Array   | crossword clue/answer data                                                          |
+| `theme`               | `classic`             | String  | preset theme to use                                                                 |
+| `actions`             | `["clear", "reveal"]` | Array   | toolbar actions                                                                     |
+| `revealDuration`      | `1000`                | Number  | reveal transition duration in ms                                                    |
+| `breakpoint`          | `720`                 | Number  | when to switch to stacked layout                                                    |
+| `disableHighlight`    | `false`               | Boolean | turn off puzzle highlight                                                           |
+| `showCompleteMessage` | `true`                | Boolean | show message overlay after completion                                               |
+| `showConfetti`        | `true`                | Boolean | show confetti during completion message                                             |
+| `showKeyboard`        | `false`               | Boolean | force on-screen keyboard display (overriding auto-check)                            |
+| `keyboardStyle`       | `outline`             | String  | [keyboard button style](https://github.com/russellgoldenberg/svelte-keyboard#style) |
 
 ## Bindings
 

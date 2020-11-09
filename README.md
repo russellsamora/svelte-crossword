@@ -99,6 +99,7 @@ Available themes:
 - `classic` (default)
 - `dark`
 - `citrus`
+- `amelia`
 
 You can set your own global CSS variables to override theme defaults or roll-your-own. Simply create new a CSS variable prefixed with `xd-` to override the defaults. A `Crossword` component has a top-level class of `.svelte-crossword`.
 

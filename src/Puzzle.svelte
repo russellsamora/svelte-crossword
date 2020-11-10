@@ -13,6 +13,7 @@
   export let focusedCellIndex;
   export let focusedCell;
   export let isRevealing;
+  export let isChecking;
   export let isDisableHighlight;
   export let stacked;
   export let revealDuration = 0;
@@ -190,16 +191,18 @@
   class:is-loaded="{isLoaded}"
   bind:this="{element}">
   <svg viewBox="0 0 {w} {h}">
-    {#each cells as { x, y, value, index, number, custom }}
+    {#each cells as { x, y, value, answer, index, number, custom }}
       <Cell
         x="{x}"
         y="{y}"
         index="{index}"
         value="{value}"
+        answer="{answer}"
         number="{number}"
         custom="{custom}"
         changeDelay="{isRevealing ? (revealDuration / cells.length) * index : 0}"
         isRevealing="{isRevealing}"
+        isChecking="{isChecking}"
         isFocused="{focusedCellIndex == index && !isDisableHighlight}"
         isSecondarilyFocused="{secondarilyFocusedCells.includes(index) && !isDisableHighlight}"
         onFocusCell="{onFocusCell}"

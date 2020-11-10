@@ -11,7 +11,7 @@
   import themeStyles from "./helpers/themeStyles.js";
 
   export let data = [];
-  export let actions = ["clear", "reveal"];
+  export let actions = ["clear", "reveal", "check"];
   export let theme = "classic";
   export let revealDuration = 1000;
   export let breakpoint = 720;
@@ -26,9 +26,10 @@
   let focusedDirection = "across";
   let focusedCellIndex = 0;
   let isRevealing = false;
+  let isLoaded = false;
+  let isChecking = false;
   let revealTimeout;
   let clueCompletion;
-  let isLoaded = false;
 
   let originalClues = [];
   let validated = [];
@@ -82,6 +83,7 @@
 
   function reset() {
     isRevealing = false;
+    isChecking = false;
     focusedCellIndex = 0;
     focusedDirection = "across";
   }
@@ -105,8 +107,13 @@
     startReveal();
   }
 
+  function onCheck() {
+    isChecking = true;
+  }
+
   function startReveal() {
     isRevealing = true;
+    isChecking = false;
     if (revealTimeout) clearTimeout(revealTimeout);
     revealTimeout = setTimeout(() => {
       isRevealing = false;
@@ -116,6 +123,7 @@
   function onToolbarEvent({ detail }) {
     if (detail === "clear") onClear();
     else if (detail === "reveal") onReveal();
+    else if (detail === "check") onCheck();
   }
 </script>
 
@@ -124,7 +132,11 @@
     class="svelte-crossword"
     bind:offsetWidth="{width}"
     style="{inlineStyles}">
-    <slot name="toolbar" onClear="{onClear}" onReveal="{onReveal}">
+    <slot
+      name="toolbar"
+      onClear="{onClear}"
+      onReveal="{onReveal}"
+      onCheck="{onCheck}">
       <Toolbar actions="{actions}" on:event="{onToolbarEvent}" />
     </slot>
 
@@ -142,6 +154,7 @@
         clues="{clues}"
         focusedCell="{focusedCell}"
         isRevealing="{isRevealing}"
+        isChecking="{isChecking}"
         isDisableHighlight="{isDisableHighlight}"
         revealDuration="{revealDuration}"
         showKeyboard="{showKeyboard}"

@@ -70,18 +70,18 @@ Note: X and Y coordinates can be zero or one based, it will detect automatically
 
 ## Parameters
 
-| parameter             | default               | type    | description                                                                         |
-| --------------------- | --------------------- | ------- | ----------------------------------------------------------------------------------- |
-| `data`                | _required_            | Array   | crossword clue/answer data                                                          |
-| `theme`               | `"classic"`           | String  | preset theme to use                                                                 |
-| `actions`             | `["clear", "reveal"]` | Array   | toolbar actions                                                                     |
-| `revealDuration`      | `1000`                | Number  | reveal transition duration in ms                                                    |
-| `breakpoint`          | `720`                 | Number  | when to switch to stacked layout                                                    |
-| `disableHighlight`    | `false`               | Boolean | turn off puzzle highlight                                                           |
-| `showCompleteMessage` | `true`                | Boolean | show message overlay after completion                                               |
-| `showConfetti`        | `true`                | Boolean | show confetti during completion message                                             |
-| `showKeyboard`        | `false`               | Boolean | force on-screen keyboard display (overriding auto-check)                            |
-| `keyboardStyle`       | `"outline"`           | String  | [keyboard button style](https://github.com/russellgoldenberg/svelte-keyboard#style) |
+| parameter             | default                        | type    | description                                                                         |
+| --------------------- | ------------------------------ | ------- | ----------------------------------------------------------------------------------- |
+| `data`                | _required_                     | Array   | crossword clue/answer data                                                          |
+| `theme`               | `"classic"`                    | String  | preset theme to use                                                                 |
+| `actions`             | `["clear", "reveal", "check"]` | Array   | toolbar actions                                                                     |
+| `revealDuration`      | `1000`                         | Number  | reveal transition duration in ms                                                    |
+| `breakpoint`          | `720`                          | Number  | when to switch to stacked layout                                                    |
+| `disableHighlight`    | `false`                        | Boolean | turn off puzzle highlight                                                           |
+| `showCompleteMessage` | `true`                         | Boolean | show message overlay after completion                                               |
+| `showConfetti`        | `true`                         | Boolean | show confetti during completion message                                             |
+| `showKeyboard`        | `false`                        | Boolean | force on-screen keyboard display (overriding auto-check)                            |
+| `keyboardStyle`       | `"outline"`                    | String  | [keyboard button style](https://github.com/russellgoldenberg/svelte-keyboard#style) |
 
 ## Bindings
 
@@ -138,9 +138,11 @@ You can provide more fine-grained control over the toolbar and completion messag
 		class="toolbar"
 		slot="toolbar"
 		let:onClear
-		let:onReveal >
+		let:onReveal
+		let:onCheck >
 		<button on:click="{onClear}">clear puzzle</button>
 		<button on:click="{onReveal}">show answers</button>
+		<button on:click="{onCheck}">check cells</button>
 	</div>
 <Crossword>
 ```

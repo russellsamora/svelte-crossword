@@ -115,19 +115,11 @@
       class="value"
       x="0.5"
       y="0.9"
-      dominant-baseline="auto"
       text-anchor="middle">
       {value}
     </text>
   {/if}
-  <text
-    class="number"
-    x="0.1"
-    y="0.1"
-    dominant-baseline="hanging"
-    text-anchor="start">
-    {number}
-  </text>
+  <text class="number" x="0.08" y="0.3" text-anchor="start">{number}</text>
 </g>
 
 <style>

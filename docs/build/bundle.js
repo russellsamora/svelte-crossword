@@ -2062,7 +2062,6 @@ var app = (function () {
     					class: true,
     					x: true,
     					y: true,
-    					"dominant-baseline": true,
     					"text-anchor": true
     				},
     				1
@@ -2077,7 +2076,6 @@ var app = (function () {
     			attr(text_1, "class", "value svelte-1veput");
     			attr(text_1, "x", "0.5");
     			attr(text_1, "y", "0.9");
-    			attr(text_1, "dominant-baseline", "auto");
     			attr(text_1, "text-anchor", "middle");
     		},
     		m(target, anchor) {
@@ -2182,7 +2180,6 @@ var app = (function () {
     					class: true,
     					x: true,
     					y: true,
-    					"dominant-baseline": true,
     					"text-anchor": true
     				},
     				1
@@ -2199,9 +2196,8 @@ var app = (function () {
     			attr(rect, "height", "1");
     			attr(rect, "class", "svelte-1veput");
     			attr(text_1, "class", "number svelte-1veput");
-    			attr(text_1, "x", "0.1");
-    			attr(text_1, "y", "0.1");
-    			attr(text_1, "dominant-baseline", "hanging");
+    			attr(text_1, "x", "0.08");
+    			attr(text_1, "y", "0.3");
     			attr(text_1, "text-anchor", "start");
     			attr(g, "class", g_class_value = "cell " + /*custom*/ ctx[4] + " cell-" + /*x*/ ctx[0] + "-" + /*y*/ ctx[1] + " svelte-1veput");
     			attr(g, "transform", g_transform_value = `translate(${/*x*/ ctx[0]}, ${/*y*/ ctx[1]})`);

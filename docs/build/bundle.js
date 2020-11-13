@@ -4228,7 +4228,6 @@ var app = (function () {
     	let dispose;
     	const default_slot_template = /*#slots*/ ctx[3].default;
     	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[2], null);
-    	const default_slot_or_fallback = default_slot || fallback_block();
     	let if_block = /*showConfetti*/ ctx[0] && create_if_block_1$2();
 
     	return {
@@ -4236,7 +4235,7 @@ var app = (function () {
     			div2 = element("div");
     			div1 = element("div");
     			div0 = element("div");
-    			if (default_slot_or_fallback) default_slot_or_fallback.c();
+    			if (default_slot) default_slot.c();
     			t0 = space();
     			button = element("button");
     			t1 = text("View puzzle");
@@ -4253,7 +4252,7 @@ var app = (function () {
     			var div1_nodes = children(div1);
     			div0 = claim_element(div1_nodes, "DIV", { class: true });
     			var div0_nodes = children(div0);
-    			if (default_slot_or_fallback) default_slot_or_fallback.l(div0_nodes);
+    			if (default_slot) default_slot.l(div0_nodes);
     			div0_nodes.forEach(detach);
     			t0 = claim_space(div1_nodes);
     			button = claim_element(div1_nodes, "BUTTON", { class: true });
@@ -4281,8 +4280,8 @@ var app = (function () {
     			append(div2, div1);
     			append(div1, div0);
 
-    			if (default_slot_or_fallback) {
-    				default_slot_or_fallback.m(div0, null);
+    			if (default_slot) {
+    				default_slot.m(div0, null);
     			}
 
     			append(div1, t0);
@@ -4333,7 +4332,7 @@ var app = (function () {
     		},
     		i(local) {
     			if (current) return;
-    			transition_in(default_slot_or_fallback, local);
+    			transition_in(default_slot, local);
     			transition_in(if_block);
 
     			add_render_callback(() => {
@@ -4349,7 +4348,7 @@ var app = (function () {
     			current = true;
     		},
     		o(local) {
-    			transition_out(default_slot_or_fallback, local);
+    			transition_out(default_slot, local);
     			transition_out(if_block);
     			if (!div2_transition) div2_transition = create_bidirectional_transition(div2, fade, { y: 20 }, false);
     			div2_transition.run(0);
@@ -4359,7 +4358,7 @@ var app = (function () {
     		},
     		d(detaching) {
     			if (detaching) detach(div2);
-    			if (default_slot_or_fallback) default_slot_or_fallback.d(detaching);
+    			if (default_slot) default_slot.d(detaching);
     			if (if_block) if_block.d();
     			if (detaching && div2_transition) div2_transition.end();
     			if (detaching) detach(t3);
@@ -4371,38 +4370,7 @@ var app = (function () {
     	};
     }
 
-    // (14:14)            
-    function fallback_block(ctx) {
-    	let h3;
-    	let t;
-
-    	return {
-    		c() {
-    			h3 = element("h3");
-    			t = text("You solved it!");
-    			this.h();
-    		},
-    		l(nodes) {
-    			h3 = claim_element(nodes, "H3", { class: true });
-    			var h3_nodes = children(h3);
-    			t = claim_text(h3_nodes, "You solved it!");
-    			h3_nodes.forEach(detach);
-    			this.h();
-    		},
-    		h() {
-    			attr(h3, "class", "svelte-1nnnjrc");
-    		},
-    		m(target, anchor) {
-    			insert(target, h3, anchor);
-    			append(h3, t);
-    		},
-    		d(detaching) {
-    			if (detaching) detach(h3);
-    		}
-    	};
-    }
-
-    // (22:4) {#if showConfetti}
+    // (21:4) {#if showConfetti}
     function create_if_block_1$2(ctx) {
     	let div;
     	let confetti;
@@ -4765,7 +4733,7 @@ var app = (function () {
     	let current;
     	const toolbar_slot_template = /*#slots*/ ctx[30].toolbar;
     	const toolbar_slot = create_slot(toolbar_slot_template, ctx, /*$$scope*/ ctx[38], get_toolbar_slot_context);
-    	const toolbar_slot_or_fallback = toolbar_slot || fallback_block$1(ctx);
+    	const toolbar_slot_or_fallback = toolbar_slot || fallback_block_1(ctx);
 
     	function clues_1_focusedCellIndex_binding(value) {
     		/*clues_1_focusedCellIndex_binding*/ ctx[31].call(null, value);
@@ -5032,7 +5000,7 @@ var app = (function () {
     }
 
     // (139:26)        
-    function fallback_block$1(ctx) {
+    function fallback_block_1(ctx) {
     	let toolbar;
     	let current;
     	toolbar = new Toolbar({ props: { actions: /*actions*/ ctx[0] } });
@@ -5118,22 +5086,49 @@ var app = (function () {
     	};
     }
 
+    // (171:29)            
+    function fallback_block(ctx) {
+    	let h3;
+    	let t;
+
+    	return {
+    		c() {
+    			h3 = element("h3");
+    			t = text("You solved it!");
+    		},
+    		l(nodes) {
+    			h3 = claim_element(nodes, "H3", {});
+    			var h3_nodes = children(h3);
+    			t = claim_text(h3_nodes, "You solved it!");
+    			h3_nodes.forEach(detach);
+    		},
+    		m(target, anchor) {
+    			insert(target, h3, anchor);
+    			append(h3, t);
+    		},
+    		d(detaching) {
+    			if (detaching) detach(h3);
+    		}
+    	};
+    }
+
     // (170:6) <CompletedMessage showConfetti="{showConfetti}">
     function create_default_slot(ctx) {
     	let current;
     	const message_slot_template = /*#slots*/ ctx[30].message;
     	const message_slot = create_slot(message_slot_template, ctx, /*$$scope*/ ctx[38], get_message_slot_context);
+    	const message_slot_or_fallback = message_slot || fallback_block();
 
     	return {
     		c() {
-    			if (message_slot) message_slot.c();
+    			if (message_slot_or_fallback) message_slot_or_fallback.c();
     		},
     		l(nodes) {
-    			if (message_slot) message_slot.l(nodes);
+    			if (message_slot_or_fallback) message_slot_or_fallback.l(nodes);
     		},
     		m(target, anchor) {
-    			if (message_slot) {
-    				message_slot.m(target, anchor);
+    			if (message_slot_or_fallback) {
+    				message_slot_or_fallback.m(target, anchor);
     			}
 
     			current = true;
@@ -5147,15 +5142,15 @@ var app = (function () {
     		},
     		i(local) {
     			if (current) return;
-    			transition_in(message_slot, local);
+    			transition_in(message_slot_or_fallback, local);
     			current = true;
     		},
     		o(local) {
-    			transition_out(message_slot, local);
+    			transition_out(message_slot_or_fallback, local);
     			current = false;
     		},
     		d(detaching) {
-    			if (message_slot) message_slot.d(detaching);
+    			if (message_slot_or_fallback) message_slot_or_fallback.d(detaching);
     		}
     	};
     }

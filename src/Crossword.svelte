@@ -168,7 +168,9 @@
 
     {#if isComplete && !isRevealing && showCompleteMessage}
       <CompletedMessage showConfetti="{showConfetti}">
-        <slot name="message" />
+        <slot name="message">
+          <h3>You solved it!</h3>
+        </slot>
       </CompletedMessage>
     {/if}
   </article>

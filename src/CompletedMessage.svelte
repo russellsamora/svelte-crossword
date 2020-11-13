@@ -12,7 +12,6 @@
     <div class="content">
       <div class="message">
         <slot>
-          <h3>You solved it!</h3>
         </slot>
       </div>
 

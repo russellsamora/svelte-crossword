@@ -4269,11 +4269,11 @@ var app = (function () {
     			this.h();
     		},
     		h() {
-    			attr(div0, "class", "message svelte-1nnnjrc");
-    			attr(button, "class", "svelte-1nnnjrc");
-    			attr(div1, "class", "content svelte-1nnnjrc");
-    			attr(div2, "class", "completed svelte-1nnnjrc");
-    			attr(div3, "class", "curtain svelte-1nnnjrc");
+    			attr(div0, "class", "message svelte-hm3hg2");
+    			attr(button, "class", "svelte-hm3hg2");
+    			attr(div1, "class", "content svelte-hm3hg2");
+    			attr(div2, "class", "completed svelte-hm3hg2");
+    			attr(div3, "class", "curtain svelte-hm3hg2");
     		},
     		m(target, anchor) {
     			insert(target, div2, anchor);
@@ -4370,7 +4370,7 @@ var app = (function () {
     	};
     }
 
-    // (21:4) {#if showConfetti}
+    // (20:4) {#if showConfetti}
     function create_if_block_1$2(ctx) {
     	let div;
     	let confetti;
@@ -4391,7 +4391,7 @@ var app = (function () {
     			this.h();
     		},
     		h() {
-    			attr(div, "class", "confetti svelte-1nnnjrc");
+    			attr(div, "class", "confetti svelte-hm3hg2");
     		},
     		m(target, anchor) {
     			insert(target, div, anchor);
@@ -4845,10 +4845,10 @@ var app = (function () {
     			this.h();
     		},
     		h() {
-    			attr(div, "class", "play svelte-7zvqow");
+    			attr(div, "class", "play svelte-186p9qm");
     			toggle_class(div, "stacked", /*stacked*/ ctx[19]);
     			toggle_class(div, "is-loaded", /*isLoaded*/ ctx[10]);
-    			attr(article, "class", "svelte-crossword svelte-7zvqow");
+    			attr(article, "class", "svelte-crossword svelte-186p9qm");
     			attr(article, "style", /*inlineStyles*/ ctx[20]);
     			add_render_callback(() => /*article_elementresize_handler*/ ctx[37].call(article));
     		},
@@ -5095,12 +5095,17 @@ var app = (function () {
     		c() {
     			h3 = element("h3");
     			t = text("You solved it!");
+    			this.h();
     		},
     		l(nodes) {
-    			h3 = claim_element(nodes, "H3", {});
+    			h3 = claim_element(nodes, "H3", { class: true });
     			var h3_nodes = children(h3);
     			t = claim_text(h3_nodes, "You solved it!");
     			h3_nodes.forEach(detach);
+    			this.h();
+    		},
+    		h() {
+    			attr(h3, "class", "svelte-186p9qm");
     		},
     		m(target, anchor) {
     			insert(target, h3, anchor);

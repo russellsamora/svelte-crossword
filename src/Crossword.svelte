@@ -192,6 +192,11 @@
     flex-direction: column;
   }
 
+  h3 {
+    margin: 0;
+    margin-bottom: 0.5em;
+  }
+
   @media only screen and (max-width: 720px) {
     .play:not(.is-loaded) {
       flex-direction: column;

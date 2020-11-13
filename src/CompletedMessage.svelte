@@ -11,8 +11,7 @@
   <div class="completed" transition:fade="{{ y: 20 }}">
     <div class="content">
       <div class="message">
-        <slot>
-        </slot>
+        <slot />
       </div>
 
       <button on:click="{() => (isOpen = false)}">View puzzle</button>
@@ -53,11 +52,6 @@
     opacity: 0.9;
     cursor: pointer;
     z-index: 1;
-  }
-
-  h3 {
-    margin: 0;
-    margin-bottom: 0.5em;
   }
 
   button {

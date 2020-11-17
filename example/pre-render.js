@@ -14,6 +14,7 @@ const version = Date.now();
 const { html, head } = app.render();
 
 shell.cp('public/global.css', '../docs');
+shell.cp('public/og.png', '../docs');
 shell.cp('-R', 'public/build', '../docs');
 
 const result = template

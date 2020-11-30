@@ -2529,7 +2529,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (194:4) {#each cells as { x, y, value, answer, index, number, custom }}
+    // (200:4) {#each cells as { x, y, value, answer, index, number, custom }}
     function create_each_block$2(ctx) {
     	let cell;
     	let current;
@@ -2605,7 +2605,7 @@ var app = (function () {
     	};
     }
 
-    // (218:0) {#if keyboardVisible}
+    // (224:0) {#if keyboardVisible}
     function create_if_block$3(ctx) {
     	let div;
     	let keyboard;
@@ -2905,6 +2905,12 @@ var app = (function () {
     			onFlipDirection();
     		} else {
     			$$invalidate(1, focusedCellIndex = index);
+
+    			if (!cells[focusedCellIndex].clueNumbers[focusedDirection]) {
+    				const newDirection = focusedDirection === "across" ? "down" : "across";
+    				$$invalidate(22, focusedDirection = newDirection);
+    			}
+
     			focusedCellIndexHistory = [index, ...focusedCellIndexHistory.slice(0, numberOfStatesInHistory)];
     		}
     	}

@@ -101,6 +101,12 @@
       onFlipDirection();
     } else {
       focusedCellIndex = index;
+      
+      if (!cells[focusedCellIndex].clueNumbers[focusedDirection]) {
+        const newDirection = focusedDirection === "across" ? "down" : "across";
+        focusedDirection = newDirection
+      }
+
       focusedCellIndexHistory = [
         index,
         ...focusedCellIndexHistory.slice(0, numberOfStatesInHistory),

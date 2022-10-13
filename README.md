@@ -1,10 +1,10 @@
 # svelte-crossword
 
-By [Amelia Wattenberger](https://twitter.com/wattenberger) and [Russell Goldenberg](https://twitter.com/codenberg).
+By [Amelia Wattenberger](https://twitter.com/wattenberger) and [Russell Samora](https://twitter.com/russellviz).
 
 ## Examples
 
-[Example page](https://russellgoldenberg.github.io/svelte-crossword)
+[Example page](https://russellsamora.github.io/svelte-crossword)
 
 ## Features
 
@@ -81,7 +81,7 @@ Note: X and Y coordinates can be zero or one based, it will detect automatically
 | `showCompleteMessage` | `true`                         | Boolean | show message overlay after completion                                               |
 | `showConfetti`        | `true`                         | Boolean | show confetti during completion message                                             |
 | `showKeyboard`        | `false`                        | Boolean | force on-screen keyboard display (overriding auto-check)                            |
-| `keyboardStyle`       | `"outline"`                    | String  | [keyboard button style](https://github.com/russellgoldenberg/svelte-keyboard#style) |
+| `keyboardStyle`       | `"outline"`                    | String  | [keyboard button style](https://github.com/russellsamora/svelte-keyboard#style) |
 
 ## Bindings
 

@@ -16,11 +16,12 @@
       A crossword component for
       <a href="https://svelte.dev">Svelte</a>. Read the docs on
       <a
-        href="https://github.com/russellgoldenberg/svelte-crossword#svelte-crossword">Github</a>.
-      Made with ☕ by
+        href="https://github.com/russellsamora/svelte-crossword#svelte-crossword"
+        >Github</a
+      >. Made with ☕ by
       <a href="https://twitter.com/wattenberger">Amelia Wattenberger</a>
       and
-      <a href="https://twitter.com/codenberg">Russell Goldenberg</a>.
+      <a href="https://twitter.com/russellviz">Russell Samora</a>.
     </p>
   </div>
 
@@ -29,8 +30,9 @@
       <h2><a href="#default">Default Example</a></h2>
       <p>
         A
-        <a href="https://www.nytimes.com/crosswords/game/daily/2020/10/21">NYT
-          daily</a>
+        <a href="https://www.nytimes.com/crosswords/game/daily/2020/10/21"
+          >NYT daily</a
+        >
         puzzle with all default settings.
       </p>
     </div>
@@ -42,8 +44,9 @@
       <h2><a href="#mobile">Mobile</a></h2>
       <p>
         A
-        <a href="https://www.nytimes.com/crosswords/game/mini/2020/10/21">NYT
-          mini</a>
+        <a href="https://www.nytimes.com/crosswords/game/mini/2020/10/21"
+          >NYT mini</a
+        >
         puzzle with all default settings and forced mobile view.
       </p>
     </div>
@@ -80,7 +83,8 @@
     <Crossword
       data="{dataUSA}"
       disableHighlight="{revealedUSA}"
-      bind:revealed="{revealedUSA}" />
+      bind:revealed="{revealedUSA}"
+    />
   </section>
 
   <section id="slots">
@@ -94,19 +98,23 @@
         slot="toolbar"
         let:onClear
         let:onReveal
-        style="background: #333; padding: 1em; margin: 1em 0;">
+        style="background: #333; padding: 1em; margin: 1em 0;"
+      >
         <button
           style="font-size: 1.5em; background-color: #888;"
-          on:click="{onClear}">clear puzzle</button>
+          on:click="{onClear}">clear puzzle</button
+        >
         <button
           style="font-size: 1.5em; background-color: #888;"
-          on:click="{onReveal}">show answers</button>
+          on:click="{onReveal}">show answers</button
+        >
       </div>
       <div slot="message">
         <h3>OMG, congrats!</h3>
         <img
           alt="celebration"
-          src="https://media3.giphy.com/media/QpOZPQQ2wbjOM/giphy.gif" />
+          src="https://media3.giphy.com/media/QpOZPQQ2wbjOM/giphy.gif"
+        />
       </div>
     </Crossword>
   </section>

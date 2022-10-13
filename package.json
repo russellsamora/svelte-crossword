@@ -1,27 +1,27 @@
 {
-  "name": "svelte-crossword",
-  "version": "0.3.4",
-  "description": "Crossword component for Svelte",
-  "svelte": "src/Crossword.svelte",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/russellgoldenberg/svelte-crossword.git"
-  },
-  "keywords": [
-    "svelte",
-    "crossword",
-    "puzzle"
-  ],
-  "author": "russell goldenberg",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/russellgoldenberg/svelte-crossword/issues"
-  },
-  "homepage": "https://github.com/russellgoldenberg/svelte-crossword#readme",
-  "peerDependencies": {
-    "svelte": "^3.29.0"
-  },
-  "dependencies": {
-    "svelte-keyboard": "0.2.0"
-  }
+	"name": "svelte-crossword",
+	"version": "0.3.4",
+	"description": "Crossword component for Svelte",
+	"svelte": "src/Crossword.svelte",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/russellsamora/svelte-crossword.git"
+	},
+	"keywords": [
+		"svelte",
+		"crossword",
+		"puzzle"
+	],
+	"author": "russell samora",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/russellsamora/svelte-crossword/issues"
+	},
+	"homepage": "https://github.com/russellsamora/svelte-crossword#readme",
+	"peerDependencies": {
+		"svelte": "^3.29.0"
+	},
+	"dependencies": {
+		"svelte-keyboard": "0.2.0"
+	}
 }
